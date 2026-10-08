@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body data-page="sobre.dc.html">
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F1E4E9;--paper-2:#E4CBD5;--ink:#2A0F27;--ink-2:#503548;--accent:#C2286D;--accent-deep:#7A1145;--olive:#451841}
+body{margin:0;background:var(--paper);font-family:'Roboto',sans-serif;color:var(--ink);text-wrap:pretty;-webkit-font-smoothing:antialiased}
+*:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+a{color:var(--accent-deep)}
+a:hover{color:var(--accent)}
+.disp{font-family:'Bebas Neue',sans-serif;letter-spacing:.005em;line-height:.86}
+.italic{font-style:italic;font-weight:400}
+.rule{border:0;height:1px;background:var(--ink);margin:0}
+.rule-thick{border:0;height:3px;background:var(--ink);margin:0}
+/* Filosofia · painel "device" em sticky */
+.philo-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:80px;align-items:start}
+.philo-left{position:sticky;top:110px;align-self:start}
+.philo-stack{position:relative;padding-bottom:40vh}
+.dev-card{position:sticky;background:linear-gradient(160deg,#FBF3F6,#F3E3EA);border:1px solid rgba(42,15,39,.14);border-radius:28px;box-shadow:0 30px 60px rgba(42,15,39,.16),0 4px 14px rgba(42,15,39,.05);margin-bottom:38vh;overflow:hidden}
+.dev-card:nth-child(1){top:120px;z-index:1}
+.dev-card:nth-child(2){top:150px;z-index:2}
+.dev-card:nth-child(3){top:180px;z-index:3}
+.dev-card:nth-child(4){top:210px;z-index:4;margin-bottom:0}
+.dev-head{display:flex;align-items:center;gap:22px;padding:24px 30px 20px}
+.dev-step{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:var(--accent-deep);white-space:nowrap}
+.dev-step .of{color:var(--ink-2);font-weight:500}
+.dev-dots{display:flex;align-items:center;gap:7px;flex:1}
+.dev-dots i{width:9px;height:9px;border-radius:50%;background:rgba(42,15,39,.16);display:block;flex-shrink:0}
+.dev-dots i.done{background:var(--ink-2)}
+.dev-dots i.on{background:var(--accent);box-shadow:0 0 0 4px rgba(194,40,109,.18)}
+.dev-dots .seg{flex:1;height:2px;background:rgba(42,15,39,.14)}
+.dev-dots .seg.done{background:var(--accent)}
+.dev-etapa{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--ink-2);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.dev-etapa .ring{width:16px;height:16px;border-radius:50%;border:2px solid var(--accent);position:relative;flex-shrink:0}
+.dev-etapa .ring::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent)}
+.dev-body{display:grid;grid-template-columns:230px 1fr;border-top:1px solid rgba(42,15,39,.14)}
+.dev-left{position:relative;padding:34px 26px 76px;border-right:1px dashed rgba(42,15,39,.22)}
+.dev-num{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:70px;color:var(--ink);line-height:.85}
+.dev-lbl{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:20px;color:var(--accent-deep);margin-top:4px}
+.dev-sub{display:flex;align-items:flex-start;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--ink-2);text-transform:uppercase;margin-top:18px;max-width:145px;line-height:1.55}
+.dev-sub .dash{width:18px;height:2px;background:var(--accent);flex-shrink:0;margin-top:5px}
+.dev-icon{position:absolute;left:26px;bottom:26px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(42,15,39,.18);display:flex;align-items:center;justify-content:center}
+.dev-icon::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 6px rgba(194,40,109,.14)}
+.dev-dotgrid{position:absolute;right:22px;bottom:24px;width:26px;height:26px;background-image:radial-gradient(circle,rgba(42,15,39,.3) 1.4px,transparent 1.6px);background-size:7px 7px}
+.dev-right{padding:34px 36px}
+.dev-right p{font-size:16.5px;line-height:1.75;color:var(--ink);margin:0}
+.dev-right mark{background:rgba(255,255,255,.6);color:var(--accent-deep);padding:2px 9px;border-radius:999px;font-weight:700;border:1px solid rgba(194,40,109,.25);white-space:nowrap}
+.dev-right mark.line{border-radius:6px;white-space:normal;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.dev-foot{display:flex;align-items:center;gap:20px;border-top:1px solid rgba(42,15,39,.14);padding:14px 30px}
+.dev-foot .lbl{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.12em;color:var(--ink-2);text-transform:uppercase;display:flex;align-items:center;gap:6px;line-height:1.4}
+.dev-foot .lbl i{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.dev-foot .scan{flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(42,15,39,.3) 0 6px,transparent 6px 11px)}
+.dev-foot .sq{display:flex;gap:4px}
+.dev-foot .sq i{width:5px;height:5px;background:rgba(42,15,39,.32)}
+@media (max-width:960px){
+  .philo-wrap{grid-template-columns:1fr;gap:36px}
+  .philo-left{position:static}
+  .dev-card{margin-bottom:24vh}
+  .dev-card:nth-child(n){top:80px}
+  .dev-body{grid-template-columns:1fr}
+  .dev-left{border-right:none;border-bottom:1px dashed rgba(42,15,39,.22);padding-bottom:60px}
+  .dev-num{font-size:52px}
+}
+.skip{position:absolute;left:16px;top:-48px;z-index:100;background:var(--ink);color:var(--paper);padding:10px 18px;text-decoration:none;font-weight:700;font-size:13px;transition:top .2s}
+.skip:focus{top:16px}
+.hd{max-width:1360px;margin:0 auto;padding:22px 40px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--ink)}
+.hd a.wm{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:30px;color:var(--ink);text-decoration:none;line-height:1}
+.hd nav{display:flex;gap:36px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.hd nav a{color:var(--ink);text-decoration:none;padding-bottom:3px;border-bottom:1px solid transparent;transition:border-color .2s}
+.hd nav a:hover,.hd nav a[aria-current="page"]{border-color:var(--ink)}
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.sec{padding:110px 0;border-bottom:1px solid var(--ink)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.reveal.is-in{opacity:1;transform:none}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:12px}
+.kicker::before{content:"";width:32px;height:1px;background:currentColor}
+.crossed{position:relative;color:var(--ink-2)}
+.crossed::after{content:"";position:absolute;left:-4%;right:-4%;top:52%;height:3px;background:var(--accent);transform:rotate(-4deg)}
+.pull{font-family:'Roboto',sans-serif;font-weight:300;font-style:italic;font-size:26px;line-height:1.35;color:var(--ink);max-width:820px}
+.marker{background:linear-gradient(transparent 62%,rgba(217,59,74,.28) 62%);padding:0 2px}
+.chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--ink);border-radius:0;background:transparent;color:var(--ink)}
+.tick{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.tick li{display:grid;grid-template-columns:24px 1fr;gap:12px;font-size:15px;line-height:1.55;align-items:baseline}
+.tick li::before{content:"→";color:var(--accent);font-weight:700}
+.tl{display:grid;grid-template-columns:130px 1fr;column-gap:36px;row-gap:0}
+.tl>div{padding:26px 0;border-top:1px solid var(--ink)}
+.tl>div:last-child{border-bottom:1px solid var(--ink)}
+.tl .yr{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:30px;color:var(--ink);line-height:1}
+.tl .role{font-size:19px;font-weight:800;letter-spacing:-.01em;margin:0 0 4px}
+.tl .co{color:var(--accent-deep);font-weight:700}
+.tl .desc{font-size:14px;line-height:1.65;color:var(--ink-2);margin:6px 0 0;max-width:640px}
+.tl .now{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--paper);background:var(--olive);padding:3px 8px;margin-left:8px;vertical-align:middle}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.q-block{padding:32px 0;border-top:1px solid var(--ink);display:grid;grid-template-columns:200px 1fr;gap:36px}
+.q-block:last-child{border-bottom:1px solid var(--ink)}
+.q-lbl{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:22px;letter-spacing:.02em;color:var(--accent);line-height:1}
+.q-a{font-size:17px;line-height:1.7;color:var(--ink);margin:0;max-width:640px}
+.q-a strong{background:var(--paper-2);padding:0 4px}
+.big-num{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:220px;color:var(--ink);line-height:.82;letter-spacing:-.01em}
+.stack{display:flex;flex-direction:column;gap:6px}
+.overlap{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:end}
+.logos{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--ink);border-radius:0;background:transparent}
+.logos>div{flex:1 1 220px;padding:22px 26px;border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;letter-spacing:.02em;color:var(--ink)}
+.logos>div small{display:block;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--ink-2);margin-top:4px}
+.cta{background:var(--ink);color:var(--paper);padding:100px 60px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:110px;letter-spacing:.005em;line-height:.86;margin:0;color:var(--paper)}
+.cta h2 em{color:var(--accent);font-style:italic;font-weight:400;font-family:'Roboto',sans-serif;font-size:.68em;letter-spacing:-.02em;line-height:1.05;display:inline-block;transform:translateY(-.06em)}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn-solid,.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s,background .2s,color .2s}
+.btn-solid{background:var(--accent);color:var(--paper)}
+.btn-solid:hover{background:var(--paper);color:var(--ink);transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--paper);color:var(--paper)}
+.btn-outline:hover{background:var(--paper);color:var(--ink);transform:translateY(-2px)}
+.foot{max-width:1360px;margin:0 auto;padding:26px 40px;display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2)}
+.foot .wm{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:18px;color:var(--ink)}
+.p-sq{width:12px;height:12px;background:var(--accent);display:inline-block;margin:0 6px 0 0;vertical-align:middle}
+.imgtag{position:absolute;background:var(--ink);color:var(--paper);font-size:10px;font-weight:800;letter-spacing:.14em;padding:6px 10px;text-transform:uppercase}
+.stagger-h1 span{display:block}
+@media (max-width:960px){
+  .grid-2{grid-template-columns:1fr;gap:36px}
+  .tl{grid-template-columns:80px 1fr;column-gap:20px}
+  .tl .yr{font-size:22px}
+  .q-block{grid-template-columns:1fr;gap:12px}
+  .cta{grid-template-columns:1fr;padding:60px 30px}
+  .cta h2{font-size:56px}
+  .big-num{font-size:120px}
+  .hd nav{display:none}
+  .sec{padding:70px 0}
+  .wrap{padding:0 24px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+<link rel="stylesheet" href="./chrome.css">
+<link rel="stylesheet" href="./theme.css">
+<script src="./chrome.js" defer></script>
+</helmet>
+
+<a href="#conteudo" class="skip">Pular para o conteúdo</a>
+
+<!-- @abia-chrome:start -->
+<a href="#conteudo" class="ac-skip" data-en="Skip to content">Pular para o conteúdo</a>
+<header class="ac-hdr" role="banner">
+  <a href="index.dc.html" class="ac-mark" aria-label="Ábia Bognola — início">ÁBIA</a>
+  <div class="ac-nav-wrap">
+    <nav class="ac-nav" aria-label="Navegação principal">
+      <a href="index.dc.html" data-en="Home">Início</a>
+      <a href="Projetos.dc.html" data-en="Work">Cases</a>
+      <a href="Sobre.dc.html" data-en="About">Sobre</a>
+      <a href="Contato.dc.html" data-en="Contact">Contato</a>
+    </nav>
+    <div class="ac-lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+<!-- @abia-chrome:end -->
+
+<main id="conteudo">
+
+<!-- ============================= HERO ============================= -->
+<section class="sec" style="padding-top:70px" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:70px;align-items:end">
+      <div>
+        <div class="kicker" style="margin-bottom:36px">01 · Sobre a designer</div>
+        <h1 id="hero-title" class="disp" style="font-size:clamp(64px,10vw,152px);margin:0 0 26px;color:var(--ink)">
+          ÁBIA<br>BOGNOLA<span style="color:var(--accent)">.</span>
+        </h1>
+        <p style="font-size:19px;line-height:1.6;max-width:640px;margin:24px 0 0;color:var(--ink-2)">Product designer há <strong style="color:var(--ink)">cinco anos</strong>, entre fintech, saúde pública e edtech.</p>
+        <p style="font-size:16px;line-height:1.7;max-width:600px;margin:14px 0 0;color:var(--ink-2)">Nos cases aqui, entrei em produtos que já existiam mas ainda não tinham processo de UX — boa parte do meu trabalho começa reunindo o que o time já sabe antes de tocar em pixel.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:22px;justify-self:end;align-items:flex-end">
+        <div style="position:relative">
+          <span class="imgtag" style="top:-14px;left:-14px">Retrato · 2026</span>
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="foto-sobre" shape="rect" placeholder="Foto da Ábia" style="display:block;width:280px;height:340px;background:var(--paper-2)" hint-size="280px,340px"></x-import>
+          <span class="imgtag" style="bottom:-14px;right:-14px;background:var(--accent)">Goiânia · GO</span>
+        </div>
+        <div style="text-align:right;font-size:12px;color:var(--ink-2);max-width:280px;line-height:1.6">
+          <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:14px;color:var(--ink);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">Onde estou</div>
+          Goiânia, GO · remoto pra times em qualquer fuso do Brasil. Atualmente na MedMe Saúde, meio-período entre projetos parceiros.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= NÚMEROS ============================= -->
+<section class="sec reveal" aria-label="Em números">
+  <div class="wrap">
+    <div class="kicker" style="margin-bottom:60px">02 · Em números</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:40px;align-items:end">
+      <div class="stack">
+        <div class="big-num">5</div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink-2);margin-top:6px">Anos em product design</div>
+      </div>
+      <div class="stack">
+        <div class="big-num">4</div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink-2);margin-top:6px">Setores atendidos <br><span style="color:var(--ink)">fintech · saúde · edtech · softhouse</span></div>
+      </div>
+      <div class="stack">
+        <div class="big-num">6</div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink-2);margin-top:6px">Mentorias &amp; hackathons como mentora</div>
+      </div>
+      <div class="stack">
+        <div class="disp" style="font-size:80px;color:var(--accent)">MBA</div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--ink-2);margin-top:6px">Future-Centered Design · FIAP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= FILOSOFIA (cartas) ============================= -->
+<section class="sec reveal" aria-labelledby="filo-title">
+  <div class="wrap">
+    <div class="philo-wrap">
+      <div class="philo-left">
+        <div class="kicker" style="margin-bottom:36px">03 · Filosofia</div>
+        <h2 id="filo-title" class="disp" style="font-size:clamp(48px,6vw,88px);margin:0 0 24px">COMO EU<br>COSTUMO<br>TRABALHAR.</h2>
+        <p class="pull" style="font-size:17px;line-height:1.55">Quatro etapas em movimento. Uma sequência que aparece em <a href="Projetos.dc.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px">cada case publicado</a> — não um manifesto, um hábito.</p>
+      </div>
+      <div class="philo-stack">
+        <article class="dev-card">
+          <div class="dev-head">
+            <span class="dev-step">01 <span class="of">/ 04</span></span>
+            <div class="dev-dots"><i class="on"></i><span class="seg"></span><i></i><span class="seg"></span><i></i><span class="seg"></span><i></i></div>
+            <span class="dev-etapa">ETAPA <span class="ring"></span></span>
+          </div>
+          <div class="dev-body">
+            <div class="dev-left">
+              <div class="dev-num">01</div>
+              <div class="dev-lbl">Empatizar</div>
+              <div class="dev-sub"><span class="dash"></span>Reunir antes de desenhar</div>
+              <div class="dev-icon"></div>
+              <div class="dev-dotgrid"></div>
+            </div>
+            <div class="dev-right">
+              <p>O primeiro passo nunca é Figma — é reunir o que já existe. Revisão de documentação e specs do cliente, <mark>matriz CSD</mark> em dinâmica com o time quando há gente suficiente pra cruzar visões, ou entrevista dirigida quando o interlocutor é só o cliente. <mark class="line">A pergunta antes da ferramenta.</mark></p>
+            </div>
+          </div>
+          <div class="dev-foot">
+            <span class="lbl"><i></i>Modo<br>exploração</span>
+            <span class="scan"></span>
+            <span class="lbl"><i></i>Status<br>ativo</span>
+            <span class="sq"><i></i><i></i><i></i></span>
+          </div>
+        </article>
+        <article class="dev-card">
+          <div class="dev-head">
+            <span class="dev-step">02 <span class="of">/ 04</span></span>
+            <div class="dev-dots"><i class="done"></i><span class="seg done"></span><i class="on"></i><span class="seg"></span><i></i><span class="seg"></span><i></i></div>
+            <span class="dev-etapa">ETAPA <span class="ring"></span></span>
+          </div>
+          <div class="dev-body">
+            <div class="dev-left">
+              <div class="dev-num">02</div>
+              <div class="dev-lbl">Definir</div>
+              <div class="dev-sub"><span class="dash"></span>Síntese antes da solução</div>
+              <div class="dev-icon"></div>
+              <div class="dev-dotgrid"></div>
+            </div>
+            <div class="dev-right">
+              <p>Cruzar evidências — specs, dados internos, entrevista — em pontos que passam a guiar cada decisão. Mapear perfis e regras de negócio antes do primeiro wireframe, quando o produto atende mais de um tipo de usuário. <mark class="line">Nenhuma decisão sem uma evidência atrás.</mark></p>
+            </div>
+          </div>
+          <div class="dev-foot">
+            <span class="lbl"><i></i>Modo<br>exploração</span>
+            <span class="scan"></span>
+            <span class="lbl"><i></i>Status<br>ativo</span>
+            <span class="sq"><i></i><i></i><i></i></span>
+          </div>
+        </article>
+        <article class="dev-card">
+          <div class="dev-head">
+            <span class="dev-step">03 <span class="of">/ 04</span></span>
+            <div class="dev-dots"><i class="done"></i><span class="seg done"></span><i class="done"></i><span class="seg done"></span><i class="on"></i><span class="seg"></span><i></i></div>
+            <span class="dev-etapa">ETAPA <span class="ring"></span></span>
+          </div>
+          <div class="dev-body">
+            <div class="dev-left">
+              <div class="dev-num">03</div>
+              <div class="dev-lbl">Prototipar</div>
+              <div class="dev-sub"><span class="dash"></span>Estrutura antes do pixel</div>
+              <div class="dev-icon"></div>
+              <div class="dev-dotgrid"></div>
+            </div>
+            <div class="dev-right">
+              <p>Style guide primeiro quando o cliente já tem marca definida. Wireframes de baixa fidelidade e wireflow validados <em>antes</em> de subir a fidelidade — o que sustenta prazos apertados sem perder a base. Acessibilidade — contraste, alvos de toque, versão leve — entra já no wireframe, não como “polish” final.</p>
+            </div>
+          </div>
+          <div class="dev-foot">
+            <span class="lbl"><i></i>Modo<br>exploração</span>
+            <span class="scan"></span>
+            <span class="lbl"><i></i>Status<br>ativo</span>
+            <span class="sq"><i></i><i></i><i></i></span>
+          </div>
+        </article>
+        <article class="dev-card">
+          <div class="dev-head">
+            <span class="dev-step">04 <span class="of">/ 04</span></span>
+            <div class="dev-dots"><i class="done"></i><span class="seg done"></span><i class="done"></i><span class="seg done"></span><i class="done"></i><span class="seg done"></span><i class="on"></i></div>
+            <span class="dev-etapa">ETAPA <span class="ring"></span></span>
+          </div>
+          <div class="dev-body">
+            <div class="dev-left">
+              <div class="dev-num">04</div>
+              <div class="dev-lbl">Documentar</div>
+              <div class="dev-sub"><span class="dash"></span>A etapa que vira handoff</div>
+              <div class="dev-icon"></div>
+              <div class="dev-dotgrid"></div>
+            </div>
+            <div class="dev-right">
+              <p>A documentação completa do wireflow é entrega tão importante quanto as telas — é ela que evita o “telefone sem fio” que espalha conhecimento pelo time. <mark class="line">Em cada case, entrego a razão por trás de cada decisão, não só o Figma final.</mark></p>
+            </div>
+          </div>
+          <div class="dev-foot">
+            <span class="lbl"><i></i>Modo<br>exploração</span>
+            <span class="scan"></span>
+            <span class="lbl"><i></i>Status<br>ativo</span>
+            <span class="sq"><i></i><i></i><i></i></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= RECORTE HONESTO ============================= -->
+<section class="sec reveal" style="background:var(--ink);color:var(--paper);border-bottom:none" aria-label="Um recorte honesto">
+  <div class="wrap">
+    <div class="kicker" style="color:var(--accent);margin-bottom:40px">Princípio de trabalho</div>
+    <p class="disp" style="font-size:clamp(38px,5.4vw,80px);color:var(--paper);margin:0 0 20px;max-width:1200px">“Boa pesquisa é sobre fazer <span class="italic" style="color:var(--accent);letter-spacing:-.01em">mais e melhores perguntas</span> — e pensar criticamente sobre as respostas.”</p>
+    <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(236,228,214,.55);margin-top:8px">— Erika Hall · autora de Just Enough Research</div>
+  </div>
+</section>
+
+<!-- ============================= EXPERTISE ============================= -->
+<section class="sec reveal" aria-labelledby="exp-title">
+  <div class="wrap">
+    <div class="kicker" style="margin-bottom:36px">04 · O que eu faço</div>
+    <h2 id="exp-title" class="disp" style="font-size:clamp(48px,6vw,88px);margin:0 0 60px">EXPERTISE.</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)">
+      <div style="padding:36px 32px 36px 0;border-right:1px solid var(--ink)">
+        <div class="disp" style="font-size:56px;color:var(--accent)">A.</div>
+        <div style="font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:14px 0 20px">Descoberta</div>
+        <ul class="tick">
+          <li>Entrevistas com P.O., suporte, negócio</li>
+          <li>Matriz CSD</li>
+          <li>Levantamento de dados de comportamento</li>
+          <li>Auditoria de fluxos existentes</li>
+          <li>Análise de concorrentes</li>
+        </ul>
+      </div>
+      <div style="padding:36px 32px;border-right:1px solid var(--ink)">
+        <div class="disp" style="font-size:56px;color:var(--accent)">B.</div>
+        <div style="font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:14px 0 20px">Estrutura</div>
+        <ul class="tick">
+          <li>Arquitetura de informação</li>
+          <li>User flow &amp; wireflow</li>
+          <li>Wireframes lo-fi</li>
+          <li>Design de interação</li>
+          <li>Documentação de fluxo</li>
+        </ul>
+      </div>
+      <div style="padding:36px 0 36px 32px">
+        <div class="disp" style="font-size:56px;color:var(--accent)">C.</div>
+        <div style="font-size:14px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin:14px 0 20px">Entrega</div>
+        <ul class="tick">
+          <li>UI hi-fi navegável</li>
+          <li>Design system &amp; tokens</li>
+          <li>Mobile &amp; responsive</li>
+          <li>Acessibilidade WCAG</li>
+          <li>Handoff pra dev</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;align-items:center">
+      <span style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-2);margin-right:12px">Ferramentas</span>
+      <span class="chip">Figma</span>
+      <span class="chip">FigJam</span>
+      <span class="chip">Notion</span>
+      <span class="chip">Miro</span>
+      <span class="chip">Adobe XD</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= PASSAGENS / LOGOS ============================= -->
+<section class="sec reveal" aria-labelledby="pass-title">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:80px;align-items:end;margin-bottom:60px">
+      <div>
+        <div class="kicker" style="margin-bottom:36px">05 · Passagens</div>
+        <h2 id="pass-title" class="disp" style="font-size:clamp(44px,5.5vw,80px);margin:0">POR ONDE<br>EU PASSEI.</h2>
+      </div>
+      <p style="font-size:16px;line-height:1.75;color:var(--ink-2);margin:0;max-width:520px">Times pequenos, restrição real, entrega em campo — nunca produto de laboratório.</p>
+    </div>
+    <div class="logos">
+      <div>MEDME SAÚDE<small>2025 · atual</small></div>
+      <div>4US TECNOLOGIA<small>2024 · 2025</small></div>
+      <div>APP FACILITA<small>2023 · 2024</small></div>
+      <div>TRADEMASTER<small>2022 · 2023</small></div>
+      <div>B9 SISTEMAS<small>2022</small></div>
+      <div>ROIT BANK<small>2021 · 2022</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= TIMELINE + FORMAÇÃO ============================= -->
+<section class="sec reveal" aria-labelledby="tl-title">
+  <div class="wrap">
+    <div class="grid-2" style="grid-template-columns:1.4fr 1fr;align-items:start">
+      <div>
+        <div class="kicker" style="margin-bottom:36px">06 · Trajetória</div>
+        <h2 id="tl-title" class="disp" style="font-size:clamp(44px,5vw,72px);margin:0 0 48px">CINCO ANOS,<br>SEIS PRODUTOS.</h2>
+        <div class="tl">
+          <div class="yr">2025<br><span style="font-size:12px;font-family:'JetBrains Mono';font-weight:600;color:var(--ink-2);letter-spacing:.02em">— atual</span></div>
+          <div>
+            <div class="role">Product Designer <span class="now">Atual</span></div>
+            <div class="co">MedMe Saúde</div>
+            <p class="desc">Saúde corporativa e benefícios farmacêuticos — pesquisa, jornadas e prototipação alinhando negócio e experiência.</p>
+          </div>
+          <div class="yr">2024<br><span style="font-size:12px;font-family:'JetBrains Mono';font-weight:600;color:var(--ink-2);letter-spacing:.02em">— 2025</span></div>
+          <div>
+            <div class="role">UX Designer</div>
+            <div class="co">4US Tecnologia</div>
+            <p class="desc">Fluxos, interfaces e prototipação para produtos digitais — experiências intuitivas e acessíveis.</p>
+          </div>
+          <div class="yr">2023<br><span style="font-size:12px;font-family:'JetBrains Mono';font-weight:600;color:var(--ink-2);letter-spacing:.02em">— 2024</span></div>
+          <div>
+            <div class="role">UX Research</div>
+            <div class="co">App Facilita</div>
+            <p class="desc">Pesquisa qualitativa e quantitativa e testes de usabilidade — base para melhorias centradas no usuário.</p>
+          </div>
+          <div class="yr">2022<br><span style="font-size:12px;font-family:'JetBrains Mono';font-weight:600;color:var(--ink-2);letter-spacing:.02em">— 2023</span></div>
+          <div>
+            <div class="role">Product Designer</div>
+            <div class="co">Trademaster</div>
+            <p class="desc">Protótipos hi-fi, jornadas, wireflows e design system em fluxos de crédito B2B.</p>
+          </div>
+          <div class="yr">2022</div>
+          <div>
+            <div class="role">Product Designer</div>
+            <div class="co">B9 Sistemas</div>
+            <p class="desc">Wireframes e protótipos em projetos multidisciplinares, sempre atrelados a metas de negócio.</p>
+          </div>
+          <div class="yr">2021<br><span style="font-size:12px;font-family:'JetBrains Mono';font-weight:600;color:var(--ink-2);letter-spacing:.02em">— 2022</span></div>
+          <div>
+            <div class="role">UX/UI Designer</div>
+            <div class="co">ROIT Bank</div>
+            <p class="desc">Protótipos e apoio aos times de design e marketing — o início da trajetória em produto.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside style="border:1px solid var(--ink);padding:36px 32px;background:transparent;position:sticky;top:24px">
+        <div class="kicker" style="margin-bottom:26px">Formação</div>
+        <div style="border-top:1px solid var(--ink);padding:20px 0">
+          <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:24px;color:var(--accent);line-height:1">2024 — 2025</div>
+          <div style="font-weight:800;font-size:16px;margin-top:6px">MBA · FIAP</div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-2);margin:6px 0 0">Future-Centered Design: UX, Inovação e Tecnologia.</p>
+        </div>
+        <div style="border-top:1px solid var(--ink);padding:20px 0">
+          <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:24px;color:var(--accent);line-height:1">2022 — 2023</div>
+          <div style="font-weight:800;font-size:16px;margin-top:6px">UX/UI · Design Circuit</div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-2);margin:6px 0 0">Formação prática em UX/UI Design.</p>
+        </div>
+        <div style="border-top:1px solid var(--ink);padding:20px 0">
+          <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:24px;color:var(--accent);line-height:1">2021 — 2023</div>
+          <div style="font-weight:800;font-size:16px;margin-top:6px">CST Marketing · UNINTER</div>
+          <p style="font-size:13px;line-height:1.55;color:var(--ink-2);margin:6px 0 0">Tecnólogo em Marketing.</p>
+        </div>
+        <div style="border-top:1px solid var(--ink);padding:22px 0 4px">
+          <div class="kicker" style="margin-bottom:14px">Mentorias &amp; comunidade</div>
+          <div class="tag-row">
+            <span class="chip">NASA Space Apps ’24</span>
+            <span class="chip">NASA Space Apps ’25</span>
+            <span class="chip">Startup 360</span>
+            <span class="chip">Campus Party GO</span>
+            <span class="chip">Correios · CP Nordeste</span>
+            <span class="chip">Eleve · Hub Goiás</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= COISAS QUE EU FAÇO ============================= -->
+<section class="sec reveal" aria-labelledby="now-title">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:80px;align-items:start">
+      <div>
+        <div class="kicker" style="margin-bottom:36px">07 · Ofício</div>
+        <h2 id="now-title" class="disp" style="font-size:clamp(44px,5.5vw,80px);margin:0 0 24px">COISAS<br>QUE SAEM<br>DAS MINHAS<br>MÃOS.</h2>
+        <p style="font-size:16px;line-height:1.75;color:var(--ink-2);margin:0;max-width:460px">Entregas concretas que aparecem nos meus projetos — antes, durante e depois do pixel.</p>
+      </div>
+      <div>
+        <div class="q-block" style="grid-template-columns:180px 1fr">
+          <div class="q-lbl">Pesquisa</div>
+          <p class="q-a">Entrevistas com stakeholders, matriz CSD, análise de dado interno de comportamento, benchmark competitivo e mapeamento de perfis a partir de regra de negócio.</p>
+        </div>
+        <div class="q-block" style="grid-template-columns:180px 1fr">
+          <div class="q-lbl">Estrutura</div>
+          <p class="q-a">Arquitetura de informação, <strong>user flow &amp; wireflow</strong> documentados, wireframes de baixa fidelidade e validação cruzada antes de subir a fidelidade.</p>
+        </div>
+        <div class="q-block" style="grid-template-columns:180px 1fr">
+          <div class="q-lbl">Protótipo</div>
+          <p class="q-a">UI hi-fi navegável no Figma, com estados, validações e microinformativos — pronto pra stakeholder testar e dev implementar.</p>
+        </div>
+        <div class="q-block" style="grid-template-columns:180px 1fr">
+          <div class="q-lbl">Sistema</div>
+          <p class="q-a">Style guide, tokens de cor e tipografia, componentes reutilizáveis e critérios de <strong>acessibilidade WCAG</strong> integrados ao componente, não adicionados no fim.</p>
+        </div>
+        <div class="q-block" style="grid-template-columns:180px 1fr">
+          <div class="q-lbl">Documentação</div>
+          <p class="q-a">Registro das decisões — evidência, escolha e intenção — organizado no formato que o time consome: página no Notion, comentário no Figma ou handoff estruturado.</p>
+        </div>
+        <div class="q-block" style="grid-template-columns:180px 1fr">
+          <div class="q-lbl">Handoff</div>
+          <p class="q-a">Especificação de comportamento, estados e responsividade. Acompanho o desenvolvimento pra evitar decisão silenciosa — quando surge, quem decide sou eu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= CTA ============================= -->
+<section class="reveal" style="padding:80px 40px 40px" aria-label="Convite">
+  <div class="wrap" style="padding:0">
+    <div class="cta">
+      <div>
+        <div class="kicker" style="color:var(--accent);margin-bottom:24px">08 · Próximos passos</div>
+        <h2>SE FIZER<br>SENTIDO, <em>me chame.</em></h2>
+      </div>
+      <div class="cta-btns">
+        <a href="Contato.dc.html" class="btn-solid">Fale comigo →</a>
+        <a href="Projetos.dc.html" class="btn-outline">Ver os cases</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="wm">ÁBIA BOGNOLA<span style="color:var(--accent)">.</span></div>
+    <div>© 2026 · Portfólio de product design.</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = document.querySelectorAll('.reveal');
+    if (reduced) { els.forEach((el) => el.classList.add('is-in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach((el) => io.observe(el));
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body data-page="casetrade.dc.html">
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#FBF7FA;font-family:'Roboto',sans-serif;color:#FFFFFF;text-wrap:pretty;-webkit-font-smoothing:antialiased}
+*:focus-visible{outline:3px solid #942F88;outline-offset:3px;border-radius:6px}
+a{color:#FFB0C6}
+a:hover{color:#7D3E90}
+.serif{font-family:'Roboto',sans-serif;font-style:italic;font-weight:500}
+.abia-skip{position:absolute;left:16px;top:-48px;z-index:100;background:#451841;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;transition:top .2s ease}
+.abia-skip:focus{top:16px;color:#fff}
+.abia-navlink{color:#FFFFFF;text-decoration:none;font-weight:600;font-size:14.5px;transition:color .2s ease;position:relative}
+.abia-navlink::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:#942F88;border-radius:2px;transition:right .25s ease}
+.abia-navlink:hover{color:#FFB0C6}
+.abia-navlink:hover::after{right:0}
+.abia-icobtn{width:40px;height:40px;border-radius:12px;border:1.5px solid rgba(0,0,0,.16);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#FFFFFF;font-weight:700;font-size:13px;transition:background .2s,color .2s,transform .2s,border-color .2s}
+.abia-icobtn:hover{background:#942F88;color:#fff;border-color:#FFB0C6;transform:translateY(-2px)}
+@keyframes abiaNavIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+.abia-nav-in{animation:abiaNavIn .7s cubic-bezier(.22,1,.36,1) both}
+.abia-card{background:rgba(28,20,34,.94);border:1px solid rgba(255,255,255,.22);border-radius:22px;box-shadow:0 12px 34px rgba(34,16,38,.05)}
+.abia-tag{font-weight:700;font-size:11.5px;letter-spacing:.04em;padding:6px 13px;border-radius:999px;color:#fff}
+.abia-btn-primary{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;background:#942F88;color:#fff;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 8px 22px rgba(148,47,136,.28)}
+.abia-btn-primary:hover{background:#7D3E90;color:#fff;transform:translateY(-3px);box-shadow:0 14px 30px rgba(148,47,136,.36)}
+.abia-btn-ghost{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;border:1.5px solid rgba(34,16,38,.28);color:#FFFFFF;transition:background .25s,color .25s,transform .25s}
+.abia-btn-ghost:hover{background:#221026;color:#fff;transform:translateY(-3px)}
+.abia-eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;letter-spacing:.16em;color:#FFB0C6;margin:0 0 18px;text-transform:uppercase}
+.abia-eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.abia-h2{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:0;color:#FFFFFF}
+.abia-lead{font-size:17px;line-height:1.75;color:#F5EDF0;font-weight:400}
+.abia-lead strong{font-weight:700;color:#FFFFFF}
+.abia-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.abia-reveal.is-in{opacity:1;transform:none}
+.abia-row{display:flex;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(34,16,38,.1)}
+.abia-rownum{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:28px;color:#FFB0C6;line-height:1;flex:none;width:44px}
+.sec{max-width:1080px;margin:0 auto;padding:0 24px}
+.sec-narrow{max-width:1080px;margin:0 auto;padding:0 24px}
+.sec-narrow>*{max-width:760px}
+.band{width:100%;box-sizing:border-box}
+.band-pink{background:#FBEDF3}
+.band-purple{background:linear-gradient(158deg,#3A1236 0%,#5E2156 55%,#7A2D6E 100%)}
+/* color-meaning pills: rosa=evidência, roxo=decisão, amarelo=oportunidade */
+.pill{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill-ev{background:#FBE4EE;color:#B4295C}
+.pill-dec{background:#EEE3F4;color:#EED4F6}
+.pill-op{background:rgba(245,200,122,.16);color:#9A6A12}
+.dcard{background:rgba(28,20,34,.94);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:24px 26px;box-shadow:0 10px 30px rgba(34,16,38,.05);display:flex;flex-direction:column;gap:14px;height:100%;box-sizing:border-box}
+.dcard h4{font-size:17px;font-weight:800;margin:0;letter-spacing:-.01em;color:#FFFFFF}
+.dcard .beat{font-size:14px;line-height:1.62;color:#F5EDF0;margin:0}
+.dcard .beat b{color:#FFFFFF;font-weight:700}
+.dcard .int{font-size:12.5px;line-height:1.55;color:#C9BCC5;border-top:1px dashed rgba(0,0,0,.14);padding-top:13px;margin:2px 0 0}
+.dticket{background:rgba(255,255,255,.03);border:1px solid var(--warm-14);border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;height:100%;box-sizing:border-box;transition:border-color .3s,background .3s}
+.dticket:hover{border-color:rgba(255,90,138,.4);background:rgba(255,255,255,.05)}
+.dticket .dt-head{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-40)}
+.dticket .dt-head .dot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex:none;box-shadow:0 0 8px rgba(255,90,138,.5)}
+.dticket .dt-head .line{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--warm-14) 0 5px,transparent 5px 9px)}
+.dticket h4{margin:0;font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:21px;letter-spacing:.01em;color:var(--warm);line-height:1.05}
+.dticket p{margin:0;font-size:14.5px;line-height:1.7;color:var(--warm-70)}
+.dticket p .ev{color:var(--warm-70)}
+.dticket p .dec{color:#FFB0C6;font-weight:700}
+.dticket .dt-int{margin-top:auto;padding-top:12px;border-top:1px dashed var(--warm-14);font-size:12px;font-style:italic;color:#C9A9D4;display:flex;gap:8px;align-items:baseline}
+.dticket .dt-int b{font-style:normal;color:var(--warm-40);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+/* --- decision log --- */
+.dlog{border-top:1px solid var(--warm-14)}
+.dlog-row{display:grid;grid-template-columns:64px minmax(0,1.45fr) minmax(0,.95fr);gap:30px;padding:30px 12px 30px 0;border-bottom:1px solid var(--warm-14);position:relative;transition:background .3s}
+.dlog-row::before{content:"";position:absolute;left:-14px;top:0;bottom:-1px;width:2px;background:var(--rose);opacity:0;transition:opacity .3s}
+.dlog-row:hover{background:rgba(255,255,255,.025)}
+.dlog-row:hover::before{opacity:.85}
+.dlog-idx{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--warm-40);padding-top:5px;display:flex;flex-direction:column;gap:10px}
+.dlog-idx .n{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:.8;color:var(--warm-40);letter-spacing:.02em;transition:color .3s}
+.dlog-row:hover .dlog-idx .n{color:var(--rose)}
+.dlog-main h4{margin:0 0 10px;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:27px;line-height:1.02;letter-spacing:.012em;color:var(--warm)}
+.dlog-main p{margin:0;font-size:15px;line-height:1.72;color:var(--warm-70)}
+.dlog-main p b{color:#FFB0C6;font-weight:700}
+.dlog-meta{display:flex;flex-direction:column;gap:14px;padding-top:6px}
+.dlog-meta .k{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-40);display:block;margin-bottom:5px}
+.dlog-meta .v{font-size:13.5px;line-height:1.6;color:var(--warm-70)}
+.dlog-meta .v.intent{color:#C9A9D4;font-style:italic}
+.dlog-feature{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:36px;align-items:center}
+@media (max-width:860px){.dlog-row{grid-template-columns:44px minmax(0,1fr);gap:18px}.dlog-meta{grid-column:2}.dlog-feature{grid-template-columns:1fr}}
+.chapnav{position:fixed;left:0;right:0;bottom:24px;z-index:45;display:flex;justify-content:center;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .3s ease,transform .3s ease}
+.chapnav.show{opacity:1;transform:none}
+.chapnav.show .chapnav-inner{pointer-events:auto}
+.chapnav-inner{display:flex;gap:4px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 36px rgba(34,16,38,.18);backdrop-filter:blur(10px);border-radius:999px;padding:6px}
+.chapnav a{text-decoration:none;font-weight:700;font-size:12.5px;letter-spacing:.01em;color:#E4D6DB;padding:8px 15px;border-radius:999px;transition:color .2s,background .2s}
+.chapnav a:hover{color:#FFB0C6}
+.chapnav a.active{background:#942F88;color:#fff}
+@media (max-width:720px){.chapnav{display:none}}
+@media (max-width:860px){.abia-two{grid-template-columns:1fr!important}.abia-three{grid-template-columns:1fr!important}.abia-csd{grid-template-columns:1fr!important}.abia-shots{grid-template-columns:repeat(2,minmax(0,1fr))!important}.hero-grid{grid-template-columns:1fr!important}.dgrid{grid-template-columns:1fr!important}.feat-grid{grid-template-columns:1fr!important}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .abia-reveal{opacity:1;transform:none}
+}
+
+/* @abia-dark-surface */
+body{background:var(--void);color:var(--warm)}
+.abia-card,.dcard,.dgrid .dcard,.dticket{background:rgba(255,255,255,.04);border:1px solid var(--warm-14);color:var(--warm);box-shadow:0 12px 34px rgba(0,0,0,.3);backdrop-filter:blur(8px)}
+.abia-card h1,.abia-card h2,.abia-card h3,.abia-card h4,.dcard h4,.dcard .beat,.dcard .beat b{color:var(--warm)}
+.dcard .beat{color:var(--warm-70)}
+.abia-h2{color:var(--warm)}
+.abia-lead{color:var(--warm-70)}
+.abia-lead strong{color:var(--warm)}
+.abia-eyebrow{color:var(--rose)}
+.serif{color:var(--rose)}
+.band-pink{background:rgba(255,90,138,.06)}
+.abia-row{border-top:1px solid var(--warm-14)}
+.abia-btn-primary{background:var(--rose);color:var(--void);box-shadow:0 8px 22px rgba(255,90,138,.28)}
+.abia-btn-primary:hover{background:var(--warm);color:var(--void);box-shadow:0 14px 30px rgba(255,90,138,.4)}
+.abia-btn-ghost{border-color:var(--warm-14);color:var(--warm)}
+.abia-btn-ghost:hover{background:var(--warm);color:var(--void)}
+.chapnav-inner{background:rgba(13,7,16,.7);border:1px solid var(--warm-14);box-shadow:0 12px 36px rgba(0,0,0,.5);backdrop-filter:blur(14px)}
+.chapnav a{color:var(--warm-70);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:400}
+.chapnav a:hover{color:var(--warm)}
+.chapnav a.active{background:var(--rose);color:var(--void)}
+
+</style>
+<link rel="stylesheet" href="./chrome.css">
+<link rel="stylesheet" href="./theme.css">
+<script src="./chrome.js" defer=""></script>
+</helmet>
+
+<!-- @abia-chrome:start -->
+<a href="#conteudo" class="ac-skip" data-en="Skip to content">Pular para o conteúdo</a>
+<header class="ac-hdr" role="banner">
+  <a href="index.dc.html" class="ac-mark" aria-label="Ábia Bognola — início">ÁBIA</a>
+  <div class="ac-nav-wrap">
+    <nav class="ac-nav" aria-label="Navegação principal">
+      <a href="index.dc.html" data-en="Home">Início</a>
+      <a href="Projetos.dc.html" data-en="Work">Cases</a>
+      <a href="Sobre.dc.html" data-en="About">Sobre</a>
+      <a href="Contato.dc.html" data-en="Contact">Contato</a>
+    </nav>
+    <div class="ac-lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+<!-- @abia-chrome:end -->
+
+<nav class="chapnav" aria-label="Capítulos do case">
+  <div class="chapnav-inner">
+    <a href="#cap-contexto" data-chap="">Contexto</a>
+    <a href="#cap-descoberta" data-chap="">Descoberta</a>
+    <a href="#cap-decisoes" data-chap="">Decisões</a>
+    <a href="#cap-solucao" data-chap="">Solução</a>
+    <a href="#cap-impacto" data-chap="">Impacto</a>
+  </div>
+</nav>
+
+<main id="conteudo" style="padding-top:96px">
+<div class="aurora" aria-hidden="true"><span class="a3"></span></div>
+<div class="spot" aria-hidden="true"></div>
+
+<!-- ============ HERO ============ -->
+<section aria-labelledby="case-title" style="max-width:1160px;margin:2px auto 0;padding:26px 24px 0">
+  <a href="Projetos.dc.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13.5px;text-decoration:none;color:#E4D6DB;margin-bottom:24px">← Voltar aos cases</a>
+  <div class="hero-grid" style="display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:52px;align-items:center">
+    <div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="abia-tag" style="background:#3B728D">UX/UI CASE</span>
+        <span class="abia-tag" style="background:#60378D">FINTECH · VAREJO</span>
+        <span class="abia-tag" style="background:#AB2F5E">APP MOBILE</span>
+      </div>
+      <p class="abia-eyebrow">TRADE+ · PRODUCT DESIGN · UX/UI</p>
+      <h1 id="case-title" style="font-size:clamp(38px,4.6vw,56px);line-height:1.05;font-weight:800;letter-spacing:-.03em;margin:0 0 24px">Um cadastro de 30+ telas escondia <span class="serif" style="color:#FFB0C6;font-size:.95em">um problema maior</span></h1>
+      <p class="abia-lead" style="margin:0 0 30px">Comecei com uma tarefa operacional: migrar as telas do Adobe XD para o Figma. No caminho, descobri que o entrave real não era o tamanho do fluxo — era o <strong>conhecimento fragmentado do produto</strong>, um “telefone sem fio” entre as pessoas que o construíram.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;max-width:520px">
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#FFB0C6;margin-bottom:5px">MEU PAPEL</div><div style="font-size:14px;font-weight:600">Product Designer · Research</div></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#FFB0C6;margin-bottom:5px">SQUAD</div><div style="font-size:14px;font-weight:600">Produto · Dev · Marketing · Suporte</div></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#FFB0C6;margin-bottom:5px">ATUAÇÃO</div><div style="font-size:14px;font-weight:600">Descoberta, redesign de fluxo e documentação</div></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#FFB0C6;margin-bottom:5px">PLATAFORMA</div><div style="font-size:14px;font-weight:600">App mobile (iOS + Android)</div></div>
+      </div>
+    </div>
+    <div style="position:relative;display:flex;justify-content:center;align-items:center;min-height:600px">
+      <div style="position:absolute;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(233,147,201,.42),rgba(148,47,136,.08) 55%,transparent 72%)"></div><img src="assets/trade/tela-login.png" alt="Tela de boas-vindas do app Trade+ com opções de cadastrar-se e acessar a conta" style="position:relative;width:100%;max-width:520px;display:block;filter:drop-shadow(0 26px 46px rgba(74,26,84,.28))">
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESUMO / ÍNDICE ============ -->
+<section id="cap-contexto" aria-labelledby="resumo-title" class="abia-reveal sec" style="margin-top:104px">
+  <h2 id="resumo-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Resumo do case</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px" class="abia-three">
+    <a href="#cap-descoberta" class="abia-card" style="text-decoration:none;color:inherit;padding:28px 26px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,box-shadow .25s">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:44px;line-height:.9;color:#FFB0C6">+30</span>
+      <div style="font-weight:800;font-size:16px">Telas de cadastro</div>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#E4D6DB">Um fluxo exaustivo que afastava mais do que convertia. <span style="color:#FFB0C6;font-weight:700">Ver a descoberta →</span></p>
+    </a>
+    <a href="#cap-descoberta" class="abia-card" style="text-decoration:none;color:inherit;padding:28px 26px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,box-shadow .25s">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:44px;line-height:.9;color:#EED4F6">☍</span>
+      <div style="font-weight:800;font-size:16px">Conhecimento fragmentado</div>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#E4D6DB">Informação dispersa entre as áreas — um “telefone sem fio”. <span style="color:#FFB0C6;font-weight:700">Entender o problema →</span></p>
+    </a>
+    <a href="#cap-decisoes" class="abia-card" style="text-decoration:none;color:inherit;padding:28px 26px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,box-shadow .25s">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:44px;line-height:.9;color:#F5C87A">→</span>
+      <div style="font-weight:800;font-size:16px">A direção tomada</div>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#E4D6DB">Cadastro em duas etapas, fluxo documentado e um motivo pra voltar ao app. <span style="color:#FFB0C6;font-weight:700">Ver as decisões →</span></p>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CONTEXTO ============ -->
+<section aria-labelledby="ctx-title" class="abia-reveal sec-narrow" style="margin-top:96px">
+  <p class="abia-eyebrow">Contexto</p>
+  <h2 id="ctx-title" class="abia-h2" style="margin-bottom:22px">O produto e o que estava em jogo</h2>
+  <p class="abia-lead" style="margin:0 0 18px">A Trademaster é uma fintech de crédito B2B que conecta grandes indústrias e distribuidores a pequenos e médios varejistas — do mercadinho de bairro a lojas de construção, alimentos e bebidas. O diferencial: a Trademaster <strong>assume o risco de inadimplência</strong>, com um motor de crédito próprio baseado em dados da cadeia. O varejista compra com mais limite e prazo; a indústria vende mais sem carregar o risco.</p>
+  <p class="abia-lead" style="margin:0 0 18px">O <strong>Trade+</strong> é o app pelo qual o varejista acessa esse crédito: visualiza limites e extratos e faz o cadastro que dá início à relação.</p>
+  <p class="abia-lead" style="margin:0">O cadastro é a porta de entrada, o primeiro passo para o varejista começar a comprar com crédito. E era justamente nessa porta que o produto travava.</p>
+</section>
+
+<!-- ============ O PROBLEMA REAL (momento narrativo forte — roxo profundo) ============ -->
+<div id="cap-descoberta" class="band band-purple" style="margin-top:96px">
+  <section aria-labelledby="prob-title" class="abia-reveal sec-narrow" style="padding:96px 24px">
+    <p class="abia-eyebrow" style="color:#F4B9D9">Descoberta · O problema real</p>
+    <h2 id="prob-title" class="abia-h2" style="color:#fff;margin-bottom:26px">Não era só um cadastro longo. Era um produto que ninguém enxergava por inteiro.</h2>
+    <p class="abia-lead" style="color:#EBD9EC;margin:0 0 22px">O pedido inicial era operacional: <strong style="color:#fff">passar as telas do Adobe XD para o Figma</strong>. Migrando tela por tela, o padrão apareceu — <strong style="color:#fff">faltavam telas</strong>. Mexendo no próprio app, encontrei fluxos que existiam em produção mas não estavam em lugar nenhum do arquivo de design.</p>
+    <p class="abia-lead" style="color:#EBD9EC;margin:0 0 30px">Ao reunir e organizar essas telas, o quadro ficou claro: textos de preenchimento, dados repetidos, decisões soltas feitas por devs sem processo de UX — cada pessoa somando uma camada por cima da anterior. Um <strong style="color:#fff">“telefone sem fio”</strong> de requisitos onde ninguém detinha a visão completa. Minha tarefa deixou de ser migrar telas e passou a ser <strong style="color:#fff">reconstruir a visão do produto inteiro</strong>.</p>
+    
+    <blockquote style="margin:0 0 40px;padding:0 0 0 24px;border-left:3px solid #F4B9D9">
+      <p class="serif" style="font-size:27px;line-height:1.35;color:#fff;margin:0;font-family:'Roboto',sans-serif"><b>“Mais fácil conseguir um green card do que se cadastrar no app.”</b></p>
+      <cite style="font-size:12.5px;color:#E4C6DE;font-style:normal;font-weight:600;display:block;margin-top:10px">— relato real de um usuário</cite>
+    </blockquote>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:30px" class="abia-three">
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px 22px 24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:40px;color:#F4B9D9;line-height:.9;margin-bottom:12px">30+</div>
+        <div style="font-size:14px;line-height:1.6;color:#EBD9EC">telas num fluxo linear e exaustivo, com alta desistência.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px 22px 24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:40px;color:#F4B9D9;line-height:.9;margin-bottom:12px">✎</div>
+        <div style="font-size:14px;line-height:1.6;color:#EBD9EC">telas ainda com <strong style="color:#fff">Lorem Ipsum em produção</strong>, passando impressão de produto inacabado.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px 22px 24px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:40px;color:#F4B9D9;line-height:.9;margin-bottom:12px">↯</div>
+        <div style="font-size:14px;line-height:1.6;color:#EBD9EC">nenhuma fonte única de verdade — a informação do produto vivia dispersa entre as áreas.</div>
+      </div>
+    </div>
+    <figure style="margin:0;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+      <img src="assets/trade/workshop-5.jpg" alt="Todas as telas do cadastro reunidas pela primeira vez em uma única visão" style="height:340px;max-width:100%;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.14);box-shadow:0 14px 34px rgba(0,0,0,.3);display:block">
+      <figcaption style="font-size:12px;color:#D8BFD3;max-width:280px;line-height:1.6;font-style:italic">Registro do processo original — as telas reunidas numa só visão pela primeira vez.</figcaption>
+    </figure>
+  </section>
+</div>
+
+<!-- ============ RECONSTRUINDO UMA VISÃO COMPARTILHADA ============ -->
+<section aria-labelledby="fontes-title" class="abia-reveal sec" style="margin-top:110px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:38px">
+    <p class="abia-eyebrow">Descoberta · Fontes de conhecimento</p>
+    <h2 id="fontes-title" class="abia-h2" style="margin-bottom:18px">Reconstruindo uma visão compartilhada</h2>
+    <p class="abia-lead" style="margin:0">Se o problema era conhecimento espalhado, a primeira entrega foi juntá-lo. Fui atrás de quatro fontes reais — cada uma respondendo a uma parte diferente da mesma pergunta: <em>por que este cadastro ficou assim, e o que ele precisa ser?</em></p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px" class="abia-two">
+    <div class="abia-card" style="padding:26px 28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">01</span><div style="font-weight:800;font-size:16.5px">Reunião com o P.O. — <span style="color:#EED4F6">regras de negócio</span></div></div>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#E4D6DB">Pedi o propósito de cada dado do fluxo: por que ele é solicitado e qual regra o sustenta. Muitos campos existiam por inércia, sem ninguém ter revisitado o conjunto.</p>
+    </div>
+    <div class="abia-card" style="padding:26px 28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">02</span><div style="font-weight:800;font-size:16.5px">Desenvolvimento — <span style="color:#B4295C">dados de comportamento</span></div></div>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#E4D6DB">Levantei com o time de dev o comportamento real: tela com mais erros, onde as pessoas clicavam, tempo gasto por tela e falhas recorrentes — a evidência de onde o fluxo travava.</p>
+    </div>
+    <div class="abia-card" style="padding:26px 28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">03</span><div style="font-weight:800;font-size:16.5px">Marketing — <span style="color:#EED4F6">quem é o usuário</span></div></div>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#E4D6DB">O time de Marketing detinha o conhecimento acumulado sobre o varejista atendido. Foi dessa base que construí a persona — uma representação inicial, não uma pesquisa direta com usuário final.</p>
+    </div>
+    <div class="abia-card" style="padding:26px 28px">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">04</span><div style="font-weight:800;font-size:16.5px">Suporte — <span style="color:#B4295C">reclamações recorrentes</span></div></div>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#E4D6DB">Levantei a reclamação nº 1, o que o app não resolvia e o que o usuário esperava do cadastro — o termômetro qualitativo do problema, vindo de quem fala com o cliente todos os dias.</p>
+    </div>
+  </div>
+  <div style="max-width:300px;margin-top:26px" class="abia-shots">
+    <figure style="margin:0"><img src="assets/trade/workshop-1-blurred.png" alt="Reunião remota sobre dúvidas técnicas com o time de negócios (rostos borrados por privacidade)" style="width:100%;display:block;border-radius:12px;border:1px solid rgba(255,255,255,.22)"><figcaption style="font-size:11px;color:#C9BCC5;margin-top:8px;font-style:italic">Registro do processo original — alinhamento técnico com o time.</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ O QUE PRECISÁVAMOS DESCOBRIR — CSD ============ -->
+<section aria-labelledby="csd-title" class="abia-reveal sec" style="margin-top:110px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:36px">
+    <p class="abia-eyebrow">Descoberta · O que precisávamos descobrir</p>
+    <h2 id="csd-title" class="abia-h2" style="margin-bottom:18px">Três perguntas que ainda não tinham resposta</h2>
+    <p class="abia-lead" style="margin:0 0 22px">Antes da matriz, as perguntas. Com tanto conhecimento disperso, precisei separar o que de fato sabíamos do que só supúnhamos — e nomear o que faltava investigar:</p>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:14px;align-items:baseline"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:22px;color:#FFB0C6;flex:none">?</span><div style="font-size:15.5px;line-height:1.6;color:#F5EDF0;font-weight:600">Quais dados são realmente essenciais no cadastro?</div></div>
+      <div style="display:flex;gap:14px;align-items:baseline"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:22px;color:#FFB0C6;flex:none">?</span><div style="font-size:15.5px;line-height:1.6;color:#F5EDF0;font-weight:600">Quem é, de fato, o usuário do produto?</div></div>
+      <div style="display:flex;gap:14px;align-items:baseline"><span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:22px;color:#FFB0C6;flex:none">?</span><div style="font-size:15.5px;line-height:1.6;color:#F5EDF0;font-weight:600">Qual é a reclamação nº 1 no suporte?</div></div>
+    </div>
+    <p class="abia-lead" style="margin:20px 0 0">Para responder sem achismo, conduzi uma <strong>Matriz CSD</strong> numa dinâmica online com Produto, Desenvolvimento, Marketing e Suporte — cada área contribuindo em tempo real.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px" class="abia-csd">
+    <div style="position:relative;border-radius:20px;overflow:hidden;background:rgba(28,20,34,.94);border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 44px rgba(0,0,0,.6);padding:26px 26px 22px">
+      <div style="position:absolute;left:0;right:0;top:0;height:4px;background:#4A9434"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:8px;height:8px;border-radius:50%;background:#4A9434;box-shadow:0 0 12px rgba(74,148,52,.5)"></span><span style="font-weight:800;font-size:12px;letter-spacing:.14em;color:#D6F4C9;text-transform:uppercase">Certezas</span></div>
+      <div style="font-size:14px;line-height:1.65;color:#F5EDF0;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(214,244,201,.6);flex:none;transform:translateY(-3px)"></span><span>O cadastro tem 30+ telas e gera alta desistência.</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(214,244,201,.6);flex:none;transform:translateY(-3px)"></span><span>O design foi feito por devs, sem processo de UX/UI.</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(214,244,201,.6);flex:none;transform:translateY(-3px)"></span><span>Há telas em produção com Lorem Ipsum.</span></div>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:20px;overflow:hidden;background:rgba(28,20,34,.94);border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 44px rgba(0,0,0,.6);padding:26px 26px 22px">
+      <div style="position:absolute;left:0;right:0;top:0;height:4px;background:#3B728D"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:8px;height:8px;border-radius:50%;background:#5B9CC5;box-shadow:0 0 12px rgba(91,156,197,.5)"></span><span style="font-weight:800;font-size:12px;letter-spacing:.14em;color:#CFE4EE;text-transform:uppercase">Suposições</span></div>
+      <div style="font-size:14px;line-height:1.65;color:#F5EDF0;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(207,228,238,.6);flex:none;transform:translateY(-3px)"></span><span>A maioria quer explorar o app antes de pedir crédito.</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(207,228,238,.6);flex:none;transform:translateY(-3px)"></span><span>Dividir o cadastro em etapas reduz o abandono.</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(207,228,238,.6);flex:none;transform:translateY(-3px)"></span><span>Faltam funcionalidades que tragam o usuário de volta.</span></div>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:20px;overflow:hidden;background:rgba(28,20,34,.94);border:1px solid rgba(255,255,255,.22);box-shadow:0 20px 44px rgba(0,0,0,.6);padding:26px 26px 22px">
+      <div style="position:absolute;left:0;right:0;top:0;height:4px;background:#FF5A8A"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="width:8px;height:8px;border-radius:50%;background:#FF5A8A;box-shadow:0 0 12px rgba(255,90,138,.6)"></span><span style="font-weight:800;font-size:12px;letter-spacing:.14em;color:#FFD1DE;text-transform:uppercase">Dúvidas</span></div>
+      <div style="font-size:14px;line-height:1.65;color:#F5EDF0;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(255,209,222,.6);flex:none;transform:translateY(-3px)"></span><span>Quais dados são realmente essenciais no cadastro?</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(255,209,222,.6);flex:none;transform:translateY(-3px)"></span><span>Quem é, de fato, o usuário do produto?</span></div>
+        <div style="display:flex;gap:10px;align-items:baseline"><span style="width:4px;height:4px;border-radius:50%;background:rgba(255,209,222,.6);flex:none;transform:translateY(-3px)"></span><span>Qual é a reclamação nº 1 no suporte?</span></div>
+      </div>
+    </div>
+  </div>
+  <figure style="margin:20px 0 0;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+    <img src="assets/trade/matriz-csd.jpg" alt="Matriz CSD construída no board durante a dinâmica com o time" style="height:340px;max-width:100%;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.22);display:block">
+    <figcaption style="font-size:11.5px;color:#C9BCC5;max-width:280px;line-height:1.6;font-style:italic">Registro do processo original — a matriz sendo preenchida ao vivo, com Produto, Desenvolvimento, Marketing e Suporte de forma online.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ ENTENDENDO O USUÁRIO — PERSONA ============ -->
+<section aria-labelledby="persona-title" class="abia-reveal sec" style="margin-top:110px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:30px">
+    <p class="abia-eyebrow">Descoberta · Entendendo o usuário</p>
+    <h2 id="persona-title" class="abia-h2" style="margin-bottom:18px">Eduardo, o varejista por trás do cadastro</h2>
+    <p class="abia-lead" style="margin:0">Uma das dúvidas da matriz era exatamente <em>quem é o usuário</em>. A persona foi construída a partir do <strong>conhecimento acumulado pelo time de Marketing</strong> sobre o varejista atendido — uma representação inicial que dá rosto às decisões, e que poderia (e deveria) ser aprofundada com pesquisa direta com usuários numa fase seguinte.</p>
+  </div>
+  <div class="abia-card" style="padding:0;overflow:hidden;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);min-height:480px">
+    <div style="position:relative;background:linear-gradient(160deg,#60378D,#451841)">
+      <image-slot id="persona-eduardo" shape="rect" style="width:100%;height:100%;position:absolute;inset:0" placeholder="Foto ou ilustração de Eduardo"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(24,10,26,.92) 0%,rgba(24,10,26,.35) 45%,transparent 70%);pointer-events:none"></div>
+      <div style="position:absolute;left:28px;right:28px;bottom:26px;color:#fff">
+        <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:38px;letter-spacing:.5px;line-height:1">EDUARDO</div>
+        <div style="font-size:12.5px;color:#F4D9EE;margin-top:4px">Dono de comércio de bairro há 8+ anos</div>
+        <div style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#C9A9D4"><span style="width:6px;height:6px;border-radius:50%;background:#FFB0C6;display:inline-block"></span>Origem: conhecimento do time de Marketing</div>
+      </div>
+    </div>
+    <div style="padding:38px 40px;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;gap:24px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.14);padding-bottom:26px">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.7;color:#FFB0C6;flex:none">“</span>
+        <p class="serif" style="font-size:20px;line-height:1.5;color:#F4D9EE;margin:0;flex:1">Busco crédito flexível que se adeque à minha loja, com taxas competitivas para um crescimento seguro.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px" class="abia-two">
+        <div>
+          <div style="font-weight:800;font-size:12.5px;letter-spacing:.06em;color:#FFB0C6;margin-bottom:10px">INTERESSES</div>
+          <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.8;color:#F5EDF0">
+            <li>Prazos e pagamento flexíveis</li>
+            <li>Tecnologia para a loja</li>
+            <li>Meios de pagamento modernos</li>
+          </ul>
+        </div>
+        <div>
+          <div style="font-weight:800;font-size:12.5px;letter-spacing:.06em;color:#FFB0C6;margin-bottom:10px">OBJETIVOS</div>
+          <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.8;color:#F5EDF0">
+            <li>Abastecer melhor o estoque</li>
+            <li>Aumentar as vendas da loja</li>
+            <li>Pagamento integrado ao cliente</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.14);padding-top:22px">
+        <div style="font-weight:800;font-size:12.5px;letter-spacing:.06em;color:#FFB0C6;margin-bottom:10px">ABORDAGEM</div>
+        <p style="font-size:14px;line-height:1.7;color:#F5EDF0;margin:0">Tem visão estratégica do varejo e busca constantemente formas de melhorar o negócio e a experiência de compra dos clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE A INVESTIGAÇÃO REVELOU ============ -->
+<section aria-labelledby="dados-title" class="abia-reveal sec-narrow" style="margin-top:110px">
+  <p class="abia-eyebrow">Descoberta · Síntese</p>
+  <h2 id="dados-title" class="abia-h2" style="margin-bottom:18px">O que a investigação revelou</h2>
+  <p class="abia-lead" style="margin:0 0 20px">Cruzando a Matriz CSD, os dados internos e as reclamações, cinco pontos ficaram claros — e passaram a guiar cada decisão.</p>
+  <div>
+    <div class="abia-row"><span class="abia-rownum">01</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Excesso de dados solicitados</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Boa parte sem propósito claro para o usuário.</div></div></div>
+    <div class="abia-row"><span class="abia-rownum">02</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Cadastro extenso — 30+ telas</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Demorado e cansativo, empurrando para a desistência.</div></div></div>
+    <div class="abia-row"><span class="abia-rownum">03</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Interesse inicial diferente do esperado</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">A maioria queria explorar o app e entender como funcionava antes de focar no pedido de crédito.</div></div></div>
+    <div class="abia-row"><span class="abia-rownum">04</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Poucas funcionalidades recorrentes</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Faltava motivo para voltar ao app fora do pedido de crédito.</div></div></div>
+    <div class="abia-row"><span class="abia-rownum">05</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Textos vazios (Lorem Ipsum)</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Placeholder em produção minava a percepção de qualidade.</div></div></div>
+  </div>
+</section>
+
+<!-- ============ DECISÕES (banda rosa claro) ============ -->
+<div id="cap-decisoes" class="band band-pink" style="margin-top:110px">
+  <section aria-labelledby="dec-title" class="abia-reveal sec" style="padding:96px 24px 40px">
+    <div class="sec-narrow" style="padding:0;margin-bottom:14px">
+      <p class="abia-eyebrow">Decisões · Frente 1</p>
+      <h2 id="dec-title" class="abia-h2" style="margin-bottom:16px">Reconstruindo o cadastro, decisão por decisão</h2>
+      <p class="abia-lead" style="margin:0 0 8px">Cada mudança partiu de uma evidência concreta e virou uma decisão com intenção clara. O registro abaixo é o log dessas decisões — o que existia antes, o que mudou e por quê.</p>
+    </div>
+  </section>
+  <div class="sec" style="padding-bottom:40px">
+    <div style="display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-40);margin-bottom:4px">
+      <span>Log de decisões</span><span style="flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--warm-14) 0 5px,transparent 5px 9px)"></span><span>01 — 05 · cadastro</span>
+    </div>
+    <div class="dlog">
+      <div class="dlog-row dlog-feature" style="grid-template-columns:64px minmax(0,1.45fr) 280px">
+        <div class="dlog-idx"><span class="n">01</span></div>
+        <div class="dlog-main">
+          <h4>Cadastro em duas etapas</h4>
+          <p>Dados básicos primeiro; <b>ativação de crédito depois</b>, só para quem quiser. As 30+ telas lineares que geravam abandono viraram um caminho curto com um segundo passo opcional.</p>
+          <div style="display:flex;gap:26px;flex-wrap:wrap;margin-top:16px">
+            <div><span class="k" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-40);display:block;margin-bottom:5px">Evidência</span><span style="font-size:13.5px;color:var(--warm-70)">30+ telas lineares, abandono alto</span></div>
+            <div><span class="k" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-40);display:block;margin-bottom:5px">Intenção</span><span style="font-size:13.5px;color:#C9A9D4;font-style:italic">explorar sem se comprometer de cara</span></div>
+          </div>
+        </div>
+        <img src="assets/trade/tela-cadastro.png" alt="Primeira etapa do cadastro redesenhado, com o essencial para começar" style="width:100%;display:block;border-radius:14px;filter:drop-shadow(0 18px 34px rgba(0,0,0,.4))">
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n">02</span></div>
+        <div class="dlog-main"><h4>Otimização de campos</h4><p>Só o <b>essencial</b> permaneceu — todo campo sem regra de negócio por trás foi cortado.</p></div>
+        <div class="dlog-meta">
+          <div><span class="k">Evidência</span><span class="v">campos sem propósito, confirmado com o P.O.</span></div>
+          <div><span class="k">Intenção</span><span class="v intent">cada campo com um motivo real de existir</span></div>
+        </div>
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n">03</span></div>
+        <div class="dlog-main"><h4>Textos e ícones acessíveis</h4><p><b>Linguagem simples</b> e ícones reconhecíveis no lugar de rótulos ambíguos.</p></div>
+        <div class="dlog-meta">
+          <div><span class="k">Evidência</span><span class="v">Lorem Ipsum em produção, linguagem confusa</span></div>
+          <div><span class="k">Intenção</span><span class="v intent">entender a tela sem esforço</span></div>
+        </div>
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n">04</span></div>
+        <div class="dlog-main"><h4>Validação antecipada</h4><p><b>Validação do contato</b> logo no começo do fluxo, e não na última tela.</p></div>
+        <div class="dlog-meta">
+          <div><span class="k">Evidência</span><span class="v">erros de contato só apareciam no fim</span></div>
+          <div><span class="k">Intenção</span><span class="v intent">falhar cedo, não no fim</span></div>
+        </div>
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n">05</span></div>
+        <div class="dlog-main"><h4>Documentação do fluxo</h4><p><b>Documentação ponta a ponta</b> como fonte única de verdade para produto e desenvolvimento.</p></div>
+        <div class="dlog-meta">
+          <div><span class="k">Evidência</span><span class="v">fluxo feito por devs sem UX</span></div>
+          <div><span class="k">Intenção</span><span class="v intent">acabar com o retrabalho e alinhar o time</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frente 2: novas funcionalidades -->
+  <section aria-labelledby="feat-title" class="abia-reveal sec" style="padding:40px 24px 40px">
+    <div class="sec-narrow" style="padding:0;margin-bottom:22px">
+      <p class="abia-eyebrow" style="color:#F5C87A">Decisões · Frente 2</p>
+      <h2 id="feat-title" class="abia-h2" style="margin-bottom:16px">Novas funcionalidades mapeadas pela pesquisa</h2>
+    </div>
+    <div style="background:rgba(245,200,122,.16);border:1px solid #E6D3A0;border-radius:18px;padding:24px 28px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;max-width:820px">
+      <span class="pill pill-op" style="flex:none;margin-top:2px">Oportunidade</span>
+      <p style="margin:0;font-size:15px;line-height:1.7;color:#F5C87A"><strong style="color:#FFFFFF">A maioria queria explorar o app antes de pedir crédito.</strong> Por isso cada funcionalidade abaixo dá um motivo de uso recorrente — não só um fluxo de aprovação.</p>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-40);margin-bottom:4px">
+      <span>Log de decisões</span><span style="flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--warm-14) 0 5px,transparent 5px 9px)"></span><span>06 — 09 · funcionalidades</span>
+    </div>
+    <div class="dlog">
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n" style="color:#F5C87A">06</span></div>
+        <div class="dlog-main"><h4>Acompanhamento de limite</h4><p><b style="color:#F5C87A">Limite utilizado e disponível</b> sempre visível na home, com ajuste de percentual.</p></div>
+        <div class="dlog-meta"><div><span class="k">Evidência</span><span class="v">sem visão do crédito, nada motivava abrir o app entre compras</span></div></div>
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n" style="color:#F5C87A">07</span></div>
+        <div class="dlog-main"><h4>Boletos direto no app</h4><p><b style="color:#F5C87A">Aba de boletos</b> dentro do próprio app, sem passar pelo desktop.</p></div>
+        <div class="dlog-meta"><div><span class="k">Evidência</span><span class="v">boletos só existiam via desktop</span></div></div>
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n" style="color:#F5C87A">08</span></div>
+        <div class="dlog-main"><h4>Configurações de dados básicos</h4><p><b style="color:#F5C87A">Área de configurações</b> pra conferir e ajustar os dados quando quiser.</p></div>
+        <div class="dlog-meta"><div><span class="k">Evidência</span><span class="v">dados só editáveis no cadastro inicial</span></div></div>
+      </div>
+      <div class="dlog-row">
+        <div class="dlog-idx"><span class="n" style="color:#F5C87A">09</span></div>
+        <div class="dlog-main"><h4>FAQ para suporte rápido</h4><p><b style="color:#F5C87A">FAQ no app</b>, sem depender de atendimento humano.</p></div>
+        <div class="dlog-meta"><div><span class="k">Evidência</span><span class="v">dúvidas recorrentes sobrecarregavam o Suporte</span></div></div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Três frentes -->
+  <section aria-labelledby="obj-title" class="abia-reveal sec" style="padding:24px 24px 96px">
+    <div class="sec-narrow" style="padding:0;margin-bottom:30px">
+      <p class="abia-eyebrow">Resumo das decisões</p>
+      <h2 id="obj-title" class="abia-h2">Três frentes de trabalho</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px" class="abia-three">
+      <div class="abia-card" style="text-align:center;padding:30px 22px"><div style="width:56px;height:56px;border-radius:50%;background:rgba(255,90,138,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><img src="assets/icons/circulo.png" alt="" aria-hidden="true" style="width:24px"></div><div style="font-weight:800;font-size:17px;margin-bottom:8px">Otimizar o cadastro</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Reduzir fricção e abandono no fluxo.</div></div>
+      <div class="abia-card" style="text-align:center;padding:30px 22px"><div style="width:56px;height:56px;border-radius:50%;background:rgba(176,213,240,.16);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><img src="assets/icons/raio.png" alt="" aria-hidden="true" style="width:24px"></div><div style="font-weight:800;font-size:17px;margin-bottom:8px">Documentar telas e fluxo</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Acabar com o “telefone sem fio” no time.</div></div>
+      <div class="abia-card" style="text-align:center;padding:30px 22px"><div style="width:56px;height:56px;border-radius:50%;background:rgba(245,200,122,.16);display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><img src="assets/icons/estrela.png" alt="" aria-hidden="true" style="width:24px"></div><div style="font-weight:800;font-size:17px;margin-bottom:8px">Trazer insights de novas funcionalidades</div><div style="font-size:14px;line-height:1.65;color:#E4D6DB">Dar um motivo para voltar ao app.</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SOLUÇÃO: WIREFLOW ============ -->
+<section id="cap-solucao" aria-labelledby="wf-title" class="abia-reveal sec" style="margin-top:104px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:32px">
+    <p class="abia-eyebrow">Solução · A jornada</p>
+    <h2 id="wf-title" class="abia-h2" style="margin-bottom:18px">Redesenhando a jornada, ponta a ponta</h2>
+    <p class="abia-lead" style="margin:0">Percorri todo o cadastro como usuário, documentando cada etapa, os estados de erro e os pontos de acessibilidade — e reconstruí o fluxo inteiro digitalmente. Cada decisão do usuário passou a ter um caminho claro, com estados de erro e confirmação mapeados.</p>
+  </div>
+  <figure style="margin:0">
+    <img src="assets/trade/wireframes.png" alt="Wireflow completo do cadastro do Trade+ reconstruído digitalmente, com todas as telas e conexões" style="width:100%;display:block;border-radius:16px;border:1px solid rgba(255,255,255,.22);background:rgba(28,20,34,.94);box-shadow:0 16px 40px rgba(34,16,38,.08)">
+    <figcaption style="font-size:12.5px;color:#E4D6DB;margin-top:12px;line-height:1.6">O wireflow completo reconstruído digitalmente — a primeira documentação de ponta a ponta do fluxo, incluindo os pontos que antes viviam em Lorem Ipsum.</figcaption>
+  </figure>
+  <figure style="margin:24px 0 0;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
+    <img src="assets/trade/fluxo.jpg" alt="Registro do processo original do mapeamento do fluxo" style="height:440px;max-width:100%;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.22);display:block">
+    <figcaption style="font-size:13.5px;color:#C9BCC5;max-width:340px;line-height:1.7;font-style:italic">Registro do processo original — o mapeamento inicial do fluxo, validado com o time e depois reconstruído na versão limpa acima.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ SOLUÇÃO: A NOVA EXPERIÊNCIA ============ -->
+<section aria-labelledby="exp-title" class="abia-reveal sec" style="margin-top:100px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:36px">
+    <p class="abia-eyebrow">Solução · A nova experiência</p>
+    <h2 id="exp-title" class="abia-h2" style="margin-bottom:18px">Telas de alta fidelidade, navegáveis</h2>
+    <p class="abia-lead" style="margin:0">Entreguei o redesenho em alta fidelidade e navegável, para as partes interessadas visualizarem e interagirem com as soluções antes da implementação — cobrindo tanto o cadastro redesenhado quanto as novas funcionalidades.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px" class="abia-three">
+    <div>
+      <div style="background:rgba(176,213,240,.16);border-radius:22px;padding:18px"><img src="assets/trade/tela-cadastro.png" alt="Primeira etapa do cadastro, com o essencial para começar" style="width:100%;display:block;border-radius:10px"></div>
+      <div style="font-size:14.5px;font-weight:700;margin-top:14px">Cadastro em etapas</div>
+      <div style="font-size:13px;color:#E4D6DB;line-height:1.55;margin-top:2px">Dados básicos primeiro, com acesso rápido ao app.</div>
+    </div>
+    <div>
+      <div style="background:#E7F5EF;border-radius:22px;padding:18px"><img src="assets/trade/tela-ajuste.png" alt="Nova funcionalidade de acompanhamento e ajuste do limite" style="width:100%;display:block;border-radius:10px"></div>
+      <div style="font-size:14.5px;font-weight:700;margin-top:14px">Novas funcionalidades</div>
+      <div style="font-size:13px;color:#E4D6DB;line-height:1.55;margin-top:2px">Limite, boletos, configurações e FAQ no app.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPACTO: O QUE MUDOU ============ -->
+<section id="cap-impacto" aria-labelledby="mudou-title" class="abia-reveal sec" style="margin-top:110px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:36px">
+    <p class="abia-eyebrow">Impacto · O que mudou</p>
+    <h2 id="mudou-title" class="abia-h2" style="margin-bottom:18px">A transformação, antes e depois</h2>
+    <p class="abia-lead" style="margin:0">Mais do que uma lista de entregáveis, o projeto mudou a estrutura do produto e do trabalho em torno dele.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="abia-card" style="display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding:22px 26px">
+      <div style="font-size:14px;line-height:1.6;color:#C9BCC5"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#b09aad;margin-bottom:5px">ANTES</span>Cadastro linear de 30+ telas, tudo de uma vez.</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">→</div>
+      <div style="font-size:14px;line-height:1.6;color:#FFFFFF;font-weight:600"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#FFB0C6;margin-bottom:5px">DEPOIS</span>Duas etapas, com acesso rápido ao app já no início.</div>
+    </div>
+    <div class="abia-card" style="display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding:22px 26px">
+      <div style="font-size:14px;line-height:1.6;color:#C9BCC5"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#b09aad;margin-bottom:5px">ANTES</span>Dados pedidos sem propósito claro; erros só no fim.</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">→</div>
+      <div style="font-size:14px;line-height:1.6;color:#FFFFFF;font-weight:600"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#FFB0C6;margin-bottom:5px">DEPOIS</span>Só o essencial, cada campo justificado, com validação antecipada.</div>
+    </div>
+    <div class="abia-card" style="display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding:22px 26px">
+      <div style="font-size:14px;line-height:1.6;color:#C9BCC5"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#b09aad;margin-bottom:5px">ANTES</span>Conhecimento disperso — “telefone sem fio”, Lorem Ipsum em produção.</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">→</div>
+      <div style="font-size:14px;line-height:1.6;color:#FFFFFF;font-weight:600"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#FFB0C6;margin-bottom:5px">DEPOIS</span>Fluxo documentado de ponta a ponta, com conteúdo real e acessível.</div>
+    </div>
+    <div class="abia-card" style="display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding:22px 26px">
+      <div style="font-size:14px;line-height:1.6;color:#C9BCC5"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#b09aad;margin-bottom:5px">ANTES</span>App servia só ao fluxo de aprovação de crédito.</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:26px;color:#FFB0C6">→</div>
+      <div style="font-size:14px;line-height:1.6;color:#FFFFFF;font-weight:600"><span style="display:block;font-size:11px;font-weight:800;letter-spacing:.06em;color:#FFB0C6;margin-bottom:5px">DEPOIS</span>Motivo de uso recorrente: limite, boletos, configurações e FAQ.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPACTO: AVALIAÇÕES DA LOJA ============ -->
+<div class="band" style="background:#0d0d0f;margin-top:100px">
+  <section aria-labelledby="rev-title" class="abia-reveal sec" style="padding:88px 24px">
+    <div>
+      <div style="max-width:640px">
+        <p class="abia-eyebrow" style="color:#F4B9D9">Impacto · Prova real</p>
+        <h2 id="rev-title" class="abia-h2" style="color:#fff;margin-bottom:14px">O que os usuários disseram depois das mudanças</h2>
+        <p class="abia-lead" style="color:#cfc4d0;margin:0 0 30px">Avaliações orgânicas na loja de aplicativos após o redesenho entrar no ar. Não são teste de usabilidade formal — mas são a voz de quem usa o app no dia a dia, e apontam na mesma direção das decisões: fluxo mais fácil e intuitivo.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px" class="abia-three">
+          <div style="background:#1a1a1d;border-radius:16px;padding:20px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-weight:800;font-size:15px;color:#fff">Súper fácil</span><span style="font-size:12px;color:#8a8590">Há 2 anos</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 12px"><span style="color:#F2A93B;font-size:14px;letter-spacing:2px">★★★★★</span><span style="font-size:12px;color:#8a8590">Ana_73</span></div>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#d6d0d8">Aplicativo muito intuitivo e fácil de usar, top! Parabéns Trademaster, ajudando o varejo a vender mais!</p>
+          </div>
+          <div style="background:#1a1a1d;border-radius:16px;padding:20px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-weight:800;font-size:15px;color:#fff">Showww</span><span style="font-size:12px;color:#8a8590">Há 2 anos</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 12px"><span style="color:#F2A93B;font-size:14px;letter-spacing:2px">★★★★★</span><span style="font-size:12px;color:#8a8590">Malmelo</span></div>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#d6d0d8">Super fácil e intuitivo.</p>
+          </div>
+          <div style="background:#1a1a1d;border-radius:16px;padding:20px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-weight:800;font-size:15px;color:#fff">Muito prático</span><span style="font-size:12px;color:#8a8590">Há 2 anos</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 12px"><span style="color:#F2A93B;font-size:14px;letter-spacing:2px">★★★★★</span><span style="font-size:12px;color:#8a8590">Leo_alpha</span></div>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#d6d0d8">Excelente aplicativo. Cumpre tudo aquilo que promete.</p>
+          </div>
+          <div style="background:#1a1a1d;border-radius:16px;padding:20px 22px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px"><span style="font-weight:800;font-size:15px;color:#fff">Muito bom!</span><span style="font-size:12px;color:#8a8590">Há 2 anos</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin:4px 0 12px"><span style="color:#F2A93B;font-size:14px;letter-spacing:2px">★★★★★</span><span style="font-size:12px;color:#8a8590">Pedro Igoa</span></div>
+            <p style="margin:0;font-size:13.5px;line-height:1.6;color:#d6d0d8">Extremamente intuitivo, fácil de usar e muito bom serviço prestado!</p>
+          </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ IMPACTO: O QUE AINDA PRECISAVA SER VALIDADO ============ -->
+<section aria-labelledby="valid-title" class="abia-reveal sec-narrow" style="margin-top:100px">
+  <p class="abia-eyebrow">Impacto · Transparência</p>
+  <h2 id="valid-title" class="abia-h2" style="margin-bottom:18px">O que ainda precisava ser validado</h2>
+  <p class="abia-lead" style="margin:0 0 24px">As avaliações da loja são um sinal real e animador, mas orgânico e espontâneo — não substituem teste de usabilidade formal nem um acompanhamento estruturado com métricas pós-entrega, que não fizeram parte do escopo. Prefiro tratar isso como maturidade do projeto, não escondê-lo. O que sustentou as decisões foi real e defensável:</p>
+  <div>
+    <div class="abia-row" style="border-top:none;padding-top:0"><span class="abia-rownum">·</span><div class="abia-lead" style="font-size:15px"><strong>Dado interno de comportamento</strong> — cliques, tempo por tela e erros recorrentes, levantados com Desenvolvimento antes de qualquer proposta.</div></div>
+    <div class="abia-row"><span class="abia-rownum">·</span><div class="abia-lead" style="font-size:15px"><strong>Regras de negócio</strong> — cada campo cortado ou mantido foi decidido pelo motivo real de existir, direto com o P.O.</div></div>
+    <div class="abia-row"><span class="abia-rownum">·</span><div class="abia-lead" style="font-size:15px"><strong>Validação cruzada na matriz CSD</strong> — Produto, Desenvolvimento, Marketing e Suporte revisaram as soluções, reduzindo o risco de decisão unilateral.</div></div>
+  </div>
+  <div style="background:linear-gradient(160deg,rgba(255,90,138,.16),rgba(180,120,220,.14));border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:26px 28px;margin-top:26px">
+    <div style="font-weight:800;font-size:12.5px;color:#FFB0C6;margin-bottom:12px;letter-spacing:.06em">INDICADORES A ACOMPANHAR NA PRÓXIMA FASE</div>
+    <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.9;color:#F5EDF0">
+      <li>Abandono no fluxo em duas etapas, comparado ao cadastro anterior</li>
+      <li>Volume de reclamações no suporte</li>
+      <li>Uso das novas funcionalidades (limite, boletos, FAQ)</li>
+      <li>Tempo de conclusão do cadastro</li>
+    </ul>
+    <p style="margin:16px 0 0;font-size:13px;line-height:1.65;color:#E4D6DB">Sem número inventado aqui — essas métricas seriam o primeiro passo de uma fase seguinte, com pesquisa direta e testes com usuário final.</p>
+  </div>
+</section>
+
+<!-- ============ APRENDIZADO ============ -->
+<section aria-labelledby="ref-title" class="abia-reveal sec" style="margin-top:100px">
+  <div style="background:linear-gradient(140deg,#451841,#7a2d6e);border-radius:32px;padding:58px 48px;color:#fff">
+    <p class="abia-eyebrow" style="color:#F4B9D9">Aprendizado</p>
+    <h2 id="ref-title" class="abia-h2" style="color:#fff;margin-bottom:30px">O que ficou desse projeto</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px" class="abia-two">
+      <div>
+        <div style="font-weight:800;font-size:14px;color:#F4B9D9;margin-bottom:12px">Desafio e enriquecimento</div>
+        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.85;color:#EBD9EC">
+          <li>Entrar num produto sem processo de UX e ter que primeiro reconstruir a visão do todo foi o maior desafio — e o que mais me fez crescer.</li>
+          <li>O time entendeu, na prática, como UX se conecta a negócio e a dado, não só a “telas bonitas”.</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-weight:800;font-size:14px;color:#F4B9D9;margin-bottom:12px">Rotinas de design na squad</div>
+        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.85;color:#EBD9EC">
+          <li>Implantei rotinas de design junto ao squad — documentação e discovery passaram a fazer parte do jeito de trabalhar.</li>
+          <li>Soluções entregues em alta fidelidade e navegáveis, prontas para a próxima etapa de validação.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,.16)">
+      <div style="font-weight:800;font-size:14px;color:#F4B9D9;margin-bottom:10px">Oportunidades não aproveitadas</div>
+      <p style="margin:0;font-size:14px;line-height:1.75;color:#EBD9EC;max-width:720px">Não consegui, no escopo, rodar entrevistas e testes de usabilidade após as decisões finais, nem acompanhar o impacto com dados reais. Fica como o próximo passo mais claro — e como aprendizado sobre defender espaço para validação desde o começo do projeto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="abia-reveal sec-narrow" style="margin-top:100px;padding-bottom:20px">
+  <div style="text-align:left">
+    <h2 class="abia-h2" style="margin-bottom:12px">Quer ver como eu faria pelo seu produto?</h2>
+    <p class="abia-lead" style="margin:0 0 28px">Bora conversar sobre o seu desafio de design.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="Projetos.dc.html" onclick="if(document.referrer){history.back();return false}" class="abia-btn-ghost"><span>←</span> Voltar à tela anterior</a>
+      <a href="Projetos.dc.html" class="abia-btn-primary">Ver mais cases <span>→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="max-width:1240px;margin:60px auto 0;padding:30px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+  <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:18px;color:#FFB0C6">ÁBIA BOGNOLA</div>
+  <div style="font-size:12px;color:#E4D6DB">© 2026 · Desenhado à mão · sem template</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = document.querySelectorAll('.abia-reveal');
+    if (reduced) {
+      els.forEach((el) => el.classList.add('is-in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach((el) => io.observe(el));
+    }
+
+    const navLinks = {};
+    document.querySelectorAll('.chapnav a').forEach((a) => {
+      navLinks[a.getAttribute('href').slice(1)] = a;
+    });
+    const chapnav = document.querySelector('.chapnav');
+    const chapEls = ['cap-contexto', 'cap-descoberta', 'cap-decisoes', 'cap-solucao', 'cap-impacto']
+      .map((id) => document.getElementById(id)).filter(Boolean);
+    const updateActive = () => {
+      if (chapnav) chapnav.classList.toggle('show', window.scrollY > 200);
+      const line = 170;
+      let currentId = chapEls.length ? chapEls[0].id : null;
+      chapEls.forEach((el) => { if (el.getBoundingClientRect().top <= line) currentId = el.id; });
+      Object.values(navLinks).forEach((l) => l.classList.remove('active'));
+      if (currentId && navLinks[currentId]) navLinks[currentId].classList.add('active');
+    };
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    this._onScroll = updateActive;
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+}
+</script>
+</body>
+</html>

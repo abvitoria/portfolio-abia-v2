@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/tokens/fig-typography.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/components/navigation/fig-assets.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/components/patterns/fig-assets.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/styles.css">
+  <script src="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: var(--carbon-25); font-family: Inter, sans-serif; }
+    table { width: 100%; border-collapse: collapse; }
+    a { color: var(--semantic-color-foreground-brand-bold-default-2); }
+    a:hover { color: var(--semantic-color-foreground-brand-bold-selected-2); }
+  </style>
+</helmet>
+
+<div style="max-width: 1120px; margin: 0 auto; padding: 40px 32px 64px; display: flex; flex-direction: column; gap: 32px;">
+
+  <div>
+    <h1 style="font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin: 0; color: var(--carbon-900);">Referência de campos — cadastro e pré-cadastro</h1>
+    <p style="font-size: 14px; color: var(--carbon-500); margin: 6px 0 0; text-wrap: pretty;">Levantamento dos campos, textos de apoio e mensagens de erro usados hoje nas telas <a href="Cadastrar usuários.dc.html">Cadastrar usuários</a> e <a href="Pré-cadastrados.dc.html">Pré-cadastrados</a>.</p>
+  </div>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <div style="flex: 1 1 240px; min-width: 0; background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; padding: 20px 24px;">
+      <span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--carbon-500);">Cadastro de usuário</span>
+      <strong style="display: block; margin-top: 8px; font-size: 28px; font-weight: 700; color: var(--carbon-900);">10 campos</strong>
+      <span style="display: block; margin-top: 4px; font-size: 14px; color: var(--carbon-600);">Todos obrigatórios · tela dedicada</span>
+    </div>
+    <div style="flex: 1 1 240px; min-width: 0; background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; padding: 20px 24px;">
+      <span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--carbon-500);">Pré-cadastro</span>
+      <strong style="display: block; margin-top: 8px; font-size: 28px; font-weight: 700; color: var(--carbon-900);">6 campos</strong>
+      <span style="display: block; margin-top: 4px; font-size: 14px; color: var(--carbon-600);">2 obrigatórios · modal</span>
+    </div>
+    <div style="flex: 1 1 240px; min-width: 0; background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; padding: 20px 24px;">
+      <span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; color: var(--carbon-500);">Em comum</span>
+      <strong style="display: block; margin-top: 8px; font-size: 28px; font-weight: 700; color: var(--carbon-900);">4 campos</strong>
+      <span style="display: block; margin-top: 4px; font-size: 14px; color: var(--carbon-600);">Nome, CPF, empresa e identificador</span>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div>
+      <h2 style="display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; margin: 0; color: var(--carbon-900);">
+        <span style="display: flex; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="UserPlus01" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+        Cadastrar nova conta de usuário
+      </h2>
+      <p style="font-size: 14px; color: var(--carbon-500); margin: 6px 0 0;">Formulário em tela cheia. Senha gerada automaticamente e enviada ao e-mail informado.</p>
+    </div>
+    <div style="background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; overflow: hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 24px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Pergunta / label</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 16px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Controle</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 16px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Texto de apoio</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 24px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Mensagem de erro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ cadastro }}" as="c" hint-placeholder-count="10">
+            <tr>
+              <td style="padding: 14px 24px; font-size: 14px; font-weight: 600; color: var(--carbon-900); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">
+                {{ c.label }}<span style="{{ c.estiloAsterisco }}">*</span>
+              </td>
+              <td style="padding: 14px 16px; font-size: 14px; color: var(--carbon-700); border-bottom: 1px solid var(--carbon-100); vertical-align: top; white-space: nowrap;">{{ c.controle }}</td>
+              <td style="padding: 14px 16px; font-size: 14px; color: var(--carbon-600); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ c.apoio }}</td>
+              <td style="padding: 14px 24px; font-size: 14px; color: var(--colors-error-600); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ c.erro }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; gap: 12px; padding: 16px 20px; border: 1px solid var(--carbon-200); border-radius: 16px; background: #fff;">
+        <span style="display: flex; flex-shrink: 0; color: var(--semantic-color-foreground-subtle);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="InfoCircle" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+        <span style="font-size: 14px; color: var(--carbon-700);">
+          <b style="display: block; font-weight: 700; color: var(--carbon-900); margin-bottom: 4px;">Ação principal</b>
+          Criar novo usuário. Ao final, modal de sucesso com o botão Concluir.
+        </span>
+      </div>
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; gap: 12px; padding: 16px 20px; border: 1px solid var(--colors-warning-300); border-radius: 16px; background: var(--colors-warning-50);">
+        <span style="display: flex; flex-shrink: 0; color: var(--colors-warning-700);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="AlertTriangle" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+        <span style="font-size: 14px; color: var(--carbon-700);">
+          <b style="display: block; font-weight: 700; color: var(--carbon-900); margin-bottom: 4px;">Exceção: CPF já cadastrado</b>
+          Modal pergunta se deseja vincular o usuário existente à empresa selecionada (Cancelar · Sim, realizar vínculo).
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div>
+      <h2 style="display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; margin: 0; color: var(--carbon-900);">
+        <span style="display: flex; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="UserEdit" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+        Adicionar pré-cadastro
+      </h2>
+      <p style="font-size: 14px; color: var(--carbon-500); margin: 6px 0 0;">Modal de 560px. Registra o colaborador antes da ativação, com opção de já criar a conta de usuário.</p>
+    </div>
+    <div style="background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; overflow: hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 24px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Pergunta / label</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 16px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Controle</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 16px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Texto de apoio</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 24px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Mensagem de erro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ precadastro }}" as="c" hint-placeholder-count="6">
+            <tr>
+              <td style="padding: 14px 24px; font-size: 14px; font-weight: 600; color: var(--carbon-900); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">
+                {{ c.label }}<span style="{{ c.estiloAsterisco }}">*</span>
+              </td>
+              <td style="padding: 14px 16px; font-size: 14px; color: var(--carbon-700); border-bottom: 1px solid var(--carbon-100); vertical-align: top; white-space: nowrap;">{{ c.controle }}</td>
+              <td style="padding: 14px 16px; font-size: 14px; color: var(--carbon-600); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ c.apoio }}</td>
+              <td style="padding: 14px 24px; font-size: 14px; color: var(--colors-error-600); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ c.erro }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; gap: 12px; padding: 16px 20px; border: 1px solid var(--carbon-200); border-radius: 16px; background: #fff;">
+        <span style="display: flex; flex-shrink: 0; color: var(--semantic-color-foreground-subtle);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Upload01" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+        <span style="font-size: 14px; color: var(--carbon-700);">
+          <b style="display: block; font-weight: 700; color: var(--carbon-900); margin-bottom: 4px;">Caminho alternativo: importação em lote</b>
+          Baixar modelo · Importar para empresa · Criar usuário? · anexar arquivo. Resultado sai no relatório de importação.
+        </span>
+      </div>
+      <div style="flex: 1 1 320px; min-width: 0; display: flex; gap: 12px; padding: 16px 20px; border: 1px solid var(--carbon-200); border-radius: 16px; background: #fff;">
+        <span style="display: flex; flex-shrink: 0; color: var(--semantic-color-foreground-subtle);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="InfoCircle" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+        <span style="font-size: 14px; color: var(--carbon-700);">
+          <b style="display: block; font-weight: 700; color: var(--carbon-900); margin-bottom: 4px;">Ações do modal</b>
+          Cancelar · Salvar. A exclusão usa modal próprio, com aviso de que o usuário não tem gastos pendentes.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px;">
+    <div>
+      <h2 style="font-size: 20px; font-weight: 700; margin: 0; color: var(--carbon-900);">Diferenças entre os dois fluxos</h2>
+      <p style="font-size: 14px; color: var(--carbon-500); margin: 6px 0 0;">Pontos em que os formulários pedem a mesma informação de formas diferentes.</p>
+    </div>
+    <div style="background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; overflow: hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 24px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Informação</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 16px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Cadastro de usuário</th>
+            <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 12px 24px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-200);">Pré-cadastro</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ diferencas }}" as="d" hint-placeholder-count="5">
+            <tr>
+              <td style="padding: 14px 24px; font-size: 14px; font-weight: 600; color: var(--carbon-900); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ d.tema }}</td>
+              <td style="padding: 14px 16px; font-size: 14px; color: var(--carbon-700); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ d.cadastro }}</td>
+              <td style="padding: 14px 24px; font-size: 14px; color: var(--carbon-700); border-bottom: 1px solid var(--carbon-100); vertical-align: top;">{{ d.pre }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const CADASTRO = [
+  { label: "Nome completo", obrigatorio: true, controle: "Texto", apoio: "Digite o nome completo do comprador", erro: "Informe o nome completo" },
+  { label: "E-mail", obrigatorio: true, controle: "Texto (e-mail)", apoio: "Digite o e-mail do novo usuário", erro: "Digite um e-mail válido" },
+  { label: "CPF", obrigatorio: true, controle: "Texto com máscara", apoio: "000.000.000-00", erro: "Digite um CPF válido" },
+  { label: "RG / Passaporte", obrigatorio: true, controle: "Texto com máscara", apoio: "000.000.000-00", erro: "Campo obrigatório" },
+  { label: "Celular", obrigatorio: true, controle: "Texto (telefone)", apoio: "(00) 00000-0000", erro: "Digite um celular válido" },
+  { label: "Gênero", obrigatorio: true, controle: "Seleção única", apoio: "Feminino · Masculino · Outro · Prefiro não informar", erro: "Selecione o gênero" },
+  { label: "Data de nascimento", obrigatorio: true, controle: "Data", apoio: "dd/mm/aaaa", erro: "Use o formato dd/mm/aaaa" },
+  { label: "Matrícula", obrigatorio: true, controle: "Texto", apoio: "Digite o número da matrícula", erro: "Matrícula obrigatória" },
+  { label: "Saldo", obrigatorio: true, controle: "Valor", apoio: "R$ quantia em valor", erro: "Informe o saldo inicial" },
+  { label: "Empresa que será vinculada ao novo usuário", obrigatorio: true, controle: "Seleção única", apoio: "Lista de empresas do grupo", erro: "Selecione a empresa que será vinculada" }
+];
+
+const PRECADASTRO = [
+  { label: "Nome", obrigatorio: false, controle: "Texto", apoio: "Nome (opcional)", erro: "—" },
+  { label: "Selecionar empresa", obrigatorio: true, controle: "Seleção única com busca", apoio: "digite o nome da empresa", erro: "Selecione uma empresa antes de cadastrar" },
+  { label: "CPF", obrigatorio: true, controle: "Texto com máscara", apoio: "000.000.000-00", erro: "Digite um CPF válido" },
+  { label: "ID de registro", obrigatorio: true, controle: "Texto", apoio: "Digite o ID de registro do colaborador", erro: "ID de registro obrigatório" },
+  { label: "Limite", obrigatorio: false, controle: "Valor", apoio: "0,00", erro: "—" },
+  { label: "Criar usuário?", obrigatorio: false, controle: "Seleção única", apoio: "sim · não (padrão: sim)", erro: "—" }
+];
+
+const DIFERENCAS = [
+  { tema: "Identificador interno", cadastro: "Matrícula", pre: "ID de registro" },
+  { tema: "Valor financeiro", cadastro: "Saldo, obrigatório", pre: "Limite, opcional" },
+  { tema: "Seleção de empresa", cadastro: "Lista simples, sem busca", pre: "Lista com campo de busca e radio" },
+  { tema: "Nome do colaborador", cadastro: "Obrigatório, nome completo", pre: "Opcional" },
+  { tema: "Dados pessoais", cadastro: "E-mail, RG, celular, gênero e nascimento", pre: "Não são solicitados" },
+  { tema: "Criação da conta", cadastro: "Sempre cria, com senha por e-mail", pre: "Decidida no campo Criar usuário?" }
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    const asterisco = ob => ob
+      ? "color: var(--colors-error-600);"
+      : "display: none;";
+    const mapear = l => l.map(c => Object.assign({}, c, { estiloAsterisco: asterisco(c.obrigatorio) }));
+    return {
+      cadastro: mapear(CADASTRO),
+      precadastro: mapear(PRECADASTRO),
+      diferencas: DIFERENCAS
+    };
+  }
+}
+</script>
+</body>
+</html>

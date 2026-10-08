@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body data-page="casestartdev.dc.html">
+<x-dc>
+<helmet>
+<script src="./image-slot.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&amp;family=Poppins:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+
+body{margin:0;background:#F7F6FE;font-family:'Poppins',sans-serif;color:#FFFFFF;text-wrap:pretty;-webkit-font-smoothing:antialiased}
+*:focus-visible{outline:3px solid #561589;outline-offset:3px;border-radius:6px}
+a{color:#C4A8F7}
+a:hover{color:#7A4FE0}
+.serif{font-family:'Poppins',sans-serif;font-style:italic;font-weight:500}
+.abia-skip{position:absolute;left:16px;top:-48px;z-index:100;background:#1a1466;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;transition:top .2s ease}
+.abia-skip:focus{top:16px;color:#fff}
+.abia-navlink{color:#FFFFFF;text-decoration:none;font-weight:600;font-size:14.5px;transition:color .2s ease;position:relative}
+.abia-navlink::after{content:"";position:absolute;left:0;right:100%;bottom:-4px;height:2px;background:#561589;border-radius:2px;transition:right .25s ease}
+.abia-navlink:hover{color:#C4A8F7}
+.abia-navlink:hover::after{right:0}
+.abia-icobtn{width:40px;height:40px;border-radius:12px;border:1.5px solid rgba(0,0,0,.16);display:flex;align-items:center;justify-content:center;text-decoration:none;color:#FFFFFF;font-weight:700;font-size:13px;transition:background .2s,color .2s,transform .2s,border-color .2s}
+.abia-icobtn:hover{background:#561589;color:#fff;border-color:#C4A8F7;transform:translateY(-2px)}
+@keyframes abiaNavIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+.abia-nav-in{animation:abiaNavIn .7s cubic-bezier(.22,1,.36,1) both}
+.abia-card{background:rgba(10,12,74,.94);border:1px solid rgba(255,255,255,.22);border-radius:22px;box-shadow:0 12px 34px rgba(11,12,61,.05)}
+.abia-tag{font-weight:700;font-size:11.5px;letter-spacing:.04em;padding:6px 13px;border-radius:999px;color:#fff}
+.abia-btn-primary{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;background:#561589;color:#fff;transition:background .25s,transform .25s,box-shadow .25s;box-shadow:0 8px 22px rgba(86,21,137,.28)}
+.abia-btn-primary:hover{background:#7A4FE0;color:#fff;transform:translateY(-3px);box-shadow:0 14px 30px rgba(86,21,137,.36)}
+.abia-btn-ghost{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;border:1.5px solid rgba(11,12,61,.28);color:#FFFFFF;transition:background .25s,color .25s,transform .25s}
+.abia-btn-ghost:hover{background:#0b0c3d;color:#fff;transform:translateY(-3px)}
+.abia-eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;letter-spacing:.16em;color:#C4A8F7;margin:0 0 18px;text-transform:uppercase}
+.abia-eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.abia-h2{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:0;color:#FFFFFF}
+.abia-lead{font-size:17px;line-height:1.75;color:#EEEDFB;font-weight:400}
+.abia-lead strong{font-weight:700;color:#FFFFFF}
+.abia-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.abia-reveal.is-in{opacity:1;transform:none}
+.abia-row{display:flex;gap:20px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(11,12,61,.1)}
+.abia-rownum{font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:28px;color:#C4A8F7;line-height:1;flex:none;width:44px}
+.sec{max-width:1080px;margin:0 auto;padding:0 24px}
+.sec-narrow{max-width:1080px;margin:0 auto;padding:0 24px}
+.sec-narrow>*{max-width:760px}
+.band{width:100%;box-sizing:border-box}
+.band-pink{background:#F3F1FE}
+.band-purple{background:linear-gradient(158deg,#1C155E 0%,#3E1C86 55%,#5A2690 100%)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-weight:800;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill-ev{background:#EFEBFD;color:#561589}
+.pill-dec{background:#E9E4FB;color:#DCCFFA}
+.pill-op{background:rgba(84,206,226,.16);color:#9A6A12}
+.dcard{background:rgba(10,12,74,.94);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:24px 26px;box-shadow:0 10px 30px rgba(11,12,61,.05);display:flex;flex-direction:column;gap:14px;height:100%;box-sizing:border-box}
+.dcard h4{font-size:17px;font-weight:800;margin:0;letter-spacing:-.01em;color:#FFFFFF}
+.dcard .beat{font-size:14px;line-height:1.62;color:#EEEDFB;margin:0}
+.dcard .beat b{color:#FFFFFF;font-weight:700}
+.dcard .int{font-size:12.5px;line-height:1.55;color:#B8B7DE;border-top:1px dashed rgba(0,0,0,.14);padding-top:13px;margin:2px 0 0}
+.abia-swatch{height:52px;border-radius:12px;border:1px solid rgba(255,255,255,.22)}
+.mb{max-width:840px;margin:0 auto}
+.mb-lid{background:#1c1c1f;border-radius:16px 16px 0 0;padding:12px 12px 0;box-shadow:0 20px 40px rgba(11,12,61,.16)}
+.mb-lid::before{content:"";display:block;width:7px;height:7px;border-radius:50%;background:#3a3a3e;margin:0 auto 8px}
+.mb-scroll{height:440px;overflow-y:auto;overflow-x:hidden;background:rgba(10,12,74,.94);border-radius:4px;-webkit-overflow-scrolling:touch}
+.mb-scroll::-webkit-scrollbar{width:9px}
+.mb-scroll::-webkit-scrollbar-thumb{background:rgba(0,0,0,.22);border-radius:6px;border:2px solid #fff}
+.mb-scroll img{width:100%;display:block}
+.mb-base{position:relative;height:15px;background:linear-gradient(#dedee3,#b7b7bd);border-radius:0 0 10px 10px;margin:0 -18px}
+.mb-base::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:7px;background:#a9a9af;border-radius:0 0 8px 8px}
+/* --- tela StartDev reconstruída em HTML — craft pass --- */
+.sd,.sd *{box-sizing:border-box}
+.sd{background:#FCFCFD;border-radius:16px;overflow:hidden;font-family:'Nordeco','Nordeco Sans','Poppins','Poppins',sans-serif;color:#4A5262;box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 32px 70px -12px rgba(3,15,40,.5),0 8px 20px -6px rgba(3,15,40,.28);border:1px solid rgba(255,255,255,.16)}
+.sd-chrome{display:flex;align-items:center;gap:8px;padding:12px 18px;background:linear-gradient(#F3F5F9,#ECEFF4);border-bottom:1px solid #E1E5EC}
+.sd-chrome i{width:10px;height:10px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.sd-url{margin-left:8px;flex:1;background:#fff;border:1px solid #E1E5EC;border-radius:7px;padding:6px 13px;font-family:'Poppins',sans-serif;font-size:10.5px;color:#8A93A3;box-shadow:inset 0 1px 2px rgba(16,24,40,.03)}
+.sd-top{display:flex;align-items:center;gap:16px;padding:15px 28px;background:#fff;border-bottom:1px solid #EDF0F5}
+.sd-body{display:grid;grid-template-columns:96px 292px minmax(0,1fr)}
+.sd-rail{background:#fff;border-right:1px solid #EDF0F5;padding:20px 0;display:flex;flex-direction:column;gap:3px}
+.sd-rail a{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 4px;text-decoration:none;color:#9AA3B4;font-size:10px;font-weight:600;letter-spacing:.015em;border-left:3px solid transparent;transition:color .15s,background .15s}
+.sd-rail a.on{color:#013DAB;background:linear-gradient(90deg,#EEF3FD,rgba(238,243,253,0));border-left-color:#013DAB;font-weight:700}
+.sd-col{background:#FBFCFE;border-right:1px solid #EDF0F5;padding:24px 20px;display:flex;flex-direction:column;gap:18px}
+.sd-main{padding:30px 32px 36px;display:flex;flex-direction:column;gap:24px;background:#FCFCFD}
+.sd-h1{font-size:27px;font-weight:700;line-height:1.2;color:#03337B;margin:0;letter-spacing:-.017em}
+.sd-crumb{font-size:11.5px;color:#7C8699;margin:0 0 7px;font-weight:600;letter-spacing:.01em;text-transform:uppercase}
+.sd-lead{font-size:14.5px;line-height:1.72;color:#525C6E;margin:0;max-width:70ch}
+.sd-card{background:#fff;border:1px solid #EBEEF3;border-radius:13px;box-shadow:0 1px 2px rgba(16,24,40,.04),0 1px 0 rgba(255,255,255,.6) inset}
+.sd-lesson{display:flex;align-items:flex-start;gap:11px;padding:11px 12px;border-radius:10px;text-decoration:none;color:#4A5262;transition:background .15s}
+.sd-lesson:hover{background:#F4F7FD}
+.sd-lesson .tt{font-size:12.5px;line-height:1.42;font-weight:600;flex:1}
+.sd-lesson .mn{font-size:10.5px;color:#8A93A3;font-weight:600;white-space:nowrap;font-family:'Poppins',sans-serif}
+.sd-lesson.on{background:#EAF0FB;box-shadow:0 1px 0 rgba(1,61,171,.05) inset}
+.sd-lesson.on:hover{background:#EAF0FB}
+.sd-lesson.on .tt{color:#03337B;font-weight:700}
+.sd-dot{width:18px;height:18px;border-radius:50%;flex:none;margin-top:1px;display:flex;align-items:center;justify-content:center;border:1.5px solid #CBD3E0}
+.sd-tabs{display:flex;gap:9px}
+.sd-tab{height:42px;padding:0 20px;display:inline-flex;align-items:center;border-radius:10px;font-size:13.5px;font-weight:600;background:#fff;border:1px solid #E7EBF2;color:#525C6E;cursor:pointer;transition:all .15s}
+.sd-tab.on{background:#013DAB;border-color:#013DAB;color:#fff;box-shadow:0 4px 10px -3px rgba(1,61,171,.45)}
+.sd-btn{height:44px;padding:0 23px;display:inline-flex;align-items:center;gap:9px;border-radius:10px;border:none;background:linear-gradient(180deg,#0B46C4,#013DAB);color:#fff;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 1px 0 rgba(255,255,255,.18) inset,0 6px 14px -4px rgba(1,61,171,.5);letter-spacing:.005em;flex:none}
+.sd-btn.ghost{background:#fff;border:1.5px solid #013DAB;color:#013DAB;box-shadow:none}
+.sd-mat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.sd-mat a{display:flex;flex-direction:column;gap:7px;padding:17px;background:#F7F9FD;border:1px solid #EBEEF3;border-radius:12px;text-decoration:none;transition:border-color .15s,transform .15s}
+.sd-mat a:hover{border-color:#C7D6F5;transform:translateY(-1px)}
+.sd-mat .nm{font-size:13px;font-weight:700;color:#03337B}
+.sd-mat .ds{font-size:11.5px;line-height:1.5;color:#7C8699}
+.sd-mat .go{font-size:11.5px;font-weight:700;color:#013DAB;margin-top:2px}
+.sd-diff{grid-template-columns:1fr 1fr;display:grid;gap:22px;align-items:start}
+.sd-hero-mock{flex:none;min-width:1120px;zoom:.47}
+@media (max-width:1140px) and (min-width:901px){.sd-hero-mock{zoom:.36}}
+@media (max-width:900px){.sd-hero-mock{zoom:.5}}
+@media (max-width:680px){.sd-hero-mock{zoom:.33}}
+@media (max-width:900px){.sd-body{grid-template-columns:1fr}.sd-rail{flex-direction:row;border-right:none;border-bottom:1px solid #E7EBF2;overflow-x:auto}.sd-rail a{border-left:none;border-bottom:3px solid transparent;min-width:84px}.sd-rail a.on{border-bottom-color:#013DAB}.sd-col{border-right:none;border-bottom:1px solid #E7EBF2}.sd-mat{grid-template-columns:1fr}.sd-diff{grid-template-columns:1fr}}
+/* neutraliza SÓ o que o theme.css ataca dentro da tela clara: a, h1-h6, b/strong, p/li/figcaption */
+body.dark-surface .sd{color:#494949!important}
+body.dark-surface .sd p,body.dark-surface .sd li,body.dark-surface .sd figcaption{color:#494949!important}
+body.dark-surface .sd h1,body.dark-surface .sd h2,body.dark-surface .sd h3,body.dark-surface .sd h4{color:#03337B!important}
+body.dark-surface .sd b,body.dark-surface .sd strong{color:#03337B!important}
+body.dark-surface .sd a,body.dark-surface .sd a:hover{color:inherit!important;font-weight:inherit!important;text-decoration:none!important}
+/* reafirma os tiers do mock, que a guarda de <a> acima sobrescreveria */
+body.dark-surface .sd .sd-rail a{color:#8A93A3!important}
+body.dark-surface .sd .sd-rail a.on{color:#013DAB!important;font-weight:600!important}
+body.dark-surface .sd .sd-lesson{color:#494949!important}
+body.dark-surface .sd .sd-lesson.on .tt{color:#03337B!important;font-weight:600!important}
+body.dark-surface .sd .sd-crumb{color:#6A727F!important}
+.sd-pick{appearance:none;border:1px solid var(--warm-14);background:rgba(255,255,255,.04);color:var(--warm-70);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:11px 18px;border-radius:999px;cursor:pointer;transition:all .25s}
+.sd-pick:hover{border-color:rgba(158,108,239,.4);color:var(--warm)}
+.sd-pick.on{background:var(--warm);color:#0A0C4A;border-color:var(--warm);font-weight:500}
+.sd-act{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;padding:18px;border:1px solid #E7EBF2;border-radius:12px;background:#fff;align-items:center}
+.sd-act h3{margin:0 0 6px;font-size:15.5px;font-weight:600;color:#03337B}
+.sd-act p{margin:0;font-size:13px;line-height:1.6;color:#6A727F}
+.sd-chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:5px 10px;border-radius:6px;letter-spacing:.02em;white-space:nowrap}
+.sd-topic{display:grid;grid-template-columns:44px minmax(0,1fr) 96px;gap:14px;padding:16px 0;border-bottom:1px solid #E7EBF2;align-items:start}
+.sd-topic:last-child{border-bottom:none}
+.sd-topic .av{width:36px;height:36px;border-radius:50%;background:#D8DEE9;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;color:#5A6779}
+.sd-topic .ti{font-size:14.5px;font-weight:600;color:#03337B;margin:0 0 4px;line-height:1.35}
+.sd-topic .mt{font-size:11.5px;color:#6A727F}
+.sd-topic .rr{text-align:right;font-size:11.5px;color:#6A727F;line-height:1.5}
+.sd-topic .rn{font-size:17px;font-weight:700;color:#013DAB;display:block}
+.sd-2col{grid-template-columns:96px minmax(0,1fr)}
+.sd-3col{grid-template-columns:96px minmax(0,1fr) 296px}
+.sd-forum-main{gap:18px;background:#F4F7FD}
+.sd-forum-card{padding:22px 24px 24px;display:grid;grid-template-columns:minmax(420px,1fr) 292px;gap:26px;align-items:start}
+@media (max-width:1100px){.sd-forum-card{grid-template-columns:1fr}.sd-forum-card .sd-diff{grid-template-columns:1fr!important}}
+.sd-pill{min-height:44px;padding:0 20px;display:inline-flex;align-items:center;gap:9px;border-radius:999px;font-family:inherit;font-size:13.5px;font-weight:600;cursor:pointer;background:#fff;border:1.5px solid #013DAB;color:#013DAB}
+.sd-pill.on{background:#013DAB;border-color:#013DAB;color:#fff}
+.sd-lab{display:block;font-size:13.5px;font-weight:600;color:#5A6779;margin-bottom:7px}
+.sd-in{width:100%;min-height:46px;padding:0 14px;background:#fff;border:1px solid #E1E5EC;border-radius:8px;font-family:inherit;font-size:14px;color:#16202E}
+.sd-in::placeholder{color:#9AA3B2}
+.sd-help{font-size:11.5px;line-height:1.55;color:#6A727F;margin:6px 0 0}
+.sd-tool{display:flex;gap:4px;padding:7px 9px;border-bottom:1px solid #E7EBF2;background:#FAFBFE}
+.sd-tool button{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:none;background:none;border-radius:7px;color:#5A6779;cursor:pointer}
+.sd-foot{display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding:20px 30px;background:#F7F9FD;border-top:1px solid #EBEEF3}
+.sd-foot a{font-size:12px;color:#5A6779;text-decoration:none}
+.sd.dk .sd-foot{background:#111B2E;border-top-color:#1E2A42}
+.sd.dk .sd-foot a{color:#8698B5}
+.sd-foot .sd-wordmark{color:#03337B}
+.sd.dk .sd-foot .sd-wordmark{color:#EAF1FB}
+body.dark-surface .sd-foot .sd-wordmark{color:#03337B!important}
+body.dark-surface .sd.dk .sd-foot .sd-wordmark{color:#EAF1FB!important}
+body.dark-surface .sd.dk .sd-foot a{color:#8698B5!important}
+body.dark-surface .sd-foot a{color:#5A6779!important;font-weight:400!important}
+body.dark-surface .sd label,body.dark-surface .sd .sd-lab{color:#5A6779!important}
+@media (max-width:900px){.sd-foot{padding:16px 18px;gap:14px}}
+.sd-hd{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.sd-hd-t{display:flex;align-items:center;gap:12px;min-width:0}
+.sd-greet{font-size:15px;font-weight:700;color:#03337B;letter-spacing:-.005em}
+.sd.dk .sd-greet{color:#EAF1FB}
+.sd-bell{width:40px;height:40px;border-radius:50%;background:#F1F4FA;display:flex;align-items:center;justify-content:center;position:relative;flex:none;transition:background .15s}
+.sd-bell:hover{background:#E6ECF9}
+.sd.dk .sd-bell{background:#16233A}
+.sd-bell .bdg{position:absolute;top:7px;right:8px;width:7px;height:7px;border-radius:50%;background:#E2662B;border:1.5px solid #fff;box-shadow:0 0 0 2px rgba(226,102,43,.18)}
+.sd.dk .sd-bell .bdg{border-color:#111B2E}
+.sd-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#C9D6EE,#AFC0E4);display:block;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px #E7EBF2}
+.sd.dk .sd-avatar{background:linear-gradient(135deg,#2C3B58,#22304C);border-color:#111B2E;box-shadow:0 0 0 1px #22304C}
+@media (max-width:900px){.sd-2col,.sd-3col{grid-template-columns:1fr!important}.sd-forum-card{grid-template-columns:1fr!important;padding:18px}.sd-hd{gap:12px}.sd-hd .sd-tab{font-size:12px;padding:0 14px}}
+/* links da interface clara mantêm a cor de ação */
+body.dark-surface .sd aside a,body.dark-surface .sd p a{color:#013DAB!important;font-weight:600!important}
+body.dark-surface .sd.dk aside a,body.dark-surface .sd.dk p a{color:#7FB3FF!important}
+body.dark-surface .sd-ph-scr .sd-ph-link{color:#013DAB!important;font-weight:600!important}
+@media (max-width:900px){.sd-act{grid-template-columns:1fr}.sd-topic{grid-template-columns:36px minmax(0,1fr)}.sd-topic .rr{grid-column:2;text-align:left}}
+/* tema escuro da própria interface StartDev */
+.sd.dk{background:#0B1220;color:#C7D2E4;border-color:rgba(255,255,255,.08)}
+.sd.dk .sd-chrome{background:linear-gradient(#141F35,#111B2E);border-bottom-color:#1E2A42}
+.sd.dk .sd-url{background:#0B1220;border-color:#1E2A42;color:#7C8CA8}
+.sd.dk .sd-top{background:#111B2E;border-bottom-color:#1E2A42}
+.sd.dk .sd-rail{background:#111B2E;border-right-color:#1E2A42}
+.sd.dk .sd-rail a{color:#7C8CA8}
+.sd.dk .sd-rail a.on{background:linear-gradient(90deg,#16233A,rgba(22,35,58,0));color:#7FB3FF;border-left-color:#4C86F5}
+.sd.dk .sd-col{background:#0E1830;border-right-color:#1E2A42}
+.sd.dk .sd-main{background:#0B1220}
+.sd.dk .sd-card{background:#111B2E;border-color:#1E2A42;box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+.sd.dk .sd-tab{background:#111B2E;border-color:#1E2A42;color:#C7D2E4}
+.sd.dk .sd-tab.on{background:#4C86F5;border-color:#4C86F5;color:#08101D;box-shadow:0 4px 12px -3px rgba(76,134,245,.5)}
+.sd.dk .sd-btn{background:linear-gradient(180deg,#5F94FF,#4C86F5);color:#08101D;box-shadow:0 6px 14px -4px rgba(76,134,245,.55)}
+.sd.dk .sd-btn.ghost{background:transparent;border-color:#4C86F5;color:#7FB3FF;box-shadow:none}
+.sd.dk .sd-lesson:hover{background:#16233A}
+.sd.dk .sd-mat a{background:#0E1830;border-color:#1E2A42}
+.sd.dk .sd-mat a:hover{border-color:#33456B}
+body.dark-surface .sd.dk{color:#C7D2E4!important}
+body.dark-surface .sd.dk p,body.dark-surface .sd.dk li{color:#C7D2E4!important}
+body.dark-surface .sd.dk h1,body.dark-surface .sd.dk h2,body.dark-surface .sd.dk h3,body.dark-surface .sd.dk h4,body.dark-surface .sd.dk b,body.dark-surface .sd.dk strong{color:#EAF1FB!important}
+body.dark-surface .sd.dk .sd-rail a{color:#7C8CA8!important}
+body.dark-surface .sd.dk .sd-rail a.on{color:#7FB3FF!important}
+body.dark-surface .sd.dk .sd-crumb{color:#8698B5!important}
+/* telas mobile reconstruídas */
+.sd-ph,.sd-ph *{box-sizing:border-box}
+.sd-ph{width:280px;height:588px;margin:0 auto;background:linear-gradient(155deg,#26262b,#151517);border-radius:34px;padding:9px;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 30px 60px -10px rgba(0,0,0,.55)}
+.sd-ph-scr{height:100%;display:flex;flex-direction:column;background:#FCFCFC;border-radius:26px;overflow:hidden;font-family:'Nordeco','Nordeco Sans','Poppins','Poppins',sans-serif;color:#494949}
+.sd-ph-scr .sd-ph-body{flex:1;overflow-y:auto}
+.sd-ph-scr.dk{background:#0B1220;color:#C7D2E4}
+.sd-ph-bar{display:flex;justify-content:space-between;align-items:center;padding:9px 18px 5px;font-size:10.5px;font-weight:600;color:#6A727F}
+.sd-ph-scr.dk .sd-ph-bar{color:#8698B5}
+.sd-ph-body{padding:12px 16px 18px;display:flex;flex-direction:column;gap:13px}
+.sd-ph-nav{display:flex;border-top:1px solid #E7EBF2;background:#fff}
+.sd-ph-scr.dk .sd-ph-nav{border-top-color:#1E2A42;background:#111B2E}
+.sd-ph-nav a{flex:1;min-width:0;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:8.5px;letter-spacing:-.01em;text-align:center;font-weight:600;color:#8A93A3;text-decoration:none}
+.sd-ph-nav a.on{color:#013DAB}
+.sd-ph-scr.dk .sd-ph-nav a{color:#7C8CA8}
+.sd-ph-scr.dk .sd-ph-nav a.on{color:#7FB3FF}
+body.dark-surface .sd-ph-scr{color:#494949!important}
+body.dark-surface .sd-ph-scr p,body.dark-surface .sd-ph-scr div{color:inherit}
+body.dark-surface .sd-ph-scr h3,body.dark-surface .sd-ph-scr b,body.dark-surface .sd-ph-scr strong{color:#03337B!important}
+body.dark-surface .sd-ph-scr a{color:inherit!important;text-decoration:none!important;font-weight:inherit!important}
+body.dark-surface .sd-ph-scr.dk{color:#C7D2E4!important}
+body.dark-surface .sd-ph-scr.dk h3,body.dark-surface .sd-ph-scr.dk b,body.dark-surface .sd-ph-scr.dk strong{color:#EAF1FB!important}
+body.dark-surface .sd-ph-nav a.on{color:#013DAB!important}
+body.dark-surface .sd-ph-scr.dk .sd-ph-nav a.on{color:#7FB3FF!important}
+body.dark-surface .sd article,body.dark-surface .sd article p{color:#494949!important}
+body.dark-surface .sd article h2,body.dark-surface .sd article b{color:#16202E!important}
+body.dark-surface .sd pre,body.dark-surface .sd code{color:#16202E!important}
+body.dark-surface .sd aside p{color:#494949!important}
+.chapnav{position:fixed;left:0;right:0;bottom:24px;z-index:45;display:flex;justify-content:center;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .3s ease,transform .3s ease}
+.chapnav.show{opacity:1;transform:none}
+.chapnav.show .chapnav-inner{pointer-events:auto}
+.chapnav-inner{display:flex;gap:4px;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.22);box-shadow:0 12px 36px rgba(11,12,61,.18);backdrop-filter:blur(10px);border-radius:999px;padding:6px}
+.chapnav a{text-decoration:none;font-weight:700;font-size:12.5px;letter-spacing:.01em;color:#D8D7F2;padding:8px 15px;border-radius:999px;transition:color .2s,background .2s}
+.chapnav a:hover{color:#C4A8F7}
+.chapnav a.active{background:#561589;color:#fff}
+@media (max-width:720px){.chapnav{display:none}}
+@media (max-width:820px){.game-grid{grid-template-columns:1fr 1fr!important}}
+@media (max-width:860px){.abia-two{grid-template-columns:1fr!important}.abia-three{grid-template-columns:1fr!important}.hero-grid{grid-template-columns:1fr!important}.dgrid{grid-template-columns:1fr!important}.feat-grid{grid-template-columns:1fr!important}.abia-shots{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .abia-reveal{opacity:1;transform:none}
+}
+
+/* @abia-dark-surface */
+body{background:var(--void);color:var(--warm)}
+.abia-card,.dcard,.dgrid .dcard{background:rgba(255,255,255,.04);border:1px solid var(--warm-14);color:var(--warm);box-shadow:0 12px 34px rgba(0,0,0,.3);backdrop-filter:blur(8px)}
+.abia-card h1,.abia-card h2,.abia-card h3,.abia-card h4,.dcard h4,.dcard .beat,.dcard .beat b{color:var(--warm)}
+.dcard .beat{color:var(--warm-70)}
+.abia-h2{color:var(--warm)}
+.abia-lead{color:var(--warm-70)}
+.abia-lead strong{color:var(--warm)}
+.abia-eyebrow{color:var(--rose)}
+.serif{color:var(--rose)}
+.band-pink{background:rgba(158,108,239,.06)}
+.abia-row{border-top:1px solid var(--warm-14)}
+.abia-btn-primary{background:var(--rose);color:var(--void);box-shadow:0 8px 22px rgba(158,108,239,.28)}
+.abia-btn-primary:hover{background:var(--warm);color:var(--void);box-shadow:0 14px 30px rgba(158,108,239,.4)}
+.abia-btn-ghost{border-color:var(--warm-14);color:var(--warm)}
+.abia-btn-ghost:hover{background:var(--warm);color:var(--void)}
+.chapnav-inner{background:rgba(3,4,58,.7);border:1px solid var(--warm-14);box-shadow:0 12px 36px rgba(0,0,0,.5);backdrop-filter:blur(14px)}
+.chapnav a{color:var(--warm-70);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:400}
+.chapnav a:hover{color:var(--warm)}
+.chapnav a.active{background:var(--rose);color:var(--void)}
+
+</style>
+<link rel="stylesheet" href="./chrome.css">
+<link rel="stylesheet" href="./theme.css">
+<script src="./chrome.js" defer></script>
+</helmet>
+
+<!-- @abia-chrome:start -->
+<a href="#conteudo" class="ac-skip" data-en="Skip to content">Pular para o conteúdo</a>
+<header class="ac-hdr" role="banner">
+  <a href="index.dc.html" class="ac-mark" aria-label="UXfinity · Ábia Bognola — início"><img src="assets/brand/uxfinity-logo-branca.png" alt="UXfinity" style="height:30px;width:auto;display:block"></a>
+  <div class="ac-nav-wrap">
+    <nav class="ac-nav" aria-label="Navegação principal">
+      <a href="index.dc.html" data-en="Home">Início</a>
+      <a href="Projetos.dc.html" data-en="Work">Cases</a>
+      <a href="Sobre.dc.html" data-en="About">Sobre</a>
+      <a href="Contato.dc.html" data-en="Contact">Contato</a>
+    </nav>
+    <div class="ac-lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+<!-- @abia-chrome:end -->
+
+<nav class="chapnav" aria-label="Capítulos do case">
+  <div class="chapnav-inner">
+    <a href="#cap-contexto" data-chap="">Contexto</a>
+    <a href="#cap-descoberta" data-chap="">Descoberta</a>
+    <a href="#cap-decisoes" data-chap="">Decisões</a>
+    <a href="#cap-solucao" data-chap="">Solução</a>
+    <a href="#cap-impacto" data-chap="">Impacto</a>
+  </div>
+</nav>
+
+<main id="conteudo" style="padding-top:96px">
+<div class="aurora" aria-hidden="true"><span class="a3"></span></div>
+<div class="spot" aria-hidden="true"></div>
+
+<!-- ============ HERO ============ -->
+<section aria-labelledby="case-title" style="max-width:1160px;margin:2px auto 0;padding:26px 24px 0">
+  <a href="Projetos.dc.html" style="display:inline-flex;align-items:center;gap:7px;font-weight:700;font-size:13.5px;text-decoration:none;color:#D8D7F2;margin-bottom:24px">← Voltar aos cases</a>
+  <div class="hero-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:48px;align-items:center">
+    <div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+        <span class="abia-tag" style="background:#0B7C8F">UX/UI CASE</span>
+        <span class="abia-tag" style="background:#561589">EDTECH · COMUNIDADE</span>
+        <span class="abia-tag" style="background:#6E3FC8">WEB + MOBILE</span>
+      </div>
+      <p class="abia-eyebrow">STARTDEV · PRODUCT DESIGN · UX/UI</p>
+      <h1 id="case-title" style="font-size:clamp(38px,4.6vw,56px);line-height:1.05;font-weight:800;letter-spacing:-.03em;margin:0 0 24px">Aprender a programar sozinho é difícil e <span class="serif" style="color:#C4A8F7;font-size:.95em">solitário</span></h1>
+      <p class="abia-lead" style="margin:0 0 30px">Um cliente chegou com uma proposta ambiciosa: ensino, comunidade colaborativa e gamificação num só produto. Meu trabalho foi traduzir essa visão em uma interface coerente para web e mobile — <strong>em cerca de 20 dias</strong>, com pesquisa própria de usuário limitada.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 28px;max-width:480px">
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#C4A8F7;margin-bottom:5px">MEU PAPEL</div><div style="font-size:14px;font-weight:600">UX/UI Designer · projeto de cliente</div></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#C4A8F7;margin-bottom:5px">PLATAFORMA</div><div style="font-size:14px;font-weight:600">Web responsivo + app mobile</div></div>
+        
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#C4A8F7;margin-bottom:5px">FERRAMENTAS</div><div style="font-size:14px;font-weight:600">Figma · Google Docs · Sheets</div></div>
+        <div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;color:#C4A8F7;margin-bottom:5px">TEMAS</div><div style="font-size:14px;font-weight:600">Claro &amp; escuro</div></div>
+      </div>
+    </div>
+    <div style="position:relative;display:flex;justify-content:center;align-items:center;min-height:400px;padding-bottom:26px">
+      <div style="position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(196,168,247,.42),rgba(86,21,137,.08) 55%,transparent 72%)"></div>
+      <div class="sd sd-hero-mock" style="position:relative;width:1120px;filter:drop-shadow(0 26px 46px rgba(40,24,110,.28))" role="img" aria-label="Tela inicial da plataforma StartDev: aula em andamento, trilha da semana e pontos">
+        <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/inicio</span></div>
+        <div class="sd-top">
+          <div style="display:flex;align-items:center;gap:11px;flex:1;min-width:0">
+            <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:32px;height:32px;object-fit:contain;flex:none">
+            <span class="sd-greet">Bem-vinda, Marielly</span>
+          </div>
+          <span style="display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 13px;border-radius:999px;background:#FEF3E2;flex:none">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B" aria-hidden="true"><path d="M13 2c.5 4-2.5 5.5-2.5 8.5A2.5 2.5 0 0 0 13 13c2 0 3-1.5 3-3 2 1.6 3 3.7 3 6a7 7 0 1 1-14 0C5 9 9.5 6.5 13 2z"></path></svg>
+            <span style="font-size:12.5px;font-weight:700;color:#92400E">4 dias seguidos</span>
+          </span>
+          <span class="sd-bell" role="img" aria-label="Notificações: 2 não lidas">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+            <span class="bdg"></span>
+          </span>
+          <image-slot id="marielly-avatar" shape="circle" class="sd-avatar" placeholder="" src="assets/case/marielly-avatar.png" style="width:38px;height:38px"></image-slot>
+        </div>
+        <div class="sd-body" style="grid-template-columns:96px minmax(0,1fr)">
+          <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+            <a href="#ui-title" class="on"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+            <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+            <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+            <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+            <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 10.5h11"></path><path d="M6.5 7.5H21l-1.8 6H8"></path></svg>Loja</a>
+          </nav>
+          <div class="sd-main" style="padding:26px 30px 30px;gap:20px">
+            <div class="sd-hd" style="display:flex;align-items:flex-end;gap:16px">
+              <div class="sd-hd-t">
+                <p class="sd-crumb">Painel do aluno</p>
+                <h1 class="sd-h1" style="font-size:25px">Continue de onde parou</h1>
+              </div>
+              <span style="margin-left:auto;font-size:12.5px;font-weight:600;color:#7C8699;white-space:nowrap">Módulo 01 · 2 de 5 aulas</span>
+            </div>
+
+            <div class="sd-card" style="padding:18px;display:grid;grid-template-columns:216px minmax(0,1fr);gap:20px;align-items:center">
+              <div style="position:relative;height:122px;border-radius:11px;background:linear-gradient(140deg,#03337B,#0B46C4 60%,#2563EB);display:flex;align-items:center;justify-content:center;overflow:hidden">
+                <span aria-hidden="true" style="position:absolute;right:-30px;top:-34px;width:110px;height:110px;border-radius:50%;background:rgba(255,255,255,.1)"></span>
+                <span style="position:relative;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="#0B3FA8" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg>
+                </span>
+                <span style="position:absolute;left:10px;bottom:9px;font-family:'Poppins',sans-serif;font-size:10px;color:rgba(255,255,255,.85)">09:52 / 45:00</span>
+              </div>
+              <div style="min-width:0">
+                <span class="sd-chip" style="background:#EAF0FB;color:#013DAB">Aula em andamento</span>
+                <div style="font-family:'Nordeco','Nordeco Sans','Poppins','Poppins',sans-serif;font-size:19px;font-weight:700;color:#03337B;letter-spacing:-.015em;margin-top:9px">Variáveis e tipos de dados</div>
+                <div style="font-size:12.5px;color:#7C8699;margin-top:3px">Lógica de programação · Aula 03 de 05 · 12 min restantes</div>
+                <div style="display:flex;align-items:center;gap:11px;margin-top:13px">
+                  <div style="flex:1;height:7px;border-radius:5px;background:#E6EAF3;overflow:hidden"><div style="width:40%;height:100%;border-radius:5px;background:linear-gradient(90deg,#0B46C4,#4C86F5)"></div></div>
+                  <span style="font-size:11.5px;font-weight:700;color:#013DAB;font-family:'Poppins',sans-serif">40%</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:minmax(0,1.28fr) minmax(0,1fr);gap:18px;align-items:start">
+              <div class="sd-card" style="padding:16px 16px 12px">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px 10px">
+                  <span style="font-size:14px;font-weight:700;color:#03337B">Sua trilha da semana</span>
+                  <span style="font-size:12px;font-weight:700;color:#013DAB">Ver tudo</span>
+                </div>
+                <a class="sd-lesson" href="#ui-title">
+                  <span class="sd-dot" style="border-color:#0F9D6B;background:#DCFCE7"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+                  <span class="tt" style="color:#8A93A3">O que é um algoritmo</span><span class="mn" style="color:#0F9D6B">+40</span>
+                </a>
+                <a class="sd-lesson" href="#ui-title">
+                  <span class="sd-dot" style="border-color:#0F9D6B;background:#DCFCE7"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"></path></svg></span>
+                  <span class="tt" style="color:#8A93A3">Pseudocódigo e fluxogramas</span><span class="mn" style="color:#0F9D6B">+40</span>
+                </a>
+                <a class="sd-lesson on" href="#ui-title">
+                  <span class="sd-dot" style="border-color:#013DAB;background:#013DAB"><svg width="9" height="9" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"></path></svg></span>
+                  <span class="tt">Variáveis e tipos de dados</span><span class="mn" style="color:#013DAB">agora</span>
+                </a>
+                <a class="sd-lesson" href="#ui-title">
+                  <span class="sd-dot"></span>
+                  <span class="tt">Atividade · Caixa de mercado</span><span class="mn">+60</span>
+                </a>
+                <a class="sd-lesson" href="#ui-title">
+                  <span class="sd-dot"></span>
+                  <span class="tt">Operadores e expressões</span><span class="mn">+40</span>
+                </a>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+                <div class="sd-card" style="padding:16px 18px;display:flex;align-items:center;gap:14px">
+                  <span style="width:56px;height:56px;flex:none;border-radius:50%;background:conic-gradient(#0B46C4 0 72%,#E6EAF3 0);display:flex;align-items:center;justify-content:center">
+                    <span style="width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;color:#03337B">72%</span>
+                  </span>
+                  <div style="min-width:0">
+                    <div style="font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7C8699">Pontos · nível Prata</div>
+                    <div style="display:flex;align-items:baseline;gap:7px"><span style="font-size:24px;font-weight:700;color:#013DAB;line-height:1.15">840</span><span style="font-size:12px;font-weight:700;color:#0F9D6B">+120 na semana</span></div>
+                    <div style="font-size:12px;color:#7C8699">160 pontos para o nível Ouro</div>
+                  </div>
+                </div>
+                <a class="sd-card" href="#ui-title" style="padding:15px 16px;display:flex;align-items:center;gap:12px;text-decoration:none">
+                  <span style="width:38px;height:38px;border-radius:10px;background:#FEE9D8;display:flex;align-items:center;justify-content:center;flex:none">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A3412" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.3 7.3L4 21l1.7-5.7A8 8 0 1 1 21 12z"></path></svg>
+                  </span>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:13px;font-weight:700;color:#03337B">2 tópicos novos no fórum</div>
+                    <div style="font-size:11.5px;color:#7C8699;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">"Alguém entendeu a atividade do caixa?"</div>
+                  </div>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M9 6l6 6-6 6"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="abia-card" style="position: absolute; left: 32px; padding: 12px 16px; display: flex; align-items: center; gap: 11px; bottom: -22px">
+        <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:30px;color:#C4A8F7;line-height:.9">20</span>
+        <span style="font-size:11.5px;line-height:1.35;color:#D8D7F2;font-weight:600">dias, do briefing<br>à entrega final</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESUMO / ÍNDICE ============ -->
+<section id="cap-contexto" aria-labelledby="resumo-title" class="abia-reveal sec" style="margin-top:104px">
+  <h2 id="resumo-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Resumo do case</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px" class="abia-three">
+    <a href="#cap-descoberta" class="abia-card" style="text-decoration:none;color:inherit;padding:28px 26px;display:flex;flex-direction:column;gap:10px">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:44px;line-height:.9;color:#DCCFFA">☍</span>
+      <div style="font-weight:800;font-size:16px">Ensino + comunidade + gamificação</div>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Uma proposta ambiciosa de negócio para virar uma interface única. <span style="color:#C4A8F7;font-weight:700">Ver o desafio →</span></p>
+    </a>
+    <a href="#cap-descoberta" class="abia-card" style="text-decoration:none;color:inherit;padding:28px 26px;display:flex;flex-direction:column;gap:10px">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:44px;line-height:.9;color:#C4A8F7">20d</span>
+      <div style="font-weight:800;font-size:16px">Prazo real e apertado</div>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Web e mobile em ~20 dias, com pesquisa própria limitada. <span style="color:#C4A8F7;font-weight:700">Entender a restrição →</span></p>
+    </a>
+    <a href="#cap-decisoes" class="abia-card" style="text-decoration:none;color:inherit;padding:28px 26px;display:flex;flex-direction:column;gap:10px">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:44px;line-height:.9;color:#54CEE2">→</span>
+      <div style="font-weight:800;font-size:16px">A direção tomada</div>
+      <p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Estrutura antes da estética: fluxo, wireframes, style guide e dark mode. <span style="color:#C4A8F7;font-weight:700">Ver as decisões →</span></p>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CONTEXTO ============ -->
+<section aria-labelledby="ctx-title" class="abia-reveal sec-narrow" style="margin-top:96px">
+  <p class="abia-eyebrow">Contexto</p>
+  <h2 id="ctx-title" class="abia-h2" style="margin-bottom:22px">O produto e o que estava em jogo</h2>
+  <p class="abia-lead" style="margin:0 0 18px">A <strong>StartDev</strong> é uma plataforma de ensino para desenvolvedores que vai além do curso: uma <strong>comunidade colaborativa</strong> onde os próprios usuários se ajudam a aprender. O engajamento é sustentado por um <strong>sistema de pontos</strong> — quem ajuda outras pessoas acumula pontos que podem virar cursos ou descontos.</p>
+  <p class="abia-lead" style="margin:0 0 18px">Era um projeto de cliente externo, não um produto interno. Isso muda o eixo do trabalho: mais do que resolver um problema já diagnosticado, a prova de valor estava em <strong>traduzir uma visão de negócio ambiciosa em uma interface coerente</strong>, dentro de um prazo real.</p>
+  <p class="abia-lead" style="margin:0">O que estava em jogo era transformar uma ideia bem definida no papel em um produto navegável, consistente entre web e mobile, pronto para desenvolvimento.</p>
+</section>
+
+<!-- ============ O DESAFIO REAL (momento narrativo forte — roxo) ============ -->
+<div id="cap-descoberta" class="band band-purple" style="margin-top:96px">
+  <section aria-labelledby="prob-title" class="abia-reveal sec-narrow" style="padding:96px 24px">
+    <p class="abia-eyebrow" style="color:#C4A8F7">Descoberta · O desafio real</p>
+    <h2 id="prob-title" class="abia-h2" style="color:#fff;margin-bottom:26px">Uma visão ambiciosa, um prazo curto e pouca pesquisa disponível</h2>
+    <p class="abia-lead" style="color:#E4E2FA;margin:0 0 22px">Quem começa a programar se perde entre vídeos soltos, falta de prática guiada e nenhum lugar para tirar dúvidas. A aposta da StartDev era resolver isso juntando aula, prática e comunidade num só fluxo. Bonito no papel; denso de traduzir em tela.</p>
+    <p class="abia-lead" style="color:#E4E2FA;margin:0 0 30px">Some a isso a restrição concreta: <strong style="color:#fff">cerca de 20 dias</strong> para entregar web e mobile, sem tempo hábil para pesquisa própria de usuário do zero. O desafio não era criatividade — era <strong style="color:#fff">priorizar com precisão</strong> e apoiar cada decisão em fontes já disponíveis, sem travar o cronograma.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px" class="abia-three">
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px"><div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:34px;color:#C4A8F7;line-height:1;margin-bottom:8px">3 em 1</div><div style="font-size:13.5px;line-height:1.55;color:#E4E2FA">Ensino, comunidade e gamificação num único produto.</div></div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px"><div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:34px;color:#C4A8F7;line-height:1;margin-bottom:8px">~20 dias</div><div style="font-size:13.5px;line-height:1.55;color:#E4E2FA">Para entregar as versões web e mobile.</div></div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px"><div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:34px;color:#C4A8F7;line-height:1;margin-bottom:8px">↯</div><div style="font-size:13.5px;line-height:1.55;color:#E4E2FA">Sem pesquisa própria de usuário no início do projeto.</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ COMO CHEGUEI NA SOLUÇÃO ============ -->
+<section aria-labelledby="proc-title" class="abia-reveal sec-narrow" style="margin-top:110px">
+  <p class="abia-eyebrow">Descoberta · O ponto de partida</p>
+  <h2 id="proc-title" class="abia-h2" style="margin-bottom:18px">Como cheguei na solução</h2>
+  <p class="abia-lead" style="margin:0 0 24px">Sem tempo para pesquisa do zero, comecei pelo que já existia e fui atrás do cliente para transformar a especificação em direção de design. Um passo puxando o outro:</p>
+  <div style="display:flex;flex-direction:column;gap:0">
+    <div class="abia-row" style="border-top:none;padding-top:0"><span class="abia-rownum">01</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Revisão do documento de especificações</div><div style="font-size:14.5px;line-height:1.65;color:#D8D7F2">Li a fundo o que o cliente já havia definido de negócio e escopo, para não recomeçar do zero o que já estava resolvido.</div></div></div>
+    <div class="abia-row"><span class="abia-rownum">02</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Roteiro de entrevista</div><div style="font-size:14.5px;line-height:1.65;color:#D8D7F2">Montei um roteiro no Google Docs para conduzir a conversa com o cliente com foco, não uma reunião aberta, mas perguntas dirigidas às decisões de design.</div></div></div>
+    <div class="abia-row"><span class="abia-rownum">03</span><div><div style="font-weight:700;font-size:16px;margin-bottom:4px">Entrevista com o cliente</div><div style="font-size:14.5px;line-height:1.65;color:#D8D7F2">Levantei as expectativas de negócio e visuais, perguntando explicitamente sobre <strong>paleta de cores já existente</strong> e <strong>referências visuais</strong> que ele admirava o que evitou retrabalho estético mais à frente.</div></div></div>
+  </div>
+</section>
+
+<!-- ============ ENTENDENDO O MERCADO (flows.png, ponto forte) ============ -->
+<section aria-labelledby="mkt-title" class="abia-reveal sec" style="margin-top:100px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:32px">
+    <p class="abia-eyebrow">Descoberta · Mercado</p>
+    <h2 id="mkt-title" class="abia-h2" style="margin-bottom:18px">Entendendo o mercado e o ajuste visual</h2>
+    <p class="abia-lead" style="margin:0">Fiz uma pesquisa de concorrentes diretos e indiretos organizada no Google Sheets, cobrindo quatro frentes: inspirações visuais de plataformas de tecnologia, empresas internacionais do mesmo ramo, as plataformas que os desenvolvedores mais usam e referências de gamificação aplicada ao ensino. Recortei o que funcionava em cada tela-chave — <strong>Home, Cursos e Perfil</strong> — para calibrar as expectativas do cliente contra o que o mercado já entrega.</p>
+  </div>
+  <figure style="margin:0">
+    <div style="background:rgba(10,12,74,.94);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:20px;max-width:640px;margin:0 auto">
+      <img loading="lazy" decoding="async" src="assets/case/mercado-bench.jpg" alt="Estudo comparativo de concorrentes organizado por Home, Cursos e Perfil, com prints reais das plataformas de referência" style="width:100%;display:block;border-radius:8px;background:rgba(10,12,74,.94)">
+    </div>
+    <figcaption style="font-size:12.5px;color:#D8D7F2;margin-top:12px;line-height:1.6">Painel de referências de concorrentes, agrupado pelas telas-chave do produto — a base visual e funcional que sustentou as decisões seguintes.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ STYLE GUIDE E PERSONA ============ -->
+<section aria-labelledby="ds-title" class="abia-reveal sec" style="margin-top:110px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:32px">
+    <p class="abia-eyebrow">Descoberta · Base de design</p>
+    <h2 id="ds-title" class="abia-h2" style="margin-bottom:18px">Style guide primeiro, persona herdada</h2>
+    <p class="abia-lead" style="margin:0">O cliente já tinha logomarca, paleta de cores e fontes definidas antes do projeto. Em vez de propor identidade nova, meu primeiro passo de design foi <strong>construir um style guide no Figma</strong> para padronizar esses elementos — cores, tipografia (Nordeco + Roboto), iconografia e grid responsivo dando ao produto uma base consistente para crescer.</p>
+  </div>
+  <figure style="margin:0 0 30px">
+    <div style="background:rgba(10,12,74,.94);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:24px">
+      <img loading="lazy" decoding="async" src="assets/case/sg-clean.jpg" alt="Style guide da StartDev no Figma: cores, tipografia, iconografia e grid responsivo" style="width:100%;display:block;border-radius:8px;background:rgba(10,12,74,.94)">
+    </div>
+    <figcaption style="font-size:12.5px;color:#D8D7F2;margin-top:12px;line-height:1.6">Style guide construído a partir da marca já existente do cliente — o primeiro passo para padronizar a interface.</figcaption>
+  </figure>
+  <div class="sec-narrow" style="padding:0">
+    <div style="background:rgba(158,108,239,.14);border-radius:18px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start">
+      <span style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:30px;color:#C4A8F7;line-height:1;flex:none">✓</span>
+      <div>
+        <div style="font-weight:800;font-size:15px;margin-bottom:6px">Sobre a persona</div>
+        <p style="margin:0;font-size:14px;line-height:1.7;color:#EEEDFB">O time de marketing do cliente já tinha desenvolvido uma <strong>proto-persona</strong> antes do projeto começar, e usei essa direção como ponto de partida um recurso pronto e legítimo, dado o prazo. O arquivo original não foi localizado para reproduzir aqui, e sou transparente quanto a isso: <strong>não houve pesquisa própria de persona</strong> neste projeto. Foi uso inteligente do que existia, não uma etapa que faltou por descuido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DECISÕES (banda rosa claro) ============ -->
+<div id="cap-decisoes" class="band band-pink" style="margin-top:110px">
+  <section aria-labelledby="flow-title" class="abia-reveal sec" style="padding:96px 24px 40px">
+    <div class="sec-narrow" style="padding:0;margin-bottom:26px">
+      <p class="abia-eyebrow">Decisões</p>
+      <h2 id="flow-title" class="abia-h2" style="margin-bottom:16px">Estrutura antes da estética</h2>
+      <p class="abia-lead" style="margin:0 0 8px">Com o prazo curto, a sequência de decisões foi pensada para reduzir risco: mapear a jornada, validar a estrutura e só então investir no pixel. Um código de cor acompanha o case inteiro:</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <span class="pill pill-ev">Evidência</span>
+        <span class="pill pill-dec">Decisão</span>
+        <span class="pill pill-op">Oportunidade</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- User flow -->
+  <div class="sec" style="padding-bottom:12px">
+    <div class="dcard" style="display:grid;grid-template-columns:1fr;gap:16px;max-width:820px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h4>User flow antes dos wireframes</h4>
+        <p class="beat"><span class="pill pill-ev" style="margin-right:8px">Evidência</span>Um produto que junta cursos, atividades e fórum tem muitas telas — e o prazo era curto para estimar sem base.</p>
+        <p class="beat"><span class="pill pill-dec" style="margin-right:8px">Decisão</span>Desenhei o <b>user flow primeiro</b>, mapeando a jornada de ponta a ponta — do cadastro e login à navegação por Cursos, Dashboard, Comunidade e Perfil — para estimar a quantidade de telas e o tempo de desenvolvimento antes de detalhar qualquer interface.</p>
+        <p class="int">Intenção — <span class="serif" style="font-size:15px;color:#6a4fb0">saber o tamanho do trabalho antes de começar a construí-lo.</span></p>
+      </div>
+    </div>
+    <figure style="margin:24px 0 0">
+      <div style="background:rgba(10,12,74,.94);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:20px;max-width:660px;margin:0 auto">
+        <img loading="lazy" decoding="async" src="assets/case/userflow.jpg" alt="User flow completo da StartDev: fluxo de cadastro, login e recuperação de senha, ramificando para Cursos, Dashboard, Comunidade e Perfil" style="width:100%;display:block">
+      </div>
+      <figcaption style="font-size:12.5px;color:#D8D7F2;margin-top:12px;line-height:1.6;text-align:center;max-width:660px;margin-left:auto;margin-right:auto">User flow completo mapeado antes dos wireframes — a base para estimar telas e cronograma dentro do prazo.</figcaption>
+    </figure>
+  </div>
+
+  <!-- Wireframes big -->
+  <section aria-labelledby="wire-title" class="abia-reveal sec" style="padding:36px 24px 40px">
+    <div class="sec-narrow" style="padding:0;margin-bottom:24px">
+      <p class="abia-eyebrow">Decisões · Wireframes</p>
+      <h2 id="wire-title" class="abia-h2" style="margin-bottom:16px">Wireframes antes do pixel</h2>
+      <p class="abia-lead" style="margin:0">Escolhi começar em wireframe de propósito: estrutura antes de estética. Assim eu podia ajustar hierarquia, navegação e o player de aula rapidamente — e alinhar expectativas com o cliente antes de investir na versão de alta fidelidade, o que protegia o cronograma de retrabalho tardio.</p>
+    </div>
+    <figure style="margin:0">
+      <div class="mb">
+        <div class="mb-lid"><div class="mb-scroll"><img loading="lazy" decoding="async" src="assets/case/wireframe-aula.png" alt="Wireframe completo da tela de aula: player de vídeo, descrição, lista de módulos com progresso e comentários"></div></div>
+        <div class="mb-base"></div>
+      </div>
+      <figcaption style="font-size:12.5px;color:#D8D7F2;margin-top:16px;line-height:1.6;text-align:center">Wireframe completo da tela de aula — role dentro da tela para ver o fluxo inteiro. Estrutura, navegação, player e módulos definidos antes de qualquer decisão estética.</figcaption>
+    </figure>
+  </section>
+
+  <!-- Dark mode evidência → decisão -->
+  <section aria-labelledby="dark-title" class="abia-reveal sec" style="padding:20px 24px 96px">
+    <div class="sec-narrow" style="padding:0;margin-bottom:24px">
+      <p class="abia-eyebrow">Decisões · Alta fidelidade</p>
+      <h2 id="dark-title" class="abia-h2">Dark mode como decisão fundamentada</h2>
+    </div>
+    <div class="dcard" style="display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;max-width:940px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p class="beat"><span class="pill pill-ev" style="margin-right:8px">Evidência</span>O público-alvo do produto são <b>desenvolvedores</b> — que costumam preferir interfaces com menos luminosidade, pelo hábito das próprias ferramentas de trabalho.</p>
+        <p class="beat"><span class="pill pill-dec" style="margin-right:8px">Decisão</span>Depois da validação do cliente, aumentei a fidelidade e <b>propus o dark mode</b> como tema de primeira classe — com tokens próprios de contraste e legibilidade, não um ajuste tardio de cor.</p>
+        <p class="int">Intenção — <span class="serif" style="font-size:15px;color:#6a4fb0">falar a língua visual de quem vai usar o produto todo dia.</span></p>
+      </div>
+      <div style="border-radius:18px;background:radial-gradient(120% 120% at 25% 0%,#1a1466,#070838);padding:24px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C4A8F7">Claro</span>
+            <div style="background:#fff;border:1px solid #EBEEF3;border-radius:13px;padding:13px 14px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+              <span style="font-size:12px;font-weight:600;color:#03337B">Variáveis e tipos de dados</span>
+              <span style="font-size:10px;font-weight:700;color:#013DAB;white-space:nowrap">45 min</span>
+            </div>
+            <div style="font-size:10.5px;color:#7C8699;margin-top:4px">Módulo 01 · Aula 03</div>
+            <div style="height:5px;border-radius:4px;background:#E6EAF3;overflow:hidden;margin-top:10px"><div style="width:40%;height:100%;border-radius:4px;background:linear-gradient(90deg,#0B46C4,#4C86F5)"></div></div>
+          </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C4A8F7">Escuro</span>
+            <div style="background:#111B2E;border:1px solid #22304C;border-radius:13px;padding:13px 14px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+              <span style="font-size:12px;font-weight:600;color:#EAF1FB">Variáveis e tipos de dados</span>
+              <span style="font-size:10px;font-weight:700;color:#7FB3FF;white-space:nowrap">45 min</span>
+            </div>
+            <div style="font-size:10.5px;color:#8698B5;margin-top:4px">Módulo 01 · Aula 03</div>
+            <div style="height:5px;border-radius:4px;background:#1E2A42;overflow:hidden;margin-top:10px"><div style="width:40%;height:100%;border-radius:4px;background:linear-gradient(90deg,#4C86F5,#7FB3FF)"></div></div>
+          </div>
+          </div>
+        </div>
+        <div style="height:1px;background:rgba(255,255,255,.14)"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 16px">
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="display:flex;flex:none"><span style="width:16px;height:16px;border-radius:4px 0 0 4px;background:#FFFFFF;border:1px solid rgba(255,255,255,.18);border-right:none"></span><span style="width:16px;height:16px;border-radius:0 4px 4px 0;background:#111B2E;border:1px solid rgba(255,255,255,.18)"></span></span>
+            <span style="font-size:11px;color:#D8D7F2;font-weight:600">superfície</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="display:flex;flex:none"><span style="width:16px;height:16px;border-radius:4px 0 0 4px;background:#EBEEF3;border:1px solid rgba(255,255,255,.18);border-right:none"></span><span style="width:16px;height:16px;border-radius:0 4px 4px 0;background:#22304C;border:1px solid rgba(255,255,255,.18)"></span></span>
+            <span style="font-size:11px;color:#D8D7F2;font-weight:600">borda</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="display:flex;flex:none"><span style="width:16px;height:16px;border-radius:4px 0 0 4px;background:#03337B;border:1px solid rgba(255,255,255,.18);border-right:none"></span><span style="width:16px;height:16px;border-radius:0 4px 4px 0;background:#EAF1FB;border:1px solid rgba(255,255,255,.18)"></span></span>
+            <span style="font-size:11px;color:#D8D7F2;font-weight:600">texto</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="display:flex;flex:none"><span style="width:16px;height:16px;border-radius:4px 0 0 4px;background:#013DAB;border:1px solid rgba(255,255,255,.18);border-right:none"></span><span style="width:16px;height:16px;border-radius:0 4px 4px 0;background:#7FB3FF;border:1px solid rgba(255,255,255,.18)"></span></span>
+            <span style="font-size:11px;color:#D8D7F2;font-weight:600">ação</span>
+          </div>
+        </div>
+        <p style="margin:0;font-size:11.5px;line-height:1.55;color:#D8D7F2">Cada token tem par nos dois temas — o mesmo componente troca de tema sem perder contraste.</p>
+      </div>
+      </div>
+</section>
+</div>
+
+<!-- ============ GAMIFICAÇÃO (seção própria) ============ -->
+<section aria-labelledby="game-title" class="abia-reveal sec" style="margin-top:104px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:32px">
+    <p class="abia-eyebrow">Solução · Gamificação</p>
+    <h2 id="game-title" class="abia-h2" style="margin-bottom:18px">Progresso que dá motivo pra voltar</h2>
+    <p class="abia-lead" style="margin:0">A gamificação não era enfeite — era o motor de engajamento do modelo de negócio. Desenhei o sistema para que ajudar e aprender rendessem recompensa visível, transformando o estudo numa jornada com metas claras.</p>
+  </div>
+  <div id="cap-solucao" class="game-grid" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
+      <div class="abia-card" style="padding:22px 24px"><div style="font-weight:800;font-size:15px;margin-bottom:8px;color:#DCCFFA">Pontos por ajudar</div><p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Quem apoia outros usuários na comunidade acumula pontos.</p></div>
+      <div class="abia-card" style="padding:22px 24px"><div style="font-weight:800;font-size:15px;margin-bottom:8px;color:#DCCFFA">Troca por cursos</div><p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Pontos viram cursos ou descontos — valor concreto de volta.</p></div>
+      <div class="abia-card" style="padding:22px 24px"><div style="font-weight:800;font-size:15px;margin-bottom:8px;color:#DCCFFA">Recompensa por progresso</div><p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Completar cursos, avaliar aulas, responder atividades e interagir em fóruns rende pontos.</p></div>
+      <div class="abia-card" style="padding:22px 24px"><div style="font-weight:800;font-size:15px;margin-bottom:8px;color:#DCCFFA">Metas visíveis</div><p style="margin:0;font-size:13.5px;line-height:1.6;color:#D8D7F2">Pontuação e progresso no curso atual sempre à vista, dando sensação de avanço.</p></div>
+  </div>
+  <div style="margin:28px 0 0;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:stretch" class="abia-two">
+    <div class="sd dk" style="box-shadow:0 18px 44px rgba(0,0,0,.34)">
+      <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/pontos</span></div>
+      <div class="sd-main" style="gap:18px">
+        <div>
+          <p class="sd-crumb" style="color:#8698B5">Saldo atualizado hoje</p>
+          <h3 style="margin:0;font-family:'Nordeco','Nordeco Sans','Poppins','Poppins',sans-serif;font-size:26px;font-weight:700;color:#EAF1FB;letter-spacing:-.01em">840 pontos</h3>
+        </div>
+        <div class="sd-card" style="padding:18px 20px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+            <span style="font-size:13.5px;font-weight:600;color:#EAF1FB">Faltam 160 para o nível Ouro</span>
+            <span style="font-family:'Poppins',sans-serif;font-size:11px;color:#7FB3FF">840 / 1000</span>
+          </div>
+          <div style="height:8px;border-radius:5px;background:#1E2A42;overflow:hidden"><div style="width:84%;height:100%;background:linear-gradient(90deg,#4C86F5,#7FB3FF);border-radius:5px"></div></div>
+        </div>
+        <div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 80px;gap:12px;padding:11px 0;border-bottom:1px solid #1E2A42;align-items:center">
+            <div><div style="font-size:13px;font-weight:600;color:#EAF1FB">Resposta marcada como útil</div><div style="font-size:11px;color:#8698B5;margin-top:2px">Hoje · Fórum</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;color:#4ADE80">+5</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 80px;gap:12px;padding:11px 0;border-bottom:1px solid #1E2A42;align-items:center">
+            <div><div style="font-size:13px;font-weight:600;color:#EAF1FB">Módulo 01 concluído</div><div style="font-size:11px;color:#8698B5;margin-top:2px">08 jan · Curso</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;color:#4ADE80">+50</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 80px;gap:12px;padding:11px 0;align-items:center">
+            <div><div style="font-size:13px;font-weight:600;color:#EAF1FB">Resgate: curso de Git e GitHub</div><div style="font-size:11px;color:#8698B5;margin-top:2px">10 jan · Loja</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;color:#F0A5A5">−150</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="abia-card" style="padding:26px 28px;display:flex;flex-direction:column;gap:14px;justify-content:center">
+      <div style="font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm-40)">Por que assim</div>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#D8D7F2">O saldo abre a tela porque é a informação que o aluno vem buscar. Logo abaixo, a distância até o próximo nível transforma o número em <b style="color:#DCCFFA">meta</b>, e o extrato mostra a relação entre esforço e recompensa.</p>
+      <p style="margin:0;font-size:14px;line-height:1.7;color:#D8D7F2">Ganhos em verde e resgates em vermelho nunca aparecem sozinhos: o sinal vem sempre com o rótulo e o valor, para não depender de cor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUÇÃO: A INTERFACE FINAL ============ -->
+<section aria-labelledby="ui-title" class="abia-reveal sec" style="margin-top:110px">
+  <div class="sec-narrow" style="padding:0;margin-bottom:36px">
+    <p class="abia-eyebrow">Solução · A interface final</p>
+    <h2 id="ui-title" class="abia-h2" style="margin-bottom:18px">Aula, prática e comunidade no mesmo lugar</h2>
+    <p class="abia-lead" style="margin:0">Com a estrutura validada e o style guide no lugar, subi a fidelidade. Cada tela reforça clareza e continuidade — do fórum às atividades de código, passando pela trilha de módulos com progresso.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px" class="abia-three">
+    <div>
+      <div class="sd-ph">
+  <div class="sd-ph-scr">
+      <div class="sd-ph-bar"><span>9:41</span><span style="display:flex;gap:4px;align-items:center"><svg width="14" height="10" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"></rect></svg></span></div>
+      <div style="display:flex;align-items:center;gap:9px;padding:4px 14px 10px;border-bottom:1px solid #E7EBF2">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain;flex:none">
+        <span style="flex:1;min-width:0;font-size:12px;font-weight:600;color:#03337B;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bem-vinda, Marielly</span>
+        <span style="width:30px;height:30px;border-radius:50%;background:#EFF3FC;display:flex;align-items:center;justify-content:center;position:relative;flex:none" role="img" aria-label="Notificações: 3 não lidas">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+          <span style="position:absolute;top:4px;right:5px;width:6px;height:6px;border-radius:50%;background:#C2410C;border:1.5px solid #fff"></span>
+        </span>
+        <image-slot id="marielly-avatar" shape="circle" placeholder="" src="assets/case/marielly-avatar.png" style="width:30px;height:30px;flex:none"></image-slot>
+      </div>
+    <div class="sd-ph-body">
+      <h3 style="margin:0;font-size:19px;font-weight:700;color:#03337B;line-height:1.2">Fórum</h3>
+      <div style="display:flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;background:#F2F5FA;border:1px solid #E7EBF2;border-radius:10px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A93A3" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+        <span style="font-size:12.5px;color:#8A93A3">Buscar dúvida…</span>
+      </div>
+      <div role="group" aria-label="Filtrar por situação" style="display:flex;background:#EFF1F5;border:1px solid #E1E5EC;border-radius:10px;padding:3px;gap:2px">
+        <button type="button" aria-pressed="true" style="flex:1;min-width:0;min-height:36px;display:flex;align-items:center;justify-content:center;gap:4px;border:none;border-radius:8px;background:#013DAB;color:#fff;font-family:inherit;font-size:11px;font-weight:700;white-space:nowrap;cursor:pointer;box-shadow:0 2px 6px -2px rgba(1,61,171,.5)">Todas</button>
+        <button type="button" aria-pressed="false" style="flex:1;min-width:0;min-height:36px;display:flex;align-items:center;justify-content:center;gap:4px;border:none;border-radius:8px;background:transparent;color:#5A6779;font-family:inherit;font-size:11px;font-weight:600;white-space:nowrap;cursor:pointer">Resolvidas</button>
+        <button type="button" aria-pressed="false" style="flex:1;min-width:0;min-height:36px;display:flex;align-items:center;justify-content:center;gap:4px;border:none;border-radius:8px;background:transparent;color:#5A6779;font-family:inherit;font-size:11px;font-weight:600;white-space:nowrap;cursor:pointer">Abertas</button>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center">
+        <span style="font-family:'Poppins',sans-serif;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#6A727F">Tags</span>
+        <button type="button" class="sd-chip" style="border:1px solid #D6E2F7;background:#EFF3FC;color:#013DAB;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:5px">lógica<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+        <button type="button" class="sd-chip" style="border:1px solid #E1E5EC;background:#fff;color:#5A6779;font-family:inherit;cursor:pointer">git</button>
+        <button type="button" class="sd-chip" style="border:1px solid #E1E5EC;background:#fff;color:#5A6779;font-family:inherit;cursor:pointer">python</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="padding:13px;border:1px solid #E7EBF2;border-radius:11px;background:#fff">
+          <div style="font-size:13.5px;font-weight:700;color:#16202E;line-height:1.4;letter-spacing:-.005em">Por que meu <b style="color:#013DAB">while</b> nunca para?</div>
+          <div style="font-size:11px;color:#8A93A3;margin-top:6px;font-weight:500">Marielly · há 2 h</div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 10px;margin-top:11px;padding-top:11px;border-top:1px solid #F0F2F6">
+            <span class="sd-chip" style="background:#DCF3E7;color:#0B6B4A;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;flex:none"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>resolvido</span>
+            <span style="font-size:11.5px;color:#013DAB;font-weight:700;white-space:nowrap">6 respostas</span>
+          </div>
+        </div>
+        <div style="padding:14px;border:1px solid #F3D9BC;border-radius:11px;background:#FFFCF9">
+          <div style="font-size:13.5px;font-weight:700;color:#16202E;line-height:1.4;letter-spacing:-.005em">Alguém entendeu a atividade do caixa?</div>
+          <div style="font-size:11px;color:#8A93A3;margin-top:6px;font-weight:500">Juliana · ontem</div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 10px;margin-top:11px;padding-top:11px;border-top:1px solid #F3E2CC">
+            <span class="sd-chip" style="background:#FEE9D8;color:#9A3412;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;flex:none"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 8v4.5"></path><path d="M12 16h.01"></path></svg>sem resposta</span>
+            <span style="font-size:11.5px;color:#013DAB;font-weight:700;display:inline-flex;align-items:center;gap:3px;white-space:nowrap;flex:none">seja o primeiro<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l6 7-6 7"></path></svg></span>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="sd-btn" style="width:100%;justify-content:center">Nova pergunta</button>
+    </div>
+    <nav class="sd-ph-nav" aria-label="Navegação do app">
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title" class="on"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"></circle><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"></path></svg>Perfil</a>
+    </nav>
+  </div>
+</div>
+      <div style="font-size:14.5px;font-weight:700;margin-top:14px">Fórum da comunidade</div>
+      <div style="font-size:13px;color:#D8D7F2;line-height:1.55;margin-top:2px">Tópicos, tags e busca para tirar dúvidas.</div>
+    </div>
+    <div>
+      <div class="sd-ph">
+  <div class="sd-ph-scr dk">
+      <div class="sd-ph-bar"><span>9:41</span><span style="display:flex;gap:4px;align-items:center"><svg width="14" height="10" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"></rect></svg></span></div>
+      <div style="display:flex;align-items:center;gap:9px;padding:4px 14px 10px;border-bottom:1px solid #1E2A42">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain;flex:none">
+        <span style="flex:1;min-width:0;font-size:12px;font-weight:600;color:#EAF1FB;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Bem-vinda, Marielly</span>
+        <span style="width:30px;height:30px;border-radius:50%;background:#16233A;display:flex;align-items:center;justify-content:center;position:relative;flex:none" role="img" aria-label="Notificações: 3 não lidas">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7FB3FF" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+          <span style="position:absolute;top:4px;right:5px;width:6px;height:6px;border-radius:50%;background:#C2410C;border:1.5px solid #111B2E"></span>
+        </span>
+        <image-slot id="marielly-avatar" shape="circle" placeholder="" src="assets/case/marielly-avatar.png" style="width:30px;height:30px;flex:none"></image-slot>
+      </div>
+    <div class="sd-ph-body">
+      <div style="min-width:0">
+        <h3 style="margin:0;font-size:18px;font-weight:700;color:#EAF1FB;line-height:1.2">Sua trilha</h3>
+        <div style="font-size:10.5px;color:#8698B5;margin-top:1px">Lógica de programação</div>
+      </div>
+      <div style="padding:14px;border-radius:12px;background:#16233A;border:1px solid #22304C">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px">
+          <span style="font-size:12.5px;font-weight:600;color:#EAF1FB">40% do curso</span>
+          <span style="font-family:'Poppins',sans-serif;font-size:10.5px;color:#7FB3FF">2/5 aulas</span>
+        </div>
+        <div style="height:7px;border-radius:5px;background:#0B1220;overflow:hidden"><div style="width:40%;height:100%;background:linear-gradient(90deg,#4C86F5,#7FB3FF);border-radius:5px"></div></div>
+        <p style="margin:10px 0 0;font-size:11px;line-height:1.55;color:#8698B5">Continue em <b style="color:#EAF1FB">Variáveis e tipos de dados</b>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <div style="padding:13px;border:1px solid #22304C;border-radius:11px;background:#111B2E;opacity:1">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <div style="font-size:12.5px;font-weight:600;color:#EAF1FB;line-height:1.35">Fundamentos da lógica</div>
+            <span style="font-family:'Poppins',sans-serif;font-size:10px;color:#7FB3FF;white-space:nowrap">40%</span>
+          </div>
+          <div style="font-size:10.5px;color:#8698B5;margin-top:4px">Módulo 01</div>
+          <div style="height:5px;border-radius:4px;background:#1E2A42;overflow:hidden;margin-top:9px"><div style="width:40%;height:100%;background:linear-gradient(90deg,#4C86F5,#7FB3FF);border-radius:4px"></div></div>
+        </div>
+        <div style="padding:13px;border:1px solid #1E2A42;border-radius:11px;background:transparent;opacity:.6">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <div style="font-size:12.5px;font-weight:600;color:#EAF1FB;line-height:1.35">Estruturas de repetição</div>
+            <span style="font-family:'Poppins',sans-serif;font-size:10px;color:#7C8CA8;white-space:nowrap">Bloqueado</span>
+          </div>
+          <div style="font-size:10.5px;color:#8698B5;margin-top:4px">Módulo 02</div>
+          <div style="height:5px;border-radius:4px;background:#1E2A42;overflow:hidden;margin-top:9px"><div style="width:0%;height:100%;background:#2C3A56;border-radius:4px"></div></div>
+        </div>
+        <div style="padding:13px;border:1px solid #1E2A42;border-radius:11px;background:transparent;opacity:.6">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <div style="font-size:12.5px;font-weight:600;color:#EAF1FB;line-height:1.35">Vetores e matrizes</div>
+            <span style="font-family:'Poppins',sans-serif;font-size:10px;color:#7C8CA8;white-space:nowrap">Bloqueado</span>
+          </div>
+          <div style="font-size:10.5px;color:#8698B5;margin-top:4px">Módulo 03</div>
+          <div style="height:5px;border-radius:4px;background:#1E2A42;overflow:hidden;margin-top:9px"><div style="width:0%;height:100%;background:#2C3A56;border-radius:4px"></div></div>
+        </div>
+      </div>
+      <button type="button" class="sd-btn" style="width:100%;justify-content:center;height:42px">Continuar aula</button>
+    </div>
+    <nav class="sd-ph-nav" aria-label="Navegação do app">
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title" class="on"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.4"></circle><path d="M5 20c1.2-3.4 3.8-5 7-5s5.8 1.6 7 5"></path></svg>Perfil</a>
+    </nav>
+  </div>
+</div>
+      <div style="font-size:14.5px;font-weight:700;margin-top:14px">Trilha de módulos</div>
+      <div style="font-size:13px;color:#D8D7F2;line-height:1.55;margin-top:2px">Progresso visível em cada módulo do curso.</div>
+    </div>
+    <div>
+      <div class="sd-ph">
+  <div class="sd-ph-scr">
+      <div class="sd-ph-bar"><span>9:41</span><span style="display:flex;gap:4px;align-items:center"><svg width="14" height="10" viewBox="0 0 18 12" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="5" y="5" width="3" height="7" rx="1"></rect><rect x="10" y="2" width="3" height="10" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"></rect></svg></span></div>
+      <div style="display:flex;align-items:center;gap:9px;padding:4px 14px 10px;border-bottom:1px solid #E7EBF2">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain;flex:none">
+        <span style="flex:1;font-size:12px;font-weight:600;color:#03337B">StartDev</span>
+        <span style="font-size:10.5px;color:#6A727F">Rascunho salvo</span>
+      </div>
+    <div class="sd-ph-body" style="gap:16px;padding:12px 16px 18px">
+      <a href="#ui-title" style="display:inline-flex;align-items:center;gap:6px;min-height:30px;font-size:12px;font-weight:600;color:#013DAB;text-decoration:none">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 6l-6 6 6 6"></path></svg>Voltar ao fórum</a>
+      <div>
+        <h3 style="margin:0;font-size:18px;font-weight:700;color:#03337B;line-height:1.25">Novo tópico</h3>
+        <p style="margin:4px 0 0;font-size:11.5px;line-height:1.5;color:#6A727F">Contexto claro recebe resposta mais rápido.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="sd-mt" style="font-size:11px;font-weight:600;color:#494949">Título <span style="color:#C2410C">*</span></label>
+        <div style="display:flex;align-items:center;min-height:42px;padding:0 12px;background:#fff;border:1.5px solid #013DAB;border-radius:9px;box-shadow:0 0 0 3px rgba(1,61,171,.08)">
+          <input id="sd-mt" type="text" value="Por que meu while nunca para de rodar?" readonly style="flex:1;min-width:0;border:none;outline:none;font-family:inherit;font-size:12.5px;color:#16202E;background:transparent;text-overflow:ellipsis">
+        </div>
+        <p style="margin:1px 0 0;font-size:10px;line-height:1.45;color:#8A93A3">Uma frase específica responde 3× mais rápido.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="sd-md" style="font-size:11px;font-weight:600;color:#494949">Texto <span style="color:#C2410C">*</span></label>
+        <div style="border:1px solid #E1E5EC;border-radius:9px;background:#fff;overflow:hidden">
+          <div style="display:flex;align-items:center;gap:1px;padding:5px 8px;border-bottom:1px solid #EDF0F5;background:#FAFBFD">
+            <span style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#5A6779"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M10 13a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 11a4 4 0 0 0-5.7 0L5.5 13.8a4 4 0 0 0 5.7 5.7l1-1"></path></svg></span>
+            <span style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#EAF0FB;color:#013DAB"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l-5-6 5-6"></path><path d="M15 6l5 6-5 6"></path></svg></span>
+            <span style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#5A6779"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"></path><circle cx="4" cy="6" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="4" cy="12" r="1.3" fill="currentColor" stroke="none"></circle><circle cx="4" cy="18" r="1.3" fill="currentColor" stroke="none"></circle></svg></span>
+            <span style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:6px;color:#5A6779"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"></path><path d="M3 5h2v3H3zM3 11h2v3H3zM3 17h2v3H3z" fill="currentColor" stroke="none"></path></svg></span>
+            <span style="margin-left:auto;font-size:10px;font-weight:700;color:#013DAB">Pré-visualizar</span>
+          </div>
+          <p id="sd-md" style="margin:0;padding:10px 12px 12px;font-size:11.5px;line-height:1.6;color:#494949">Estou no exercício da tabuada e o programa imprime a mesma linha para sempre. Coloquei o contador antes do laço e não achei o erro.</p>
+          <div style="display:flex;flex-direction:column;gap:6px;padding:10px;border-top:1px solid #EDF0F5;background:#FAFBFD">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 12px;border-radius:8px;border:1.5px solid #013DAB;color:#013DAB;font-size:11px;font-weight:700;flex:none;white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18v14H3z"></path><path d="M3 16l5-5 4 4 3-3 6 6"></path></svg>Adicionar imagem</span>
+            </div>
+            <span style="font-size:9.5px;color:#8A93A3">PNG ou JPG, até 2 MB</span>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label for="sd-mc" style="font-size:11px;font-weight:600;color:#494949">Categoria <span style="color:#C2410C">*</span></label>
+        <div style="position:relative;display:flex;align-items:center;min-height:42px;padding:0 12px;background:#fff;border:1px solid #E1E5EC;border-radius:9px">
+          <span id="sd-mc" style="flex:1;min-width:0;font-size:12.5px;color:#16202E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Lógica de programação</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6A727F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M6 9l6 6 6-6"></path></svg>
+        </div>
+        <p style="margin:1px 0 0;font-size:10px;line-height:1.45;color:#8A93A3">Define em qual mural o tópico aparece.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-size:11px;font-weight:600;color:#494949">Tags</span>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 10px;background:#fff;border:1px solid #E1E5EC;border-radius:9px">
+          <span style="display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 9px;border-radius:6px;background:#EAF0FB;color:#013DAB;font-size:10.5px;font-weight:600">repetição <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+          <span style="display:inline-flex;align-items:center;gap:5px;min-height:26px;padding:0 9px;border-radius:6px;background:#EAF0FB;color:#013DAB;font-size:10.5px;font-weight:600">python <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
+          <span style="font-size:11px;color:#9AA3B2">Adicione até 5 tags…</span>
+        </div>
+        <p style="margin:1px 0 0;font-size:10px;line-height:1.45;color:#8A93A3">Até 5 tags — elas alimentam o filtro do fórum.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:2px;padding-top:14px;border-top:1px solid #EDF0F5">
+        <div style="display:flex;gap:8px">
+          <button type="button" class="sd-btn ghost" style="flex:1;justify-content:center;height:42px;font-size:12.5px;padding:0 12px">Salvar rascunho</button>
+          <button type="button" class="sd-btn" style="flex:1;justify-content:center;height:42px;font-size:12.5px;padding:0 12px;gap:7px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l7 2.6L12.6 21z"></path><path d="M21 4L10 13.6"></path></svg>Publicar</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#0B6B4A"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Rascunho salvo há 1 min</div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div style="font-size:14.5px;font-weight:700;margin-top:14px">Novo tópico no mobile</div>
+      <div style="font-size:13px;color:#D8D7F2;line-height:1.55;margin-top:2px">Título, tag e descrição com código em uma tela só.</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:38px;margin-bottom:16px">
+    <button type="button" class="{{ tabAula }}" onClick="{{ goAula }}">Aula</button>
+    <button type="button" class="{{ tabAtiv }}" onClick="{{ goAtiv }}">Atividades</button>
+    <button type="button" class="{{ tabForum }}" onClick="{{ goForum }}">Fórum</button>
+    <button type="button" class="{{ tabNovo }}" onClick="{{ goNovo }}">Novo tópico</button>
+    <button type="button" class="{{ tabPontos }}" onClick="{{ goPontos }}">Pontos · dark</button>
+  </div>
+
+  <sc-if value="{{ isNovo }}" hint-placeholder-val="{{ false }}">
+  <div class="sd">
+    <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/forum/novo-topico</span></div>
+    <div class="sd-top">
+      <div style="display:flex;align-items:center;gap:11px;flex:1;min-width:0">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:32px;height:32px;object-fit:contain;flex:none">
+        <span class="sd-greet">Bem-vinda, Marielly</span>
+      </div>
+      <span class="sd-bell" role="img" aria-label="Notificações: 3 não lidas">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+        <span class="bdg"></span>
+      </span>
+      <image-slot id="marielly-avatar" shape="circle" class="sd-avatar" placeholder="" src="assets/case/marielly-avatar.png" style="width:38px;height:38px"></image-slot>
+    </div>
+    <div class="sd-body sd-2col">
+      <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title" class="on"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 10.5h11"></path><path d="M6.5 7.5H21l-1.8 6H8"></path></svg>Loja</a>
+      </nav>
+      <div class="sd-main sd-forum-main">
+        <div class="sd-hd">
+          <div class="sd-hd-t">
+            <h1 class="sd-h1" style="font-size:24px">Novo tópico</h1>
+          </div>
+          <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap">
+            <span class="sd-tab">Comunidade</span>
+            <span class="sd-tab on" style="gap:8px;display:inline-flex">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V9l8-5 8 5v11"></path><path d="M10 20v-6h4v6"></path></svg>Meus tópicos
+            </span>
+          </div>
+        </div>
+
+        <div class="sd-card sd-forum-card">
+          <form style="display:flex;flex-direction:column;gap:20px" onSubmit="{{ noop }}">
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <button type="button" class="sd-pill on">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Novo tópico
+              </button>
+              <button type="button" class="sd-pill">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l7 2.6L12.6 21z"></path><path d="M21 4L10 13.6"></path></svg>Publicados · 6
+              </button>
+              <button type="button" class="sd-pill">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 15a3 3 0 0 1-3 3H8l-4 3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3z"></path></svg>Rascunhos · 2
+              </button>
+            </div>
+
+            <div>
+              <label class="sd-lab" for="sd-t">Título <span style="color:#C2410C">*</span></label>
+              <input id="sd-t" class="sd-in" type="text" value="Por que meu while nunca para de rodar?" readonly>
+              <p class="sd-help">Resuma a dúvida em uma frase. Perguntas com título específico recebem resposta 3× mais rápido.</p>
+            </div>
+
+            <div>
+              <label class="sd-lab" for="sd-c">Texto <span style="color:#C2410C">*</span></label>
+              <div style="border:1px solid #E1E5EC;border-radius:9px;overflow:hidden;background:#fff">
+                <div class="sd-tool" role="toolbar" aria-label="Formatação do texto">
+                  <button type="button" aria-label="Inserir link"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a4 4 0 0 0 5.7 0l2.6-2.6a4 4 0 1 0-5.7-5.7L11.4 6"></path><path d="M14 11a4 4 0 0 0-5.7 0l-2.6 2.6a4 4 0 1 0 5.7 5.7L12.6 18"></path></svg></button>
+                  <button type="button" aria-label="Bloco de código"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5L4 12l5 7"></path><path d="M15 5l5 7-5 7"></path></svg></button>
+                  <button type="button" aria-label="Lista com marcadores"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11"></path><path d="M9 12h11"></path><path d="M9 18h11"></path><circle cx="4.5" cy="6" r="1.3"></circle><circle cx="4.5" cy="12" r="1.3"></circle><circle cx="4.5" cy="18" r="1.3"></circle></svg></button>
+                  <button type="button" aria-label="Lista numerada"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11"></path><path d="M9 12h11"></path><path d="M9 18h11"></path><path d="M4 5.5h1.6V9"></path><path d="M3.6 15.2c1.2-1.2 2.4-.4 2.4.5C6 16.8 3.6 17 3.6 18.6H6"></path></svg></button>
+                  <span style="flex:1"></span>
+                  <button type="button" style="width:auto;padding:0 11px;font-size:11.5px;font-weight:600;color:#013DAB">Pré-visualizar</button>
+                </div>
+                <textarea id="sd-c" rows="7" readonly style="width:100%;border:none;outline:none;resize:none;padding:14px;font-family:inherit;font-size:14px;line-height:1.7;color:#16202E;background:transparent">Estou no exercício da tabuada e o programa imprime a mesma linha para sempre. Coloquei o contador antes do laço, como no exemplo da aula 03, mas não achei o erro.</textarea>
+                <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;border-top:1px solid #E7EBF2;background:#FAFBFE;flex-wrap:wrap">
+                  <button type="button" style="min-height:38px;display:inline-flex;align-items:center;gap:8px;padding:0 14px;border-radius:999px;border:none;background:#EFF3FC;color:#013DAB;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"></rect><circle cx="8.5" cy="9.5" r="1.6"></circle><path d="M4 17l5-4.5 4 3.5 3-2.5 4 3.5"></path></svg>Adicionar imagem
+                  </button>
+                  <span style="font-size:11.5px;color:#6A727F">PNG ou JPG, até 2 MB</span>
+                  <span style="margin-left:auto;font-family:'Poppins',sans-serif;font-size:11px;color:#6A727F">168 / 2000</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" class="sd-diff">
+              <div>
+                <label class="sd-lab" for="sd-cat">Categoria <span style="color:#C2410C">*</span></label>
+                <div style="position:relative">
+                  <select id="sd-cat" class="sd-in" style="appearance:none;padding-right:38px">
+                    <option>Lógica de programação</option>
+                    <option>Ambiente de trabalho</option>
+                    <option>Git e GitHub</option>
+                    <option>Atividades e correções</option>
+                  </select>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6A727F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);pointer-events:none"><path d="M6 9l6 6 6-6"></path></svg>
+                </div>
+                <p class="sd-help">Define em qual mural o tópico aparece.</p>
+              </div>
+              <div>
+                <label class="sd-lab" for="sd-tags">Tags</label>
+                <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;min-height:46px;padding:6px 10px;background:#fff;border:1px solid #E1E5EC;border-radius:8px">
+                  <span class="sd-chip" style="background:#EFF3FC;color:#013DAB;border:1px solid #D6E2F7;display:inline-flex;align-items:center;gap:6px">repetição<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></span>
+                  <span class="sd-chip" style="background:#EFF3FC;color:#013DAB;border:1px solid #D6E2F7;display:inline-flex;align-items:center;gap:6px">python<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></span>
+                  <input id="sd-tags" type="text" placeholder="Adicione até 5 tags…" readonly style="flex:1;min-width:120px;border:none;outline:none;font-family:inherit;font-size:13.5px;color:#16202E;background:transparent">
+                </div>
+                <p class="sd-help">Enter para confirmar cada tag. Elas alimentam o filtro rápido do fórum.</p>
+              </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:4px;border-top:1px solid #E7EBF2">
+              <span style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6A727F;padding-top:16px">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Rascunho salvo há 1 min
+              </span>
+              <div style="display:flex;gap:12px;margin-left:auto;flex-wrap:wrap;padding-top:16px">
+                <button type="button" class="sd-btn ghost">Salvar rascunho</button>
+                <button type="submit" class="sd-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11l7 2.6L12.6 21z"></path><path d="M21 4L10 13.6"></path></svg>Publicar tópico
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <aside style="display:flex;flex-direction:column;gap:16px" aria-label="Seu perfil e orientações">
+            <div style="border:1px solid #E7EBF2;border-radius:12px;padding:20px;text-align:center;background:#fff">
+              <image-slot id="marielly-avatar" shape="circle" placeholder="Foto de Marielly" src="assets/case/marielly-avatar.png" style="width:84px;height:84px;margin:0 auto 12px"></image-slot>
+              <div style="font-size:14.5px;font-weight:600;color:#03337B">Marielly Barbosa</div>
+              <div style="font-size:11.5px;color:#6A727F;margin-top:2px">@marielly · turma 2020.2</div>
+              <div style="height:1px;background:#E7EBF2;margin:14px 0"></div>
+              <div style="display:flex;justify-content:center;gap:24px">
+                <div><div style="font-family:'Poppins',sans-serif;font-size:17px;font-weight:500;color:#013DAB">125</div><div style="font-size:10.5px;color:#6A727F">pontos</div></div>
+                <div><div style="font-family:'Poppins',sans-serif;font-size:17px;font-weight:500;color:#0B6B4A">8</div><div style="font-size:10.5px;color:#6A727F">respostas úteis</div></div>
+              </div>
+            </div>
+            <div style="border:1px solid #E7EBF2;border-radius:12px;padding:18px;background:#F7F9FD">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"></path></svg>
+                <span style="font-size:13px;font-weight:600;color:#03337B">Antes de publicar</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:9px">
+                <div style="display:flex;gap:8px;font-size:12px;line-height:1.55;color:#494949"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Diga o que já tentou e qual erro apareceu.</div>
+                <div style="display:flex;gap:8px;font-size:12px;line-height:1.55;color:#494949"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Cole o código no bloco próprio, não como imagem.</div>
+                <div style="display:flex;gap:8px;font-size:12px;line-height:1.55;color:#494949"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:3px"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg><span>Publicar vale <b style="color:#03337B">+2 pontos</b>; resposta útil, +5.</span></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div class="sd-foot">
+      <div style="display:flex;align-items:center;gap:9px">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain">
+        <span class="sd-wordmark" style="font-size:14px;font-weight:700;letter-spacing:-.01em">startdev</span>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#ui-title">Sobre nós</a><a href="#ui-title">Contato</a><a href="#ui-title">Termos de uso</a>
+      </div>
+      <span style="margin-left:auto;font-size:11px;color:#8A93A3">© 2020 Startdev</span>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{ isPontos }}" hint-placeholder-val="{{ false }}">
+  <div class="sd dk">
+    <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/pontos</span></div>
+    <div class="sd-top">
+      <div style="display:flex;align-items:center;gap:11px;flex:1;min-width:0">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:32px;height:32px;object-fit:contain;flex:none">
+        <span class="sd-greet">Bem-vinda, Marielly</span>
+      </div>
+      <span class="sd-bell" role="img" aria-label="Notificações: 3 não lidas">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7FB3FF" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+        <span class="bdg"></span>
+      </span>
+      <image-slot id="marielly-avatar" shape="circle" class="sd-avatar" placeholder="" src="assets/case/marielly-avatar.png" style="width:38px;height:38px"></image-slot>
+    </div>
+    <div class="sd-body sd-3col">
+      <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title" class="on"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 10.5h11"></path><path d="M6.5 7.5H21l-1.8 6H8"></path></svg>Loja</a>
+      </nav>
+      <div class="sd-main">
+        <div class="sd-hd">
+          <div class="sd-hd-t">
+            <h1 class="sd-h1" style="font-size:24px;color:#EAF1FB">Meus pontos</h1>
+          </div>
+          <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap">
+            <span class="sd-tab on">Extrato</span>
+            <span class="sd-tab">Recompensas</span>
+          </div>
+        </div>
+        <div>
+          <p class="sd-crumb" style="color:#8698B5">Saldo atualizado hoje</p>
+          <div style="font-family:'Nordeco','Nordeco Sans','Poppins','Poppins',sans-serif;font-size:34px;font-weight:700;color:#EAF1FB;line-height:1.1;letter-spacing:-.015em">840 <span style="font-size:15px;font-weight:500;color:#8698B5">pontos disponíveis</span></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+          <div class="sd-card" style="padding:16px 18px"><div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8698B5">Ganhos no mês</div><div style="font-size:24px;font-weight:700;color:#4ADE80;line-height:1.25">+320</div></div>
+          <div class="sd-card" style="padding:16px 18px"><div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8698B5">Resgatados</div><div style="font-size:24px;font-weight:700;color:#F0A5A5;line-height:1.25">−150</div></div>
+          <div class="sd-card" style="padding:16px 18px"><div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8698B5">Nível</div><div style="font-size:24px;font-weight:700;color:#7FB3FF;line-height:1.25">Prata</div></div>
+        </div>
+        <div class="sd-card" style="padding:20px 22px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px">
+            <span style="font-size:14px;font-weight:600;color:#EAF1FB">Faltam 160 pontos para o nível Ouro</span>
+            <span style="font-family:'Poppins',sans-serif;font-size:11px;color:#7FB3FF">840 / 1000</span>
+          </div>
+          <div style="height:8px;border-radius:5px;background:#1E2A42;overflow:hidden"><div style="width:84%;height:100%;background:linear-gradient(90deg,#4C86F5,#7FB3FF);border-radius:5px"></div></div>
+          <p style="margin:11px 0 0;font-size:12.5px;line-height:1.6;color:#8698B5">No nível Ouro, o desconto na loja de cursos sobe de 10% para 25%.</p>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:15px;font-weight:600;color:#EAF1FB">Extrato</span>
+            <span style="font-size:11.5px;color:#8698B5">Últimos 30 dias</span>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:14px;padding:13px 0;border-bottom:1px solid #1E2A42;align-items:center">
+            <div><div style="font-size:13.5px;font-weight:600;color:#EAF1FB">Resposta marcada como útil</div><div style="font-size:11.5px;color:#8698B5;margin-top:2px">Hoje · Fórum</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:#4ADE80">+5</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:14px;padding:13px 0;border-bottom:1px solid #1E2A42;align-items:center">
+            <div><div style="font-size:13.5px;font-weight:600;color:#EAF1FB">Algoritmo de média escolar entregue</div><div style="font-size:11.5px;color:#8698B5;margin-top:2px">12 jan · Atividade</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:#4ADE80">+10</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:14px;padding:13px 0;border-bottom:1px solid #1E2A42;align-items:center">
+            <div><div style="font-size:13.5px;font-weight:600;color:#EAF1FB">Resgate: curso de Git e GitHub</div><div style="font-size:11.5px;color:#8698B5;margin-top:2px">10 jan · Loja</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:#F0A5A5">−150</div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:14px;padding:13px 0;border-bottom:1px solid #1E2A42;align-items:center">
+            <div><div style="font-size:13.5px;font-weight:600;color:#EAF1FB">Módulo 01 concluído</div><div style="font-size:11.5px;color:#8698B5;margin-top:2px">08 jan · Curso</div></div>
+            <div style="text-align:right;font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;color:#4ADE80">+50</div>
+          </div>
+        </div>
+      </div>
+      <aside class="sd-col" style="border-right:none;border-left:1px solid #1E2A42" aria-label="Como ganhar pontos">
+        <div>
+          <div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8698B5;margin-bottom:11px">Como ganhar pontos</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="display:flex;justify-content:space-between;gap:10px;font-size:12.5px"><span style="color:#C7D2E4">Concluir uma aula</span><b style="color:#4ADE80;font-family:'Poppins',sans-serif">+10</b></div>
+            <div style="display:flex;justify-content:space-between;gap:10px;font-size:12.5px"><span style="color:#C7D2E4">Entregar atividade no prazo</span><b style="color:#4ADE80;font-family:'Poppins',sans-serif">+25</b></div>
+            <div style="display:flex;justify-content:space-between;gap:10px;font-size:12.5px"><span style="color:#C7D2E4">Resposta útil no fórum</span><b style="color:#4ADE80;font-family:'Poppins',sans-serif">+5</b></div>
+            <div style="display:flex;justify-content:space-between;gap:10px;font-size:12.5px"><span style="color:#C7D2E4">Avaliar uma aula</span><b style="color:#4ADE80;font-family:'Poppins',sans-serif">+2</b></div>
+          </div>
+        </div>
+        <div class="sd-card" style="padding:16px;background:#16233A;border-color:#22304C">
+          <div style="font-size:13px;font-weight:600;color:#EAF1FB;margin-bottom:6px">Loja de recompensas</div>
+          <p style="margin:0 0 12px;font-size:11.5px;line-height:1.55;color:#8698B5">7 cursos ao seu alcance com o saldo atual.</p>
+          <button type="button" class="sd-btn" style="height:40px;font-size:13px">Ver a loja</button>
+        </div>
+      </aside>
+    </div>
+    <div class="sd-foot">
+      <div style="display:flex;align-items:center;gap:9px">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain">
+        <span class="sd-wordmark" style="font-size:14px;font-weight:700;letter-spacing:-.01em">startdev</span>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#ui-title">Sobre nós</a><a href="#ui-title">Contato</a><a href="#ui-title">Termos de uso</a>
+      </div>
+      <span style="margin-left:auto;font-size:11px;color:#8A93A3">© 2020 Startdev</span>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{ isAtiv }}" hint-placeholder-val="{{ false }}">
+  <div class="sd">
+    <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/atividades</span></div>
+    <div class="sd-top">
+      <div style="display:flex;align-items:center;gap:11px;flex:1;min-width:0">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:32px;height:32px;object-fit:contain;flex:none">
+        <span class="sd-greet">Bem-vinda, Marielly</span>
+      </div>
+      <span class="sd-bell" role="img" aria-label="Notificações: 3 não lidas">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+        <span class="bdg"></span>
+      </span>
+      <image-slot id="marielly-avatar" shape="circle" class="sd-avatar" placeholder="" src="assets/case/marielly-avatar.png" style="width:38px;height:38px"></image-slot>
+    </div>
+    <div class="sd-body sd-2col">
+      <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title" class="on"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 10.5h11"></path><path d="M6.5 7.5H21l-1.8 6H8"></path></svg>Loja</a>
+      </nav>
+      <div class="sd-main">
+        <div class="sd-hd">
+          <div class="sd-hd-t">
+            <h1 class="sd-h1" style="font-size:24px">Atividades</h1>
+          </div>
+          <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap">
+            <span class="sd-tab on">Pendentes · 3</span>
+            <span class="sd-tab">Concluídas · 5</span>
+            <span class="sd-tab">Todas</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+          <div class="sd-card" style="padding:16px 18px"><div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6A727F">Em atraso</div><div style="font-size:26px;font-weight:700;color:#C2410C;line-height:1.2">1</div></div>
+          <div class="sd-card" style="padding:16px 18px"><div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6A727F">Abertas</div><div style="font-size:26px;font-weight:700;color:#013DAB;line-height:1.2">2</div></div>
+          <div class="sd-card" style="padding:16px 18px"><div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6A727F">Concluídas</div><div style="font-size:26px;font-weight:700;color:#0F9D6B;line-height:1.2">5</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="sd-act" style="border-color:#FBD5B5;background:#FFF9F4">
+            <div>
+              <span class="sd-chip" style="background:#FEE9D8;color:#9A3412">Venceu há 2 dias</span>
+              <h3 style="margin-top:9px">Algoritmo de troca de valores</h3>
+              <p>Escreva um algoritmo que troque o conteúdo de duas variáveis sem usar uma terceira. Módulo 01 · Aula 03.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+              <span style="font-size:11.5px;color:#6A727F">Nível fácil · 10 pontos</span>
+              <button type="button" class="sd-btn" style="background:#C2410C">Resolver agora</button>
+            </div>
+          </div>
+          <div class="sd-act">
+            <div>
+              <span class="sd-chip" style="background:#E6EAF3;color:#03337B">Entrega em 12/01</span>
+              <h3 style="margin-top:9px">Fluxograma de um caixa eletrônico</h3>
+              <p>Represente em fluxograma o saque com validação de saldo e limite diário. Módulo 01 · Aula 02.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+              <span style="font-size:11.5px;color:#6A727F">Nível médio · 25 pontos</span>
+              <button type="button" class="sd-btn ghost">Continuar rascunho</button>
+            </div>
+          </div>
+          <div class="sd-act">
+            <div>
+              <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">Liberada com o Módulo 02</span>
+              <h3 style="margin-top:9px">Tabuada com estrutura de repetição</h3>
+              <p>Imprima a tabuada de um número informado, usando <b>for</b> e depois <b>while</b>, comparando os dois.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+              <span style="font-size:11.5px;color:#6A727F">Nível médio · 25 pontos</span>
+              <button type="button" class="sd-btn ghost" style="border-color:#C3CBD9;color:#8A93A3">Bloqueada</button>
+            </div>
+          </div>
+          <div class="sd-act" style="background:#F7FBF8;border-color:#CBE9DA">
+            <div>
+              <span class="sd-chip" style="background:#DCF3E7;color:#0B6B4A"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Entregue · nota 9,0</span>
+              <h3 style="margin-top:9px">Pseudocódigo da média escolar</h3>
+              <p>Corrigido em 05/01 com comentário do monitor sobre nomes de variáveis.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start">
+              <span style="font-size:11.5px;color:#6A727F">10 de 10 pontos</span>
+              <button type="button" class="sd-btn ghost">Ver correção</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sd-foot">
+      <div style="display:flex;align-items:center;gap:9px">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain">
+        <span class="sd-wordmark" style="font-size:14px;font-weight:700;letter-spacing:-.01em">startdev</span>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#ui-title">Sobre nós</a><a href="#ui-title">Contato</a><a href="#ui-title">Termos de uso</a>
+      </div>
+      <span style="margin-left:auto;font-size:11px;color:#8A93A3">© 2020 Startdev</span>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isForum }}" hint-placeholder-val="{{ false }}">
+  <div class="sd">
+    <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/forum</span></div>
+    <div class="sd-top">
+      <div style="display:flex;align-items:center;gap:11px;flex:1;min-width:0">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:32px;height:32px;object-fit:contain;flex:none">
+        <span class="sd-greet">Bem-vinda, Marielly</span>
+      </div>
+      <span class="sd-bell" role="img" aria-label="Notificações: 3 não lidas">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+        <span class="bdg"></span>
+      </span>
+      <image-slot id="marielly-avatar" shape="circle" class="sd-avatar" placeholder="" src="assets/case/marielly-avatar.png" style="width:38px;height:38px"></image-slot>
+    </div>
+    <div class="sd-body sd-2col">
+      <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title" class="on"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 10.5h11"></path><path d="M6.5 7.5H21l-1.8 6H8"></path></svg>Loja</a>
+      </nav>
+      <div class="sd-main sd-forum-main">
+        <div class="sd-hd">
+          <div class="sd-hd-t">
+            <h1 class="sd-h1" style="font-size:24px">Fórum</h1>
+          </div>
+          <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap">
+            <span class="sd-tab on" style="gap:8px;display:inline-flex">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="3"></circle><path d="M3 19c1-3 3.2-4.4 6-4.4S14 16 15 19"></path><path d="M16 6.2a3 3 0 0 1 0 5.6"></path></svg>Comunidade</span>
+            <span class="sd-tab">Meus tópicos · 2</span>
+          </div>
+        </div>
+
+        <div class="sd-card sd-forum-card">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <div style="display:flex;align-items:center;gap:10px;height:44px;padding:0 14px;background:#F7F9FD;border:1px solid #E7EBF2;border-radius:9px;flex:1;min-width:200px">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A3" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+                <span style="font-size:13px;color:#8A93A3">Pesquise por assunto, erro ou linguagem…</span>
+              </div>
+              <button type="button" class="sd-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Novo tópico
+              </button>
+            </div>
+            <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+              <div role="group" aria-label="Filtrar por situação" style="display:inline-flex;background:#EFF1F5;border:1px solid #E1E5EC;border-radius:10px;padding:3px;gap:3px">
+                <button type="button" aria-pressed="true" style="min-height:38px;padding:0 15px;border:none;border-radius:8px;background:#013DAB;color:#fff;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px">Todos <span style="font-family:'Poppins',sans-serif;font-size:10.5px;opacity:.75">42</span></button>
+                <button type="button" aria-pressed="false" style="min-height:38px;padding:0 15px;border:none;border-radius:8px;background:transparent;color:#5A6779;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0B6B4A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Resolvidas <span style="font-family:'Poppins',sans-serif;font-size:10.5px;color:#8A93A3">31</span></button>
+                <button type="button" aria-pressed="false" style="min-height:38px;padding:0 15px;border:none;border-radius:8px;background:transparent;color:#5A6779;font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9A3412" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 8v4.5"></path><path d="M12 16h.01"></path></svg>Sem resposta <span style="font-family:'Poppins',sans-serif;font-size:10.5px;color:#8A93A3">4</span></button>
+              </div>
+              <div style="display:flex;gap:7px;flex-wrap:wrap;align-items:center">
+                <span style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#6A727F">Tags</span>
+                <button type="button" class="sd-chip" style="border:1px solid #D6E2F7;background:#EFF3FC;color:#013DAB;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px">lógica<span style="width:1px;height:11px;background:#BBD0F0"></span><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"></path><path d="M18 6L6 18"></path></svg></button>
+                <button type="button" class="sd-chip" style="border:1px solid #E1E5EC;background:#fff;color:#5A6779;font-family:inherit;cursor:pointer">repetição</button>
+                <button type="button" class="sd-chip" style="border:1px solid #E1E5EC;background:#fff;color:#5A6779;font-family:inherit;cursor:pointer">git</button>
+                <button type="button" class="sd-chip" style="border:1px solid #E1E5EC;background:#fff;color:#5A6779;font-family:inherit;cursor:pointer">ambiente</button>
+                <button type="button" class="sd-chip" style="border:1px solid #E1E5EC;background:#fff;color:#5A6779;font-family:inherit;cursor:pointer">python</button>
+              </div>
+            </div>
+
+            <article style="border:1px solid #E7EBF2;border-left:4px solid #0F9D6B;border-radius:11px;background:#fff;padding:20px 22px;display:flex;flex-direction:column;gap:13px">
+              <div style="display:flex;align-items:center;gap:11px">
+                <span class="sd-topic-av" style="width:36px;height:36px;border-radius:50%;background:#D8DEE9;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;color:#5A6779">MB</span>
+                <div style="flex:1">
+                  <div style="font-size:13px;font-weight:600;color:#03337B">@marielly</div>
+                  <div style="font-size:11.5px;color:#6A727F">12 nov 2020, 19:35 · Lógica de programação</div>
+                </div>
+                <span class="sd-chip" style="background:#DCF3E7;color:#0B6B4A">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>Resolvido
+                </span>
+              </div>
+              <h2 style="margin:0;font-size:21px;font-weight:700;color:#16202E;line-height:1.25">Por que meu <b style="color:#013DAB">while</b> nunca para de rodar?</h2>
+              <p style="margin:0;font-size:14px;line-height:1.7;color:#494949">Estou fazendo o exercício da tabuada e o programa imprime a mesma linha para sempre. Coloquei o contador antes do laço, como no exemplo da aula 03, mas não descobri onde está o erro.</p>
+              <pre style="margin:0;background:#F2F5FA;border:1px solid #E7EBF2;border-radius:8px;padding:13px 15px;overflow-x:auto"><code style="font-family:'Poppins',sans-serif;font-size:12.5px;line-height:1.7;color:#16202E">i = 1
+while i &lt;= 10:
+    print(numero * i)</code></pre>
+              <div style="display:flex;gap:7px;flex-wrap:wrap">
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">repetição</span>
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">python</span>
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">aula 03</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:13px;border-top:1px solid #E7EBF2">
+                <button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:7px;background:#EFF3FC;border:1px solid #D6E2F7;border-radius:9px;padding:0 14px;font-family:inherit;font-size:13px;font-weight:600;color:#013DAB;cursor:pointer">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21V10l5-7 1.6 1.2a2 2 0 0 1 .7 2L13 10h5.5a2 2 0 0 1 2 2.4l-1.4 7A2 2 0 0 1 17 21z"></path><path d="M7 10H4v11h3"></path></svg>Útil · 12
+                </button>
+                <button type="button" aria-label="Marcar como não útil" style="min-height:44px;width:44px;display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #E7EBF2;border-radius:9px;color:#6A727F;cursor:pointer">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3v11l-5 7-1.6-1.2a2 2 0 0 1-.7-2L11 14H5.5a2 2 0 0 1-2-2.4l1.4-7A2 2 0 0 1 7 3z"></path><path d="M17 14h3V3h-3"></path></svg>
+                </button>
+                <span style="margin-left:auto;display:flex;gap:16px;align-items:center">
+                  <button type="button" style="min-height:44px;background:none;border:none;font-family:inherit;font-size:13px;font-weight:600;color:#013DAB;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"></path></svg>Esconder 2 respostas
+                  </button>
+                  <button type="button" style="min-height:44px;background:none;border:none;font-family:inherit;font-size:13px;font-weight:600;color:#013DAB;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5L4 10l5 5"></path><path d="M4 10h10a6 6 0 0 1 6 6v3"></path></svg>Responder
+                  </button>
+                </span>
+              </div>
+            </article>
+
+            <div style="display:flex;flex-direction:column;gap:11px;padding-left:34px">
+              <article style="border:1px solid #E7EBF2;border-left:4px solid #4C86F5;border-radius:11px;background:#fff;padding:17px 20px;display:flex;flex-direction:column;gap:11px">
+                <div style="display:flex;align-items:center;gap:9px">
+                  <span style="width:28px;height:28px;border-radius:50%;background:#DCF3E7;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0B6B4A">RS</span>
+                  <span style="font-size:12.5px;font-weight:600;color:#03337B">@rafael</span>
+                  <span class="sd-chip" style="background:#DCF3E7;color:#0B6B4A">resposta aceita</span>
+                  <span style="margin-left:auto;font-size:11.5px;color:#6A727F">há 2 h</span>
+                </div>
+                <p style="margin:0;font-size:13.5px;line-height:1.7;color:#494949"><b style="color:#03337B">@marielly</b>, falta incrementar o contador dentro do laço. Como o <b>i</b> nunca muda, a condição continua verdadeira para sempre. Acrescente <b>i = i + 1</b> como última linha do bloco.</p>
+                <div style="display:flex;align-items:center;gap:14px;padding-top:11px;border-top:1px solid #E7EBF2">
+                  <span style="font-size:11.5px;color:#6A727F">8 pessoas acharam útil</span>
+                  <button type="button" style="min-height:44px;margin-left:auto;background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:600;color:#013DAB;cursor:pointer">Responder</button>
+                </div>
+              </article>
+              <article style="border:1px solid #E7EBF2;border-left:4px solid #C3CBD9;border-radius:11px;background:#fff;padding:17px 20px;display:flex;flex-direction:column;gap:11px">
+                <div style="display:flex;align-items:center;gap:9px">
+                  <span style="width:28px;height:28px;border-radius:50%;background:#EFF1F5;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#5A6779">JL</span>
+                  <span style="font-size:12.5px;font-weight:600;color:#03337B">@juliana</span>
+                  <span style="margin-left:auto;font-size:11.5px;color:#6A727F">há 1 h</span>
+                </div>
+                <p style="margin:0;font-size:13.5px;line-height:1.7;color:#494949">Complementando: se preferir, o <b>for</b> resolve o mesmo caso sem contador manual — foi o que o monitor mostrou na correção da minha atividade.</p>
+                <div style="display:flex;align-items:center;gap:14px;padding-top:11px;border-top:1px solid #E7EBF2">
+                  <span style="font-size:11.5px;color:#6A727F">3 pessoas acharam útil</span>
+                  <button type="button" style="min-height:44px;margin-left:auto;background:none;border:none;font-family:inherit;font-size:12.5px;font-weight:600;color:#013DAB;cursor:pointer">Responder</button>
+                </div>
+              </article>
+            </div>
+
+            <article style="border:1px solid #FBD5B5;border-left:4px solid #EA8C4A;border-radius:11px;background:#FFFCF9;padding:20px 22px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:11px">
+                <span style="width:36px;height:36px;border-radius:50%;background:#FEE9D8;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;color:#9A3412">JL</span>
+                <div style="flex:1">
+                  <div style="font-size:13px;font-weight:600;color:#03337B">@juliana</div>
+                  <div style="font-size:11.5px;color:#6A727F">ontem, 21:04 · Atividades</div>
+                </div>
+                <span class="sd-chip" style="background:#FEE9D8;color:#9A3412">Sem resposta</span>
+              </div>
+              <h2 style="margin:0;font-size:19px;font-weight:700;color:#16202E;line-height:1.3">Alguém entendeu o enunciado da atividade do caixa eletrônico?</h2>
+              <p style="margin:0;font-size:14px;line-height:1.7;color:#494949">A parte da validação de limite diário não ficou clara para mim: o limite conta por saque ou pela soma do dia?</p>
+              <div style="display:flex;gap:7px;flex-wrap:wrap">
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">fluxograma</span>
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">atividade 02</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;padding-top:12px;border-top:1px solid #F3DFCC">
+                <span style="font-size:12.5px;color:#9A3412;font-weight:600">Seja a primeira pessoa a responder · +5 pontos</span>
+                <button type="button" class="sd-btn" style="margin-left:auto;height:40px;background:#C2410C">Responder</button>
+              </div>
+            </article>
+
+            <article style="border:1px solid #E7EBF2;border-left:4px solid #4C86F5;border-radius:11px;background:#fff;padding:20px 22px;display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:11px">
+                <span style="width:36px;height:36px;border-radius:50%;background:#D8DEE9;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;color:#5A6779">CT</span>
+                <div style="flex:1">
+                  <div style="font-size:13px;font-weight:600;color:#03337B">@carlos</div>
+                  <div style="font-size:11.5px;color:#6A727F">10 nov 2020, 08:12 · Ambiente de trabalho</div>
+                </div>
+              </div>
+              <h2 style="margin:0;font-size:19px;font-weight:700;color:#16202E;line-height:1.3">Instalei o VS Code mas o terminal não abre</h2>
+              <p style="margin:0;font-size:14px;line-height:1.7;color:#494949">No Windows aparece a mensagem de que o interpretador não foi encontrado. Já reinstalei duas vezes e o problema continua.</p>
+              <div style="display:flex;gap:7px;flex-wrap:wrap">
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">ambiente</span>
+                <span class="sd-chip" style="background:#EFF1F5;color:#5A6779">windows</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:12px;border-top:1px solid #E7EBF2">
+                <button type="button" style="min-height:44px;display:inline-flex;align-items:center;gap:7px;background:#F7F9FD;border:1px solid #E7EBF2;border-radius:9px;padding:0 14px;font-family:inherit;font-size:13px;font-weight:600;color:#494949;cursor:pointer">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 21V10l5-7 1.6 1.2a2 2 0 0 1 .7 2L13 10h5.5a2 2 0 0 1 2 2.4l-1.4 7A2 2 0 0 1 17 21z"></path><path d="M7 10H4v11h3"></path></svg>Útil · 4
+                </button>
+                <button type="button" style="min-height:44px;margin-left:auto;background:none;border:none;font-family:inherit;font-size:13px;font-weight:600;color:#013DAB;cursor:pointer;display:inline-flex;align-items:center;gap:7px">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"></path></svg>Mostrar 11 respostas
+                </button>
+              </div>
+            </article>
+          </div>
+
+          <aside style="display:flex;flex-direction:column;gap:22px" aria-label="Destaques do fórum">
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;padding-bottom:9px;border-bottom:1px solid #E7EBF2;margin-bottom:11px">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"></path></svg>
+                <span style="font-size:13.5px;font-weight:600;color:#03337B">Importante</span>
+              </div>
+              <p style="margin:0;font-size:12.5px;line-height:1.65;color:#494949">Leia as <a href="#ui-title" style="color:#013DAB;font-weight:600;text-decoration:none">regras da comunidade</a> antes de publicar. Respostas com código formatado recebem ajuda mais rápido.</p>
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:8px;padding-bottom:9px;border-bottom:1px solid #E7EBF2;margin-bottom:11px">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><path d="M10 13a4 4 0 0 0 5.7 0l2.6-2.6a4 4 0 1 0-5.7-5.7L11.4 6"></path><path d="M14 11a4 4 0 0 0-5.7 0l-2.6 2.6a4 4 0 1 0 5.7 5.7L12.6 18"></path></svg>
+                <span style="font-size:13.5px;font-weight:600;color:#03337B">Links em destaque</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:3px">
+                <a href="#ui-title" style="min-height:44px;display:flex;align-items:center;font-size:12.5px;color:#013DAB;font-weight:500;text-decoration:none">Como formatar código no fórum</a>
+                <a href="#ui-title" style="min-height:44px;display:flex;align-items:center;font-size:12.5px;color:#013DAB;font-weight:500;text-decoration:none">Repositório de exemplos das aulas</a>
+                <a href="#ui-title" style="min-height:44px;display:flex;align-items:center;font-size:12.5px;color:#013DAB;font-weight:500;text-decoration:none">Erros mais comuns em lógica</a>
+              </div>
+            </div>
+            <div class="sd-card" style="padding:16px;background:#F7F9FD">
+              <div style="font-size:13px;font-weight:600;color:#03337B;margin-bottom:6px">Responda e ganhe pontos</div>
+              <p style="margin:0;font-size:11.5px;line-height:1.55;color:#494949">Cada resposta marcada como útil vale 5 pontos na loja de recompensas.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div class="sd-foot">
+      <div style="display:flex;align-items:center;gap:9px">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain">
+        <span class="sd-wordmark" style="font-size:14px;font-weight:700;letter-spacing:-.01em">startdev</span>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#ui-title">Sobre nós</a><a href="#ui-title">Contato</a><a href="#ui-title">Termos de uso</a>
+      </div>
+      <span style="margin-left:auto;font-size:11px;color:#8A93A3">© 2020 Startdev</span>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isAula }}" hint-placeholder-val="{{ true }}">
+  <div class="sd">
+    <div class="sd-chrome"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span class="sd-url">app.startdev.com.br/curso/logica-de-programacao/aula-03</span></div>
+    <div class="sd-top">
+      <div style="display:flex;align-items:center;gap:11px;flex:1;min-width:0">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:32px;height:32px;object-fit:contain;flex:none">
+        <span class="sd-greet">Bem-vinda, Marielly</span>
+      </div>
+      <span class="sd-bell" role="img" aria-label="Notificações: 3 não lidas">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"></path><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"></path></svg>
+        <span class="bdg"></span>
+      </span>
+      <image-slot id="marielly-avatar" shape="circle" class="sd-avatar" placeholder="" src="assets/case/marielly-avatar.png" style="width:38px;height:38px"></image-slot>
+    </div>
+    <div class="sd-body">
+      <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+        <a href="#ui-title">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5 9.5V21h14V9.5"></path></svg>Início</a>
+        <a href="#ui-title" class="on">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8l10-4 10 4-10 4z"></path><path d="M6 10.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"></path></svg>Cursos</a>
+        <a href="#ui-title">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>Atividades</a>
+        <a href="#ui-title">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 1 1-3.2-6.4"></path><path d="M3 20l1.6-4"></path></svg>Fórum</a>
+        <a href="#ui-title">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="20" r="1.4"></circle><circle cx="18" cy="20" r="1.4"></circle><path d="M3 4h2l2.6 10.5h11"></path><path d="M6.5 7.5H21l-1.8 6H8"></path></svg>Loja</a>
+      </nav>
+
+      <aside class="sd-col" aria-label="Currículo do curso">
+        <div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
+            <span style="font-size:14px;font-weight:600;color:#03337B">Módulo 01</span>
+            <span style="font-family:'Poppins',sans-serif;font-size:11px;color:#013DAB;font-weight:500">2/5 aulas</span>
+          </div>
+          <div style="height:6px;border-radius:4px;background:#E6EAF3;overflow:hidden"><div style="width:40%;height:100%;background:#013DAB;border-radius:4px"></div></div>
+          <div style="font-size:11.5px;color:#6A727F;margin-top:7px;line-height:1.5">Faltam 3 aulas para liberar o Módulo 02.</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;height:40px;padding:0 12px;background:#F7F9FD;border:1px solid #E7EBF2;border-radius:9px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8A93A3" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <span style="font-size:12.5px;color:#8A93A3">Buscar aula…</span>
+        </div>
+        <div>
+          <div style="font-family:'Poppins',sans-serif;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A93A3;margin-bottom:8px">Lógica de programação</div>
+          <div style="display:flex;flex-direction:column;gap:3px">
+            <a class="sd-lesson" href="#ui-title"><span class="sd-dot" style="border-color:#0F9D6B;background:#E4F6EE"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg></span><span class="tt">O que é um algoritmo</span><span class="mn">18 min</span></a>
+            <a class="sd-lesson" href="#ui-title"><span class="sd-dot" style="border-color:#0F9D6B;background:#E4F6EE"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#0F9D6B" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg></span><span class="tt">Pseudocódigo e fluxogramas</span><span class="mn">24 min</span></a>
+            <a class="sd-lesson on" href="#ui-title"><span class="sd-dot" style="border-color:#013DAB;background:#013DAB"><svg width="9" height="9" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"></path></svg></span><span class="tt">Variáveis e tipos de dados</span><span class="mn">45 min</span></a>
+            <a class="sd-lesson" href="#ui-title"><span class="sd-dot"></span><span class="tt">Operadores e expressões</span><span class="mn">32 min</span></a>
+            <a class="sd-lesson" href="#ui-title"><span class="sd-dot"></span><span class="tt">Condicionais: if e else</span><span class="mn">40 min</span></a>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px">
+            <span style="font-size:13.5px;font-weight:600;color:#8A93A3">Módulo 02</span>
+            <span style="font-size:10.5px;color:#8A93A3;display:flex;align-items:center;gap:5px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>Bloqueado</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:3px;opacity:.55">
+            <a class="sd-lesson" href="#ui-title" style="pointer-events:none"><span class="sd-dot"></span><span class="tt">Estruturas de repetição</span><span class="mn">45 min</span></a>
+            <a class="sd-lesson" href="#ui-title" style="pointer-events:none"><span class="sd-dot"></span><span class="tt">Vetores e matrizes</span><span class="mn">30 min</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="sd-main">
+        <div class="sd-hd">
+          <div class="sd-hd-t">
+            <h1 class="sd-h1" style="font-size:24px">Lógica de programação</h1>
+          </div>
+          <div style="display:flex;gap:8px;margin-left:auto;flex-wrap:wrap">
+            <span class="sd-tab on">Aula</span>
+            <span class="sd-tab">Anotações · 3</span>
+            <span class="sd-tab">Atividade · 1</span>
+          </div>
+        </div>
+        <div>
+          <p class="sd-crumb">Módulo 01 · Aula 03 · 45 min</p>
+          <h2 style="margin:0;font-family:'Nordeco','Nordeco Sans','Poppins','Poppins',sans-serif;font-size:26px;font-weight:700;line-height:1.22;color:#03337B;letter-spacing:-.01em">Variáveis e tipos de dados</h2>
+        </div>
+        <p class="sd-lead">Como a memória guarda um valor, por que <b>int</b> e <b>String</b> não se misturam, e o que acontece quando você troca o conteúdo de duas variáveis. É a base do exercício de algoritmos do módulo.</p>
+        <div style="position:relative;border-radius:12px;overflow:hidden;background:#0F1B2E;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center">
+          <span style="width:62px;height:62px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 22px rgba(0,0,0,.3)">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#013DAB" aria-hidden="true"><path d="M7 4l13 8-13 8z"></path></svg>
+          </span>
+          <div style="position:absolute;left:0;right:0;bottom:0;padding:12px 16px;background:linear-gradient(transparent,rgba(0,0,0,.72))">
+            <div style="height:4px;border-radius:3px;background:rgba(255,255,255,.32);overflow:hidden;margin-bottom:9px"><div style="width:22%;height:100%;background:#4C86F5"></div></div>
+            <div style="display:flex;justify-content:space-between;font-family:'Poppins',sans-serif;font-size:10.5px;color:rgba(255,255,255,.9)"><span>09:52</span><span>45:00</span></div>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:13px">
+            <span style="font-size:15px;font-weight:600;color:#03337B">Material da aula</span>
+            <span style="font-size:11.5px;color:#6A727F">3 itens</span>
+          </div>
+          <div class="sd-mat">
+            <a href="#ui-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path></svg>
+              <span class="nm">Slides da aula</span><span class="ds">variaveis-tipos.pdf · 1,2 MB</span><span class="go">Baixar →</span>
+            </a>
+            <a href="#ui-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l-6-6 6-6"></path><path d="M15 6l6 6-6 6"></path></svg>
+              <span class="nm">Código da aula</span><span class="ds">Exemplos de troca de valores, no GitHub</span><span class="go">Abrir repositório →</span>
+            </a>
+            <a href="#ui-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#013DAB" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"></path><path d="M15.5 4.5l4 4L9 19H5v-4z"></path></svg>
+              <span class="nm">Exercício do módulo</span><span class="ds">Prazo: 12 de janeiro · nível fácil</span><span class="go">Resolver →</span>
+            </a>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding-top:6px;flex-wrap:wrap">
+          <button type="button" class="sd-btn">Marcar como concluída
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"></path></svg>
+          </button>
+          <button type="button" class="sd-btn ghost">Próxima: Operadores e expressões</button>
+        </div>
+      </div>
+    </div>
+    <div class="sd-foot">
+      <div style="display:flex;align-items:center;gap:9px">
+        <img src="assets/case/startdev-mark.png" alt="Logo StartDev" style="width:26px;height:26px;object-fit:contain">
+        <span class="sd-wordmark" style="font-size:14px;font-weight:700;letter-spacing:-.01em">startdev</span>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
+        <a href="#ui-title">Sobre nós</a><a href="#ui-title">Contato</a><a href="#ui-title">Termos de uso</a>
+      </div>
+      <span style="margin-left:auto;font-size:11px;color:#8A93A3">© 2020 Startdev</span>
+    </div>
+  </div>
+  </sc-if>
+</section>
+
+
+<!-- ============ IMPACTO: RESTRIÇÃO COMO SENIORIDADE (banda roxo) ============ -->
+<div id="cap-impacto" class="band band-purple" style="margin-top:110px">
+  <section aria-labelledby="sen-title" class="abia-reveal sec-narrow" style="padding:96px 24px">
+    <p class="abia-eyebrow" style="color:#C4A8F7">Impacto · Gestão sob pressão</p>
+    <h2 id="sen-title" class="abia-h2" style="color:#fff;margin-bottom:26px">Entregar web e mobile em 20 dias — sem parar o resto</h2>
+    <p class="abia-lead" style="color:#E4E2FA;margin:0 0 30px">A parte mais difícil deste projeto não aparece nas telas. Nos mesmos <strong style="color:#fff">~20 dias</strong> em que entreguei as versões web e mobile, eu gerenciava outros projetos em paralelo e apoiava uma estagiária. Foi um exercício de priorização: decidir o que fazer primeiro, o que era bom o bastante, e onde apoiar a decisão em fontes já existentes em vez de abrir uma frente nova de pesquisa que o cronograma não comportava.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px" class="abia-three">
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px"><div style="font-weight:800;font-size:15px;color:#fff;margin-bottom:6px">Priorização</div><div style="font-size:13.5px;line-height:1.55;color:#E4E2FA">Estrutura antes da estética, para não desperdiçar dias em retrabalho.</div></div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px"><div style="font-weight:800;font-size:15px;color:#fff;margin-bottom:6px">Reaproveitamento</div><div style="font-size:13.5px;line-height:1.55;color:#E4E2FA">Proto-persona e marca do cliente usadas como ponto de partida legítimo.</div></div>
+      <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px"><div style="font-weight:800;font-size:15px;color:#fff;margin-bottom:6px">Liderança</div><div style="font-size:13.5px;line-height:1.55;color:#E4E2FA">Manter outros projetos e apoiar uma estagiária sem travar a entrega.</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ESCOPO ENTREGUE ============ -->
+<section aria-labelledby="scope-title" class="abia-reveal sec-narrow" style="margin-top:110px">
+  <p class="abia-eyebrow">Impacto · Escopo entregue</p>
+  <h2 id="scope-title" class="abia-h2" style="margin-bottom:20px">O que saiu do projeto</h2>
+  <p class="abia-lead" style="margin:0 0 8px">Ao fim dos 20 dias, entreguei três frentes unificadas — aula, prática e comunidade — nas <strong>duas plataformas</strong> (web responsivo e mobile), em tema claro e escuro, apoiadas por <strong>um style guide documentado</strong> no Figma. Além do fluxo de cadastro e navegação, o produto passou a ter o motor de gamificação que sustenta o modelo de negócio: pontos, trocas e recompensas por progresso.</p>
+  <p class="abia-lead" style="margin:14px 0 0;color:#D8D7F2;font-size:15px">São contagens de entregável, não métricas de resultado — a plataforma ainda não havia sido lançada no momento em que este case foi escrito.</p>
+</section>
+
+<!-- ============ RETORNO DO CLIENTE ============ -->
+<section aria-labelledby="ret-title" class="abia-reveal sec-narrow" style="margin-top:80px">
+  <div style="background:rgba(158,108,239,.14);border-radius:20px;padding:30px 34px">
+    <p class="abia-eyebrow" style="margin-bottom:12px">Retorno do cliente</p>
+    <p class="abia-lead" style="margin:0;font-size:16px">O retorno do cliente sobre as entregas foi positivo. Como a plataforma ainda não havia sido lançada quando escrevi este case, não há dados de uso real nem depoimento público a citar — e prefiro registrar isso com honestidade a inflar o resultado.</p>
+  </div>
+</section>
+
+<!-- ============ APRENDIZADOS ============ -->
+<section aria-labelledby="ap-title" class="abia-reveal sec" style="margin-top:100px">
+  <div style="background:linear-gradient(140deg,#1a1466,#5a2690);border-radius:32px;padding:58px 48px;color:#fff">
+    <p class="abia-eyebrow" style="color:#C4A8F7">Aprendizados</p>
+    <h2 id="ap-title" class="abia-h2" style="color:#fff;margin-bottom:30px">O que ficou desse projeto</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px" class="abia-two">
+      <div>
+        <div style="font-weight:800;font-size:14px;color:#C4A8F7;margin-bottom:12px">O que funcionou</div>
+        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.85;color:#E4E2FA">
+          <li>Um prazo desafiador gerenciado com sucesso, aprimorando minha gestão de tempo sob pressão real.</li>
+          <li>Criatividade aplicada à UI dentro de uma marca já definida — resolver com o que existia, não contra ele.</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-weight:800;font-size:14px;color:#C4A8F7;margin-bottom:12px">O que eu faria diferente</div>
+        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.85;color:#E4E2FA">
+          <li>Reservar espaço para pesquisa própria de usuário e validação com teste, mesmo que enxuta, defendendo isso já na negociação do prazo.</li>
+          <li>Acompanhar o produto após o lançamento para fechar o ciclo com dados reais de uso.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="abia-reveal sec-narrow" style="margin-top:100px;padding-bottom:20px">
+  <div style="text-align:left">
+    <h2 class="abia-h2" style="margin-bottom:12px">Quer ver como eu faria pelo seu produto?</h2>
+    <p class="abia-lead" style="margin:0 0 28px">Bora conversar sobre o seu desafio de design.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap">
+      <a href="Projetos.dc.html" onclick="if(document.referrer){history.back();return false}" class="abia-btn-ghost"><span>←</span> Voltar à tela anterior</a>
+      <a href="Projetos.dc.html" class="abia-btn-primary">Ver mais cases <span>→</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="max-width:1240px;margin:60px auto 0;padding:30px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+  <div style="font-family:'Bebas Neue',sans-serif;font-weight:800;font-size:18px;color:#C4A8F7">ÁBIA BOGNOLA</div>
+  <div style="font-size:12px;color:#D8D7F2">© 2026 · Desenhado à mão · sem template</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const els = document.querySelectorAll('.abia-reveal');
+    if (reduced) {
+      els.forEach((el) => el.classList.add('is-in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach((el) => io.observe(el));
+    }
+
+    const navLinks = {};
+    document.querySelectorAll('.chapnav a').forEach((a) => {
+      navLinks[a.getAttribute('href').slice(1)] = a;
+    });
+    const chapnav = document.querySelector('.chapnav');
+    const chapEls = ['cap-contexto', 'cap-descoberta', 'cap-decisoes', 'cap-solucao', 'cap-impacto']
+      .map((id) => document.getElementById(id)).filter(Boolean);
+    const updateActive = () => {
+      if (chapnav) chapnav.classList.toggle('show', window.scrollY > 200);
+      const line = 170;
+      let currentId = chapEls.length ? chapEls[0].id : null;
+      chapEls.forEach((el) => { if (el.getBoundingClientRect().top <= line) currentId = el.id; });
+      Object.values(navLinks).forEach((l) => l.classList.remove('active'));
+      if (currentId && navLinks[currentId]) navLinks[currentId].classList.add('active');
+    };
+    updateActive();
+    window.addEventListener('scroll', updateActive, { passive: true });
+    this._onScroll = updateActive;
+  }
+
+  renderVals() {
+    const tela = this.state.tela || 'aula';
+    return {
+      tela,
+      isAula: tela === 'aula',
+      isAtiv: tela === 'atividades',
+      isForum: tela === 'forum',
+      isPontos: tela === 'pontos',
+      goAula: () => this.setState({ tela: 'aula' }),
+      goAtiv: () => this.setState({ tela: 'atividades' }),
+      goForum: () => this.setState({ tela: 'forum' }),
+      goPontos: () => this.setState({ tela: 'pontos' }),
+      tabAula: tela === 'aula' ? 'sd-pick on' : 'sd-pick',
+      tabAtiv: tela === 'atividades' ? 'sd-pick on' : 'sd-pick',
+      tabForum: tela === 'forum' ? 'sd-pick on' : 'sd-pick',
+      tabPontos: tela === 'pontos' ? 'sd-pick on' : 'sd-pick',
+      isNovo: tela === 'novo',
+      noop: (e) => e.preventDefault(),
+      goNovo: () => this.setState({ tela: 'novo' }),
+      tabNovo: tela === 'novo' ? 'sd-pick on' : 'sd-pick'
+    };
+  }
+
+  componentWillUnmount() {
+    if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
+  }
+}
+</script>
+</body>
+</html>

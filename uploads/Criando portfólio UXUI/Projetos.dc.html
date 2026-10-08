@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body data-page="projetos.dc.html">
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./chrome.css">
+<link rel="stylesheet" href="./theme.css">
+<script src="./chrome.js" defer></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0;padding:0}
+body{background:var(--void);color:var(--warm);font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;text-wrap:pretty;min-height:100vh}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:var(--rose);color:var(--void)}
+
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.display{font-family:'Bebas Neue',sans-serif;line-height:.86;letter-spacing:-.02em}
+
+.wrap{max-width:1400px;margin:0 auto;padding:0 40px}
+.grid12{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+
+/* HERO */
+.hero{position:relative;padding:130px 0 90px}
+.hero-top{grid-column:1/13;display:flex;justify-content:space-between;font-size:11px;color:var(--warm-70);margin-bottom:6vh}
+.hero-top b{color:var(--warm);font-weight:500}
+.hero-title{grid-column:1/13;margin:0;font-family:'Bebas Neue';font-size:clamp(96px,17vw,240px);line-height:.82;letter-spacing:-.03em;color:var(--warm)}
+.hero-title .n{color:var(--rose);text-shadow:0 0 60px rgba(255,90,138,.35)}
+.hero-sub{grid-column:1/9;margin-top:36px;font-family:'Roboto';font-weight:300;font-style:italic;font-size:clamp(20px,2vw,28px);line-height:1.35;color:var(--warm-70);max-width:720px}
+.hero-sub em{font-style:italic;color:var(--rose);font-weight:400}
+.hero-lead{grid-column:1/9;margin-top:34px;font-size:16px;line-height:1.75;color:var(--warm-70);max-width:640px}
+.hero-lead b{color:var(--warm);font-weight:500}
+
+/* Case rows */
+.rows{padding:20px 0 40px}
+.row{position:relative;padding:80px 0;border-top:1px solid var(--warm-14);display:block;color:inherit;transition:background .5s}
+.row:last-of-type{border-bottom:1px solid var(--warm-14)}
+.row .grid12{position:relative;z-index:1}
+.row .bg-num{position:absolute;top:60px;right:-20px;font-family:'Bebas Neue';font-size:clamp(160px,26vw,380px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--warm-14);letter-spacing:-.04em;pointer-events:none;z-index:0;transition:-webkit-text-stroke .4s}
+.row:hover .bg-num{-webkit-text-stroke:1px rgba(255,90,138,.35)}
+.row .idx{grid-column:1/2;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rose);letter-spacing:.06em}
+.row .meta{grid-column:2/9;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--warm-40);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}
+.row .meta span{color:var(--warm-14);margin:0 6px}
+.row .title{grid-column:2/9;margin:0;font-family:'Bebas Neue';font-size:clamp(52px,7vw,110px);line-height:.86;letter-spacing:-.02em;color:var(--warm);transition:color .3s}
+.row:hover .title{color:var(--rose)}
+.row .body{grid-column:2/8;margin-top:24px;font-size:16px;line-height:1.7;color:var(--warm);max-width:560px}
+.row .body b{color:var(--rose);font-weight:500}
+.row .beat{grid-column:2/8;margin-top:16px;font-size:14.5px;line-height:1.7;color:var(--warm-70);max-width:560px}
+.row .tags{grid-column:2/8;margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.row .tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--warm-70);text-transform:uppercase;padding:5px 10px;border:1px solid var(--warm-14);border-radius:2px;background:rgba(255,255,255,.02)}
+.row .link{grid-column:2/8;margin-top:34px}
+.row .visual{grid-column:9/13;grid-row:2/8;position:relative;display:flex;align-items:center;justify-content:center;min-height:420px;padding-top:26px}
+.row .visual .frame{position:relative;width:100%;height:420px;overflow:hidden;border-radius:6px;background:linear-gradient(160deg,rgba(255,90,138,.08),rgba(69,24,65,.35));box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px var(--warm-14);display:flex;align-items:center;justify-content:flex-start;padding:36px 34px;transition:transform .6s cubic-bezier(.16,1,.3,1),box-shadow .6s,background .6s}
+.row:hover .visual .frame{transform:translateY(-6px);box-shadow:0 40px 100px rgba(255,90,138,.16),0 0 0 1px rgba(255,90,138,.4)}
+.row .visual .frame-foot{position:absolute;left:34px;right:34px;bottom:24px;display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--warm-40)}
+.row .visual .frame-foot .fdot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex:none;box-shadow:0 0 0 3px rgba(255,90,138,.22);transition:box-shadow .5s}
+.row:hover .visual .frame-foot .fdot{box-shadow:0 0 0 6px rgba(255,90,138,.32)}
+.row .visual .frame-foot .fline{flex:1;height:1px;background:repeating-linear-gradient(90deg,var(--warm-14) 0 5px,transparent 5px 9px)}
+.row .visual .num-stage{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:100%}
+.row .visual .big-num{font-family:'Bebas Neue';font-size:clamp(140px,15vw,220px);line-height:.82;letter-spacing:-.04em;color:var(--warm);text-shadow:0 0 60px rgba(255,90,138,.28)}
+.row .visual .big-num .k{color:var(--rose);display:inline-block;transform:translateY(-.08em)}
+.row .visual .cap{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:var(--warm-40);text-transform:uppercase;margin-top:-6px;margin-bottom:28px;padding-left:4px}
+.row .visual ul{list-style:none;padding:16px 0 0;margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.05em;line-height:2;color:var(--warm-70);text-transform:uppercase;border-top:1px solid var(--warm-14);width:100%;max-width:240px}
+.row .visual ul li{display:flex;align-items:center;gap:12px}
+.row .visual ul li::before{content:"";width:14px;height:1px;background:var(--warm-14);flex:none}
+.row .visual ul li.self{color:var(--warm)}
+.row .visual ul li.self::before{background:var(--rose);width:28px}
+
+/* chip */
+.chip{position:relative;display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:1px solid var(--warm);color:var(--warm);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;overflow:hidden;isolation:isolate;transition:color .3s cubic-bezier(.16,1,.3,1),border-color .3s;text-decoration:none;background:transparent}
+.chip::before{content:"";position:absolute;inset:0;background:var(--rose);transform:translateY(101%);transition:transform .55s cubic-bezier(.16,1,.3,1);z-index:-1}
+.chip::after{content:"→";transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.chip:hover{color:var(--void);border-color:var(--rose)}
+.chip:hover::before{transform:translateY(0)}
+.chip:hover::after{transform:translateX(6px)}
+
+/* Outro */
+.outro{padding:22vh 0 16vh;position:relative;border-top:1px solid var(--warm-14)}
+.outro .kick{grid-column:1/4;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--rose);letter-spacing:.06em;text-transform:uppercase;line-height:1.55}
+.outro .kick b{color:var(--warm);display:block;margin-top:6px;font-weight:500}
+.outro .head{grid-column:5/13;margin:0;font-family:'Roboto';font-weight:300;font-size:clamp(30px,4vw,52px);line-height:1.12;letter-spacing:-.02em;max-width:900px}
+.outro .head em{font-style:italic;color:var(--rose);font-weight:400}
+.outro .body{grid-column:5/11;margin-top:36px;font-size:16px;line-height:1.75;color:var(--warm-70);max-width:640px}
+.outro .body b{color:var(--warm);font-weight:500}
+.outro .cta{grid-column:5/13;margin-top:36px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.aurora,.spot{display:none}}
+
+footer{padding:24px 40px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--warm-40);text-transform:uppercase;letter-spacing:.06em;border-top:1px solid var(--warm-14);position:relative;z-index:2}
+
+/* Floating section pill */
+.p-secnav{position:fixed;left:0;right:0;bottom:24px;z-index:70;display:flex;justify-content:center;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity .35s ease,transform .35s ease}
+.p-secnav.show{opacity:1;transform:none}
+.p-secnav.show .p-secnav-inner{pointer-events:auto}
+.p-secnav-inner{display:flex;gap:4px;background:rgba(13,7,16,.7);border:1px solid var(--warm-14);box-shadow:0 12px 36px rgba(0,0,0,.55);backdrop-filter:blur(14px) saturate(140%);border-radius:999px;padding:6px}
+.p-secnav a{font-family:'JetBrains Mono',monospace;text-decoration:none;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--warm-70);padding:8px 14px;border-radius:999px;transition:color .2s,background .2s;display:inline-flex;align-items:center;gap:8px}
+.p-secnav a:hover{color:var(--warm)}
+.p-secnav a.on{background:var(--rose);color:var(--void)}
+.p-secnav a .n{font-size:10px;opacity:.7}
+.p-secnav a.on .n{opacity:1}
+@media (max-width:720px){.p-secnav{display:none}}
+
+@media (max-width:820px){
+  .hero{padding:110px 0 60px}
+  .hero-sub,.hero-lead{grid-column:1/-1}
+  .row .idx,.row .meta,.row .title,.row .body,.row .beat,.row .tags,.row .link,.row .visual{grid-column:1/-1;grid-row:auto}
+  .row .visual{margin-top:36px;min-height:auto}
+  .row .visual .frame{height:340px}
+  .row .bg-num{font-size:140px;right:-10px;top:40px}
+  .outro .kick,.outro .head,.outro .body,.outro .cta{grid-column:1/-1}
+  footer{padding:18px 20px;flex-direction:column;gap:6px}
+  .wrap{padding:0 20px}
+  .grid12{grid-template-columns:repeat(4,1fr);gap:16px}
+}
+</style>
+</helmet>
+
+<div class="aurora" aria-hidden="true"><span class="a3"></span></div>
+<div class="spot" aria-hidden="true"></div>
+
+<!-- @abia-chrome:start -->
+<a href="#conteudo" class="ac-skip" data-en="Skip to content">Pular para o conteúdo</a>
+<header class="ac-hdr" role="banner">
+  <a href="index.dc.html" class="ac-mark" aria-label="Ábia Bognola — início">ÁBIA</a>
+  <div class="ac-nav-wrap">
+    <nav class="ac-nav" aria-label="Navegação principal">
+      <a href="index.dc.html" data-en="Home">Início</a>
+      <a href="Projetos.dc.html" data-en="Work">Cases</a>
+      <a href="Sobre.dc.html" data-en="About">Sobre</a>
+      <a href="Contato.dc.html" data-en="Contact">Contato</a>
+    </nav>
+    <div class="ac-lang" role="group" aria-label="Idioma / Language">
+      <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+<!-- @abia-chrome:end -->
+
+<main id="conteudo">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="p-title">
+  <div class="wrap grid12">
+    <div class="hero-top mono">
+      <div>
+        <b data-en="SELECTED WORK">CASES SELECIONADOS</b><br/>
+        <span style="color:var(--warm-40)" data-en="2022 — 2025 · selected cases">2022 — 2025 · cases selecionados</span>
+      </div>
+      <div style="text-align:right">
+        <b>/work</b><br/>
+        <span style="color:var(--warm-40)" data-en="index · 03">índice · 03</span>
+      </div>
+    </div>
+    <h1 id="p-title" class="hero-title rv" data-en="SELECTED<br/>WORK<span class=&quot;n&quot;>.</span>">TRABALHOS<br/>SELECIONADOS<span class="n">.</span></h1>
+    <p class="hero-sub rv" data-en="Told <em>the way they actually happened</em> — not the way portfolios usually tell.">Contados <em>do jeito que aconteceram</em> — não do jeito que portfólio costuma contar.</p>
+    <p class="hero-lead rv" data-en="Each case covers a different context — fintech, public healthcare, ed-tech — but follows the same writing principle: <b>what happened, what I decided, and what didn't have time to be validated.</b> No invented metric.">Cada case cobre um contexto diferente — fintech, saúde pública, ed-tech — mas segue o mesmo princípio: <b>o que aconteceu, o que decidi e o que não deu tempo de validar.</b> Sem métrica inventada.</p>
+  </div>
+</section>
+
+<!-- CASE ROWS -->
+<section class="rows" aria-label="Lista de cases">
+
+  <!-- 01 TRADE+ -->
+  <a href="CaseTrade.dc.html" class="row" id="row-1" aria-label="Ver case Trade+">
+    <div class="bg-num" aria-hidden="true">01</div>
+    <div class="wrap grid12">
+      <div class="idx">01</div>
+      <div class="meta" data-en="Fintech <span>·</span> Trademaster <span>·</span> 2022 — 2023">Fintech <span>·</span> Trademaster <span>·</span> 2022 — 2023</div>
+      <h2 class="title rv">TRADE<span style="color:var(--rose)">+</span></h2>
+      <p class="body rv" data-en="A migration from Adobe XD to Figma turned into a reconstruction of the product's vision: the <b>30+ screens</b> registration had been built by devs with no UX process — Lorem Ipsum in production, rules stacked by many hands.">Uma migração de Adobe XD pra Figma virou uma reconstrução da visão do produto: o cadastro de <b>30+ telas</b> tinha sido feito por devs sem processo de UX — Lorem Ipsum em produção, regras acumuladas por várias mãos.</p>
+      <p class="beat rv" data-en="Discovery with P.O., dev, marketing and support via CSD matrix. Two-step registration redesign, complete wireflow documentation, and new features to give the app a reason to come back.">Descoberta com P.O., dev, marketing e suporte via matriz CSD. Redesenho em duas etapas, documentação completa do wireflow e novas funcionalidades pra dar motivo de uso recorrente.</p>
+      <div class="tags">
+        <span class="tag" data-en="Discovery">Descoberta</span>
+        <span class="tag">Matriz CSD</span>
+        <span class="tag">Wireflow</span>
+        <span class="tag" data-en="Documentation">Documentação</span>
+      </div>
+      <div class="link"><span class="chip" data-en="Read the case">Ler o case</span></div>
+      <div class="visual" aria-hidden="true">
+        <div class="frame">
+          <div class="num-stage">
+            <div class="big-num">30<span class="k">+</span></div>
+            <div class="cap" data-en="screens · one question">telas · uma só pergunta</div>
+            <ul>
+              <li>P.O.</li>
+              <li data-en="Development">Desenvolvimento</li>
+              <li>Marketing</li>
+              <li data-en="Support">Suporte</li>
+              <li class="self" data-en="Design — me">Design — eu</li>
+            </ul>
+          </div>
+          <div class="frame-foot"><span class="fdot"></span><span data-en="case · published">case · publicado</span><span class="fline"></span><span>01</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- 02 VITALIS -->
+  <a href="CaseVitalis.dc.html" class="row" id="row-2" aria-label="Ver case Vitalis Saúde">
+    <div class="bg-num" aria-hidden="true">02</div>
+    <div class="wrap grid12">
+      <div class="idx">02</div>
+      <div class="meta" data-en="Public healthcare <span>·</span> External client <span>·</span> ≈ 1 month">Saúde pública <span>·</span> Cliente externo <span>·</span> ≈ 1 mês</div>
+      <h2 class="title rv" data-en="VITALIS<br/>SAÚDE">VITALIS<br/>SAÚDE</h2>
+      <p class="body rv" data-en="Telemedicine platform for public health clinics with <b>three user profiles</b> (patient, doctor and receptionist) on web and mobile — each with a different digital fluency and need.">Plataforma de telemedicina para postos de saúde com <b>três perfis de usuário</b> (paciente, médico e secretária) em web e mobile — cada um com proficiência digital e necessidade bem diferente.</p>
+      <p class="beat rv" data-en="Profile mapping from documentation and business rules, style guide, low-fidelity wireframes and hi-fi with accessibility as a base — not decoration. Transparent: no direct user research.">Mapeamento de perfis por documentação e regras de negócio, style guide, wireframes lo-fi e alta fidelidade com acessibilidade como base — não como enfeite. Transparente: não houve pesquisa direta com usuário final.</p>
+      <div class="tags">
+        <span class="tag" data-en="Multi-profile">Multiperfil</span>
+        <span class="tag" data-en="Business rules">Regras de negócio</span>
+        <span class="tag" data-en="Accessibility">Acessibilidade</span>
+        <span class="tag" data-en="Telemedicine">Teleconsulta</span>
+      </div>
+      <div class="link"><span class="chip" data-en="Read the case">Ler o case</span></div>
+      <div class="visual" aria-hidden="true">
+        <div class="frame">
+          <div class="num-stage">
+            <div class="big-num"><span class="k">3</span></div>
+            <div class="cap" data-en="routines · one single product">rotinas · um só produto</div>
+            <ul>
+              <li data-en="Patient">Paciente</li>
+              <li data-en="Doctor">Médico</li>
+              <li data-en="Receptionist">Secretária</li>
+              <li class="self" data-en="Design — me">Design — eu</li>
+            </ul>
+          </div>
+          <div class="frame-foot"><span class="fdot"></span><span data-en="case · published">case · publicado</span><span class="fline"></span><span>02</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- 03 STARTDEV -->
+  <a href="CaseStartDev.dc.html" class="row" id="row-3" aria-label="Ver case StartDev">
+    <div class="bg-num" aria-hidden="true">03</div>
+    <div class="wrap grid12">
+      <div class="idx">03</div>
+      <div class="meta" data-en="Ed-tech <span>·</span> External client <span>·</span> ≈ 20 days">Ed-tech <span>·</span> Cliente externo <span>·</span> ≈ 20 dias</div>
+      <h2 class="title rv">STARTDEV</h2>
+      <p class="body rv" data-en="Learning platform for developers with collaborative community and points-based gamification. Real deadline: <b>about 20 days</b> to deliver web + mobile — while running other projects and supporting an intern.">Plataforma de ensino para devs com comunidade colaborativa e gamificação por pontos. Prazo real: <b>cerca de 20 dias</b> pra entregar web + mobile — em paralelo a outros projetos e apoiando uma estagiária.</p>
+      <p class="beat rv" data-en="Client already had brand, palette and fonts. First move was a style guide to standardize; then came user flow, lo-fi wireframes validated with the client and hi-fi in dark mode (developer audience).">Cliente já tinha marca, paleta e fontes. Primeiro passo: style guide pra padronizar; depois vieram user flow, wireframes lo-fi validados com o cliente e alta fidelidade em dark mode (público desenvolvedor).</p>
+      <div class="tags">
+        <span class="tag" data-en="Tight deadline">Prazo apertado</span>
+        <span class="tag">Style guide</span>
+        <span class="tag" data-en="Gamification">Gamificação</span>
+        <span class="tag">Dark mode</span>
+      </div>
+      <div class="link"><span class="chip" data-en="Read the case">Ler o case</span></div>
+      <div class="visual" aria-hidden="true">
+        <div class="frame">
+          <div class="num-stage">
+            <div class="big-num">20<span class="k">d</span></div>
+            <div class="cap" data-en="days · from brief to handoff">dias · do brief ao handoff</div>
+            <ul>
+              <li>Web</li>
+              <li>Mobile</li>
+              <li>Design system</li>
+              <li data-en="Intern in parallel">Estagiária em paralelo</li>
+              <li class="self" data-en="Design — me">Design — eu</li>
+            </ul>
+          </div>
+          <div class="frame-foot"><span class="fdot"></span><span data-en="case · published">case · publicado</span><span class="fline"></span><span>03</span></div>
+        </div>
+      </div>
+    </div>
+  </a>
+
+</section>
+
+<!-- OUTRO -->
+<section class="outro" aria-label="Outros trabalhos">
+  <div class="wrap grid12">
+    <div class="kick" data-en="· what's not here<br/><b>more projects, fewer cases</b>">· o que não está aqui<br/><b>mais projetos, menos cases</b></div>
+    <p class="head rv" data-en="Behind these, there are other clients whose work never became a written case — NDA, unlaunched prototypes, or internal projects.">Atrás destes, existem outros clientes cujo trabalho nunca virou case escrito — NDA, protótipos ainda não lançados ou projetos internos.</p>
+    <p class="body" data-en="MedMe Saúde, 4US Tecnologia, App Facilita, B9 Sistemas and ROIT Bank passed through my Figma. If you need a specific cut — a type of flow, a sector, a team scale — <b>write and we'll talk</b> instead of me padding the portfolio with a weak case.">MedMe Saúde, 4US Tecnologia, App Facilita, B9 Sistemas e ROIT Bank passaram pelo meu Figma. Se precisar de um recorte específico — um tipo de fluxo, um setor, uma escala de time — <b>me chame e a gente conversa</b> em vez de eu inflar o portfólio com case fraco.</p>
+    <div class="cta"><a href="Contato.dc.html" class="chip" data-en="Talk directly">Conversar direto</a></div>
+  </div>
+</section>
+
+</main>
+
+<nav class="p-secnav" aria-label="Cases nesta página">
+  <div class="p-secnav-inner">
+    <a href="#row-1" data-target="row-1"><span class="n">01</span> Trade+</a>
+    <a href="#row-2" data-target="row-2"><span class="n">02</span> Vitalis</a>
+    <a href="#row-3" data-target="row-3"><span class="n">03</span> StartDev</a>
+  </div>
+</nav>
+
+<footer>
+  <div data-en="© 2026 · Ábia Bognola">© 2026 · Ábia Bognola</div>
+  <div data-en="Hand-designed · no template">Desenhado à mão · sem template</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rvs = document.querySelectorAll('.rv');
+    if (reduced) {
+      rvs.forEach((el) => el.classList.add('on'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.14 });
+      rvs.forEach((el) => io.observe(el));
+      setTimeout(() => {
+        rvs.forEach((el) => {
+          if (el.classList.contains('on')) return;
+          const r = el.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('on');
+        });
+      }, 100);
+      setTimeout(() => rvs.forEach((el) => el.classList.add('on')), 1400);
+    }
+    // Cursor spotlight
+    if (!reduced && window.matchMedia('(hover:hover)').matches) {
+      const spot = document.querySelector('.spot');
+      let x = 50, y = 50, tx = 50, ty = 50;
+      window.addEventListener('mousemove', (e) => {
+        tx = (e.clientX / window.innerWidth) * 100;
+        ty = (e.clientY / window.innerHeight) * 100;
+      }, { passive: true });
+      const loop = () => {
+        x += (tx - x) * 0.12;
+        y += (ty - y) * 0.12;
+        if (spot) { spot.style.setProperty('--mx', x + '%'); spot.style.setProperty('--my', y + '%'); }
+        this._raf = requestAnimationFrame(loop);
+      };
+      loop();
+    }
+    // Section pill (floating bottom nav for the case rows)
+    const pill = document.querySelector('.p-secnav');
+    const pillLinks = pill ? pill.querySelectorAll('a') : [];
+    const rows = ['row-1','row-2','row-3'].map((id) => document.getElementById(id)).filter(Boolean);
+    if (pill && rows.length) {
+      let rafSpy = null;
+      const updatePill = () => {
+        rafSpy = null;
+        pill.classList.toggle('show', window.scrollY > 320);
+        const line = 220;
+        let current = rows[0].id;
+        rows.forEach((el) => { if (el.getBoundingClientRect().top <= line) current = el.id; });
+        pillLinks.forEach((l) => l.classList.toggle('on', l.dataset.target === current));
+      };
+      const onSpy = () => { if (rafSpy) return; rafSpy = requestAnimationFrame(updatePill); };
+      updatePill();
+      window.addEventListener('scroll', onSpy, { passive: true });
+      this._spy = onSpy;
+    }
+  }
+  componentWillUnmount() {
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._spy) window.removeEventListener('scroll', this._spy);
+  }
+}
+</script>
+</body>
+</html>

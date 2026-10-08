@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;text-wrap:pretty}a{color:#C4A8F7}a:hover{color:#F3F2FF}</style>
+<link rel="stylesheet" href="./chrome.css">
+<link rel="stylesheet" href="./theme.css">
+<script src="./chrome.js" defer></script>
+</helmet>
+<a href="#conteudo" class="ac-skip">Pular para o conteúdo</a>
+<header class="ac-hdr" role="banner">
+  <a href="index.dc.html" class="ac-mark" aria-label="UXfinity · Ábia Bognola — início"><img src="assets/brand/uxfinity-logo-branca.png" alt="UXfinity" style="height:30px;width:auto;display:block"></a>
+  <div class="ac-nav-wrap">
+    <nav class="ac-nav" aria-label="Navegação principal">
+      <a href="index.dc.html">Início</a>
+      <a href="Projetos.dc.html">Cases</a>
+      <a href="Sobre.dc.html">Sobre</a>
+      <a href="Contato.dc.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" style="background:var(--void,#03043A);color:var(--warm,#F3F2FF);padding:120px 0 0;min-height:100vh">
+
+  <section aria-labelledby="case-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start">
+      <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:24px">
+        <a href="Projetos.dc.html" style="font-size:14px;font-weight:600;color:#D8D7F2;text-decoration:none">← Voltar aos cases</a>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">MedMe · Product design</span>
+        <h1 id="case-title" style="margin:0;font-size:clamp(36px,4.4vw,56px);line-height:1.06;font-weight:700;letter-spacing:-.02em;text-wrap:balance">PDV do vendedor MedMe</h1>
+        <p style="margin:0;font-size:19px;line-height:1.65;color:#D8D7F2">Um ponto de venda criado do zero para os vendedores da MedMe, que até então registravam vendas por uma adaptação dentro do perfil de usuário comum.</p>
+      </div>
+      <img src="assets/covers/capa-pdv.png" alt="Capa do case PDV do vendedor MedMe" style="flex:1 1 420px;min-width:0;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block">
+    </div>
+    <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));border-top:1px solid rgba(243,242,255,.14);border-bottom:1px solid rgba(243,242,255,.14)">
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Papel</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Product Designer</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Time</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Product Owner e desenvolvimento</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Escopo</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Fluxo de nova venda</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Plataforma</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Web</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Status</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Em desenvolvimento</dd></div>
+    </dl>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 1</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">Contexto e problema</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="ctx-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:64px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Contexto</span>
+        <h2 id="ctx-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Vender onde o colaborador está</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Os vendedores da MedMe atendem os colaboradores das empresas conveniadas, muitas vezes em eventos dentro das próprias empresas. Na plataforma, eles registram vendas, acompanham o que já venderam e fazem simulações para o cliente.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Como Product Designer, desenhei o fluxo de nova venda com o Product Owner, que trazia as regras de negócio, e com o time de desenvolvimento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="prob-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">O problema</span>
+        <h2 id="prob-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Não existia um sistema para vender</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Até então, as vendas eram feitas por uma adaptação dentro do perfil de usuário comum. Era uma ferramenta pensada para outra pessoa e outra tarefa: o vendedor precisava contornar telas que não tinham sido feitas para registrar uma venda para alguém.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#F3F2FF">O desafio era criar, do zero, um fluxo próprio para o vendedor, que desse conta das regras do benefício, como saldo do colaborador, produtos elegíveis, entrega e formas de pagamento, sem transformar cada venda numa tarefa complicada.</p>
+      </div>
+    </div>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 2</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">A decisão central</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="fluxo-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Decisão</span>
+        <h2 id="fluxo-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Um fluxo em três etapas: cliente, produtos e pagamento</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Uma venda tem dependências em ordem. Sem saber quem é o cliente, não há saldo, endereço nem regras do convênio. Sem produtos, não há total. E só faz sentido escolher como pagar quando já se sabe quanto e o que o saldo cobre.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Por isso o fluxo segue essa ordem, e cada etapa libera a seguinte. Um indicador no topo mostra onde o vendedor está, e as áreas ainda bloqueadas explicam o que falta para liberá-las, em vez de simplesmente sumir.</p>
+        <ol style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">01</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Cliente.</strong> Define saldo, endereço de entrega e as regras que valem para a venda.</span></li>
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">02</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Produtos.</strong> Monta a lista e mostra, item a item, o que pode ser pago com saldo.</span></li>
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">03</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Pagamento.</strong> Aplica o saldo e define como o cliente paga o restante.</span></li>
+        </ol>
+        <p style="margin:0;font-size:15px;line-height:1.65;color:#B8B7DE">As regras de cada etapa vieram do Product Owner. O desenho foi organizar essas regras numa sequência que o vendedor consiga seguir durante o atendimento.</p>
+      </div>
+    </div>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 3</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">A solução, etapa por etapa</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="etapa-1" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:96px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 72px;align-items:flex-start">
+      <div style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">01 · Cliente</span>
+        <h3 id="etapa-1" style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance;font-size:26px">Encontrar o cliente e preparar a venda</h3>
+      </div>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:16px"><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">A busca aceita nome ou CPF e já mostra o saldo disponível no resultado. Ao selecionar o cliente, a venda ganha filial, movimentação, canal e o endereço de entrega cadastrado.</p><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Endereço e frete são resolvidos ali mesmo, em modais, sem sair da venda.</p></div>
+    </div>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="border-radius:8px;overflow:hidden;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45);aspect-ratio:1440/1102"><img src="assets/pdv/cliente-selecionado.png" alt="Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito." loading="lazy" style="width:100%;height:100%;display:block"></div>
+      <figcaption style="font-size:15px;line-height:1.6;color:#B8B7DE;max-width:760px">Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="etapa-2" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:96px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 72px;align-items:flex-start">
+      <div style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">02 · Produtos</span>
+        <h3 id="etapa-2" style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance;font-size:26px">Montar a lista e saber o que o saldo cobre</h3>
+      </div>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:16px"><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O vendedor busca no catálogo MedMe ou no próprio catálogo e ajusta quantidade e valor promocional na tabela.</p><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Cada item pode ser validado contra o saldo do cliente e passa a mostrar se aceita ou não saldo. A informação aparece no item, onde o vendedor decide o que vender.</p></div>
+    </div>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="border-radius:8px;overflow:hidden;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45);aspect-ratio:1440/1102"><img src="assets/pdv/produto-adicionado-validar.png" alt="Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento." loading="lazy" style="width:100%;height:100%;display:block"></div>
+      <figcaption style="font-size:15px;line-height:1.6;color:#B8B7DE;max-width:760px">Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="etapa-3" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:96px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 72px;align-items:flex-start">
+      <div style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">03 · Pagamento</span>
+        <h3 id="etapa-3" style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance;font-size:26px">Aplicar o saldo e fechar o restante</h3>
+      </div>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:16px"><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O vendedor escolhe entre venda presencial ou online, aplica o saldo do cliente, total ou parcial, e vê na hora quanto falta receber.</p><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O restante pode ser pago em dinheiro ou cartão. Quando um produto não aceita saldo, um aviso explica qual item e qual valor precisa de outra forma de pagamento.</p></div>
+    </div>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="border-radius:8px;overflow:hidden;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45);aspect-ratio:1440/1319"><img src="assets/pdv/pagamento-alerta-produto-sem-saldo.png" alt="Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento." loading="lazy" style="width:100%;height:100%;display:block"></div>
+      <figcaption style="font-size:15px;line-height:1.6;color:#B8B7DE;max-width:760px">Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="etapa-4" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:96px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 72px;align-items:flex-start">
+      <div style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:12px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">04 · Confirmação</span>
+        <h3 id="etapa-4" style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance;font-size:26px">Revisar antes de registrar</h3>
+      </div>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:16px"><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Antes de registrar, um resumo mostra cliente, itens, entrega, forma de pagamento e total a receber. Depois, a venda recebe um número e o comprovante fica disponível na lista de vendas e é enviado ao cliente.</p></div>
+    </div>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="border-radius:8px;overflow:hidden;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45);aspect-ratio:1440/1047"><img src="assets/pdv/modal-confirmar-venda.png" alt="Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda." loading="lazy" style="width:100%;height:100%;display:block"></div>
+      <figcaption style="font-size:15px;line-height:1.6;color:#B8B7DE;max-width:760px">Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda.</figcaption>
+    </figure>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 4</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">Status e aprendizados</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="status-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:64px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Status</span>
+        <h2 id="status-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Em desenvolvimento</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px"><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>O fluxo de nova venda está desenhado e em desenvolvimento.</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>As regras de negócio foram definidas com o Product Owner. Ainda não houve validação com vendedores nem dados de uso.</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>Por isso este case não traz resultados. O próximo passo é acompanhar as primeiras vendas registradas pelo novo fluxo e ajustar o que aparecer.</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="apr-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Aprendizados</span>
+        <h2 id="apr-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">O que este projeto ensinou</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">A ordem do fluxo vem da dependência dos dados</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">As três etapas não foram uma escolha visual. Elas seguem o que cada informação precisa para existir, e isso tornou mais fácil explicar o fluxo para o time e para quem vai usá-lo.</p></div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">Bloquear com explicação, não esconder</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Mostrar as áreas ainda indisponíveis, com o motivo, deixa claro o que vem a seguir. O vendedor enxerga a venda inteira desde o começo.</p></div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">Regra de negócio precisa aparecer onde a decisão acontece</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">A elegibilidade ao saldo aparece no item e o aviso de valor restante aparece no pagamento. Concentrar tudo numa mensagem no fim deixaria o vendedor sem saber o que corrigir.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Contato" style="max-width:1160px;margin:120px auto 0;padding:0 24px 96px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h2 style="margin:0;font-family:'Poppins',sans-serif;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.08;color:#F3F2FF">Tem um fluxo assim no seu produto?</h2>
+      <p style="margin:0 0 16px;font-size:17px;line-height:1.75;color:rgba(243,242,255,.72)">Me conta o contexto — respondo em até um dia útil.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="Projetos.dc.html" onclick="if(document.referrer){history.back();return false}" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;border:1.5px solid rgba(243,242,255,.22);color:#F3F2FF;transition:background .2s,color .2s" style-hover="background:#F3F2FF;color:#03043A"><span>←</span> Voltar à tela anterior</a>
+        <a href="Projetos.dc.html" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;background:#9E6CEF;color:#03043A;box-shadow:0 8px 22px rgba(158,108,239,.28);transition:background .2s" style-hover="background:#F3F2FF;color:#03043A">Ver mais cases <span>→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

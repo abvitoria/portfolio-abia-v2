@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{margin:0;font-family:'Poppins',sans-serif;-webkit-font-smoothing:antialiased;text-wrap:pretty}a{color:#C4A8F7}a:hover{color:#F3F2FF}</style>
+<link rel="stylesheet" href="./chrome.css">
+<link rel="stylesheet" href="./theme.css">
+<script src="./chrome.js" defer></script>
+</helmet>
+<a href="#conteudo" class="ac-skip">Pular para o conteúdo</a>
+<header class="ac-hdr" role="banner">
+  <a href="index.dc.html" class="ac-mark" aria-label="UXfinity · Ábia Bognola — início"><img src="assets/brand/uxfinity-logo-branca.png" alt="UXfinity" style="height:30px;width:auto;display:block"></a>
+  <div class="ac-nav-wrap">
+    <nav class="ac-nav" aria-label="Navegação principal">
+      <a href="index.dc.html">Início</a>
+      <a href="Projetos.dc.html">Cases</a>
+      <a href="Sobre.dc.html">Sobre</a>
+      <a href="Contato.dc.html">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" style="background:var(--void,#03043A);color:var(--warm,#F3F2FF);padding:120px 0 0;min-height:100vh">
+
+  <section aria-labelledby="case-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;flex-wrap:wrap;gap:48px 72px;align-items:flex-start">
+      <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:24px">
+        <a href="Projetos.dc.html" style="font-size:14px;font-weight:600;color:#D8D7F2;text-decoration:none">← Voltar aos cases</a>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">MedMe · Product design</span>
+        <h1 id="case-title" style="margin:0;font-size:clamp(36px,4.4vw,56px);line-height:1.06;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Modernização do Portal de RH da MedMe</h1>
+        <p style="margin:0;font-size:19px;line-height:1.65;color:#D8D7F2">Redesenho de uma ferramenta administrativa em uso diário: padrões reutilizáveis para todo o portal, uma nova forma de encontrar relatórios e uma transição gradual para quem já conhecia a versão antiga.</p>
+      </div>
+      <img src="assets/covers/capa-medme.png" alt="Capa do case MedMe Portal do RH" style="flex:1 1 420px;min-width:0;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;display:block">
+    </div>
+    <dl style="margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));border-top:1px solid rgba(243,242,255,.14);border-bottom:1px solid rgba(243,242,255,.14)">
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Papel</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Product Designer</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Time</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Product Owner, front-end e back-end</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Duração</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Cerca de 6 meses</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Plataforma</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Web · B2B</dd></div>
+      <div style="display:flex;flex-direction:column;gap:6px;padding:20px 24px 20px 0"><dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Status</dt><dd style="margin:0;font-size:16px;font-weight:600;line-height:1.45">Em liberação gradual</dd></div>
+    </dl>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 1</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">Contexto e problema</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="ctx-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:64px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Contexto</span>
+        <h2 id="ctx-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Uma ferramenta administrativa para o benefício farmácia</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">A MedMe oferece benefício farmácia para empresas conveniadas. O Portal de RH é onde os responsáveis de Recursos Humanos dessas empresas gerenciam colaboradores, acompanham limites e gastos, consultam reembolsos, acessam relatórios financeiros e administram o convênio.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Como Product Designer, fui responsável pelo redesenho das experiências: estrutura das interfaces, fluxos, protótipos e documentação para desenvolvimento. O Product Owner definia escopo e prioridades, e as soluções eram ajustadas com front-end e back-end ao longo da implementação.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="antes-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">O desafio</span>
+        <h2 id="antes-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Modernizar uma experiência que cresceu de forma fragmentada</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O Portal de RH reunia funcionalidades essenciais para a gestão dos benefícios corporativos, mas sua interface apresentava problemas recorrentes de hierarquia visual, consistência e organização das informações.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Ao analisar as telas existentes, identifiquei padrões de interação diferentes entre funcionalidades, tabelas com baixa legibilidade, ações pouco evidentes e fluxos que exigiam navegar por grandes volumes de informação.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Essas dificuldades eram especialmente perceptíveis nas áreas de gestão de colaboradores e relatórios, onde a clareza das informações e a facilidade de executar operações são fundamentais para a rotina administrativa.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#F3F2FF">O desafio, portanto, não era apenas atualizar a aparência do portal, mas construir uma experiência mais coerente, capaz de simplificar tarefas e oferecer uma base consistente para a evolução do produto.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 2</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">Processo e decisões</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="proc-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Processo</span>
+        <h2 id="proc-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Das inconsistências aos padrões</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Não houve entrevistas nem testes formais com usuários. O entendimento veio de cinco fontes: demandas do produto, chamados e informações do suporte, análise da interface existente, benchmark de produtos administrativos e alinhamentos com o Product Owner e a equipe técnica.</p>
+        <ol style="margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">01</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Mapear as diferenças.</strong> Comparar como cada área resolvia a mesma necessidade: listar, buscar, filtrar, editar, confirmar.</span></li>
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">02</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Definir os padrões.</strong> Escolher uma única forma para cada uma dessas necessidades, a partir do design system da MedMe.</span></li>
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">03</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Reorganizar as áreas.</strong> Aplicar os padrões tela a tela e repensar os fluxos em que só padronizar não resolvia, como relatórios.</span></li>
+          <li style="display:grid;grid-template-columns:40px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2;padding-top:4px">04</span><span style="font-size:16px;line-height:1.6;color:#D8D7F2"><strong style="color:#F3F2FF">Entregar em etapas.</strong> Documentar para o time e liberar a nova versão aos poucos, mantendo a antiga disponível.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="padrao-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Decisão 1</span>
+        <h2 id="padrao-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Padronizar a experiência com o design system</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O design system da MedMe, já usado em outros produtos da empresa, deu a base. A decisão foi tratar cada necessidade recorrente do portal com uma única solução, para que o RH reconheça o comportamento de uma tela na outra.</p>
+        <dl style="margin:8px 0 0;display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Navegação e layout</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Menu lateral, título e uma descrição curta de cada área sempre na mesma posição. O usuário sabe onde está e para que serve a tela.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Hierarquia tipográfica</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Poucos tamanhos e pesos, com o dado principal de cada linha em destaque e as informações de apoio mais discretas.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Tabelas, filtros e busca</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Busca e filtros reunidos numa mesma barra, junto da tabela que eles afetam.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Ações contextuais</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Ações próximas do item a que se referem, como no perfil do colaborador, que reúne editar, bloquear saldo, transferir CNPJ, resetar senha e desvincular.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Status e retorno</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Status com rótulo, e não só cor, e aviso quando uma exportação começa ou um arquivo segue por e-mail.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Modais e confirmações</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Confirmação antes de ações difíceis de desfazer, como apagar um gestor ou desvincular um colaborador.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Mensagens orientativas</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Quando uma busca não encontra resultado, a tela diz isso, em vez de mostrar uma tabela vazia.</dd></div>
+        </dl>
+        <p style="margin:0;font-size:15px;line-height:1.65;color:#B8B7DE">Parte dessas mudanças é de consistência e aparência. Sem testes com usuários, elas são apresentadas aqui como decisões fundamentadas, e não como ganhos de usabilidade comprovados.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="rel-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Decisão 2</span>
+        <h2 id="rel-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Trocar navegação por consulta nos relatórios</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Foi a área que mudou por completo. Padronizar a tela antiga não resolveria, porque o problema estava na estrutura: para chegar a um documento, o RH descia por empresa, depois por ano e depois por mês.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Quem procura um fechamento normalmente já sabe a empresa e o período. A nova proposta parte disso: em vez de percorrer uma árvore, o RH informa o que procura e a lista responde.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:24px;margin-top:8px">
+          <div style="display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid rgba(243,242,255,.14);border-radius:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Modelo anterior · navegar</span>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.9;color:#D8D7F2">Empresa<br>&nbsp;&nbsp;└ Ano<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Mês → tabela própria<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Mês → tabela própria<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ …</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid rgba(84,206,226,.4);border-radius:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">Novo modelo · consultar</span>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.9;color:#F3F2FF">[ empresas ] [ ano ] [ busca ]<br>Jan · Fev · Mar … com status<br>Resumo do mês<br>Relatórios agrupados por empresa<br>&nbsp;&nbsp;└ documentos do relatório</div>
+          </div>
+        </div>
+        <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px"><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>Filtros por empresa, ano e busca por empresa ou CNPJ</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>Meses do ano em abas, cada um com o status do fechamento: pago, pendente ou vencido</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>Resumo do mês com número de relatórios, valor total, empresas e pendências</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>Relatórios agrupados por empresa, com os documentos (resumido, nota de débito, completo, detalhado e customizados) abertos na própria linha</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#54CEE2;margin-top:11px"></span><span>Download por relatório ou do mês inteiro, e agendamento de fechamento antecipado a partir da mesma tela</span></li></ul>
+      </div>
+    </div>
+  </section>
+  <section aria-label="Relatórios antes e depois" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:32px;align-items:start">
+    <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+      <div onClick="{{ abrir }}" data-src="assets/medme/antes-relatorios.png" title="Clique para ampliar" style="border-radius:8px;overflow:hidden;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45);cursor:zoom-in"><img src="assets/medme/antes-relatorios.png" alt="Relatórios na versão antiga" loading="lazy" style="width:100%;height:auto;display:block"></div>
+      <figcaption style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Antes · histórico empilhado por mês</figcaption>
+    </figure>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+      <div onClick="{{ abrir }}" data-src="assets/medme/novo-relatorios.png" title="Clique para ampliar" style="border-radius:8px;overflow:hidden;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45);cursor:zoom-in"><img src="assets/medme/novo-relatorios.png" alt="Relatórios na versão nova" loading="lazy" style="width:100%;height:auto;display:block"></div>
+      <figcaption style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">Depois · filtros, meses com status e documentos por relatório</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="colab-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Decisão 3</span>
+        <h2 id="colab-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Gestão de colaboradores e perfis de RH</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">É a parte mais usada do portal, e a que tinha mais telas com a mesma função: listar pessoas e agir sobre elas. Usuários, Pré-cadastrados e Controle de perfis RH passaram a seguir o mesmo modelo de listagem, com busca, filtro por empresa e ações no mesmo lugar.</p>
+        <dl style="margin:8px 0 0;display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Consulta de colaboradores</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">O perfil reúne, em blocos, dados pessoais, contato, dependentes, endereços, empresa, histórico de compras e regras de compra por categoria, além das ações administrativas sobre aquela pessoa.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Desvinculação em massa</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Já existia como um modal isolado. Passou a ficar no menu Ações da listagem de Usuários, junto das outras operações em lote.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Controle de perfis RH</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Listagem com busca por nome ou CPF junto do filtro de empresas e Adicionar RH como ação principal da tela. Editar e excluir seguem no menu da linha, com confirmação antes de apagar.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Cadastro e pré-cadastro</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Formulário dividido em dados pessoais, contato e vínculo. Em Pré-cadastrados, adicionar, exportar, importar e consultar o relatório de importação ficam numa só barra, junto da busca.</dd></div>
+        </dl>
+        <button type="button" onClick="{{ verColab }}" style="align-self:flex-start;background:none;border:none;padding:4px 0;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:#C4A8F7;cursor:pointer" style-hover="color:#F3F2FF">Ver Perfil do usuário antes e depois →</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="dash-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Decisão 4</span>
+        <h2 id="dash-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Dashboard e informações gerenciais</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O dashboard antigo girava em torno de um gráfico central, com indicadores soltos ao lado e uma imagem de campanha que não carregava. A nova estrutura organiza a tela em blocos de leitura: campanhas em destaque, quatro indicadores (gastos dos últimos seis meses, período atual, saldo disponível e novos colaboradores), a análise financeira, os usuários por situação de cadastro e os últimos fechamentos.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">A intenção é que, ao abrir o portal, o RH entenda a situação do convênio antes de procurar uma área específica. A análise financeira pode ser filtrada por período e empresa e exportada direto do dashboard, e o bloco de usuários destaca os cadastros que precisam de atenção.</p>
+        <button type="button" onClick="{{ verDash }}" style="align-self:flex-start;background:none;border:none;padding:4px 0;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;color:#C4A8F7;cursor:pointer" style-hover="color:#F3F2FF">Ver Dashboard antes e depois →</button>
+      </div>
+    </div>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 3</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">Soluções e comparações</span>
+    </div>
+  </div>
+<section id="comparador" aria-labelledby="ad-title" style="max-width:1160px;margin:0 auto;padding:120px 24px 0">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-direction:column;gap:32px">
+    <div style="max-width:760px;display:flex;flex-direction:column;gap:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Antes e depois</span>
+      <h2 id="ad-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em">Oito comparações, lidas pelo problema</h2>
+      <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o benefício que se espera dela.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px" role="tablist" aria-label="Telas">
+      <sc-for list="{{ telas }}" as="t" hint-placeholder-count="7">
+        <button role="tab" aria-selected="{{ t.sel }}" onClick="{{ t.pick }}" style="font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;padding:10px 18px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.color }};cursor:pointer">{{ t.nome }}</button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:40px;align-items:start">
+      <div style="grid-column:span 2;min-width:0;display:flex;flex-direction:column;gap:16px">
+        <div style="display:inline-flex;align-self:flex-start;padding:4px;border-radius:999px;background:rgba(243,242,255,.08)">
+          <button onClick="{{ verAntes }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:999px;border:none;cursor:pointer;background:{{ antesBg }};color:{{ antesColor }}">Antes</button>
+          <button onClick="{{ verDepois }}" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:999px;border:none;cursor:pointer;background:{{ depoisBg }};color:{{ depoisColor }}">Depois</button>
+        </div>
+        <div ref="{{ stageRef }}" style="position:relative;width:100%;aspect-ratio:{{ stageAspect }};overflow:hidden;border-radius:8px;background:#FAFAFA;box-shadow:0 30px 80px rgba(0,0,0,.45)">
+          <sc-for list="{{ antesList }}" as="src" hint-placeholder-count="0">
+            <img src="{{ src }}" alt="{{ tela.altAntes }}" style="width:100%;height:100%;object-fit:cover;object-position:top left;display:block">
+          </sc-for>
+          <sc-for list="{{ depoisList }}" as="src" hint-placeholder-count="0">
+            <div style="position:absolute;inset:0;overflow-y:auto;background:#FAFAFA"><img src="{{ src }}" alt="{{ tela.altDepois }}" style="width:100%;height:auto;display:block"></div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;padding-top:56px">
+        <h3 style="margin:0;font-size:24px;font-weight:600;line-height:1.25">{{ tela.titulo }}</h3>
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <div style="display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Problema anterior</span><span style="font-size:15px;line-height:1.55;color:#D8D7F2;">{{ tela.a.problema }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C4A8F7">Decisão de design</span><span style="font-size:15px;line-height:1.55;color:#D8D7F2;">{{ tela.a.decisao }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#54CEE2">Solução proposta</span><span style="font-size:16px;line-height:1.55;color:#F3F2FF;font-weight:500">{{ tela.a.solucao }}</span></div>
+          <div style="display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid rgba(243,242,255,.14)"><span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#B8B7DE">Benefício esperado</span><span style="font-size:15px;line-height:1.55;color:#D8D7F2;">{{ tela.a.beneficio }}</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <div role="presentation" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:160px">
+    <div style="display:flex;align-items:baseline;gap:20px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#54CEE2">Parte 4</span>
+      <span style="font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1">Resultados e aprendizados</span>
+    </div>
+  </div>
+
+  <section aria-labelledby="lanc-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:64px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Lançamento</span>
+        <h2 id="lanc-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">Uma transição em etapas</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">O portal faz parte da rotina do RH. Trocar tudo de uma vez obrigaria quem já conhecia a versão antiga a reaprender o sistema inteiro de um dia para o outro.</p>
+        <p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">A decisão do time foi apresentar o novo portal aos poucos. As áreas são liberadas gradualmente e as duas versões convivem durante a transição. No menu, o botão <strong style="color:#F3F2FF">Voltar ao antigo RH</strong> dá tempo para o usuário se familiarizar com a nova organização sem travar uma tarefa urgente, como um fechamento ou um reembolso.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="res-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Resultados</span>
+        <h2 id="res-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">O que foi entregue e o que ainda não dá para medir</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <dl style="margin:8px 0 0;display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Entregas realizadas</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Padrões de página, tabela, formulário e modal sobre o design system; redesenho de Dashboard, Plano MedMe, Usuários, Perfil do usuário, Pré-cadastrados, Controle de perfis RH, Reembolsos e Fechamento/Relatórios; protótipos e documentação para desenvolvimento.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Mudanças implementadas</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Nova versão do portal em liberação gradual, convivendo com a versão anterior e com o botão de retorno no menu.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Benefícios esperados</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Menos esforço para encontrar informações e relatórios, comportamento previsível entre áreas e uma base reaproveitável para novas funcionalidades.</dd></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 24px;padding:18px 0;border-bottom:1px solid rgba(243,242,255,.14)"><dt style="font-size:16px;font-weight:600;color:#F3F2FF;line-height:1.5">Resultados medidos</dt><dd style="margin:0;font-size:16px;line-height:1.6;color:#D8D7F2;grid-column:span 2">Ainda não há. A liberação está em andamento e nenhum indicador de impacto foi consolidado.</dd></div>
+        </dl>
+        <div style="display:flex;flex-direction:column;gap:12px;padding-top:12px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#C4A8F7">Indicadores que poderiam ser acompanhados</span>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px"><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#C4A8F7;margin-top:11px"></span><span>Volume de chamados de suporte por área, comparado ao período anterior</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#C4A8F7;margin-top:11px"></span><span>Uso do botão Voltar ao antigo RH, e em quais telas</span></li><li style="display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:16px;line-height:1.6;color:#D8D7F2"><span style="width:6px;height:6px;border-radius:50%;background:#C4A8F7;margin-top:11px"></span><span>Tempo e número de passos para localizar e baixar um fechamento</span></li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="apr-title" style="max-width:1160px;margin:0 auto;padding-left:24px;padding-right:24px;padding-top:120px">
+    <div style="border-top:1px solid rgba(243,242,255,.14);padding-top:40px;display:flex;flex-wrap:wrap;gap:24px 72px">
+      <header style="flex:1 1 280px;max-width:360px;display:flex;flex-direction:column;gap:14px;align-self:flex-start;position:sticky;top:104px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9E6CEF">Aprendizados</span>
+        <h2 id="apr-title" style="margin:0;font-size:32px;line-height:1.18;font-weight:700;letter-spacing:-.02em;text-wrap:balance">O que este projeto ensinou</h2>
+      </header>
+      <div style="flex:2 1 520px;min-width:0;max-width:700px;display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(243,242,255,.14)">
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">Definir padrões antes de redesenhar telas</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Com várias áreas para revisar, começar pela tela mais urgente teria criado um novo conjunto de exceções. Fechar primeiro como o portal lista, filtra e confirma fez cada tela seguinte ser uma aplicação, e não uma nova decisão.</p></div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">Desenvolvimento como parte do desenho</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Os padrões só funcionaram porque foram combinados com front-end e back-end, considerando o que já existia no sistema e o que podia ser reaproveitado. Parte das soluções mudou durante a implementação, e isso melhorou o resultado.</p></div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">Consistência tem limite</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Aplicar o mesmo modelo de listagem em relatórios manteria o problema. Saber onde o padrão resolve e onde o fluxo pede uma estrutura própria foi uma das decisões mais importantes do projeto.</p></div>
+          <div style="display:flex;flex-direction:column;gap:8px;padding:24px 0;border-bottom:1px solid rgba(243,242,255,.14)"><h3 style="margin:0;font-size:21px;line-height:1.3;font-weight:600;text-wrap:balance">Decidir sem validação formal</h3><p style="margin:0;font-size:17px;line-height:1.75;color:#D8D7F2">Chamados de suporte e benchmark mostram onde há atrito, mas não explicam o motivo nem quem não chegou a reclamar. A liberação gradual reduz o risco; acompanhar o uso e conversar com alguns RHs durante a transição seria o próximo passo.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Contato" style="max-width:1160px;margin:120px auto 0;padding:0 24px 96px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <h2 style="margin:0;font-family:'Poppins',sans-serif;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.08;color:#F3F2FF">Tem um fluxo assim no seu produto?</h2>
+      <p style="margin:0 0 16px;font-size:17px;line-height:1.75;color:rgba(243,242,255,.72)">Me conta o contexto — respondo em até um dia útil.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap">
+        <a href="Projetos.dc.html" onclick="if(document.referrer){history.back();return false}" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;border:1.5px solid rgba(243,242,255,.22);color:#F3F2FF;transition:background .2s,color .2s" style-hover="background:#F3F2FF;color:#03043A"><span>←</span> Voltar à tela anterior</a>
+        <a href="Projetos.dc.html" style="display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:999px;background:#9E6CEF;color:#03043A;box-shadow:0 8px 22px rgba(158,108,239,.28);transition:background .2s" style-hover="background:#F3F2FF;color:#03043A">Ver mais cases <span>→</span></a>
+      </div>
+    </div>
+  </section>
+  <sc-if value="{{ temZoom }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ fechar }}" role="dialog" aria-label="Tela ampliada" style="position:fixed;inset:0;z-index:200;background:rgba(3,4,58,.92);display:flex;justify-content:center;padding:64px 24px 24px;overflow-y:auto;cursor:zoom-out">
+      <button type="button" onClick="{{ fechar }}" style="position:fixed;top:16px;right:24px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:10px 18px;border-radius:999px;border:1px solid rgba(243,242,255,.3);background:#03043A;color:#F3F2FF;cursor:pointer">Fechar · Esc</button>
+      <sc-for list="{{ zoomList }}" as="z" hint-placeholder-count="0">
+        <div style="width:100%;max-width:1400px;height:max-content;border-radius:8px;overflow:hidden;background:#FFFFFF;background-image:{{ z }};background-size:100% auto;background-repeat:no-repeat;aspect-ratio:{{ zoomAspect }}"></div>
+      </sc-for>
+    </div>
+  </sc-if>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { i: 0, modo: 'antes', scale: 0.5, relScale: 0.4 };
+  stage = React.createRef();
+  rel = React.createRef();
+  telas = [
+    { nome: 'Relatórios', titulo: 'Fechamento e relatórios', antes: 'assets/medme/antes-relatorios.png', ar: '1881/892', depois: 'assets/medme/novo-relatorios.png',
+      a: {"problema":"Fechamentos aninhados por empresa e mês, cada mês com a sua tabela. Encontrar um período antigo exigia rolar todo o histórico.","decisao":"Trocar a navegação por uma consulta: o RH escolhe empresa, ano e mês, e a tela mostra só o que importa.","solucao":"Filtros, meses em abas com status, resumo do mês, relatórios agrupados por empresa e documentos abertos na própria linha.","beneficio":"Localizar um fechamento e saber se está pago, pendente ou vencido sem percorrer o histórico."} },
+    { nome: 'Dashboard', titulo: 'Dashboard', antes: 'assets/medme/antes-dashboard.png', ar: '1897/924', depois: 'assets/medme/novo-dashboard.jpg',
+      a: {"problema":"Gráfico central, indicadores dispersos e uma imagem de campanha que não carregava.","decisao":"Organizar a primeira tela em blocos de leitura sobre a situação do convênio.","solucao":"Campanhas em destaque, quatro indicadores, análise financeira filtrável e exportável, usuários por situação de cadastro e últimos fechamentos.","beneficio":"Uma visão geral do convênio logo ao entrar, com os cadastros que pedem atenção à vista."} },
+    { nome: 'Usuários', titulo: 'Usuários', antes: 'assets/medme/antes-usuarios.png', ar: '1886/908', depois: 'assets/medme/novo-usuarios.jpg',
+      a: {"problema":"Todas as colunas com o mesmo peso e busca e filtro de empresa em extremos opostos da tela.","decisao":"Aplicar o padrão de listagem do portal, com o nome como dado principal.","solucao":"Nome em destaque e filtro de empresa, menu de ações e busca numa mesma barra acima da tabela.","beneficio":"Encontrar um colaborador com menos esforço de leitura e saber onde estão as operações da lista."} },
+    { nome: 'Perfil do usuário', titulo: 'Perfil do usuário', antes: 'assets/medme/antes-perfil-usuario.png', ar: '1872/917', depois: 'assets/medme/novo-perfil-usuario.jpg',
+      a: {"problema":"Poucos dados por bloco, muito espaço vazio e quase nenhuma ação disponível na tela.","decisao":"Fazer do perfil o lugar onde se resolve tudo sobre um colaborador.","solucao":"Blocos de dados pessoais, contato, dependentes, endereços e empresa, ações de transferir CNPJ, bloquear saldo, desvincular e resetar senha, e regras de compra por categoria.","beneficio":"Consultar e agir sobre um colaborador sem sair da tela dele."} },
+    { nome: 'Controle perfis RH', titulo: 'Controle de perfis RH', antes: 'assets/medme/antes-controle-rh.png', ar: '1905/755', depois: 'assets/medme/novo-controle-rh.jpg',
+      a: {"problema":"Lista simples, com a busca solta no meio do cabeçalho e o botão de adicionar sem destaque.","decisao":"Aplicar o mesmo padrão de listagem das outras áreas.","solucao":"Título com descrição da área, busca por nome ou CPF ao lado do filtro de empresas e Adicionar RH como ação principal.","beneficio":"Uma tela que o RH já reconhece das outras áreas do portal."} },
+    { nome: 'Pré-cadastrados', titulo: 'Pré-cadastrados', antes: 'assets/medme/antes-pre-cadastrados.png', ar: '1892/927', depois: 'assets/medme/novo-pre-cadastrados.png',
+      a: {"problema":"Destaque verde em todas as linhas e botões soltos, distantes da busca.","decisao":"Reunir as operações da lista num só lugar e dar ao CPF o papel de dado principal.","solucao":"Adicionar, exportar, importar e relatório de importação numa barra junto da busca, com o CPF em destaque.","beneficio":"As operações de pré-cadastro ficam fáceis de encontrar e a tabela, mais fácil de ler."} },
+    { nome: 'Reembolsos', titulo: 'Reembolsos', antes: 'assets/medme/antes-reembolsos.png', ar: '1883/911', depois: 'assets/medme/novo-reembolsos.png',
+      a: {"problema":"Tabela extensa e filtros distantes da busca, em lados opostos da tela.","decisao":"Juntar todos os controles da lista numa única barra.","solucao":"Filtros de status e empresa, extração de relatório e busca na mesma linha, e status com rótulo e ícone.","beneficio":"Filtrar e extrair relatórios sem procurar os controles pela tela."} },
+    { nome: 'Plano MedMe', titulo: 'Plano MedMe', antes: 'assets/medme/antes-plano.png', ar: '1893/924', depois: 'assets/medme/novo-plano.jpg',
+      a: {"problema":"Dados financeiros empilhados numa coluna lateral e período fixo, com pouca hierarquia.","decisao":"Separar os indicadores do convênio da lista de colaboradores.","solucao":"Três indicadores no topo (gastos totais, valor de economia e total do período), filtros de empresa e período junto da busca e saldo ativo como status.","beneficio":"Acompanhar o convênio e consultar os colaboradores na mesma tela, com leitura mais clara."} },
+  ];
+  abrir = (e) => { const src = e.currentTarget.dataset.src; if (!src) return; const im = new Image(); im.onload = () => this.setState({ zoom: src, zoomAr: im.naturalWidth + '/' + im.naturalHeight }); im.src = src; };
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape' && this.state.zoom) this.setState({ zoom: null }); };
+    window.addEventListener('keydown', this._esc);
+    this.ro = new ResizeObserver(() => this.fit());
+    if (this.stage.current) this.ro.observe(this.stage.current);
+    if (this.rel.current) this.ro.observe(this.rel.current);
+    this.fit();
+  }
+  componentDidUpdate() { if (this.stage.current && this.ro && !this._obs) { this.ro.observe(this.stage.current); this._obs = true; } }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  fit() {
+    const u = {};
+    const el = this.stage.current; if (el) { const s = el.clientWidth / 1440; if (Math.abs(s - this.state.scale) > 0.001) u.scale = s; }
+    const r = this.rel.current; if (r) { const s = r.clientWidth / 1440; if (Math.abs(s - this.state.relScale) > 0.001) u.relScale = s; }
+    if (Object.keys(u).length) this.setState(u);
+  }
+  irPara(nome) {
+    const k = this.telas.findIndex(x => x.nome === nome);
+    this.setState({ i: Math.max(0, k), modo: 'antes' });
+    const el = document.getElementById('comparador');
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+  }
+  renderVals() {
+    const { i, modo, scale, relScale } = this.state;
+    const tela = this.telas[i];
+    const on = { bg: '#9E6CEF', color: '#03043A' }, off = { bg: 'transparent', color: '#D8D7F2' };
+    return {
+      abrir: this.abrir, fechar: () => this.setState({ zoom: null }), temZoom: !!this.state.zoom, zoomList: this.state.zoom ? ["url('" + this.state.zoom + "')"] : [], zoomAspect: this.state.zoomAr || '16/9',
+      telas: this.telas.map((t, k) => ({ nome: t.nome, sel: k === i ? 'true' : 'false', pick: () => this.setState({ i: k }), bg: k === i ? '#F3F2FF' : 'transparent', color: k === i ? '#03043A' : '#D8D7F2', border: k === i ? '#F3F2FF' : 'rgba(243,242,255,.25)' })),
+      tela: { ...tela, altAntes: tela.titulo + ' na versão antiga', altDepois: tela.titulo + ' na versão nova' },
+      isAntes: modo === 'antes', isDepois: modo === 'depois', antesList: modo === 'antes' ? [tela.antes] : [], depoisList: modo === 'depois' ? [tela.depois] : [],
+      verAntes: () => this.setState({ modo: 'antes' }), verDepois: () => this.setState({ modo: 'depois' }),
+      antesBg: modo === 'antes' ? on.bg : off.bg, antesColor: modo === 'antes' ? on.color : off.color,
+      depoisBg: modo === 'depois' ? on.bg : off.bg, depoisColor: modo === 'depois' ? on.color : off.color,
+      verColab: () => this.irPara('Perfil do usuário'), verDash: () => this.irPara('Dashboard'),
+      stageRef: this.stage, scale, stageAspect: tela.ar,
+      relRef: this.rel, relScale,
+    };
+  }
+}
+</script>
+</body>
+</html>

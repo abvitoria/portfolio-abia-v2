@@ -1,0 +1,32 @@
+/* UXfinity — shared chrome (fixed nav) used by every page.
+   Update this file to change the nav across the whole portfolio. */
+:root{
+  --ac-void:#03043a;
+  --ac-warm:#F3F2FF;
+  --ac-warm-70:rgba(243,242,255,.72);
+  --ac-warm-40:rgba(243,242,255,.4);
+  --ac-warm-14:rgba(243,242,255,.14);
+  --ac-rose:#9E6CEF;
+}
+.ac-hdr{position:fixed;top:0;left:0;right:0;z-index:80;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',ui-monospace,monospace}
+.ac-hdr::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,4,58,.82),rgba(3,4,58,.55) 60%,rgba(3,4,58,.22) 92%,transparent);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);z-index:-1}
+.ac-mark{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.06em;color:var(--ac-warm);text-decoration:none;display:flex;align-items:center;gap:10px}
+.ac-mark img{height:30px;width:auto;display:block}
+.ac-mark::after{display:none;content:"";width:7px;height:7px;background:var(--ac-rose);border-radius:50%;box-shadow:0 0 22px var(--ac-rose);animation:acDot 3s ease-in-out infinite}
+@keyframes acDot{50%{opacity:.55;box-shadow:0 0 12px var(--ac-rose)}}
+.ac-nav-wrap{display:flex;align-items:center;gap:22px}
+.ac-nav{display:flex;gap:24px}
+.ac-nav a{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ac-warm-70);text-decoration:none;transition:color .2s ease,background .25s ease,border-color .25s ease;position:relative;padding:8px 14px;border-radius:999px;border:1px solid transparent}
+.ac-nav a:hover{color:var(--ac-warm);border-color:rgba(243,242,255,.18)}
+.ac-nav a[aria-current="page"]{color:var(--ac-void);background:var(--ac-rose);border-color:var(--ac-rose);box-shadow:0 6px 18px rgba(158,108,239,.35)}
+.ac-nav a[aria-current="page"]::before{display:none}
+.ac-nav a[aria-current="page"]:hover{color:var(--ac-void);border-color:var(--ac-rose)}
+.ac-lang{display:inline-flex;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--ac-warm-14);border-radius:999px;overflow:hidden;background:rgba(3,4,58,.35)}
+.ac-lang button{appearance:none;background:transparent;border:0;color:var(--ac-warm-70);padding:6px 11px;font:inherit;letter-spacing:inherit;cursor:pointer;transition:background .3s,color .3s}
+.ac-lang button[aria-pressed="true"]{background:var(--ac-rose);color:var(--ac-void)}
+.ac-lang button:hover{color:var(--ac-warm)}
+.ac-lang button[aria-pressed="true"]:hover{color:var(--ac-void)}
+.ac-skip{position:absolute;left:16px;top:-48px;z-index:100;background:var(--ac-rose);color:var(--ac-void);padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:700;font-size:13px;transition:top .2s}
+.ac-skip:focus{top:16px}
+@media (max-width:820px){.ac-hdr{padding:14px 20px}.ac-nav-wrap{gap:12px}.ac-nav{gap:12px}.ac-nav a{font-size:10.5px;letter-spacing:.06em}.ac-mark{font-size:20px}}
+@media print{.ac-hdr,.ac-skip{display:none!important}}

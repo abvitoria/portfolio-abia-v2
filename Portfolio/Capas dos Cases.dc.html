@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@600;700&family=Quicksand:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>body{margin:0;background:#020230;color:#F3F2FF;font-family:'Poppins',sans-serif}a{color:#C4A8F7}a:hover{color:#F3F2FF}</style>
+</helmet>
+<div style="padding:64px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:flex;flex-direction:column;gap:10px;max-width:880px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;letter-spacing:.12em;color:#9E6CEF;text-transform:uppercase">Modelo de capa · cases</div>
+    <h1 style="margin:0;font-size:32px;font-weight:500;line-height:1.25">1600 × 1200 px · proporção 4:3</h1>
+    <p style="margin:0;font-size:16px;line-height:1.65;color:#B8B7DE;text-wrap:pretty">Fundo sólido na cor escura da marca do cliente, logo branco centralizado e uma linha de assinatura logo abaixo, em Poppins. Nada mais. Os logos foram extraídos das telas e ficam levemente suaves em tamanho grande; se tiver os arquivos originais (SVG ou PNG grande), troque no modelo vazio.</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;color:#B8B7DE">01 · Trade+</div>
+    <div id="cover-trade" style="width:1600px;height:1200px;background:#072A30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px">
+      <img src="assets/trade/logo-tradeplus-branco.png" alt="Trade+" style="width:620px;height:auto;display:block">
+      <div style="font-size:36px;font-weight:400;color:#FFFFFF;letter-spacing:.005em">Empoderando o varejo no Brasil</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;color:#B8B7DE">02 · Vitalis Saúde</div>
+    <div id="cover-vitalis" style="width:1600px;height:1200px;background:#0A192F;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px">
+      <div style="display:flex;align-items:center;gap:36px">
+        <div style="width:150px;height:150px;border-radius:34px;overflow:hidden;flex:none"><img src="assets/vitalis/logo-icone.png" alt="" style="width:100%;height:100%;display:block;transform:scale(1.08)"></div>
+        <span style="font-family:'Inter';font-size:118px;font-weight:700;color:#FFFFFF;letter-spacing:-.02em;line-height:1">Vitalis Saúde</span>
+      </div>
+      <div style="font-size:36px;font-weight:400;color:#FFFFFF">Telemedicina para a rede pública</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;color:#B8B7DE">03 · StartDev</div>
+    <div id="cover-startdev" style="width:1600px;height:1200px;background:#0B0B1A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px">
+      <div role="img" aria-label="StartDev" style="display:flex;align-items:center;gap:44px">
+        <div style="position:relative;width:220px;height:250px;flex:none">
+          <div style="position:absolute;left:0;top:0;width:248px;height:40px;border-radius:20px;background:linear-gradient(90deg,#2A2FD6,#4552F7);transform-origin:20px 20px;transform:rotate(30.26deg)"></div>
+          <div style="position:absolute;left:0;top:210px;width:248px;height:40px;border-radius:20px;background:linear-gradient(90deg,#2A2FD6,#4552F7);transform-origin:20px 20px;transform:rotate(-30.26deg)"></div>
+          <div style="position:absolute;left:0;top:0;width:40px;height:250px;border-radius:20px;background:#1F2A9C"></div>
+        </div>
+        <div style="font-family:'Quicksand',sans-serif;font-size:168px;line-height:1;letter-spacing:-.01em;display:flex;align-items:baseline;padding-bottom:10px"><span style="font-weight:400;color:#FFFFFF">start</span><span style="font-weight:700;color:#5865FF">dev</span></div>
+      </div>
+      <div style="font-size:36px;font-weight:400;color:#FFFFFF">Plataforma de ensino para devs</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;color:#B8B7DE">04 · MedMe · Portal do RH</div>
+    <div id="cover-medme" style="width:1600px;height:1200px;background:#0D2D3A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px">
+      <img src="assets/medme/medme-logo-branco.png" alt="MedMe" style="width:640px;height:auto;display:block">
+      <div style="font-size:36px;font-weight:400;color:#FFFFFF">Portal do RH</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;color:#B8B7DE">05 · MedMe · PDV do vendedor</div>
+    <div id="cover-pdv" style="width:1600px;height:1200px;background:#0D2D3A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px">
+      <img src="assets/medme/medme-logo-branco.png" alt="MedMe" style="width:640px;height:auto;display:block">
+      <div style="font-size:36px;font-weight:400;color:#FFFFFF">PDV do vendedor</div>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <div style="font-family:'JetBrains Mono';font-size:12px;color:#B8B7DE">Modelo vazio · troque a cor de fundo, arraste o logo branco e edite a assinatura</div>
+    <div id="cover-modelo" style="width:1600px;height:1200px;background:#13004A;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px">
+      <div style="width:760px;height:220px"><image-slot id="capa-modelo-logo" shape="rect" fit="contain" placeholder="Logo branco do cliente (PNG transparente ou SVG)"></image-slot></div>
+      <div style="font-size:36px;font-weight:400;color:#FFFFFF">Assinatura ou descrição curta do produto</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

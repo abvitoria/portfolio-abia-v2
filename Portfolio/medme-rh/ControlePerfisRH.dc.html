@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/tokens/fig-tokens.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/tokens/fig-typography.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/components/navigation/fig-assets.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/components/patterns/fig-assets.css">
+  <link rel="stylesheet" href="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/styles.css">
+  <script src="_ds/medme-design-system-6bc7c34b-bf04-4909-9c97-255f49ed8204/_ds_bundle.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, sans-serif; background: var(--carbon-25); color: var(--carbon-900); }
+    a { color: var(--semantic-color-foreground-brand-bold-default-2); text-decoration: none; cursor: pointer; }
+    a:hover { color: var(--semantic-color-foreground-brand-bold-selected-2); }
+    table { width: 100%; border-collapse: collapse; }
+    button, a, input, tr, div { transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, box-shadow 160ms ease-out, transform 160ms ease-out; }
+    input::placeholder { color: var(--semantic-color-foreground-subtle); font-weight: 500; }
+    input:focus { outline: none; box-shadow: inset 0 0 0 1px var(--core-color-brand-400); }
+    input.bare:focus { box-shadow: none; }
+    @keyframes om-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes om-pop { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes om-drop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+    }
+  </style>
+</helmet>
+
+<div style="display: flex; flex-direction: column; min-height: 100vh; min-width: 1280px;">
+
+  <header style="height: 68px; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 32px; background: #fff; box-shadow: 0 8px 12px -3px rgba(5,0,155,0.15); position: sticky; top: 0; z-index: 80;">
+    <div style="display: flex; align-items: center; gap: 24px; flex-shrink: 0;">
+      <img src="assets/brand/medme-logo.png" alt="MedMe" style="height: 24px; display: block;">
+      <div style="font-size: 14px; color: var(--carbon-600); white-space: nowrap;">Seja bem-vindo, <b style="font-weight: 600; color: var(--carbon-900);">João Silva</b></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 20px; border: 1px solid var(--core-color-brand-400); border-radius: 104px; background: #fff; font-size: 16px; color: var(--semantic-color-foreground-content-2); white-space: nowrap; cursor: pointer;" style-hover="background: var(--core-color-brand-50);">
+      <span style="display: flex; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ActivityHeart" size="{{ 16 }}" hint-size="16px,16px"></x-import></span>
+      <span>Campanha de vacinação</span>
+      <a href="#" style="font-weight: 600;">Clique aqui</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 20px; flex-shrink: 0;">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: var(--semantic-color-foreground-content-2); white-space: nowrap; cursor: pointer;">
+        <span>Curitiba - PR</span>
+        <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronDown" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+      </div>
+      <button type="button" aria-label="Notificações" style="width: 40px; height: 40px; border: none; border-radius: 104px; background: transparent; color: var(--semantic-color-foreground-subtle); display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative;" style-hover="background: var(--carbon-100);">
+        <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Bell02" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+        <span style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; border-radius: 104px; background: var(--colors-error-500); border: 2px solid #fff;"></span>
+      </button>
+      <button type="button" aria-label="Aplicativos" style="width: 40px; height: 40px; border: none; border-radius: 104px; background: transparent; color: var(--semantic-color-foreground-subtle); display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--carbon-100);">
+        <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="DotsGrid" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+      </button>
+      <div style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+        <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Avatar" size="sm" placeholder="{{ true }}" hint-size="32px,32px"></x-import>
+        <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronDown" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+      </div>
+    </div>
+  </header>
+
+  <div style="display: flex; flex: 1; min-height: 0;">
+
+    <nav aria-label="Menu principal" style="{{ estiloNav }}">
+      <button type="button" onClick="{{ alternarNav }}" aria-label="Recolher ou expandir o menu" style="{{ estiloBotaoNav }}" style-hover="background: var(--carbon-50);">
+        <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="{{ iconeNav }}" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+        <sc-if value="{{ mostrarRotulos }}" hint-placeholder-val="{{ true }}">
+          <span>Recolher menu</span>
+        </sc-if>
+      </button>
+      <sc-for list="{{ menu }}" as="item" hint-placeholder-count="9">
+        <a href="{{ item.href }}" title="{{ item.label }}" style="{{ item.estilo }}">
+          <sc-if value="{{ item.ativo }}" hint-placeholder-val="{{ false }}">
+            <span style="position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px; border-radius: 0 2px 2px 0; background: var(--core-color-brand-400);"></span>
+          </sc-if>
+          <span style="display: flex; flex-shrink: 0;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="{{ item.icon }}" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+          <sc-if value="{{ mostrarRotulos }}" hint-placeholder-val="{{ true }}">
+            <span>{{ item.label }}</span>
+          </sc-if>
+        </a>
+      </sc-for>
+      <a href="#" style="{{ estiloVoltarAntigo }}" style-hover="background: var(--core-color-brand-500);">{{ rotuloVoltar }}</a>
+    </nav>
+
+    <main style="flex: 1; min-width: 0; padding: 32px 40px 48px;">
+
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 24px;">
+        <div>
+          <h1 style="font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin: 0; color: var(--carbon-900);">Controle perfis RH</h1>
+          <p style="font-size: 14px; color: var(--carbon-500); margin: 6px 0 0;">Gerencie os gestores de RH das empresas conveniadas</p>
+        </div>
+        <button type="button" onClick="{{ abrirNovo }}" style="display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border: none; border-radius: 104px; background: var(--core-color-brand-400); color: #fff; font-family: inherit; font-size: 16px; font-weight: 600; white-space: nowrap; cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-bold-hovered-2);">
+          <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="PlusCircle" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+          Adicionar RH
+        </button>
+      </div>
+
+      <div style="background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px;">
+        <div style="display: flex; gap: 12px; padding: 20px 22px; border-bottom: 1px solid var(--carbon-100); position: relative; z-index: 30;">
+          <div style="{{ estiloBusca }}" style-hover="border-color: var(--core-color-brand-400);">
+            <input class="bare" type="search" aria-label="Pesquisar por nome, CPF ou e-mail" placeholder="Pesquisar por nome, CPF..." value="{{ query }}" onChange="{{ onQuery }}" onFocus="{{ focoQuery }}" onBlur="{{ blurQuery }}" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+            <button type="button" aria-label="Buscar" style="width: 40px; height: 40px; flex-shrink: 0; border: none; border-radius: 104px; background: var(--carbon-100); color: var(--carbon-500); display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2);">
+              <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="SearchMd" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+            </button>
+          </div>
+          <div data-pop="filtro" style="position: relative;">
+            <button type="button" aria-haspopup="listbox" onClick="{{ alternarFiltro }}" style="{{ estiloFiltro }}" style-hover="background: var(--semantic-color-background-brand-subtle-default);">
+              <span style="display: flex;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Building06" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+              <span>{{ rotuloFiltro }}</span>
+              <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronDown" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+            </button>
+            <sc-if value="{{ filtroAberto }}" hint-placeholder-val="{{ false }}">
+              <div style="position: absolute; right: 0; top: 56px; width: 360px; background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; box-shadow: 0 12px 32px rgba(16,24,40,0.16); z-index: 50; padding: 16px; animation: om-drop 160ms ease-out;">
+                <div style="display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 4px 0 20px; margin-bottom: 12px; border: 1px solid var(--carbon-200); border-radius: 104px; background: var(--carbon-25);">
+                  <input type="search" aria-label="Buscar empresa" placeholder="digite o nome da empresa" value="{{ filtroBusca }}" onChange="{{ onFiltroBusca }}" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+                  <span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 104px; background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2); display: flex; align-items: center; justify-content: center;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="SearchMd" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+                </div>
+                <div role="listbox" aria-multiselectable="true" style="max-height: 240px; overflow-y: auto; display: flex; flex-direction: column;">
+                  <sc-for list="{{ opcoesFiltro }}" as="op" hint-placeholder-count="4">
+                    <button type="button" role="option" onClick="{{ op.alternar }}" style="{{ op.estilo }}" style-hover="background: var(--core-color-brand-50);">
+                      <span style="{{ op.estiloCaixa }}">
+                        <sc-if value="{{ op.marcada }}" hint-placeholder-val="{{ false }}">
+                          <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Check" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                        </sc-if>
+                      </span>
+                      <span>{{ op.nome }}</span>
+                    </button>
+                  </sc-for>
+                  <sc-if value="{{ filtroSemResultado }}" hint-placeholder-val="{{ false }}">
+                    <span style="padding: 24px 8px; text-align: center; font-size: 14px; color: var(--carbon-500);">Nenhuma empresa encontrada</span>
+                  </sc-if>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--carbon-100);">
+                  <button type="button" onClick="{{ cancelarFiltro }}" style="height: 40px; padding: 0 16px; border: none; border-radius: 104px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 700; color: var(--colors-error-600); cursor: pointer;" style-hover="background: var(--colors-error-50);">Cancelar</button>
+                  <button type="button" onClick="{{ confirmarFiltro }}" style="height: 40px; padding: 0 16px; border: none; border-radius: 104px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 700; color: var(--semantic-color-foreground-brand-bold-default-2); cursor: pointer;" style-hover="background: var(--core-color-brand-50);">Confirmar</button>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 16px 22px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-100);">Empresa</th>
+              <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 16px 22px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-100);">CPF</th>
+              <th scope="col" style="text-align: left; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 16px 22px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-100);">E-mail</th>
+              <th scope="col" style="width: 96px; text-align: right; font-size: 12px; font-weight: 700; color: var(--carbon-500); padding: 16px 32px 16px 22px; background: var(--carbon-50); border-bottom: 1px solid var(--carbon-100);">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="row" hint-placeholder-count="5">
+              <tr style="{{ row.estiloLinha }}" onMouseEnter="{{ row.aoEntrar }}" onMouseLeave="{{ row.aoSair }}">
+                <td style="padding: 16px 22px; font-size: 14px; font-weight: 600; color: var(--carbon-900); border-bottom: 1px solid var(--carbon-100); white-space: nowrap;">
+                  {{ row.empresa }}
+                  <span style="display: block; font-size: 12px; font-weight: 500; color: var(--carbon-500); margin-top: 2px;">{{ row.nome }}</span>
+                </td>
+                <td style="padding: 16px 22px; font-size: 14px; color: var(--carbon-800); border-bottom: 1px solid var(--carbon-100); white-space: nowrap;">{{ row.cpf }}</td>
+                <td style="padding: 16px 22px; font-size: 14px; color: var(--carbon-800); border-bottom: 1px solid var(--carbon-100); max-width: 320px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ row.email }}</td>
+                <td style="padding: 16px 32px 16px 22px; border-bottom: 1px solid var(--carbon-100);">
+                  <div data-pop="acoes" style="position: relative; display: flex; justify-content: flex-end;">
+                    <button type="button" aria-label="Mais ações" aria-haspopup="menu" onClick="{{ row.toggleMenu }}" style="{{ row.estiloBotaoMenu }}" style-hover="background: var(--carbon-100);">
+                      <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="DotsVertical" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                    </button>
+                    <sc-if value="{{ row.menuAberto }}" hint-placeholder-val="{{ false }}">
+                      <div role="menu" style="position: absolute; right: 0; top: 40px; min-width: 176px; background: #fff; border: 1px solid var(--semantic-color-border-brand-bold-default-2); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(16,24,40,0.08); z-index: 20; display: flex; flex-direction: column; animation: om-drop 160ms ease-out;">
+                        <button type="button" role="menuitem" onClick="{{ row.abrirEditar }}" style="text-align: left; padding: 12px 20px; border: none; background: none; font-family: inherit; font-size: 16px; color: var(--semantic-color-foreground-content-2); cursor: pointer;" style-hover="background: var(--core-color-brand-50);">Editar</button>
+                        <button type="button" role="menuitem" onClick="{{ row.abrirExcluir }}" style="text-align: left; padding: 12px 20px; border: none; background: none; font-family: inherit; font-size: 16px; color: var(--semantic-color-foreground-content-2); cursor: pointer;" style-hover="background: var(--core-color-brand-50);">Excluir</button>
+                      </div>
+                    </sc-if>
+                  </div>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+
+        <sc-if value="{{ vazio }}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 48px 20px; display: flex; flex-direction: column; align-items: center; gap: 12px; animation: om-fade 160ms ease-out;">
+            <span style="width: 48px; height: 48px; border-radius: 104px; background: var(--carbon-100); color: var(--carbon-400); display: flex; align-items: center; justify-content: center;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="SearchMd" size="{{ 24 }}" hint-size="24px,24px"></x-import></span>
+            <b style="font-size: 14px; color: var(--carbon-700);">Nenhum gestor encontrado</b>
+            <span style="font-size: 14px; color: var(--carbon-500);">Ajuste a busca ou o filtro de empresa</span>
+          </div>
+        </sc-if>
+
+        <div style="display: flex; align-items: center; justify-content: flex-end; padding: 20px 32px 20px 22px; position: relative;">
+          <div style="display: flex; align-items: center; gap: 24px;">
+            <div data-pop="porpagina" style="position: relative;">
+              <button type="button" aria-haspopup="listbox" onClick="{{ alternarPorPagina }}" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 144px; height: 48px; padding: 0 20px; border: 1px solid var(--carbon-200); border-radius: 104px; background: #fff; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2); cursor: pointer;" style-hover="border-color: var(--core-color-brand-400);">
+                <span>{{ porPaginaRotulo }}</span>
+                <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronDown" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+              </button>
+              <sc-if value="{{ porPaginaAberto }}" hint-placeholder-val="{{ false }}">
+                <div role="listbox" style="position: absolute; right: 0; bottom: 56px; width: 144px; background: #fff; border: 1px solid var(--core-color-brand-400); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(16,24,40,0.08); z-index: 40; display: flex; flex-direction: column; animation: om-drop 160ms ease-out;">
+                  <sc-for list="{{ opcoesPorPagina }}" as="op" hint-placeholder-count="3">
+                    <button type="button" role="option" onClick="{{ op.selecionar }}" style="{{ op.estilo }}" style-hover="background: var(--core-color-brand-50);">{{ op.rotulo }}</button>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+            <span style="font-size: 16px; font-weight: 700; color: var(--carbon-900); white-space: nowrap;">{{ intervalo }}</span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <button type="button" aria-label="Página anterior" onClick="{{ paginaAnterior }}" disabled="{{ semAnterior }}" style="{{ estiloAnterior }}">
+                <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronLeft" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+              </button>
+              <button type="button" aria-label="Próxima página" onClick="{{ paginaProxima }}" disabled="{{ semProxima }}" style="{{ estiloProxima }}">
+                <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronRight" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <sc-if value="{{ formAberto }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cliqueFundoForm }}" style="position: fixed; inset: 0; background: rgba(16,24,40,0.55); display: flex; align-items: center; justify-content: center; padding: 32px; z-index: 100; overflow-y: auto; animation: om-fade 160ms ease-out;">
+      <div role="dialog" aria-modal="true" aria-labelledby="titulo-form" style="width: 720px; max-width: 100%; max-height: calc(100vh - 64px); background: #fff; border-radius: 16px; display: flex; flex-direction: column; animation: om-pop 200ms ease-out;">
+        <div style="display: flex; gap: 16px; align-items: flex-start; padding: 24px 24px 0;">
+          <span style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px; background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-selected-2); display: flex; align-items: center; justify-content: center;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="{{ formIcone }}" size="{{ 24 }}" hint-size="24px,24px"></x-import></span>
+          <div style="flex: 1; min-width: 0;">
+            <h2 id="titulo-form" style="font-size: 20px; font-weight: 700; letter-spacing: -0.2px; margin: 0 0 8px;">{{ formTitulo }}</h2>
+            <p style="font-size: 14px; color: var(--carbon-500); margin: 0;">{{ formSubtitulo }}</p>
+          </div>
+          <button type="button" aria-label="Fechar" onClick="{{ fecharForm }}" style="width: 32px; height: 32px; flex-shrink: 0; border: none; border-radius: 8px; background: transparent; color: var(--carbon-500); display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--carbon-100);">
+            <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="XClose" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+          </button>
+        </div>
+
+        <div style="padding: 24px; overflow-y: auto; min-height: 0; display: flex; flex-direction: column; gap: 24px;">
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: var(--carbon-900);">
+            <span style="display: flex; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Users01" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+            Dados pessoais
+          </div>
+
+          <div>
+            <label for="f-nome" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Nome completo <span style="color: var(--colors-error-600);">*</span></label>
+            <input id="f-nome" type="text" placeholder="Digite o nome completo" value="{{ fNome }}" onChange="{{ onNome }}" style="width: 100%; height: 48px; padding: 0 20px; border: none; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            <div>
+              <label for="f-cpf" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">CPF <span style="color: var(--colors-error-600);">*</span></label>
+              <input id="f-cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" value="{{ fCpf }}" onChange="{{ onCpf }}" style="width: 100%; height: 48px; padding: 0 20px; border: none; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+            </div>
+            <div>
+              <label for="f-rg" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">RG / passaporte <span style="color: var(--colors-error-600);">*</span></label>
+              <input id="f-rg" type="text" placeholder="00.000.000-0" value="{{ fRg }}" onChange="{{ onRg }}" style="width: 100%; height: 48px; padding: 0 20px; border: none; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+            </div>
+            <div>
+              <label for="f-celular" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Celular <span style="color: var(--colors-error-600);">*</span></label>
+              <input id="f-celular" type="tel" inputmode="numeric" placeholder="(00) 00000-0000" value="{{ fCelular }}" onChange="{{ onCelular }}" style="width: 100%; height: 48px; padding: 0 20px; border: none; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <div data-pop="genero">
+              <span style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Gênero</span>
+              <div style="position: relative;">
+                <button type="button" aria-haspopup="listbox" onClick="{{ alternarGenero }}" style="{{ estiloGenero }}" style-hover="border-color: var(--core-color-brand-400);">
+                  <span>{{ fGeneroRotulo }}</span>
+                  <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronDown" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                </button>
+                <sc-if value="{{ generoAberto }}" hint-placeholder-val="{{ false }}">
+                  <div role="listbox" style="position: absolute; left: 0; right: 0; top: 56px; background: #fff; border: 1px solid var(--core-color-brand-400); border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(16,24,40,0.08); z-index: 20; display: flex; flex-direction: column; animation: om-drop 160ms ease-out;">
+                    <sc-for list="{{ opcoesGenero }}" as="op" hint-placeholder-count="4">
+                      <button type="button" role="option" onClick="{{ op.selecionar }}" style="{{ op.estilo }}" style-hover="background: var(--core-color-brand-50);">{{ op.nome }}</button>
+                    </sc-for>
+                  </div>
+                </sc-if>
+              </div>
+            </div>
+            <div>
+              <label for="f-nasc" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Data de nascimento</label>
+              <input id="f-nasc" type="text" inputmode="numeric" placeholder="00/00/0000" value="{{ fNasc }}" onChange="{{ onNasc }}" style="width: 100%; height: 48px; padding: 0 20px; border: none; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: var(--carbon-900);">
+            <span style="display: flex; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Building06" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+            Empresas vinculadas
+          </div>
+
+          <div data-pop="empresa" id="bloco-empresas">
+            <label id="rot-empresas" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Selecione as empresas do RH <span style="color: var(--colors-error-600);">*</span></label>
+            <div style="position: relative;">
+              <button type="button" aria-haspopup="listbox" aria-labelledby="rot-empresas" onClick="{{ alternarLista }}" style="{{ estiloBuscaEmpresa }}" style-hover="background: var(--semantic-color-background-brand-subtle-default);">
+                <span style="display: flex; align-items: center; gap: 8px; min-width: 0;">
+                  <span style="display: flex; flex-shrink: 0;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Building06" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+                  <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ rotuloEmpresasForm }}</span>
+                </span>
+                <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="ChevronDown" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+              </button>
+              <sc-if value="{{ mostraLista }}" hint-placeholder-val="{{ false }}">
+                <div style="position: absolute; left: 0; top: 56px; width: 100%; background: #fff; border: 1px solid var(--carbon-200); border-radius: 16px; box-shadow: 0 12px 32px rgba(16,24,40,0.16); z-index: 60; padding: 16px; animation: om-drop 160ms ease-out;">
+                  <div style="display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 4px 0 20px; margin-bottom: 12px; border: 1px solid var(--carbon-200); border-radius: 104px; background: var(--carbon-25);">
+                    <input id="f-empresas" class="bare" type="search" aria-label="Buscar empresa" placeholder="digite o nome da empresa" value="{{ empresaQuery }}" onChange="{{ onEmpresaQuery }}" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+                    <span style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 104px; background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2); display: flex; align-items: center; justify-content: center;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="SearchMd" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+                  </div>
+                  <div role="listbox" aria-multiselectable="true" style="max-height: 240px; overflow-y: auto; display: flex; flex-direction: column;">
+                    <sc-for list="{{ empresas }}" as="emp" hint-placeholder-count="5">
+                      <button type="button" role="option" onClick="{{ emp.selecionar }}" style="{{ emp.estilo }}" style-hover="background: var(--core-color-brand-50);">
+                        <span style="{{ emp.estiloCaixa }}">
+                          <sc-if value="{{ emp.marcada }}" hint-placeholder-val="{{ false }}">
+                            <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Check" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                          </sc-if>
+                        </span>
+                        <span>{{ emp.nome }}</span>
+                      </button>
+                    </sc-for>
+                    <sc-if value="{{ semEmpresas }}" hint-placeholder-val="{{ false }}">
+                      <span style="padding: 24px 8px; text-align: center; font-size: 14px; color: var(--carbon-500);">Nenhuma empresa encontrada</span>
+                    </sc-if>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--carbon-100);">
+                    <button type="button" onClick="{{ cancelarEmpresas }}" style="height: 40px; padding: 0 16px; border: none; border-radius: 104px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 700; color: var(--colors-error-600); cursor: pointer;" style-hover="background: var(--colors-error-50);">Cancelar</button>
+                    <button type="button" onClick="{{ confirmarEmpresas }}" style="height: 40px; padding: 0 16px; border: none; border-radius: 104px; background: transparent; font-family: inherit; font-size: 14px; font-weight: 700; color: var(--semantic-color-foreground-brand-bold-default-2); cursor: pointer;" style-hover="background: var(--core-color-brand-50);">Confirmar</button>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ temEmpresaSel }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; animation: om-fade 160ms ease-out;">
+                <sc-for list="{{ empresasSel }}" as="chip" hint-placeholder-count="2">
+                  <span style="display: flex; align-items: center; gap: 8px; padding: 6px 8px 6px 16px; border-radius: 104px; background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-selected-2); font-size: 14px; font-weight: 600;">
+                    <span>{{ chip.nome }}</span>
+                    <button type="button" aria-label="Remover empresa" onClick="{{ chip.remover }}" style="width: 24px; height: 24px; border: none; border-radius: 104px; background: transparent; color: inherit; display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--core-color-brand-200);">
+                      <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="XClose" size="{{ 16 }}" hint-size="16px,16px"></x-import>
+                    </button>
+                  </span>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+
+          <div style="height: 1px; background: var(--carbon-100);"></div>
+
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: var(--carbon-900);">
+            <span style="display: flex; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="Lock01" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+            Acesso e vínculos
+          </div>
+
+          <div>
+            <label for="f-email" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">E-mail <span style="color: var(--colors-error-600);">*</span></label>
+            <input id="f-email" type="email" placeholder="Digite o e-mail aqui" value="{{ fEmail }}" onChange="{{ onEmail }}" style="width: 100%; height: 48px; padding: 0 20px; border: none; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+            <div style="display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; padding: 16px; border: 1px solid var(--semantic-color-border-brand-bold-default-2); border-radius: 8px; background: var(--semantic-color-background-brand-subtle-default); font-size: 14px; color: var(--semantic-color-foreground-subtle);">
+              <span style="display: flex; flex-shrink: 0; color: var(--semantic-color-foreground-brand-bold-default-2);"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="InfoCircle" size="{{ 20 }}" hint-size="20px,20px"></x-import></span>
+              Utilize um e-mail específico apenas para o acesso de RH
+            </div>
+          </div>
+
+          <sc-if value="{{ mostraSenha }}" hint-placeholder-val="{{ false }}">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <label for="f-senha" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Senha <span style="color: var(--colors-error-600);">*</span></label>
+                <div style="display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 8px 0 20px; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2);">
+                  <input id="f-senha" class="bare" type="{{ tipoSenha }}" placeholder="Digite a senha" value="{{ fSenha }}" onChange="{{ onSenha }}" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+                  <button type="button" aria-label="Mostrar senha" onClick="{{ alternarSenha }}" style="width: 32px; height: 32px; flex-shrink: 0; border: none; border-radius: 104px; background: transparent; color: var(--carbon-500); display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2);">
+                    <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="{{ iconeSenha }}" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label for="f-senha2" style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--carbon-900);">Confirmar senha <span style="color: var(--colors-error-600);">*</span></label>
+                <div style="display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 8px 0 20px; border-radius: 104px; box-shadow: inset 0 0 0 1px var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2);">
+                  <input id="f-senha2" class="bare" type="{{ tipoConfirma }}" placeholder="Digite a senha novamente" value="{{ fConfirma }}" onChange="{{ onConfirma }}" style="flex: 1; min-width: 0; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2);">
+                  <button type="button" aria-label="Mostrar confirmação de senha" onClick="{{ alternarConfirma }}" style="width: 32px; height: 32px; flex-shrink: 0; border: none; border-radius: 104px; background: transparent; color: var(--carbon-500); display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2);">
+                    <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="{{ iconeConfirma }}" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+                  </button>
+                </div>
+                <sc-if value="{{ senhaDiverge }}" hint-placeholder-val="{{ false }}">
+                  <span style="display: block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--colors-error-600);">As senhas precisam ser iguais</span>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0 24px 24px;">
+          <button type="button" onClick="{{ fecharForm }}" style="height: 48px; border: 1px solid var(--semantic-color-border-brand-bold-default-2); border-radius: 104px; background: #fff; font-family: inherit; font-size: 16px; font-weight: 600; color: var(--semantic-color-foreground-brand-bold-default-2); cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-subtle-default);">Cancelar</button>
+          <button type="button" onClick="{{ salvarForm }}" disabled="{{ salvarBloqueado }}" style="{{ estiloSalvar }}">{{ formBotao }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ modalExcluir }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ cliqueFundoExcluir }}" style="position: fixed; inset: 0; background: rgba(16,24,40,0.55); display: flex; align-items: center; justify-content: center; padding: 32px; z-index: 100; animation: om-fade 160ms ease-out;">
+      <div role="dialog" aria-modal="true" aria-labelledby="titulo-excluir" style="width: 480px; max-width: 100%; background: #fff; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 24px; animation: om-pop 200ms ease-out;">
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <span style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 104px; background: var(--colors-error-50); color: var(--colors-error-600); display: flex; align-items: center; justify-content: center;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="AlertTriangle" size="{{ 24 }}" hint-size="24px,24px"></x-import></span>
+          <h2 id="titulo-excluir" style="flex: 1; min-width: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.2px; margin: 0;">Apagar usuário</h2>
+          <button type="button" aria-label="Fechar" onClick="{{ fecharModal }}" style="width: 32px; height: 32px; flex-shrink: 0; border: none; border-radius: 8px; background: transparent; color: var(--carbon-500); display: flex; align-items: center; justify-content: center; cursor: pointer;" style-hover="background: var(--carbon-100);">
+            <x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="XClose" size="{{ 20 }}" hint-size="20px,20px"></x-import>
+          </button>
+        </div>
+
+        <p style="font-size: 16px; color: var(--carbon-900); margin: 0; line-height: 1.4;">Tem certeza que deseja apagar o usuário? <b style="color: var(--colors-error-700); font-weight: 700;">Esta ação não pode ser desfeita.</b></p>
+
+        <div style="border: 1px solid var(--carbon-200); border-radius: 12px; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 8px; font-size: 16px;">
+            <b style="font-weight: 600; color: var(--carbon-900);">Nome:</b>
+            <span style="color: var(--carbon-800);">{{ alvoNome }}</span>
+          </div>
+          <div style="display: flex; gap: 8px; font-size: 16px;">
+            <b style="font-weight: 600; color: var(--carbon-900);">CPF:</b>
+            <span style="color: var(--carbon-800);">{{ alvoCpf }}</span>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <button type="button" onClick="{{ fecharModal }}" style="height: 48px; border: 1px solid var(--semantic-color-border-brand-bold-default-2); border-radius: 104px; background: #fff; font-family: inherit; font-size: 16px; font-weight: 600; color: var(--semantic-color-foreground-brand-bold-default-2); cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-subtle-default);">Cancelar</button>
+          <button type="button" onClick="{{ confirmarExclusao }}" style="height: 48px; border: none; border-radius: 104px; background: var(--colors-error-700); color: #fff; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;" style-hover="background: var(--colors-error-800);">Apagar usuário</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ sucessoVisivel }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; background: rgba(16,24,40,0.55); display: flex; align-items: center; justify-content: center; padding: 32px; z-index: 110; animation: om-fade 160ms ease-out;">
+      <div role="dialog" aria-modal="true" aria-labelledby="titulo-sucesso" style="width: 400px; max-width: 100%; background: #fff; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; animation: om-pop 200ms ease-out;">
+        <span style="width: 48px; height: 48px; border-radius: 104px; border: 2px solid var(--colors-success-500); color: var(--colors-success-500); display: flex; align-items: center; justify-content: center;"><x-import component-from-global-scope="MedMeDesignSystem_6bc7c3.Icon" name="CheckCircle" size="{{ 24 }}" hint-size="24px,24px"></x-import></span>
+        <h2 id="titulo-sucesso" style="font-size: 18px; font-weight: 700; margin: 0; color: var(--carbon-900);">{{ sucessoTitulo }}</h2>
+        <p style="font-size: 14px; color: var(--carbon-500); margin: 0; line-height: 1.5;">{{ sucessoTexto }}</p>
+        <button type="button" onClick="{{ fecharSucesso }}" style="width: 180px; height: 48px; margin-top: 8px; border: none; border-radius: 104px; background: var(--core-color-brand-400); color: #fff; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;" style-hover="background: var(--semantic-color-background-brand-bold-hovered-2);">Concluir</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const EMPRESAS = [
+  "62 Batalhão de Infantaria",
+  "Arteiros Cwb Eventos Cinema e Publicidade",
+  "Clínica Vida",
+  "Cobezal",
+  "Constantino e Contadores Associados",
+  "Dinho Nadir Elache",
+  "Future Licitações",
+  "MedMe Farmácias",
+  "MedMe Saúde",
+  "Saúde Prime",
+  "Supplier Contacts"
+];
+
+const GENEROS = ["Feminino", "Masculino", "Outro", "Prefiro não informar"];
+
+const so = v => (v || "").replace(/\D/g, "");
+
+const mascaraCpf = v => {
+  const d = so(v).slice(0, 11);
+  if (d.length <= 3) return d;
+  if (d.length <= 6) return d.slice(0, 3) + "." + d.slice(3);
+  if (d.length <= 9) return d.slice(0, 3) + "." + d.slice(3, 6) + "." + d.slice(6);
+  return d.slice(0, 3) + "." + d.slice(3, 6) + "." + d.slice(6, 9) + "-" + d.slice(9);
+};
+
+const mascaraTel = v => {
+  const d = so(v).slice(0, 11);
+  if (d.length <= 2) return d.length ? "(" + d : "";
+  if (d.length <= 7) return "(" + d.slice(0, 2) + ") " + d.slice(2);
+  return "(" + d.slice(0, 2) + ") " + d.slice(2, 7) + "-" + d.slice(7);
+};
+
+const mascaraData = v => {
+  const d = so(v).slice(0, 8);
+  if (d.length <= 2) return d;
+  if (d.length <= 4) return d.slice(0, 2) + "/" + d.slice(2);
+  return d.slice(0, 2) + "/" + d.slice(2, 4) + "/" + d.slice(4);
+};
+
+const REGISTROS = [
+  { id: 1, empresa: "Future Licitações", nome: "Jéssica Souza Lima", cpf: "313.779.130-82", rg: "12.345.678-9", celular: "(41) 99812-4477", genero: "Feminino", nascimento: "14/03/1990", email: "jessica@medmefarmacias.com.br", perfil: "RH", ativo: true },
+  { id: 2, empresa: "MedMe Farmácias", nome: "Maria Eduarda Prado", cpf: "482.114.900-16", rg: "22.114.907-0", celular: "(41) 99640-1120", genero: "Feminino", nascimento: "02/08/1985", email: "maria@medmefarmacias.com.br", perfil: "Administrador", ativo: true },
+  { id: 3, empresa: "Saúde Prime", nome: "Ana Carolina Reis", cpf: "150.336.720-44", rg: "30.556.128-4", celular: "(11) 98422-7781", genero: "Feminino", nascimento: "27/11/1992", email: "ana@saudeprime.com.br", perfil: "RH", ativo: false },
+  { id: 4, empresa: "Clínica Vida", nome: "Pedro Henrique Alves", cpf: "907.552.418-30", rg: "18.902.334-7", celular: "(41) 99155-8802", genero: "Masculino", nascimento: "09/06/1988", email: "pedro@clinicavida.com.br", perfil: "Administrador", ativo: true },
+  { id: 5, empresa: "MedMe Saúde", nome: "Lucas Ferreira Dias", cpf: "226.480.115-72", rg: "27.610.845-2", celular: "(41) 98877-3390", genero: "Masculino", nascimento: "31/01/1995", email: "lucas@medmesaude.com.br", perfil: "RH", ativo: false },
+  { id: 6, empresa: "Cobezal", nome: "Renata Bastos Nunes", cpf: "774.200.318-59", rg: "41.220.900-1", celular: "(47) 99310-2255", genero: "Feminino", nascimento: "18/05/1991", email: "renata@cobezal.com.br", perfil: "RH", ativo: true },
+  { id: 7, empresa: "Supplier Contacts", nome: "Letícia Moura Campos", cpf: "638.911.470-05", rg: "35.118.762-6", celular: "(41) 99502-6614", genero: "Feminino", nascimento: "23/09/1987", email: "leticia.moura@medmefarmacias.com.br", perfil: "Administrador", ativo: true },
+  { id: 8, empresa: "62 Batalhão de Infantaria", nome: "Camila Rodrigues Santos", cpf: "205.338.910-77", rg: "15.887.234-1", celular: "(41) 99321-6650", genero: "Feminino", nascimento: "05/07/1993", email: "camila@62batalhao.com.br", perfil: "RH", ativo: true },
+  { id: 9, empresa: "Arteiros Cwb Eventos Cinema e Publicidade", nome: "Bruno Cesar Lima", cpf: "369.442.187-20", rg: "28.774.610-5", celular: "(41) 98811-2290", genero: "Masculino", nascimento: "19/02/1989", email: "bruno@arteiroscwb.com.br", perfil: "Administrador", ativo: true },
+  { id: 10, empresa: "Constantino e Contadores Associados", nome: "Fernanda Aparecida Souza", cpf: "512.887.640-93", rg: "33.221.409-8", celular: "(41) 99765-4432", genero: "Feminino", nascimento: "11/10/1991", email: "fernanda@constantinocontadores.com.br", perfil: "RH", ativo: false },
+  { id: 11, empresa: "Dinho Nadir Elache", nome: "Rodrigo Nadir Elache", cpf: "148.902.376-64", rg: "19.556.782-0", celular: "(41) 99640-8871", genero: "Masculino", nascimento: "30/04/1986", email: "rodrigo@dinhonadirelache.com.br", perfil: "Administrador", ativo: true },
+  { id: 12, empresa: "MedMe Farmácias", nome: "Gustavo Henrique Barros", cpf: "723.115.480-52", rg: "24.887.310-9", celular: "(41) 99118-7743", genero: "Masculino", nascimento: "08/12/1994", email: "gustavo@medmefarmacias.com.br", perfil: "RH", ativo: true },
+  { id: 13, empresa: "Saúde Prime", nome: "Larissa Mendes Cardoso", cpf: "386.204.719-08", rg: "31.442.109-3", celular: "(11) 98322-5567", genero: "Feminino", nascimento: "22/06/1990", email: "larissa@saudeprime.com.br", perfil: "RH", ativo: true },
+  { id: 14, empresa: "Clínica Vida", nome: "Marcelo Augusto Teixeira", cpf: "604.771.328-15", rg: "20.998.443-6", celular: "(41) 99287-3391", genero: "Masculino", nascimento: "14/09/1987", email: "marcelo@clinicavida.com.br", perfil: "Administrador", ativo: false },
+  { id: 15, empresa: "MedMe Saúde", nome: "Patrícia Gomes Ribeiro", cpf: "297.663.850-41", rg: "26.114.978-2", celular: "(41) 98650-2214", genero: "Feminino", nascimento: "03/03/1996", email: "patricia@medmesaude.com.br", perfil: "RH", ativo: true },
+  { id: 16, empresa: "Cobezal", nome: "Eduardo Vieira Nogueira", cpf: "458.320.716-99", rg: "22.775.630-4", celular: "(47) 99402-1187", genero: "Masculino", nascimento: "25/01/1992", email: "eduardo@cobezal.com.br", perfil: "RH", ativo: true },
+  { id: 17, empresa: "Supplier Contacts", nome: "Vanessa Cristina Rocha", cpf: "831.204.567-30", rg: "34.556.219-7", celular: "(41) 99873-6602", genero: "Feminino", nascimento: "17/08/1988", email: "vanessa.rocha@medmefarmacias.com.br", perfil: "Administrador", ativo: true },
+  { id: 18, empresa: "Future Licitações", nome: "Thiago Batista Correia", cpf: "195.447.302-86", rg: "17.663.884-5", celular: "(41) 99534-7729", genero: "Masculino", nascimento: "06/05/1993", email: "thiago@futurelicitacoes.com.br", perfil: "RH", ativo: false },
+  { id: 19, empresa: "62 Batalhão de Infantaria", nome: "Beatriz Almeida Farias", cpf: "672.918.430-55", rg: "29.110.573-8", celular: "(41) 98299-4416", genero: "Feminino", nascimento: "29/11/1995", email: "beatriz@62batalhao.com.br", perfil: "Administrador", ativo: true },
+  { id: 20, empresa: "Arteiros Cwb Eventos Cinema e Publicidade", nome: "Rafael Costa Monteiro", cpf: "340.586.271-04", rg: "21.887.309-1", celular: "(41) 99456-8820", genero: "Masculino", nascimento: "21/07/1984", email: "rafael@arteiroscwb.com.br", perfil: "RH", ativo: true }
+];
+
+/* Botão padrão de seleção de empresa (pill outline brand, 48px) */
+const SELETOR_EMPRESA = "display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 104px; font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer; color: var(--semantic-color-foreground-brand-bold-default-2); border: 1px solid var(--semantic-color-border-brand-bold-default-2); ";
+
+const FORM_VAZIO = { nome: "", cpf: "", rg: "", celular: "", genero: "", nascimento: "", email: "", senha: "", confirma: "", empresa: "", empresas: [], perfil: "RH" };
+
+const MENU = [
+  { icon: "Grid01", label: "Dashboard", href: "Dashboard.dc.html" },
+  { icon: "File02", label: "Plano MedMe", href: "Plano MedMe.dc.html" },
+  { icon: "Settings01", label: "Controle perfis RH", href: "Controle Perfis RH.dc.html", ativo: true },
+  { icon: "Users01", label: "Usuários", href: "Usuários.dc.html" },
+  { icon: "UserEdit", label: "Pré-cadastrados", href: "Pré-cadastrados.dc.html" },
+  { icon: "UserPlus01", label: "Cadastrar usuários", href: "Cadastrar usuários.dc.html" },
+  { icon: "AlignLeft", label: "Reembolsos", href: "Reembolsos.dc.html" },
+  { icon: "FileCheck02", label: "Fechamento / Relatórios", href: "Fechamento Relatórios.dc.html" },
+  { icon: "Share07", label: "Campanhas marketing", href: "Campanhas Marketing.dc.html" },
+  { icon: "DotsGrid", label: "Painel de autorizações", href: "#" },
+  { icon: "Upload01", label: "Importações", href: "#" }
+];
+function lerMenu() {
+  try { return localStorage.getItem("rh-menu-aberto") !== "0"; } catch (e) { return true; }
+}
+function gravarMenu(v) {
+  try { localStorage.setItem("rh-menu-aberto", v ? "1" : "0"); } catch (e) {}
+}
+
+class Component extends DCLogic {
+  navVals() {
+    const aberto = this.state.navAberta !== false;
+    const itemBase = "position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; font-size: 14px; white-space: nowrap; overflow: hidden; " + (aberto ? "" : "justify-content: center; ");
+    const botao = (aberto ? "width: 100%; height: 44px; padding: 0 16px; justify-content: flex-start; gap: 12px;" : "width: 44px; height: 44px; justify-content: center; margin: 0 auto;") + " display: flex; align-items: center; border: 1px solid var(--carbon-200); border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px; font-weight: 500; color: var(--carbon-600); text-decoration: none; cursor: pointer; white-space: nowrap; overflow: hidden;";
+    return {
+      estiloNav: "width: " + (aberto ? "248px" : "72px") + "; flex-shrink: 0; align-self: flex-start; position: sticky; top: 68px; height: calc(100vh - 68px); overflow-y: auto; background: #fff; border-right: 1px solid var(--carbon-200); padding: 20px 12px; display: flex; flex-direction: column; gap: 2px; transition: width 160ms ease-out; z-index: 20;",
+      estiloBotaoNav: botao + " margin-bottom: 16px;",
+      estiloVoltarAntigo: "display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 60px; height: 48px; " + (aberto ? "padding: 0 20px;" : "width: 48px; padding: 0; margin-left: auto; margin-right: auto;") + " border: none; border-radius: 104px; background: var(--core-color-brand-400); color: #fff; font-family: inherit; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; overflow: hidden;",
+      rotuloVoltar: aberto ? "Voltar ao antigo RH" : "RH",
+      iconeNav: aberto ? "ChevronLeft" : "ChevronRight",
+      mostrarRotulos: aberto,
+      alternarNav: () => this.setState(st => { const v = st.navAberta === false; gravarMenu(v); return { navAberta: v }; }),
+      menu: MENU.map(m => Object.assign({}, m, {
+        ativo: !!m.ativo,
+        estilo: itemBase + (m.ativo
+          ? "font-weight: 600; background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2);"
+          : "font-weight: 500; color: var(--carbon-700);")
+      }))
+    };
+  }
+
+  state = {
+    navAberta: lerMenu(),
+    registros: REGISTROS,
+    query: "",
+    queryFoco: false,
+    filtroEmpresas: [],
+    filtroRascunho: [],
+    filtroBusca: "",
+    filtroAberto: false,
+    porPagina: 20,
+    porPaginaAberto: false,
+    pagina: 1,
+    menuAberto: null,
+    linhaHover: null,
+    formAberto: false,
+    formModo: "editar",
+    formId: null,
+    form: FORM_VAZIO,
+    alterado: false,
+    generoAberto: false,
+    empresaQuery: "",
+    empresaRascunho: [],
+    buscaFoco: false,
+    listaAberta: false,
+    alvo: null,
+    excluido: null,
+    sucesso: null
+  };
+
+  componentDidMount() {
+    this._clique = e => {
+      const dentro = alvo => e.target.closest && e.target.closest('[data-pop="' + alvo + '"]');
+      const patch = {};
+      if (this.state.menuAberto !== null && !dentro("acoes")) patch.menuAberto = null;
+      if (this.state.filtroAberto && !dentro("filtro")) patch.filtroAberto = false;
+      if (this.state.porPaginaAberto && !dentro("porpagina")) patch.porPaginaAberto = false;
+      if (this.state.generoAberto && !dentro("genero")) patch.generoAberto = false;
+      if (this.state.listaAberta && !dentro("empresa")) patch.listaAberta = false;
+      if (Object.keys(patch).length) this.setState(patch);
+    };
+    this._tecla = e => {
+      if (e.key !== "Escape") return;
+      if (this.state.sucesso) return this.setState({ sucesso: null, excluido: null });
+      if (this.state.alvo) return this.setState({ alvo: null });
+      if (this.state.formAberto) return this.fecharForm();
+      this.setState({ menuAberto: null, filtroAberto: false, porPaginaAberto: false, generoAberto: false, listaAberta: false });
+    };
+    document.addEventListener("click", this._clique);
+    document.addEventListener("keydown", this._tecla);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this._clique);
+    document.removeEventListener("keydown", this._tecla);
+  }
+
+  campo(nome, valor) {
+    this.setState(s => ({ form: { ...s.form, [nome]: valor }, alterado: true }));
+  }
+
+  abrirForm(modo, reg) {
+    this.setState({
+      formAberto: true,
+      verSenha: false,
+      verConfirma: false,
+      formModo: modo,
+      formId: reg ? reg.id : null,
+      form: reg ? { ...reg, empresas: reg.empresas || (reg.empresa ? [reg.empresa] : []) } : { ...FORM_VAZIO, empresas: [] },
+      empresaQuery: "",
+      alterado: false,
+      menuAberto: null,
+      generoAberto: false,
+      listaAberta: false
+    });
+  }
+
+  fecharForm = () => this.setState({ formAberto: false, alterado: false, generoAberto: false, listaAberta: false });
+
+  renderVals() {
+    const s = this.state;
+    const f = s.form;
+
+    const q = s.query.trim().toLowerCase();
+    const filtrados = s.registros.filter(r => {
+      const bateBusca = !q || r.email.toLowerCase().includes(q) || r.empresa.toLowerCase().includes(q) || r.nome.toLowerCase().includes(q) || (r.cpf || "").replace(/\D/g, "").includes(q.replace(/\D/g, "")) && !!q.replace(/\D/g, "");
+      const bateEmpresa = s.filtroEmpresas.length === 0 || s.filtroEmpresas.indexOf(r.empresa) >= 0;
+      return bateBusca && bateEmpresa;
+    });
+
+    const total = filtrados.length;
+    const totalPaginas = Math.max(1, Math.ceil(total / s.porPagina));
+    const pagina = Math.min(s.pagina, totalPaginas);
+    const inicio = (pagina - 1) * s.porPagina;
+    const visiveis = filtrados.slice(inicio, inicio + s.porPagina);
+
+    const baseBadge = "display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 104px; font-family: inherit; cursor: pointer; ";
+    const baseOpcao = "text-align: left; padding: 16px 20px; border: none; font-family: inherit; font-size: 14px; cursor: pointer; border-bottom: 1px solid var(--carbon-100); ";
+    const baseBotaoMenu = "width: 32px; height: 32px; border: none; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; ";
+    const basePag = "width: 32px; height: 32px; border: none; border-radius: 104px; display: flex; align-items: center; justify-content: center; ";
+    const baseSalvar = "height: 48px; border: none; border-radius: 104px; font-family: inherit; font-size: 16px; font-weight: 600; ";
+    const baseCampoPill = "height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; padding: 0 20px; border-radius: 104px; font-family: inherit; font-size: 16px; font-weight: 500; cursor: pointer; text-align: left; ";
+
+    const rows = visiveis.map(r => ({
+      ...r,
+      menuAberto: s.menuAberto === r.id,
+      estiloLinha: s.linhaHover === r.id ? "background: var(--carbon-50);" : "background: #fff;",
+      aoEntrar: () => this.setState({ linhaHover: r.id }),
+      aoSair: () => this.setState({ linhaHover: null }),
+      estiloBotaoMenu: s.menuAberto === r.id
+        ? baseBotaoMenu + "background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-default-2);"
+        : baseBotaoMenu + "background: transparent; color: var(--carbon-600);",
+      rotuloStatus: r.ativo ? "Ativo" : "Inativo",
+      iconeStatus: r.ativo ? "CheckCircle" : "XCircle",
+      estiloBadge: r.ativo
+        ? baseBadge + "border: 1px solid var(--colors-success-500); background: var(--colors-success-50); color: var(--colors-success-700);"
+        : baseBadge + "border: 1px solid var(--colors-warning-500); background: var(--colors-warning-50); color: var(--colors-warning-700);",
+      alternarStatus: () => this.setState(st => ({
+        registros: st.registros.map(x => (x.id === r.id ? { ...x, ativo: !x.ativo } : x))
+      })),
+      toggleMenu: () => this.setState(st => ({ menuAberto: st.menuAberto === r.id ? null : r.id })),
+      abrirEditar: () => this.abrirForm("editar", r),
+      abrirExcluir: () => this.setState({ menuAberto: null, alvo: r })
+    }));
+
+    const caixaGrande = marcada => "width: 24px; height: 24px; flex-shrink: 0; border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 2px solid " +
+      (marcada ? "var(--core-color-brand-400); background: var(--core-color-brand-400); color: #fff;" : "var(--carbon-300); background: #fff;");
+    const itemLista = "display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 8px; border: none; border-bottom: 1px solid var(--carbon-100); background: transparent; font-family: inherit; font-size: 16px; font-weight: 500; color: var(--semantic-color-foreground-content-2); cursor: pointer;";
+    const buscaFiltro = s.filtroBusca.trim().toLowerCase();
+    const empresasVisiveis = Array.from(new Set(s.registros.map(r => r.empresa))).sort().filter(n => !buscaFiltro || n.toLowerCase().includes(buscaFiltro));
+
+    const opcoesFiltro = (buscaFiltro ? [] : [{
+      nome: "Todos",
+      marcada: s.filtroRascunho.length === 0,
+      estilo: itemLista,
+      estiloCaixa: caixaGrande(s.filtroRascunho.length === 0),
+      alternar: () => this.setState({ filtroRascunho: [] })
+    }]).concat(empresasVisiveis.map(nome => {
+      const marcada = s.filtroRascunho.indexOf(nome) >= 0;
+      return {
+        nome: nome,
+        marcada: marcada,
+        estilo: itemLista,
+        estiloCaixa: caixaGrande(marcada),
+        alternar: () => this.setState(st => {
+          const a = st.filtroRascunho.slice();
+          const i = a.indexOf(nome);
+          if (i >= 0) a.splice(i, 1); else a.push(nome);
+          return { filtroRascunho: a };
+        })
+      };
+    }));
+
+    const opcoesPorPagina = [5, 10, 20].map(n => ({
+      rotulo: n + " linhas",
+      estilo: n === s.porPagina
+        ? baseOpcao + "background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-selected-2); font-weight: 600;"
+        : baseOpcao + "background: #fff; color: var(--carbon-800); font-weight: 500;",
+      selecionar: () => this.setState({ porPagina: n, porPaginaAberto: false, pagina: 1 })
+    }));
+
+    const opcoesGenero = GENEROS.map(nome => ({
+      nome,
+      estilo: nome === f.genero
+        ? baseOpcao + "background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-selected-2); font-weight: 600;"
+        : baseOpcao + "background: #fff; color: var(--carbon-800); font-weight: 500;",
+      selecionar: () => { this.campo("genero", nome); this.setState({ generoAberto: false }); }
+    }));
+
+    const selEmp = f.empresas || (f.empresa ? [f.empresa] : []);
+    const rascunhoEmp = s.listaAberta ? s.empresaRascunho : selEmp;
+    const alternarEmpresa = nome => this.setState(st => {
+      const atual = st.form.empresas || (st.form.empresa ? [st.form.empresa] : []);
+      const nova = atual.indexOf(nome) >= 0 ? atual.filter(x => x !== nome) : atual.concat([nome]);
+      return { form: { ...st.form, empresas: nova, empresa: nova[0] || "" }, alterado: true };
+    });
+    const eq = s.empresaQuery.trim().toLowerCase();
+    const empresas = EMPRESAS.filter(n => !eq || n.toLowerCase().includes(eq)).map(nome => {
+      const marcada = rascunhoEmp.indexOf(nome) >= 0;
+      return {
+        nome,
+        marcada,
+        estiloCaixa: "width: 20px; height: 20px; flex-shrink: 0; border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid " +
+          (marcada ? "var(--core-color-brand-400); background: var(--core-color-brand-400); color: #fff;" : "var(--carbon-300); background: #fff;"),
+        estilo: baseOpcao + "display: flex; align-items: center; gap: 12px; " + (marcada
+          ? "background: var(--semantic-color-background-brand-subtle-default); color: var(--semantic-color-foreground-brand-bold-selected-2); font-weight: 600;"
+          : "background: #fff; color: var(--carbon-800); font-weight: 500;"),
+        selecionar: () => this.setState(st => ({
+          empresaRascunho: st.empresaRascunho.indexOf(nome) >= 0
+            ? st.empresaRascunho.filter(x => x !== nome)
+            : st.empresaRascunho.concat([nome])
+        }))
+      };
+    });
+
+    const novo = s.formModo === "novo";
+    const senha = f.senha || "";
+    const confirma = f.confirma || "";
+    const senhaDiverge = !!(novo && confirma && senha !== confirma);
+    const senhaOk = !novo || (senha.trim() && senha === confirma);
+    const completo = f.nome.trim() && f.cpf.trim() && f.celular.trim() && f.email.trim() && selEmp.length > 0 && senhaOk;
+    const podeSalvar = !!(s.alterado && completo);
+    const refAlvo = s.excluido || s.alvo;
+    const nomeSucesso = s.sucesso === "exclusao" ? (refAlvo ? refAlvo.nome : "") : f.nome;
+
+    return {
+      ...this.navVals(),
+      rows,
+      vazio: total === 0,
+
+      query: s.query,
+      onQuery: e => this.setState({ query: e.target.value, pagina: 1 }),
+      focoQuery: () => this.setState({ queryFoco: true }),
+      blurQuery: () => this.setState({ queryFoco: false }),
+      estiloBusca: "flex: 1; display: flex; align-items: center; gap: 8px; height: 48px; padding: 0 4px 0 20px; border-radius: 104px; "
+        + ((s.queryFoco || s.query.length > 0)
+          ? "border: 1px solid var(--core-color-brand-400); background: #fff;"
+          : "border: 1px solid var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2);"),
+
+      rotuloFiltro: s.filtroEmpresas.length === 0 ? "Todas as empresas" : (s.filtroEmpresas.length === 1 ? s.filtroEmpresas[0] : s.filtroEmpresas.length + " empresas"),
+      filtroAberto: s.filtroAberto,
+      filtroBusca: s.filtroBusca,
+      onFiltroBusca: e => this.setState({ filtroBusca: e.target.value }),
+      filtroSemResultado: empresasVisiveis.length === 0,
+      opcoesFiltro,
+      cancelarFiltro: () => this.setState({ filtroAberto: false }),
+      confirmarFiltro: () => this.setState(st => ({ filtroEmpresas: st.filtroRascunho.slice(), filtroAberto: false, pagina: 1 })),
+      alternarFiltro: () => this.setState(st => ({ filtroAberto: !st.filtroAberto, filtroRascunho: st.filtroEmpresas.slice(), filtroBusca: "" })),
+      estiloFiltro: SELETOR_EMPRESA + "white-space: nowrap; "
+        + (s.filtroAberto ? "background: var(--semantic-color-background-brand-subtle-default);" : "background: #fff;"),
+
+      porPaginaRotulo: s.porPagina + " linhas",
+      porPaginaAberto: s.porPaginaAberto,
+      opcoesPorPagina,
+      alternarPorPagina: () => this.setState(st => ({ porPaginaAberto: !st.porPaginaAberto })),
+      intervalo: total === 0 ? "0 itens" : (inicio + 1) + "-" + Math.min(inicio + s.porPagina, total) + " de " + total + " itens",
+      semAnterior: pagina <= 1,
+      semProxima: pagina >= totalPaginas,
+      paginaAnterior: () => this.setState(st => ({ pagina: Math.max(1, st.pagina - 1) })),
+      paginaProxima: () => this.setState(st => ({ pagina: Math.min(totalPaginas, st.pagina + 1) })),
+      estiloAnterior: pagina <= 1
+        ? basePag + "background: var(--carbon-100); color: var(--carbon-400); cursor: not-allowed;"
+        : basePag + "background: transparent; color: var(--carbon-900); cursor: pointer;",
+      estiloProxima: pagina >= totalPaginas
+        ? basePag + "background: var(--carbon-100); color: var(--carbon-400); cursor: not-allowed;"
+        : basePag + "background: transparent; color: var(--carbon-900); cursor: pointer;",
+
+      abrirNovo: () => this.abrirForm("novo", null),
+      formAberto: s.formAberto,
+      formIcone: s.formModo === "novo" ? "UserPlus01" : "Edit01",
+      formTitulo: s.formModo === "novo" ? "Adicionar gestor de RH" : "Editar gestor de RH",
+      formSubtitulo: s.formModo === "novo" ? "Cadastre o acesso e vincule as empresas" : "Atualize os dados de acesso e as empresas vinculadas",
+      formBotao: s.formModo === "novo" ? "Cadastrar gestor" : "Salvar alterações",
+      fecharForm: this.fecharForm,
+      cliqueFundoForm: e => { if (e.target === e.currentTarget) this.fecharForm(); },
+
+      fNome: f.nome,
+      fCpf: f.cpf,
+      fRg: f.rg,
+      fCelular: f.celular,
+      fNasc: f.nascimento,
+      fEmail: f.email,
+      onNome: e => this.campo("nome", e.target.value),
+      onCpf: e => this.campo("cpf", mascaraCpf(e.target.value)),
+      onRg: e => this.campo("rg", e.target.value),
+      onCelular: e => this.campo("celular", mascaraTel(e.target.value)),
+      onNasc: e => this.campo("nascimento", mascaraData(e.target.value)),
+      onEmail: e => this.campo("email", e.target.value),
+
+      mostraSenha: novo,
+      fSenha: senha,
+      fConfirma: confirma,
+      onSenha: e => this.campo("senha", e.target.value),
+      onConfirma: e => this.campo("confirma", e.target.value),
+      tipoSenha: s.verSenha ? "text" : "password",
+      tipoConfirma: s.verConfirma ? "text" : "password",
+      iconeSenha: s.verSenha ? "EyeOff" : "Eye",
+      iconeConfirma: s.verConfirma ? "EyeOff" : "Eye",
+      alternarSenha: () => this.setState(st => ({ verSenha: !st.verSenha })),
+      alternarConfirma: () => this.setState(st => ({ verConfirma: !st.verConfirma })),
+      senhaDiverge: senhaDiverge,
+
+      fGeneroRotulo: f.genero || "Selecione",
+      generoAberto: s.generoAberto,
+      opcoesGenero,
+      alternarGenero: () => this.setState(st => ({ generoAberto: !st.generoAberto })),
+      estiloGenero: baseCampoPill + (s.generoAberto
+        ? "border: 1px solid var(--core-color-brand-400); background: #fff; color: var(--semantic-color-foreground-content-2);"
+        : "border: 1px solid var(--carbon-200); background: var(--semantic-color-background-elevation-surface-raised-2); "
+          + (f.genero ? "color: var(--semantic-color-foreground-content-2);" : "color: var(--semantic-color-foreground-subtle);")),
+
+      empresas,
+      semEmpresas: empresas.length === 0,
+      empresaQuery: s.empresaQuery,
+      temBusca: s.empresaQuery.length > 0,
+      mostraLista: s.listaAberta,
+      rotuloEmpresasForm: selEmp.length === 0 ? "Selecione as empresas" : (selEmp.length === 1 ? selEmp[0] : selEmp.length + " empresas selecionadas"),
+      alternarLista: () => this.setState(st => ({
+        listaAberta: !st.listaAberta,
+        empresaQuery: "",
+        empresaRascunho: st.form.empresas || (st.form.empresa ? [st.form.empresa] : [])
+      })),
+      cancelarEmpresas: () => this.setState({ listaAberta: false, empresaQuery: "" }),
+      confirmarEmpresas: () => this.setState(st => ({
+        form: { ...st.form, empresas: st.empresaRascunho, empresa: st.empresaRascunho[0] || "" },
+        alterado: true,
+        listaAberta: false,
+        empresaQuery: ""
+      })),
+      onEmpresaQuery: e => this.setState({ empresaQuery: e.target.value }),
+      limparEmpresaQuery: () => this.setState({ empresaQuery: "", listaAberta: false }),
+      focoBusca: () => this.setState({ buscaFoco: true }),
+      blurBusca: () => this.setState({ buscaFoco: false }),
+      estiloBuscaEmpresa: SELETOR_EMPRESA + "width: 100%; justify-content: space-between; text-align: left; " +
+        (s.listaAberta ? "background: var(--semantic-color-background-brand-subtle-default);" : "background: #fff;"),
+      temEmpresaSel: selEmp.length > 0,
+      empresasSel: selEmp.map(nome => ({ nome, remover: () => alternarEmpresa(nome) })),
+
+      salvarBloqueado: !podeSalvar,
+      estiloSalvar: podeSalvar
+        ? baseSalvar + "background: var(--core-color-brand-400); color: #fff; cursor: pointer;"
+        : baseSalvar + "background: var(--semantic-color-background-disabled); color: var(--semantic-color-foreground-subtlest); cursor: not-allowed;",
+      salvarForm: () => {
+        if (!podeSalvar) return;
+        this.setState(st => {
+          const dados = { ...st.form };
+          if (st.formModo === "novo") {
+            const id = Math.max.apply(null, st.registros.map(r => r.id)) + 1;
+            return { registros: st.registros.concat([{ ...dados, id, ativo: true }]), formAberto: false, alterado: false, sucesso: "novo" };
+          }
+          return {
+            registros: st.registros.map(r => (r.id === st.formId ? { ...r, ...dados } : r)),
+            formAberto: false,
+            alterado: false,
+            sucesso: "edicao"
+          };
+        });
+      },
+
+      modalExcluir: !!s.alvo,
+      alvoNome: s.alvo ? s.alvo.nome : "",
+      alvoCpf: s.alvo ? s.alvo.cpf : "",
+      fecharModal: () => this.setState({ alvo: null }),
+      cliqueFundoExcluir: e => { if (e.target === e.currentTarget) this.setState({ alvo: null }); },
+      confirmarExclusao: () => this.setState(st => ({
+        registros: st.registros.filter(r => r.id !== st.alvo.id),
+        excluido: st.alvo,
+        alvo: null,
+        sucesso: "exclusao"
+      })),
+
+      sucessoVisivel: !!s.sucesso,
+      sucessoTitulo: s.sucesso === "exclusao" ? "Exclusão feita com sucesso!" : (s.sucesso === "novo" ? "Cadastro feito com sucesso!" : "Edição feita com sucesso!"),
+      sucessoTexto: s.sucesso === "exclusao"
+        ? "O usuário " + nomeSucesso + " foi apagado com sucesso."
+        : (s.sucesso === "novo"
+          ? "O perfil de " + nomeSucesso + " foi cadastrado com sucesso."
+          : "Os dados do perfil de " + nomeSucesso + " foram alterados com sucesso."),
+      fecharSucesso: () => this.setState({ sucesso: null, excluido: null }),
+
+      fecharTudo: () => this.setState({ sucesso: null })
+    };
+  }
+}
+</script>
+</body>
+</html>
