@@ -11,22 +11,23 @@
  */
 import type { ImageMetadata } from 'astro';
 import CaseFigure from '@/components/case/CaseFigure.astro';
+import { en, pt, t, type T } from '@/data/i18n';
 
 export interface CompareScreen {
   /** Slug used for the tab ids and `data-compare-go`. */
   id: string;
   /** Tab label. */
-  nome: string;
+  nome: T;
   /** Heading above the analysis (also builds the alt texts). */
-  titulo: string;
+  titulo: T;
   antes: ImageMetadata;
   depois: ImageMetadata;
   /** Stage ratio, e.g. "1881/892". The "depois" shot scrolls inside it. */
   aspect: string;
-  problema: string;
-  decisao: string;
-  solucao: string;
-  beneficio: string;
+  problema: T;
+  decisao: T;
+  solucao: T;
+  beneficio: T;
 }
 
 interface Props {
@@ -40,10 +41,10 @@ interface Props {
 const { id, screens, label = 'Telas' } = Astro.props;
 
 const rows = [
-  { key: 'problema', label: 'Problema anterior', tone: 'subtle' },
-  { key: 'decisao', label: 'Decisão de design', tone: 'rose' },
-  { key: 'solucao', label: 'Solução proposta', tone: 'cyan' },
-  { key: 'beneficio', label: 'Benefício esperado', tone: 'subtle' },
+  { key: 'problema', label: t('Problema anterior', 'Previous problem'), tone: 'subtle' },
+  { key: 'decisao', label: t('Decisão de design', 'Design decision'), tone: 'rose' },
+  { key: 'solucao', label: t('Solução proposta', 'Proposed solution'), tone: 'cyan' },
+  { key: 'beneficio', label: t('Benefício esperado', 'Expected benefit'), tone: 'subtle' },
 ] as const;
 
 const sizes = '(max-width: 1088px) 100vw, 720px';
@@ -62,9 +63,9 @@ const sizes = '(max-width: 1088px) 100vw, 720px';
           aria-selected={i === 0 ? 'true' : 'false'}
           tabindex={i === 0 ? 0 : -1}
           data-screen={s.id}
-        >
-          {s.nome}
-        </button>
+          data-en={en(s.nome)}
+          set:html={pt(s.nome)}
+        />
       ))
     }
   </div>
@@ -80,10 +81,10 @@ const sizes = '(max-width: 1088px) 100vw, 720px';
       >
         <div class="view">
           <div class="toggle" role="group" aria-label="Versão">
-            <button type="button" data-mode-btn="antes" aria-pressed="true">
+            <button type="button" data-mode-btn="antes" aria-pressed="true" data-en="Before">
               Antes
             </button>
-            <button type="button" data-mode-btn="depois" aria-pressed="false">
+            <button type="button" data-mode-btn="depois" aria-pressed="false" data-en="After">
               Depois
             </button>
           </div>
@@ -91,7 +92,7 @@ const sizes = '(max-width: 1088px) 100vw, 720px';
             <CaseFigure
               class="shot shot--antes"
               src={s.antes}
-              alt={`${s.titulo} na versão antiga`}
+              alt={`${pt(s.titulo)} na versão antiga`}
               aspect={s.aspect}
               zoom={false}
               sizes={sizes}
@@ -99,7 +100,7 @@ const sizes = '(max-width: 1088px) 100vw, 720px';
             <CaseFigure
               class="shot shot--depois"
               src={s.depois}
-              alt={`${s.titulo} na versão nova`}
+              alt={`${pt(s.titulo)} na versão nova`}
               aspect={s.aspect}
               scroll
               zoom={false}
@@ -108,12 +109,12 @@ const sizes = '(max-width: 1088px) 100vw, 720px';
           </div>
         </div>
         <div class="analysis">
-          <h3>{s.titulo}</h3>
+          <h3 data-en={en(s.titulo)} set:html={pt(s.titulo)} />
           <div class="rows">
             {rows.map((r) => (
               <div class:list={['row', `row--${r.key}`]}>
-                <span class:list={['k', `tone-${r.tone}`]}>{r.label}</span>
-                <span class="v">{s[r.key]}</span>
+                <span class:list={['k', `tone-${r.tone}`]} data-en={r.label.en} set:html={r.label.pt} />
+                <span class="v" data-en={en(s[r.key])} set:html={pt(s[r.key])} />
               </div>
             ))}
           </div>

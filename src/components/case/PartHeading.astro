@@ -1,8 +1,10 @@
 ---
 /** Big divider between case parts: "Parte 1 · Contexto e problema". */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
-  part: string;
-  title: string;
+  part: T;
+  title: T;
   id?: string;
 }
 
@@ -10,8 +12,8 @@ const { part, title, id } = Astro.props;
 ---
 
 <div class="part wrap--case" id={id}>
-  <span class="tag-mono tag-mono--cyan">{part}</span>
-  <span class="title">{title}</span>
+  <span class="tag-mono tag-mono--cyan" data-en={en(part)} set:html={pt(part)} />
+  <span class="title" data-en={en(title)} set:html={pt(title)} />
 </div>
 
 <style>

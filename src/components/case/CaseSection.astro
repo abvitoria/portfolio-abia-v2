@@ -4,11 +4,13 @@
  * the right (default slot). Full-width extras (figures, galleries) go in
  * the "wide" slot below the columns.
  */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
   id: string;
-  label: string;
+  label: T;
   /** Heading (inline HTML allowed). */
-  title: string;
+  title: T;
   /** Top spacing: md (64) after a part heading, lg (96), xl (120). */
   space?: 'md' | 'lg' | 'xl';
   /** Hide the hairline above the section. */
@@ -21,8 +23,8 @@ const { id, label, title, space = 'xl', noRule = false } = Astro.props;
 <section class:list={['section wrap--case', `space-${space}`]} aria-labelledby={`${id}-title`} id={id}>
   <div class:list={['cols', { rule: !noRule }]}>
     <header>
-      <span class="tag-mono">{label}</span>
-      <h2 id={`${id}-title`} set:html={title} />
+      <span class="tag-mono" data-en={en(label)} set:html={pt(label)} />
+      <h2 id={`${id}-title`} data-en={en(title)} set:html={pt(title)} />
     </header>
     <div class="body">
       <slot />

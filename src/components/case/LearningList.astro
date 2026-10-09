@@ -1,8 +1,10 @@
 ---
 /** Ruled list of titled paragraphs ("what this project taught"). */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
   /** Title + text (inline HTML allowed). */
-  items: { title: string; text: string }[];
+  items: { title: T; text: T }[];
 }
 
 const { items } = Astro.props;
@@ -12,8 +14,8 @@ const { items } = Astro.props;
   {
     items.map((item) => (
       <div class="item">
-        <h3 set:html={item.title} />
-        <p set:html={item.text} />
+        <h3 data-en={en(item.title)} set:html={pt(item.title)} />
+        <p data-en={en(item.text)} set:html={pt(item.text)} />
       </div>
     ))
   }

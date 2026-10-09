@@ -1,8 +1,10 @@
 ---
 /** Ruled definition list: term on the left, description spanning two columns. */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
   /** Term + description (inline HTML allowed). */
-  items: { term: string; text: string }[];
+  items: { term: T; text: T }[];
 }
 
 const { items } = Astro.props;
@@ -12,8 +14,8 @@ const { items } = Astro.props;
   {
     items.map((item) => (
       <div class="row">
-        <dt set:html={item.term} />
-        <dd set:html={item.text} />
+        <dt data-en={en(item.term)} set:html={pt(item.term)} />
+        <dd data-en={en(item.text)} set:html={pt(item.text)} />
       </div>
     ))
   }

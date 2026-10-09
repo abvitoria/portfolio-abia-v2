@@ -5,16 +5,17 @@
  */
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import { en, pt, type T } from '@/data/i18n';
 import { url } from '@/lib/url';
 
 interface Props {
-  eyebrow: string;
+  eyebrow: T;
   /** Title (inline HTML allowed). */
-  title: string;
-  summary: string;
+  title: T;
+  summary: T;
   cover: ImageMetadata;
   coverAlt: string;
-  facts: { label: string; value: string }[];
+  facts: { label: T; value: T }[];
 }
 
 const { eyebrow, title, summary, cover, coverAlt, facts } = Astro.props;
@@ -23,10 +24,10 @@ const { eyebrow, title, summary, cover, coverAlt, facts } = Astro.props;
 <section class="hero wrap--case" aria-labelledby="case-title">
   <div class="top">
     <div class="intro">
-      <a href={url('/cases/')} class="back">← Voltar aos cases</a>
-      <span class="tag-mono">{eyebrow}</span>
-      <h1 id="case-title" set:html={title} />
-      <p class="summary" set:html={summary} />
+      <a href={url('/cases/')} class="back" data-en="← Back to cases">← Voltar aos cases</a>
+      <span class="tag-mono" data-en={en(eyebrow)} set:html={pt(eyebrow)} />
+      <h1 id="case-title" data-en={en(title)} set:html={pt(title)} />
+      <p class="summary" data-en={en(summary)} set:html={pt(summary)} />
     </div>
     <Image
       class="cover"
@@ -42,8 +43,8 @@ const { eyebrow, title, summary, cover, coverAlt, facts } = Astro.props;
     {
       facts.map((f) => (
         <div>
-          <dt>{f.label}</dt>
-          <dd set:html={f.value} />
+          <dt data-en={en(f.label)} set:html={pt(f.label)} />
+          <dd data-en={en(f.value)} set:html={pt(f.value)} />
         </div>
       ))
     }
