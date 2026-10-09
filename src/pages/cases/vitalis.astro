@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import CaseLayout from '@/layouts/CaseLayout.astro';
+import { t } from '@/data/i18n';
 import CaseIntro from '@/components/case/CaseIntro.astro';
 import BrowserFrame from '@/components/case/vitalis/BrowserFrame.astro';
 import LaptopFrame from '@/components/case/LaptopFrame.astro';
@@ -27,23 +28,23 @@ const summary = [
   {
     href: '#cap-contexto',
     icon: '<circle cx="9" cy="8" r="3"></circle><path d="M3.5 19a5.5 5.5 0 0 1 11 0"></path><path d="M16 5.5a3 3 0 0 1 0 5.2"></path><path d="M17 13.5a5.5 5.5 0 0 1 3.5 5.5"></path>',
-    title: 'Perfis, um só produto',
-    text: 'Paciente, médico e secretária, com necessidades e telas próprias.',
-    more: 'Ver o contexto →',
+    title: t('Perfis, um só produto', 'Profiles, one product'),
+    text: t('Paciente, médico e secretária, com necessidades e telas próprias.', 'Patient, doctor and receptionist, each with their own needs and screens.'),
+    more: t('Ver o contexto →', 'See the context →'),
   },
   {
     href: '#cap-processo',
     icon: '<circle cx="12" cy="13" r="7"></circle><path d="M12 13V9"></path><path d="M9.5 3.5h5"></path>',
-    title: 'Prazo real apertado',
-    text: 'Cerca de um mês para entregar todos os fluxos.',
-    more: 'Ver o processo →',
+    title: t('Prazo real apertado', 'A real, tight deadline'),
+    text: t('Cerca de um mês para entregar todos os fluxos.', 'About one month to deliver every flow.'),
+    more: t('Ver o processo →', 'See the process →'),
   },
   {
     href: '#cap-solucao',
     icon: '<circle cx="12" cy="12" r="9"></circle><polygon points="15.5 8.5 10.5 10.5 8.5 15.5 13.5 13.5"></polygon>',
-    title: 'A direção tomada',
-    text: 'Estrutura antes da estética e acessibilidade como base.',
-    more: 'Ver a solução →',
+    title: t('A direção tomada', 'The direction taken'),
+    text: t('Estrutura antes da estética e acessibilidade como base.', 'Structure before aesthetics, with accessibility as the foundation.'),
+    more: t('Ver a solução →', 'See the solution →'),
   },
 ];
 
@@ -51,76 +52,88 @@ const profiles = [
   {
     tint: 'rgba(176, 213, 240, 0.18)',
     icon: '<circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 19a6.5 6.5 0 0 1 13 0"></path>',
-    title: 'Paciente',
-    text: 'Acesso fácil e direto, focado em agendar e entrar na teleconsulta rápido. Uso majoritariamente mobile.',
+    title: t('Paciente', 'Patient'),
+    text: t(
+      'Acesso fácil e direto, focado em agendar e entrar na teleconsulta rápido. Uso majoritariamente mobile.',
+      'Easy, direct access, focused on scheduling and joining the teleconsultation quickly. Mostly mobile use.',
+    ),
   },
   {
     tint: 'rgba(126, 235, 224, 0.18)',
     icon: '<path d="M6 3v5a4 4 0 0 0 8 0V3"></path><path d="M10 12v3a5 5 0 0 0 5 5 3 3 0 0 0 3-3v-2"></path><circle cx="18" cy="13" r="2"></circle>',
-    title: 'Médico',
-    text: 'Histórico do paciente acessível, chamada de vídeo integrada e emissão de guias. Uso desktop.',
+    title: t('Médico', 'Doctor'),
+    text: t(
+      'Histórico do paciente acessível, chamada de vídeo integrada e emissão de guias. Uso desktop.',
+      'Accessible patient history, built-in video calls and issuing of medical forms. Desktop use.',
+    ),
   },
   {
     tint: 'rgba(158, 108, 239, 0.22)',
     icon: '<rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 3.5h6v3H9z"></path><path d="M8.5 11h7"></path><path d="M8.5 15h4"></path>',
-    title: 'Secretária / Triagem',
-    text: 'Gestão de filas, aprovação de comprovantes e agendamentos, sem o preenchimento manual de antes. Uso desktop.',
+    title: t('Secretária / Triagem', 'Receptionist / Triage'),
+    text: t(
+      'Gestão de filas, aprovação de comprovantes e agendamentos, sem o preenchimento manual de antes. Uso desktop.',
+      'Queue management, approval of documents and appointments, without the manual paperwork of before. Desktop use.',
+    ),
   },
 ];
 
 const steps = [
   {
-    title: 'Revisão do documento de especificações',
-    text: 'Li o briefing do cliente de ponta a ponta para mapear escopo, regras e o que já estava definido.',
+    title: t('Revisão do documento de especificações', 'Review of the specification document'),
+    text: t('Li o briefing do cliente de ponta a ponta para mapear escopo, regras e o que já estava definido.', 'I read the client brief end to end to map the scope, the rules and what was already defined.'),
   },
   {
-    title: 'Roteiro de entrevista',
-    text: 'Montei um roteiro estruturado para conversar com o cliente sobre expectativas de negócio e de visual.',
+    title: t('Roteiro de entrevista', 'Interview script'),
+    text: t('Montei um roteiro estruturado para conversar com o cliente sobre expectativas de negócio e de visual.', 'I put together a structured script to talk with the client about business and visual expectations.'),
   },
   {
-    title: 'Entrevista com o cliente',
-    text: 'Perguntei explicitamente sobre paleta de cores existente e referências visuais — para alinhar direção antes de investir tempo em pixel.',
+    title: t('Entrevista com o cliente', 'Client interview'),
+    text: t('Perguntei explicitamente sobre paleta de cores existente e referências visuais — para alinhar direção antes de investir tempo em pixel.', 'I asked explicitly about the existing color palette and visual references — to align direction before investing time in pixels.'),
   },
   {
-    title: 'Pesquisa de concorrentes',
-    text: 'Levantei concorrentes diretos e indiretos: plataformas de telemedicina e agendamento, serviços de saúde digital de fora do país e referências de interface na área da saúde.',
+    title: t('Pesquisa de concorrentes', 'Competitor research'),
+    text: t('Levantei concorrentes diretos e indiretos: plataformas de telemedicina e agendamento, serviços de saúde digital de fora do país e referências de interface na área da saúde.', 'I surveyed direct and indirect competitors: telemedicine and scheduling platforms, digital health services from abroad and interface references from the health sector.'),
   },
 ];
 
 const accessProfiles = [
   {
-    title: 'Usuário (paciente)',
-    text: 'Agenda consultas, entra na teleconsulta e acessa seus documentos. Acesso restrito aos próprios dados.',
+    title: t('Usuário (paciente)', 'User (patient)'),
+    text: t('Agenda consultas, entra na teleconsulta e acessa seus documentos. Acesso restrito aos próprios dados.', 'Schedules appointments, joins teleconsultations and accesses their documents. Access limited to their own data.'),
   },
   {
-    title: 'Usuário Master / Administrador',
-    text: 'Gerencia usuários e perfis de acesso, com permissões configuráveis (ex.: Administrador, Consultas, Receitas).',
+    title: t('Usuário Master / Administrador', 'Master user / Administrator'),
+    text: t('Gerencia usuários e perfis de acesso, com permissões configuráveis (ex.: Administrador, Consultas, Receitas).', 'Manages users and access profiles, with configurable permissions (e.g. Administrator, Appointments, Prescriptions).'),
   },
   {
-    title: 'Secretária / responsável',
-    text: 'Faz a triagem: aprova comprovantes, gerencia a fila e os agendamentos do posto designado.',
+    title: t('Secretária / responsável', 'Receptionist / person in charge'),
+    text: t('Faz a triagem: aprova comprovantes, gerencia a fila e os agendamentos do posto designado.', 'Handles triage: approves documents and manages the queue and appointments for the assigned clinic.'),
   },
   {
-    title: 'Médico',
-    text: 'Atende as teleconsultas, acessa o histórico do paciente e emite receitas, atestados e pedidos de exame.',
+    title: t('Médico', 'Doctor'),
+    text: t(
+      'Atende as teleconsultas, acessa o histórico do paciente e emite receitas, atestados e pedidos de exame.',
+      'Runs teleconsultations, accesses patient history and issues prescriptions, medical certificates and test orders.',
+    ),
   },
 ];
 
 const decisions = [
   {
-    title: 'Alto contraste',
-    evidence: 'Uso frequente ao ar livre e em telas de baixa qualidade prejudica a leitura.',
-    decision: 'Paleta de <b>alto contraste</b> e tipografia legível, testadas para leitura sob luz forte.',
+    title: t('Alto contraste', 'High contrast'),
+    evidence: t('Uso frequente ao ar livre e em telas de baixa qualidade prejudica a leitura.', 'Frequent use outdoors and on low-quality screens makes reading harder.'),
+    decision: t('Paleta de <b>alto contraste</b> e tipografia legível, testadas para leitura sob luz forte.', 'A <b>high-contrast</b> palette and legible type, tested for reading in bright light.'),
   },
   {
-    title: 'Botões grandes',
-    evidence: 'Parte do público é idosa e tem menos precisão de toque.',
-    decision: 'Alvos de toque <b>generosos</b> e ações principais sempre evidentes.',
+    title: t('Botões grandes', 'Large buttons'),
+    evidence: t('Parte do público é idosa e tem menos precisão de toque.', 'Part of the audience is older and has less precise touch.'),
+    decision: t('Alvos de toque <b>generosos</b> e ações principais sempre evidentes.', '<b>Generous</b> touch targets and primary actions that are always obvious.'),
   },
   {
-    title: 'Versão mobile leve',
-    evidence: 'Conexões de baixa largura de banda e aparelhos de baixo desempenho.',
-    decision: 'Mobile <b>enxuto</b>, focado no essencial do paciente, para carregar rápido.',
+    title: t('Versão mobile leve', 'Lightweight mobile version'),
+    evidence: t('Conexões de baixa largura de banda e aparelhos de baixo desempenho.', 'Low-bandwidth connections and low-performance devices.'),
+    decision: t('Mobile <b>enxuto</b>, focado no essencial do paciente, para carregar rápido.', 'A <b>lean</b> mobile experience, focused on the patient’s essentials, so it loads fast.'),
   },
 ];
 
@@ -130,9 +143,9 @@ const violet = '#6E3FC8';
 
 const screens = [
   {
-    tag: 'PACIENTE · INÍCIO',
+    tag: t('PACIENTE · INÍCIO', 'PATIENT · HOME'),
     color: navy,
-    title: 'Área do paciente',
+    title: t('Área do paciente', 'Patient area'),
     shots: [
       {
         src: pacienteHome,
@@ -140,12 +153,12 @@ const screens = [
       },
     ],
     caption:
-      'A tela inicial reúne acesso aos serviços mais relevantes, como agendamento, próximas consultas, teleconsultas e documentos médicos. A organização prioriza a localização das informações e a continuidade das atividades.',
+      t('A tela inicial reúne acesso aos serviços mais relevantes, como agendamento, próximas consultas, teleconsultas e documentos médicos. A organização prioriza a localização das informações e a continuidade das atividades.', 'The home screen brings together access to the most relevant services, such as scheduling, upcoming appointments, teleconsultations and medical documents. The layout prioritizes finding information and continuing tasks.'),
   },
   {
-    tag: 'AGENDAMENTO',
+    tag: t('AGENDAMENTO', 'SCHEDULING'),
     color: teal,
-    title: 'Agendamento de consultas',
+    title: t('Agendamento de consultas', 'Appointment scheduling'),
     shots: [
       {
         src: agendamento,
@@ -153,12 +166,12 @@ const screens = [
       },
     ],
     caption:
-      'A jornada apresenta a seleção de datas e horários disponíveis, além da visualização dos agendamentos realizados. O objetivo foi reunir as informações necessárias à marcação e ao acompanhamento de consultas.',
+      t('A jornada apresenta a seleção de datas e horários disponíveis, além da visualização dos agendamentos realizados. O objetivo foi reunir as informações necessárias à marcação e ao acompanhamento de consultas.', 'The journey shows available dates and times, along with the appointments already booked. The goal was to bring together the information needed to book and follow up on appointments.'),
   },
   {
-    tag: 'TELECONSULTA',
+    tag: t('TELECONSULTA', 'TELECONSULTATION'),
     color: navy,
-    title: 'Teleconsulta',
+    title: t('Teleconsulta', 'Teleconsultation'),
     shots: [
       {
         src: preEntrada,
@@ -170,12 +183,12 @@ const screens = [
       },
     ],
     caption:
-      'A experiência contempla a preparação para o atendimento, o consentimento para tratamento de dados de saúde e os estados de espera durante a chamada. Também foram previstos feedbacks para situações como a ausência do médico na sala virtual, oferecendo orientações para o paciente durante o atendimento.',
+      t('A experiência contempla a preparação para o atendimento, o consentimento para tratamento de dados de saúde e os estados de espera durante a chamada. Também foram previstos feedbacks para situações como a ausência do médico na sala virtual, oferecendo orientações para o paciente durante o atendimento.', 'The experience covers preparing for the appointment, consent to the processing of health data and waiting states during the call. Feedback was also designed for situations such as the doctor not being in the virtual room, guiding the patient during the appointment.'),
   },
   {
-    tag: 'DOCUMENTOS DIGITAIS',
+    tag: t('DOCUMENTOS DIGITAIS', 'DIGITAL DOCUMENTS'),
     color: violet,
-    title: 'Documentos médicos',
+    title: t('Documentos médicos', 'Medical documents'),
     shots: [
       {
         src: receitas,
@@ -183,13 +196,13 @@ const screens = [
       },
     ],
     caption:
-      'Receitas, atestados e pedidos de exame foram organizados em uma área dedicada, com busca, categorias e ações para visualizar ou baixar os documentos.',
+      t('Receitas, atestados e pedidos de exame foram organizados em uma área dedicada, com busca, categorias e ações para visualizar ou baixar os documentos.', 'Prescriptions, medical certificates and test orders were organized in a dedicated area, with search, categories and actions to view or download the documents.'),
     loose: true,
   },
   {
-    tag: 'ADMINISTRADORA · DESKTOP',
+    tag: t('ADMINISTRADORA · DESKTOP', 'ADMINISTRATOR · DESKTOP'),
     color: navy,
-    title: 'Gestão administrativa',
+    title: t('Gestão administrativa', 'Administrative management'),
     shots: [
       {
         src: adminDashboard,
@@ -197,7 +210,7 @@ const screens = [
       },
     ],
     caption:
-      'A experiência administrativa reúne informações sobre atendimentos, consultas e atividades pendentes, oferecendo uma visão geral das operações e acesso às ações necessárias para o gerenciamento dos serviços.',
+      t('A experiência administrativa reúne informações sobre atendimentos, consultas e atividades pendentes, oferecendo uma visão geral das operações e acesso às ações necessárias para o gerenciamento dos serviços.', 'The administrative experience brings together information on visits, appointments and pending tasks, offering an overview of operations and access to the actions needed to manage the services.'),
     loose: true,
   },
 ];
@@ -213,17 +226,17 @@ const phones = [
 
 const learnings = [
   {
-    title: 'Priorizar sob prazo',
+    title: t('Priorizar sob prazo', 'Prioritizing under a deadline'),
     items: [
-      'Com um mês para três perfis, decidi cedo o que ganharia alta fidelidade (a jornada do paciente) e o que ficaria mapeado só no fluxo (médico e secretária).',
-      'Começar por estrutura (flow e wireframe) antes da estética foi o que tornou o mês viável.',
+      t('Com um mês para três perfis, decidi cedo o que ganharia alta fidelidade (a jornada do paciente) e o que ficaria mapeado só no fluxo (médico e secretária).', 'With one month for three profiles, I decided early what would get high fidelity (the patient journey) and what would stay mapped only in the flow (doctor and receptionist).'),
+      t('Começar por estrutura (flow e wireframe) antes da estética foi o que tornou o mês viável.', 'Starting with structure (flow and wireframe) before aesthetics is what made the month feasible.'),
     ],
   },
   {
-    title: 'O que ficaria diferente',
+    title: t('O que ficaria diferente', 'What I would do differently'),
     items: [
-      'Uma pesquisa própria com usuários dos três perfis, em vez de partir só da documentação do cliente.',
-      'Acompanhar o uso após o lançamento para validar as decisões de acessibilidade com dado real.',
+      t('Uma pesquisa própria com usuários dos três perfis, em vez de partir só da documentação do cliente.', 'My own research with users from all three profiles, instead of relying only on the client’s documentation.'),
+      t('Acompanhar o uso após o lançamento para validar as decisões de acessibilidade com dado real.', 'Track usage after launch to validate the accessibility decisions with real data.'),
     ],
   },
 ];
@@ -234,30 +247,42 @@ const learnings = [
   description="Telemedicina para três perfis muito diferentes em um mês: paciente, médico e secretária num só ecossistema da rede pública de saúde."
   image={cover.src}
   chapters={[
-    { id: 'cap-contexto', label: 'Contexto' },
-    { id: 'cap-processo', label: 'Investigação' },
-    { id: 'cap-solucao', label: 'Decisões' },
-    { id: 'cap-experiencia', label: 'Soluções' },
-    { id: 'cap-impacto', label: 'Entregas' },
+    { id: 'cap-contexto', label: t('Contexto', 'Context') },
+    { id: 'cap-processo', label: t('Investigação', 'Research') },
+    { id: 'cap-solucao', label: t('Decisões', 'Decisions') },
+    { id: 'cap-experiencia', label: t('Soluções', 'Solutions') },
+    { id: 'cap-impacto', label: t('Entregas', 'Delivery') },
   ]}
   ambient
   showLang
-  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+  cta={{ title: t('Tem um fluxo assim no seu produto?', 'Have a flow like this in your product?') }}
 >
   <CaseIntro
     badges={[
       { label: 'UX/UI CASE', color: navy },
-      { label: 'SAÚDE · SETOR PÚBLICO', color: teal },
-      { label: 'MULTIPLATAFORMA', color: violet },
+      { label: t('SAÚDE · SETOR PÚBLICO', 'HEALTH · PUBLIC SECTOR'), color: teal },
+      { label: t('MULTIPLATAFORMA', 'CROSS-PLATFORM'), color: violet },
     ]}
-    eyebrow="VITALIS SAÚDE · PRODUCT DESIGN · UX/UI · SAÚDE DIGITAL"
-    title='Projetando uma experiência de telemedicina <span class="serif">para pacientes e profissionais de saúde</span>'
-    lead="Uma plataforma digital para a rede pública de saúde, com jornadas específicas para <strong>pacientes, médicos e equipes administrativas</strong>, integrando agendamentos, teleconsultas e documentos médicos em um único ambiente."
+    eyebrow={t('VITALIS SAÚDE · PRODUCT DESIGN · UX/UI · SAÚDE DIGITAL', 'VITALIS HEALTH · PRODUCT DESIGN · UX/UI · DIGITAL HEALTH')}
+    title={t(
+      'Projetando uma experiência de telemedicina <span class="serif">para pacientes e profissionais de saúde</span>',
+      'Designing a telemedicine experience <span class="serif">for patients and healthcare professionals</span>',
+    )}
+    lead={t(
+      'Uma plataforma digital para a rede pública de saúde, com jornadas específicas para <strong>pacientes, médicos e equipes administrativas</strong>, integrando agendamentos, teleconsultas e documentos médicos em um único ambiente.',
+      'A digital platform for the public healthcare system, with dedicated journeys for <strong>patients, doctors and administrative staff</strong>, bringing appointments, teleconsultations and medical documents together in one place.',
+    )}
     facts={[
-      { label: 'PAPEL', value: 'UX/UI Designer' },
-      { label: 'DURAÇÃO', value: 'Aproximadamente 1 mês <span class="fact-note">· prazo apertado</span>' },
-      { label: 'FERRAMENTAS', value: 'Figma · FigJam' },
-      { label: 'PLATAFORMA', value: 'Web · Desktop e Mobile' },
+      { label: t('PAPEL', 'ROLE'), value: 'UX/UI Designer' },
+      {
+        label: t('DURAÇÃO', 'DURATION'),
+        value: t(
+          'Aproximadamente 1 mês <span class="fact-note">· prazo apertado</span>',
+          'About 1 month <span class="fact-note">· tight deadline</span>',
+        ),
+      },
+      { label: t('FERRAMENTAS', 'TOOLS'), value: 'Figma · FigJam' },
+      { label: t('PLATAFORMA', 'PLATFORM'), value: t('Web · Desktop e Mobile', 'Web · Desktop and Mobile') },
     ]}
     ruledFacts
     glow="rgba(28, 169, 160, 0.28)"
@@ -277,13 +302,13 @@ const learnings = [
     </BrowserFrame>
     <div class="card hero-stat">
       <span class="hero-stat__n">3</span>
-      <span class="hero-stat__label">perfis em um<br />só ecossistema</span>
+      <span data-en="profiles in one<br />ecosystem" class="hero-stat__label">perfis em um<br />só ecossistema</span>
     </div>
   </CaseIntro>
 
   <!-- Resumo / índice -->
   <section id="cap-contexto" aria-labelledby="resumo-title" class="rv sec summary">
-    <h2 id="resumo-title" class="sr-only">Resumo do case</h2>
+    <h2 data-en="Case summary" id="resumo-title" class="sr-only">Resumo do case</h2>
     <div class="cols-3">
       {
         summary.map((s) => (
@@ -300,9 +325,9 @@ const learnings = [
               aria-hidden="true"
               set:html={s.icon}
             />
-            <span class="summary-card__title">{s.title}</span>
+            <span class="summary-card__title" data-en={s.title.en} set:html={s.title.pt} />
             <p>
-              {s.text} <span class="summary-card__more">{s.more}</span>
+              <span data-en={s.text.en} set:html={s.text.pt} /> <span class="summary-card__more" data-en={s.more.en} set:html={s.more.pt} />
             </p>
           </a>
         ))
@@ -312,14 +337,14 @@ const learnings = [
 
   <!-- Contexto -->
   <section aria-labelledby="ctx-title" class="rv sec sec-narrow ctx">
-    <p class="eyebrow">Parte 1 · Contexto e desafio</p>
-    <h2 id="ctx-title" class="h2">Conhecendo o projeto</h2>
-    <p class="lead">
+    <p data-en="Part 1 · Context and challenge" class="eyebrow">Parte 1 · Contexto e desafio</p>
+    <h2 data-en="Getting to know the project" id="ctx-title" class="h2">Conhecendo o projeto</h2>
+    <p data-en="<strong>Vitalis Saúde</strong> was conceived to digitize care processes in the public health system, offering alternatives to activities that traditionally required showing up in person, such as scheduling, appointments and access to medical documents." class="lead">
       A <strong>Vitalis Saúde</strong> foi concebida para digitalizar processos de atendimento na rede pública, oferecendo
       alternativas às atividades que tradicionalmente dependiam do comparecimento presencial, como agendamentos,
       consultas e acesso a documentos médicos.
     </p>
-    <p class="lead">
+    <p data-en="The proposal brought different experiences together in one platform: patients could follow their care, doctors would have the information they needed for appointments and administrative teams would be responsible for organizing the services." class="lead">
       A proposta reunia diferentes experiências em uma mesma plataforma: pacientes poderiam acompanhar seus atendimentos,
       médicos teriam acesso às informações necessárias para as consultas e equipes administrativas seriam responsáveis
       pela organização dos serviços.
@@ -328,7 +353,7 @@ const learnings = [
 
   <!-- Perfis -->
   <section aria-labelledby="perfis-title" class="rv sec profiles">
-    <h2 id="perfis-title" class="sr-only">Perfis atendidos</h2>
+    <h2 data-en="Profiles served" id="perfis-title" class="sr-only">Perfis atendidos</h2>
     <div class="cols-3">
       {
         profiles.map((p) => (
@@ -347,8 +372,8 @@ const learnings = [
                 set:html={p.icon}
               />
             </div>
-            <div class="profile__title">{p.title}</div>
-            <p>{p.text}</p>
+            <div class="profile__title" data-en={p.title.en} set:html={p.title.pt} />
+            <p data-en={p.text.en} set:html={p.text.pt} />
           </div>
         ))
       }
@@ -358,13 +383,13 @@ const learnings = [
   <!-- O problema -->
   <div class="band band--purple problem">
     <section aria-labelledby="prob-title" class="rv sec sec-narrow">
-      <p class="eyebrow">Contexto · O desafio</p>
-      <h2 id="prob-title" class="h2">O desafio</h2>
-      <p class="lead">
+      <p data-en="Context · The challenge" class="eyebrow">Contexto · O desafio</p>
+      <h2 data-en="The challenge" id="prob-title" class="h2">O desafio</h2>
+      <p data-en="The main challenge was to structure <strong>journeys and permissions for users with different responsibilities</strong>, while keeping navigation clear and the experience consistent across desktop and mobile." class="lead">
         O principal desafio era estruturar <strong>jornadas e permissões para usuários com responsabilidades
         diferentes</strong>, mantendo a navegação clara e a experiência consistente entre desktop e mobile.
       </p>
-      <p class="lead">
+      <p data-en="Beyond the variety of features, accessibility and information organization had to be considered in a context where access to health services needs to be simple and easy to understand." class="lead">
         Além da diversidade de funcionalidades, era necessário considerar a acessibilidade e a organização das informações
         em um contexto no qual o acesso aos serviços de saúde precisa ser simples e compreensível.
       </p>
@@ -373,14 +398,14 @@ const learnings = [
 
   <!-- Processo: ponto de partida -->
   <section id="cap-processo" aria-labelledby="proc-title" class="rv sec sec-narrow process">
-    <p class="eyebrow">Parte 2 · Investigação e estruturação</p>
-    <h2 id="proc-title" class="h2">Entendendo os requisitos</h2>
-    <p class="lead">
+    <p data-en="Part 2 · Research and structuring" class="eyebrow">Parte 2 · Investigação e estruturação</p>
+    <h2 data-en="Understanding the requirements" id="proc-title" class="h2">Entendendo os requisitos</h2>
+    <p data-en="I started by analyzing the documentation provided by the client, identifying the planned features, business rules and each profile’s responsibilities. I also prepared a list of questions to clarify expectations, constraints and visual direction." class="lead">
       Comecei pela análise da documentação fornecida pelo cliente, identificando as funcionalidades previstas, regras de
       negócio e responsabilidades de cada perfil. Também preparei um roteiro de perguntas para esclarecer expectativas,
       limitações e direcionamentos visuais.
     </p>
-    <p class="lead">
+    <p data-en="In parallel, I analyzed references from telemedicine, scheduling and digital health platforms to understand navigation patterns and ways of organizing information that could apply to the project." class="lead">
       Em paralelo, analisei referências de plataformas de telemedicina, agendamento e serviços digitais de saúde para
       compreender padrões de navegação e organização de informações aplicáveis ao projeto.
     </p>
@@ -390,8 +415,8 @@ const learnings = [
           <div class="num-row">
             <span class="num-row__n">{String(i + 1).padStart(2, '0')}</span>
             <div>
-              <div class="step__title">{s.title}</div>
-              <div class="step__text">{s.text}</div>
+              <div class="step__title" data-en={s.title.en} set:html={s.title.pt} />
+              <div class="step__text" data-en={s.text.en} set:html={s.text.pt} />
             </div>
           </div>
         ))
@@ -399,10 +424,10 @@ const learnings = [
     </div>
     <div class="access">
       <div class="access__head">
-        <span class="pill pill--dec">Decisão</span>
-        <div class="access__title">Mapeamento de perfis por documentação e regras de negócio</div>
+        <span data-en="Decision" class="pill pill--dec">Decisão</span>
+        <div data-en="Mapping profiles from documentation and business rules" class="access__title">Mapeamento de perfis por documentação e regras de negócio</div>
       </div>
-      <p class="access__text">
+      <p data-en="From the client’s documentation and business rules, I mapped the access profiles and what each one can do in the system — the foundation that defined permissions, screens and flows before any design. Each profile got an access level and an assigned health clinic." class="access__text">
         A partir da documentação do cliente e das regras de negócio, mapeei os perfis de acesso e o que cada um pode fazer
         no sistema — a base que definiu permissões, telas e fluxos antes do desenho. Cada perfil ganhou um nível de acesso
         e um posto de saúde designado.
@@ -411,13 +436,13 @@ const learnings = [
         {
           accessProfiles.map((a) => (
             <div class="card access-card">
-              <div class="access-card__title">{a.title}</div>
-              <p>{a.text}</p>
+              <div class="access-card__title" data-en={a.title.en} set:html={a.title.pt} />
+              <p data-en={a.text.en} set:html={a.text.pt} />
             </div>
           ))
         }
       </div>
-      <p class="access__note">
+      <p data-en="The profiles come from the client’s documentation and business rules; this project did not include persona research with end users." class="access__note">
         Os perfis vêm da documentação e das regras de negócio do cliente; neste projeto não houve pesquisa de persona com
         usuário final.
       </p>
@@ -427,13 +452,13 @@ const learnings = [
   <!-- Sitemap / user flow -->
   <section aria-labelledby="flow-title" class="rv sec flow">
     <div class="sec-narrow intro-block">
-      <p class="eyebrow">Investigação · Arquitetura</p>
-      <h2 id="flow-title" class="h2">Organizando jornadas e permissões</h2>
-      <p class="lead">
+      <p data-en="Research · Architecture" class="eyebrow">Investigação · Arquitetura</p>
+      <h2 data-en="Organizing journeys and permissions" id="flow-title" class="h2">Organizando jornadas e permissões</h2>
+      <p data-en="With the requirements defined, I structured the <strong>sitemap and user flows</strong>, mapping the paths needed to reach the main features." class="lead">
         Com os requisitos definidos, estruturei o <strong>sitemap e os user flows</strong>, mapeando os caminhos
         necessários para acessar as principais funcionalidades.
       </p>
-      <p class="lead">
+      <p data-en="The documentation covered patients, doctors, receptionists responsible for triage and administrators with specific permissions. This organization helped define which information and actions should be available to each profile, and size the screens needed." class="lead">
         A documentação contemplava pacientes, médicos, secretárias responsáveis pela triagem e administradores com
         permissões específicas. Essa organização ajudou a definir quais informações e ações deveriam estar disponíveis para
         cada perfil, além de dimensionar as telas necessárias.
@@ -442,7 +467,10 @@ const learnings = [
     <PanelFigure
       src={userflow}
       alt="Sitemap e user flow completos por perfil (usuário, usuário master, secretaria e médicos)"
-      caption="User flow completo por perfil — a base para estimar telas e prazo de desenvolvimento."
+      caption={t(
+        'User flow completo por perfil — a base para estimar telas e prazo de desenvolvimento.',
+        'Complete user flow by profile — the basis for estimating screens and development time.',
+      )}
       width={920}
       centered
     />
@@ -452,19 +480,19 @@ const learnings = [
   <div id="cap-solucao" class="band band--tint solution">
     <section aria-labelledby="ds-title" class="rv sec style-guide">
       <div class="sec-narrow intro-block">
-        <p class="eyebrow">Parte 3 · Decisões de design</p>
-        <h2 id="ds-title" class="h2">01. Estabelecer uma linguagem visual consistente</h2>
-        <p class="lead">
+        <p data-en="Part 3 · Design decisions" class="eyebrow">Parte 3 · Decisões de design</p>
+        <h2 data-en="01. Establish a consistent visual language" id="ds-title" class="h2">01. Estabelecer uma linguagem visual consistente</h2>
+        <p data-en="The client already had a defined visual identity. Building on it, I developed a <strong>style guide</strong> in Figma, organizing typography, colors, spacing, components and interaction states." class="lead">
           O cliente já possuía uma identidade visual definida. A partir dela, desenvolvi um <strong>style guide</strong> no
           Figma, organizando tipografia, cores, espaçamentos, componentes e estados de interação.
         </p>
-        <p class="lead">
+        <p data-en="This foundation made it possible to apply consistent patterns across the platform’s areas, preserving the brand identity and reducing differences between the desktop and mobile interfaces." class="lead">
           Essa base permitiu aplicar padrões consistentes às diferentes áreas da plataforma, preservando a identidade da
           marca e reduzindo divergências entre as interfaces de desktop e mobile.
         </p>
       </div>
       <StyleGuide />
-      <p class="style-guide__note">
+      <p data-en="This project did not have a design system: there was no versioned library, governance or contribution documentation. What existed was this style guide: tokens and components standardized in Figma before the screens. The values above were extracted from the delivered interfaces." class="style-guide__note">
         Este projeto não teve um design system: não houve biblioteca versionada, governança ou documentação de
         contribuição. O que existiu foi este style guide: tokens e componentes padronizados no Figma antes das telas. Os
         valores acima foram extraídos das interfaces entregues.
@@ -473,13 +501,13 @@ const learnings = [
 
     <section aria-labelledby="wire-title" class="rv sec wireframes">
       <div class="sec-narrow intro-block">
-        <p class="eyebrow">Decisões · Estrutura antes da estética</p>
-        <h2 id="wire-title" class="h2">02. Definir a estrutura antes do refinamento visual</h2>
-        <p class="lead">
+        <p data-en="Decisions · Structure before aesthetics" class="eyebrow">Decisões · Estrutura antes da estética</p>
+        <h2 data-en="02. Define the structure before visual refinement" id="wire-title" class="h2">02. Definir a estrutura antes do refinamento visual</h2>
+        <p data-en="I developed <strong>low-fidelity wireframes</strong> to explore how information was organized and the navigation paths before moving on to the final interfaces." class="lead">
           Desenvolvi <strong>wireframes de baixa fidelidade</strong> para explorar a organização das informações e os
           caminhos de navegação antes de avançar para as interfaces finais.
         </p>
-        <p class="lead">
+        <p data-en="This stage made it possible to discuss the screen structure with the client, make adjustments and validate the initial direction without depending on fully styled components." class="lead">
           Essa etapa permitiu discutir a estrutura das telas com o cliente, realizar ajustes e validar os direcionamentos
           iniciais sem depender de componentes completamente estilizados.
         </p>
@@ -487,7 +515,10 @@ const learnings = [
       <PanelFigure
         src={wireframe}
         alt="Wireframe de baixa fidelidade da tela de detalhes da consulta: dados do atendimento, histórico, próximos passos e dúvidas frequentes"
-        caption="Wireframe lo-fi da tela de detalhes da consulta — estrutura, navegação e hierarquia resolvidas antes da estética, e validadas com o cliente."
+        caption={t(
+          'Wireframe lo-fi da tela de detalhes da consulta — estrutura, navegação e hierarquia resolvidas antes da estética, e validadas com o cliente.',
+          'Lo-fi wireframe of the appointment details screen — structure, navigation and hierarchy solved before aesthetics, and validated with the client.',
+        )}
         width={820}
         centered
       />
@@ -497,33 +528,33 @@ const learnings = [
   <!-- Acessibilidade: evidência → decisão -->
   <section aria-labelledby="acc-title" class="rv sec accessibility">
     <div class="sec-narrow intro-block">
-      <p class="eyebrow">Decisões · Acessibilidade</p>
-      <h2 id="acc-title" class="h2">03. Priorizar clareza e acessibilidade</h2>
-      <p class="lead">
+      <p data-en="Decisions · Accessibility" class="eyebrow">Decisões · Acessibilidade</p>
+      <h2 data-en="03. Prioritize clarity and accessibility" id="acc-title" class="h2">03. Priorizar clareza e acessibilidade</h2>
+      <p data-en="I considered accessibility when defining the interfaces, especially contrast, legibility, the size of interactive areas and how states and actions are identified." class="lead">
         Considerei aspectos de acessibilidade na definição das interfaces, especialmente contraste, legibilidade, tamanho
         das áreas interativas e identificação de estados e ações.
       </p>
-      <p class="lead">
+      <p data-en="In the patient’s mobile experience, I prioritized the essential features and direct navigation, aiming to make appointments, scheduling and medical documents easier to reach." class="lead">
         Na experiência mobile do paciente, priorizei as funcionalidades essenciais e uma navegação direta, buscando
         facilitar o acesso a consultas, agendamentos e documentos médicos.
       </p>
       <div class="legend">
-        <span class="pill pill--ev">Evidência</span>
-        <span class="pill pill--dec">Decisão</span>
+        <span data-en="Evidence" class="pill pill--ev">Evidência</span>
+        <span data-en="Decision" class="pill pill--dec">Decisão</span>
       </div>
     </div>
     <div class="cols-3 decisions">
       {
         decisions.map((d) => (
           <div class="dcard">
-            <h4>{d.title}</h4>
+            <h4 data-en={d.title.en} set:html={d.title.pt} />
             <p class="beat">
-              <span class="pill pill--ev">Evidência</span>
-              {d.evidence}
+              <span class="pill pill--ev" data-en="Evidence">Evidência</span>
+              <span data-en={d.evidence.en} set:html={d.evidence.pt} />
             </p>
             <p class="beat">
-              <span class="pill pill--dec">Decisão</span>
-              <Fragment set:html={d.decision} />
+              <span class="pill pill--dec" data-en="Decision">Decisão</span>
+              <span data-en={d.decision.en} set:html={d.decision.pt} />
             </p>
           </div>
         ))
@@ -534,9 +565,9 @@ const learnings = [
   <!-- Solução: interfaces por perfil -->
   <section id="cap-experiencia" aria-labelledby="exp-title" class="rv sec experience">
     <div class="sec-narrow intro-block">
-      <p class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
-      <h2 id="exp-title" class="h2">Uma plataforma, diferentes jornadas</h2>
-      <p class="lead">
+      <p data-en="Part 4 · Solutions" class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
+      <h2 data-en="One platform, different journeys" id="exp-title" class="h2">Uma plataforma, diferentes jornadas</h2>
+      <p data-en="With the structure and visual language in place, I developed the interfaces in high fidelity, organizing features according to each profile’s responsibilities." class="lead">
         Com a estrutura e a linguagem visual estabelecidas, desenvolvi as interfaces em alta fidelidade, organizando as
         funcionalidades de acordo com as responsabilidades de cada perfil.
       </p>
@@ -545,24 +576,22 @@ const learnings = [
     {
       screens.map((s) => (
         <div class:list={['screen', { 'screen--loose': s.loose }]}>
-          <span class="badge screen__tag" style={`background:${s.color}`}>
-            {s.tag}
-          </span>
-          <h3 class="screen__title">{s.title}</h3>
+          <span class="badge screen__tag" style={`background:${s.color}`} data-en={s.tag.en} set:html={s.tag.pt} />
+          <h3 class="screen__title" data-en={s.title.en} set:html={s.title.pt} />
           <div class="screen__shots">
             {s.shots.map((shot) => (
               <LaptopFrame src={shot.src} alt={shot.alt} height={460} />
             ))}
           </div>
-          <p class="screen__caption">{s.caption}</p>
+          <p class="screen__caption" data-en={s.caption.en} set:html={s.caption.pt} />
         </div>
       ))
     }
 
     <div class="sec-narrow mobile-intro">
-      <span class="badge screen__tag" style={`background:${teal}`}>PACIENTE · MOBILE LEVE</span>
-      <h3 class="screen__title">Experiência mobile</h3>
-      <p>
+      <span data-en="PATIENT · LIGHTWEIGHT MOBILE" class="badge screen__tag" style={`background:${teal}`}>PACIENTE · MOBILE LEVE</span>
+      <h3 data-en="Mobile experience" class="screen__title">Experiência mobile</h3>
+      <p data-en="The mobile version prioritizes access to the patient’s main features, adapting navigation and how information is presented for smaller screens.">
         A versão mobile prioriza o acesso às principais funcionalidades do paciente, adaptando a navegação e a
         apresentação das informações para telas menores.
       </p>
@@ -575,15 +604,15 @@ const learnings = [
   <!-- Impacto: restrição como senioridade -->
   <div id="cap-impacto" class="band band--purple impact">
     <section aria-labelledby="prazo-title" class="rv sec sec-narrow">
-      <p class="eyebrow">Parte 5 · Entregas e aprendizados</p>
-      <h2 id="prazo-title" class="h2">Entregar três perfis, em um mês, sem perder a base</h2>
-      <p class="lead">
+      <p data-en="Part 5 · Delivery and learnings" class="eyebrow">Parte 5 · Entregas e aprendizados</p>
+      <h2 data-en="Delivering three profiles in one month without losing the foundation" id="prazo-title" class="h2">Entregar três perfis, em um mês, sem perder a base</h2>
+      <p data-en="The deadline was the backbone of the project. It is what justified starting with research and low-fidelity wireframes — prioritizing what unlocks decisions instead of chasing pixels too early. Starting from the profiles already described in the client’s documentation and building a style guide right away were choices to gain speed without giving up consistency." class="lead">
         A restrição de prazo foi o eixo do projeto. Foi ela que justificou começar pela pesquisa e pelos wireframes de
         baixa fidelidade — priorizar o que destrava decisão em vez de perseguir o pixel cedo demais. Partir dos perfis já
         descritos na documentação do cliente e construir um style guide logo no início foram escolhas para ganhar
         velocidade sem abrir mão de consistência.
       </p>
-      <p class="lead">
+      <p data-en="In practice, that meant deciding early what to go deep on and what to leave for a later phase — and end-user research ended up on that second list." class="lead">
         Na prática, isso significou decidir cedo o que aprofundar e o que deixar para uma fase seguinte — e a pesquisa com
         usuário final ficou nessa segunda lista.
       </p>
@@ -592,13 +621,13 @@ const learnings = [
 
   <!-- Escopo entregue (sem KPI) -->
   <section aria-labelledby="escopo-title" class="rv sec sec-narrow scope">
-    <p class="eyebrow">Entregas · Escopo entregue</p>
-    <h2 id="escopo-title" class="h2">O que foi entregue</h2>
-    <p class="lead">
+    <p data-en="Delivery · Scope delivered" class="eyebrow">Entregas · Escopo entregue</p>
+    <h2 data-en="What was delivered" id="escopo-title" class="h2">O que foi entregue</h2>
+    <p data-en="The project resulted in structured <strong>journeys and permissions for the different profiles</strong>, with a sitemap, user flows, wireframes, a style guide and high-fidelity interfaces for web and mobile." class="lead">
       O projeto resultou na estruturação das <strong>jornadas e permissões dos diferentes perfis</strong>, com sitemap,
       user flows, wireframes, style guide e interfaces em alta fidelidade para web e mobile.
     </p>
-    <p class="lead">
+    <p data-en="The solutions were developed from the client’s requirements, with a consistent visual language and attention to clarity of information and accessibility." class="lead">
       As soluções foram desenvolvidas a partir dos requisitos do cliente, com uma linguagem visual consistente e atenção à
       clareza das informações e à acessibilidade.
     </p>
@@ -607,8 +636,8 @@ const learnings = [
   <!-- Retorno do cliente (neutro) -->
   <section aria-labelledby="retorno-title" class="rv sec sec-narrow feedback">
     <div class="feedback__box">
-      <p class="eyebrow" id="retorno-title">Entregas · Retorno</p>
-      <p class="feedback__text">
+      <p data-en="Delivery · Feedback" class="eyebrow" id="retorno-title">Entregas · Retorno</p>
+      <p data-en="At the time this case was written, the platform <strong>had not yet launched</strong>, so there is no production usage data. The client’s feedback on the deliverables was reported as positive — and success metrics would be left for a follow-up phase after launch." class="feedback__text">
         No momento da escrita deste case, a plataforma <strong>ainda não havia sido lançada</strong>, então não há dados de
         uso em produção. O retorno do cliente sobre as entregas foi relatado como positivo — e os indicadores de sucesso
         ficariam para uma fase de acompanhamento após o lançamento.
@@ -619,13 +648,13 @@ const learnings = [
   <!-- Aprendizados -->
   <section aria-labelledby="apr-title" class="rv sec learnings">
     <div class="learnings__box">
-      <p class="eyebrow">Aprendizados</p>
-      <h2 id="apr-title" class="h2">O que aprendi</h2>
-      <p class="lead">
+      <p data-en="Learnings" class="eyebrow">Aprendizados</p>
+      <h2 data-en="What I learned" id="apr-title" class="h2">O que aprendi</h2>
+      <p data-en="The main learning was the importance of organizing responsibilities and flows before developing the interfaces of a system with different access profiles." class="lead">
         O principal aprendizado foi a importância de organizar as responsabilidades e os fluxos antes de desenvolver as
         interfaces de um sistema com diferentes perfis de acesso.
       </p>
-      <p class="lead">
+      <p data-en="The initial mapping and the definition of visual patterns helped deliver the project on time, keeping the journeys consistent and allowing decisions to be discussed with the client throughout development." class="lead">
         O mapeamento inicial e a definição de padrões visuais ajudaram a conduzir o projeto dentro do prazo, mantendo a
         consistência entre as jornadas e permitindo que as decisões fossem discutidas com o cliente ao longo do
         desenvolvimento.
@@ -634,10 +663,10 @@ const learnings = [
         {
           learnings.map((l) => (
             <div>
-              <div class="learnings__title">{l.title}</div>
+              <div class="learnings__title" data-en={l.title.en} set:html={l.title.pt} />
               <ul>
                 {l.items.map((item) => (
-                  <li>{item}</li>
+                  <li data-en={item.en} set:html={item.pt} />
                 ))}
               </ul>
             </div>
