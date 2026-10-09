@@ -1,5 +1,6 @@
 ---
 import CaseLayout from '@/layouts/CaseLayout.astro';
+import { t } from '@/data/i18n';
 import BulletList from '@/components/case/BulletList.astro';
 import CaseHero from '@/components/case/CaseHero.astro';
 import CaseSection from '@/components/case/CaseSection.astro';
@@ -29,49 +30,49 @@ import gestorAcomp from '@/assets/pulse/telas/gestor-acomp.png';
 
 const categorias = [
   {
-    nome: 'Hierarquia',
+    nome: t('Hierarquia', "Hierarchy"),
     cor: '#b79bf5',
     itens: [
-      'Títulos, rótulos e ações com o mesmo peso visual.',
-      'Excluir é o elemento mais forte das tabelas.',
-      'Recados e vídeos sem nada que diferencie um do outro.',
+      t('Títulos, rótulos e ações com o mesmo peso visual.', "Titles, labels and actions with the same visual weight."),
+      t('Excluir é o elemento mais forte das tabelas.', "Delete is the strongest element in the tables."),
+      t('Recados e vídeos sem nada que diferencie um do outro.', "Messages and videos with nothing to tell one from another."),
     ],
   },
   {
-    nome: 'Consistência',
+    nome: t('Consistência', "Consistency"),
     cor: 'var(--gold)',
     itens: [
-      'Dois estilos de ícone no menu e cabeçalhos diferentes entre áreas.',
-      'Três padrões de busca: barra com ícone, barra com botão e campos com Filtrar.',
-      'Português e inglês misturados; nomes diferentes no menu e na página.',
+      t('Dois estilos de ícone no menu e cabeçalhos diferentes entre áreas.', "Two icon styles in the menu and different headers across areas."),
+      t('Três padrões de busca: barra com ícone, barra com botão e campos com Filtrar.', "Three search patterns: a bar with an icon, a bar with a button and fields with Filter."),
+      t('Português e inglês misturados; nomes diferentes no menu e na página.', "Portuguese and English mixed together; different names in the menu and on the page."),
     ],
   },
   {
-    nome: 'Layout',
+    nome: t('Layout'),
     cor: 'var(--warning)',
     itens: [
-      'Rótulos que quebram em várias linhas ao lado dos campos.',
-      'Capas cortadas e rolagem horizontal.',
-      'Elementos sem alinhamento comum e áreas vazias.',
+      t('Rótulos que quebram em várias linhas ao lado dos campos.', "Labels that break across several lines next to the fields."),
+      t('Capas cortadas e rolagem horizontal.', "Cropped covers and horizontal scrolling."),
+      t('Elementos sem alinhamento comum e áreas vazias.', "Elements with no shared alignment and empty areas."),
     ],
   },
   {
-    nome: 'Conteúdo e dados',
+    nome: t('Conteúdo e dados', "Content and data"),
     cor: '#f28db5',
     itens: [
-      'Metadados zerados exibidos em todos os cursos.',
-      'Itens de teste misturados ao conteúdo.',
-      'Campos sem validação entre si (cidade e estado).',
+      t('Metadados zerados exibidos em todos os cursos.', "Zeroed-out metadata shown on every course."),
+      t('Itens de teste misturados ao conteúdo.', "Test items mixed in with the content."),
+      t('Campos sem validação entre si (cidade e estado).', "Fields with no cross-validation (city and state)."),
     ],
   },
   {
-    nome: 'Arquitetura da informação',
+    nome: t('Arquitetura da informação', "Information architecture"),
     cor: '#8fe2a8',
     itens: [
-      'Aprendizagem e gestão no mesmo menu, no mesmo nível.',
-      'Videoteca e Aulas: dois lugares para conteúdo, com padrões diferentes.',
-      'Agenda dentro de Recados; recados repetidos na Home.',
-      'Escolas, Turmas e Estudantes repetem a mesma estrutura: base para um padrão único.',
+      t('Aprendizagem e gestão no mesmo menu, no mesmo nível.', "Learning and management in the same menu, at the same level."),
+      t('Videoteca e Aulas: dois lugares para conteúdo, com padrões diferentes.', "Video library and Lessons: two places for content, with different patterns."),
+      t('Agenda dentro de Recados; recados repetidos na Home.', "Calendar inside Messages; messages repeated on the Home screen."),
+      t('Escolas, Turmas e Estudantes repetem a mesma estrutura: base para um padrão único.', "Schools, Classes and Students repeat the same structure: the basis for a single pattern."),
     ],
   },
 ];
@@ -83,97 +84,97 @@ const categorias = [
   image={cover.src}
   showLang
   chapters={[
-    { id: 'parte-1', label: 'Contexto e desafio' },
-    { id: 'parte-2', label: 'Cenário anterior e diagnóstico' },
-    { id: 'parte-3', label: 'Decisões e redesign' },
+    { id: 'parte-1', label: t('Contexto e desafio', 'Context and challenge') },
+    { id: 'parte-2', label: t('Cenário anterior e diagnóstico', 'Previous state and diagnosis') },
+    { id: 'parte-3', label: t('Decisões e redesign', 'Decisions and redesign') },
   ]}
-  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+  cta={{ title: t('Tem um fluxo assim no seu produto?', 'Have a flow like this in your product?') }}
 >
   <CaseHero
-    eyebrow="Pulse Educação · Product design"
-    title="Um pedido de ajuste visual que virou um diagnóstico do produto"
-    summary="Redesign de uma plataforma educacional da rede pública, usada por alunos do ensino fundamental e médio e pela gestão das escolas. O desafio não era só redesenhar as telas, mas entender o que realmente precisava melhorar."
+    eyebrow={t("Pulse Educação · Product design", "Pulse Education · Product design")}
+    title={t('Um pedido de ajuste visual que virou um diagnóstico do produto', 'A request for visual tweaks that became a product diagnosis')}
+    summary={t("Redesign de uma plataforma educacional da rede pública, usada por alunos do ensino fundamental e médio e pela gestão das escolas. O desafio não era só redesenhar as telas, mas entender o que realmente precisava melhorar.", "Redesign of an education platform for public schools, used by middle and high school students and by school management. The challenge was not just to redesign the screens, but to understand what really needed to improve.")}
     cover={cover}
     coverAlt="Capa do case Pulse Educação"
     facts={[
-      { label: 'Papel', value: 'Product Designer' },
-      { label: 'Escopo', value: 'Exploração, diagnóstico e redesign' },
-      { label: 'Público', value: 'Alunos, professores e gestão escolar' },
-      { label: 'Plataforma', value: 'Web' },
-      { label: 'Duração', value: 'Cerca de 2 meses' },
+      { label: t('Papel', "Role"), value: 'Product Designer' },
+      { label: t('Escopo', "Scope"), value: t('Exploração, diagnóstico e redesign', "Exploration, diagnosis and redesign") },
+      { label: t('Público', "Audience"), value: t('Alunos, professores e gestão escolar', "Students, teachers and school management") },
+      { label: t('Plataforma', "Platform"), value: 'Web' },
+      { label: t('Duração', "Duration"), value: t('Cerca de 2 meses', "About 2 months") },
     ]}
   />
   <div class="wrap--case disclaimer">
-    <p>
+    <p data-en="A real project. For confidentiality, the name, brand and some visual elements were changed in this presentation. The context, challenges and my role were kept as they happened.">
       Projeto real. Por confidencialidade, o nome, a marca e alguns elementos visuais foram trocados nesta apresentação.
       Contexto, desafios e minha atuação foram mantidos como aconteceram.
     </p>
   </div>
 
-  <PartHeading id="parte-1" part="Parte 1" title="Contexto e desafio" />
+  <PartHeading id="parte-1" part={t("Parte 1", "Part 1")} title={t("Contexto e desafio", "Context and challenge")} />
 
-  <CaseSection id="ctx" label="Contexto" title="Aprender e administrar a escola na mesma plataforma" space="md">
-    <p>
+  <CaseSection id="ctx" label={t("Contexto", "Context")} title={t("Aprender e administrar a escola na mesma plataforma", "Learning and running the school on the same platform")} space="md">
+    <p data-en="The platform supports public schools. On one side, content for students: lessons, courses and a video library. On the other, the management routine: messages, calendar, indicators and the records of schools, classes, students and teachers.">
       A plataforma apoia escolas da rede pública. De um lado, conteúdo para os alunos: aulas, cursos e uma videoteca. Do
       outro, a rotina da gestão: recados, agenda, indicadores e o cadastro de escolas, turmas, estudantes e professores.
     </p>
     <div class="areas">
       <div class="box">
-        <span class="label label--cyan">Aprendizagem</span>
-        <span>Aulas e cursos · Videoteca · Recados e agenda</span>
+        <span data-en="Learning" class="label label--cyan">Aprendizagem</span>
+        <span data-en="Lessons and courses · Video library · Messages and calendar">Aulas e cursos · Videoteca · Recados e agenda</span>
       </div>
       <div class="box">
-        <span class="label label--rose">Gestão</span>
-        <span>Métricas · Escolas · Turmas · Estudantes · Professores</span>
+        <span data-en="Management" class="label label--rose">Gestão</span>
+        <span data-en="Metrics · Schools · Classes · Students · Teachers">Métricas · Escolas · Turmas · Estudantes · Professores</span>
       </div>
     </div>
-    <p>
+    <p data-en="Very different audiences and tasks share the same navigation, and that weighed on much of what I found.">
       São públicos e tarefas muito diferentes dividindo a mesma navegação, e isso pesou em boa parte do que encontrei.
     </p>
   </CaseSection>
 
-  <CaseSection id="papel" label="Meu papel" title="Entrei para melhorar o visual e comecei pelo produto">
-    <p>
+  <CaseSection id="papel" label={t("Meu papel", "My role")} title={t("Entrei para melhorar o visual e comecei pelo produto", "I came in to improve the visuals and started with the product")}>
+    <p data-en="I joined as Product Designer with a clear request: improve the platform’s user experience and visual presentation.">
       Entrei como Product Designer com um pedido claro: melhorar a experiência de uso e a apresentação visual da
       plataforma.
     </p>
-    <p>
+    <p data-en="Exploring the system, I saw that the problems were not only in its appearance. Before redesigning, I navigated the platform, mapped its screens and features, and recorded what I found, including opportunities that went beyond the initial request.">
       Ao explorar o sistema, vi que os problemas não estavam só na aparência. Antes de redesenhar, naveguei pela
       plataforma, mapeei as telas e os recursos, e registrei o que encontrei, incluindo oportunidades que iam além do
       pedido inicial.
     </p>
   </CaseSection>
 
-  <CaseSection id="desafio" label="O desafio" title="O pedido era visual. O problema não">
+  <CaseSection id="desafio" label={t("O desafio", "The challenge")} title={t("O pedido era visual. O problema não", "The request was visual. The problem was not")}>
     <div class="ask">
       <div class="box box--lg">
-        <span class="label">O que foi pedido</span>
-        <span>Melhorar a experiência e a aparência das interfaces existentes.</span>
+        <span data-en="What was requested" class="label">O que foi pedido</span>
+        <span data-en="Improve the experience and appearance of the existing interfaces.">Melhorar a experiência e a aparência das interfaces existentes.</span>
       </div>
       <div class="box box--lg box--found">
-        <span class="label label--cyan">O que a exploração mostrou</span>
-        <span>
+        <span data-en="What the exploration showed" class="label label--cyan">O que a exploração mostrou</span>
+        <span data-en="Problems with hierarchy, consistency, layout and how features were organized, along with product opportunities.">
           Problemas de hierarquia, consistência, layout e organização das funcionalidades, além de oportunidades de
           produto.
         </span>
       </div>
     </div>
-    <p class="question">
+    <p data-en="How do you rethink the platform beyond the visuals, so that navigation becomes clearer, more consistent and closer to what each audience needs?" class="question">
       Como repensar a plataforma indo além do visual, para que a navegação fique mais clara, consistente e próxima do
       que cada público precisa?
     </p>
   </CaseSection>
 
-  <PartHeading id="parte-2" part="Parte 2" title="Cenário anterior e diagnóstico" />
+  <PartHeading id="parte-2" part={t("Parte 2", "Part 2")} title={t("Cenário anterior e diagnóstico", "Previous state and diagnosis")} />
 
-  <CaseSection id="proc" label="Processo" title="Explorar antes de redesenhar" space="md">
+  <CaseSection id="proc" label={t("Processo", "Process")} title={t("Explorar antes de redesenhar", "Explore before redesigning")} space="md">
     <NumberedList
       items={[
-        '<strong>Explorar o produto.</strong> Navegar pela plataforma para entender a estrutura, os recursos e os contextos de uso.',
-        '<strong>Mapear as telas.</strong> Levantar as interfaces existentes, seus componentes, conteúdos e padrões de interação.',
-        '<strong>Diagnosticar.</strong> Agrupar inconsistências e problemas de organização por categoria.',
-        '<strong>Olhar para o produto.</strong> Registrar funcionalidades e oportunidades de negócio que iam além do pedido.',
-        '<strong>Redesenhar.</strong> Reformular as interfaces a partir do diagnóstico.',
+        t('<strong>Explorar o produto.</strong> Navegar pela plataforma para entender a estrutura, os recursos e os contextos de uso.', "<strong>Explore the product.</strong> Navigate the platform to understand its structure, features and contexts of use."),
+        t('<strong>Mapear as telas.</strong> Levantar as interfaces existentes, seus componentes, conteúdos e padrões de interação.', "<strong>Map the screens.</strong> Survey the existing interfaces, their components, content and interaction patterns."),
+        t('<strong>Diagnosticar.</strong> Agrupar inconsistências e problemas de organização por categoria.', "<strong>Diagnose.</strong> Group inconsistencies and organization problems by category."),
+        t('<strong>Olhar para o produto.</strong> Registrar funcionalidades e oportunidades de negócio que iam além do pedido.', "<strong>Look at the product.</strong> Record features and business opportunities that went beyond the request."),
+        t('<strong>Redesenhar.</strong> Reformular as interfaces a partir do diagnóstico.', "<strong>Redesign.</strong> Rework the interfaces based on the diagnosis."),
       ]}
     />
   </CaseSection>
@@ -181,9 +182,9 @@ const categorias = [
   <section class="wrap--case diag" aria-labelledby="diag-title" id="diag">
     <div class="diag-body">
       <div class="diag-intro">
-        <span class="tag-mono">Diagnóstico</span>
-        <h2 id="diag-title">Cinco tipos de problema, espalhados por todas as áreas</h2>
-        <p>
+        <span data-en="Diagnosis" class="tag-mono">Diagnóstico</span>
+        <h2 data-en="Five kinds of problems, spread across every area" id="diag-title">Cinco tipos de problema, espalhados por todas as áreas</h2>
+        <p data-en="Observations from an exploratory analysis of the screens. They are not problems proven in user testing.">
           Observações de uma análise exploratória das telas. Não são problemas comprovados em testes com usuários.
         </p>
       </div>
@@ -191,37 +192,37 @@ const categorias = [
     </div>
   </section>
 
-  <PartHeading id="parte-3" part="Parte 3" title="Decisões e redesign" />
+  <PartHeading id="parte-3" part={t("Parte 3", "Part 3")} title={t("Decisões e redesign", "Decisions and redesign")} />
 
-  <CaseSection id="d1" label="Decisão 1" title="Cada perfil com sua navegação e seu ponto de partida">
-    <p>
+  <CaseSection id="d1" label={t("Decisão 1", "Decision 1")} title={t("Cada perfil com sua navegação e seu ponto de partida", "Each profile with its own navigation and starting point")}>
+    <p data-en="The old menu put lessons, messages, metrics and records at the same level, for everyone. And the Home screen opened with a welcome banner that led nowhere.">
       O menu antigo colocava aulas, recados, métricas e cadastros no mesmo nível, para qualquer pessoa. E a Home abria
       com um banner de boas-vindas que não levava a lugar nenhum.
     </p>
-    <p>
+    <p data-en="Before redesigning the screens, I mapped each profile’s paths: where they come in, where they go and how they get back. Student, teacher and administrator now have their own menu and home screen, and each Home opens with three actions for what to do next.">
       Antes de redesenhar as telas, mapeei os caminhos de cada perfil: por onde entra, para onde vai e como volta.
       Aluno, professor e gestor passaram a ter menu e tela inicial próprios, e cada Início abre com três ações para o
       que fazer em seguida.
     </p>
     <BulletList
       items={[
-        '<strong>Aluno:</strong> Início, Biblioteca, Meu acompanhamento e Novidades.',
-        '<strong>Professor:</strong> Início, Biblioteca, Acompanhamento e Comunicação.',
-        '<strong>Gestor:</strong> os mesmos, mais Gestão, que agrupa Escolas, Turmas e Estudantes.',
-        'O breadcrumb mostra onde a pessoa está na hierarquia, não o histórico de cliques. Ao voltar, filtros e contexto permanecem.',
+        t('<strong>Aluno:</strong> Início, Biblioteca, Meu acompanhamento e Novidades.', "<strong>Student:</strong> Home, Library, My progress and News."),
+        t('<strong>Professor:</strong> Início, Biblioteca, Acompanhamento e Comunicação.', "<strong>Teacher:</strong> Home, Library, Monitoring and Communication."),
+        t('<strong>Gestor:</strong> os mesmos, mais Gestão, que agrupa Escolas, Turmas e Estudantes.', "<strong>Administrator:</strong> the same, plus Management, which groups Schools, Classes and Students."),
+        t('O breadcrumb mostra onde a pessoa está na hierarquia, não o histórico de cliques. Ao voltar, filtros e contexto permanecem.', "The breadcrumb shows where the person is in the hierarchy, not their click history. When going back, filters and context are kept."),
       ]}
     />
   </CaseSection>
   <ShotRow
     shots={[
-      { src: antesHome, alt: 'Home antiga, igual para todos os perfis', caption: 'Antes · Home igual para todos', tone: 'before' },
-      { src: alunoInicio, alt: 'Início do aluno no redesign', caption: 'Depois · Início do aluno', tone: 'after' },
+      { src: antesHome, alt: 'Home antiga, igual para todos os perfis', caption: t('Antes · Home igual para todos', "Before · Same Home for everyone"), tone: 'before' },
+      { src: alunoInicio, alt: 'Início do aluno no redesign', caption: t('Depois · Início do aluno', "After · Student home"), tone: 'after' },
     ]}
   />
   <ShotRow
     shots={[
-      { src: profInicio, alt: 'Início do professor no redesign', caption: 'Depois · Início do professor', tone: 'after' },
-      { src: gestorInicio, alt: 'Início do gestor no redesign', caption: 'Depois · Início do gestor', tone: 'after' },
+      { src: profInicio, alt: 'Início do professor no redesign', caption: t('Depois · Início do professor', "After · Teacher home"), tone: 'after' },
+      { src: gestorInicio, alt: 'Início do gestor no redesign', caption: t('Depois · Início do gestor', "After · Administrator home"), tone: 'after' },
     ]}
   />
   <ShotRow
@@ -231,71 +232,71 @@ const categorias = [
       {
         src: mapaNavegacao,
         alt: 'Mapa de navegação e caminhos por perfil',
-        caption: 'Processo · Mapa de navegação e caminhos por perfil',
+        caption: t('Processo · Mapa de navegação e caminhos por perfil', "Process · Navigation map and paths by profile"),
         tone: 'process',
         bg: '#fff',
       },
     ]}
   />
 
-  <CaseSection id="d2" label="Decisão 2" title="Um só lugar para estudar">
-    <p>
+  <CaseSection id="d2" label={t("Decisão 2", "Decision 2")} title={t("Um só lugar para estudar", "One place to study")}>
+    <p data-en="The video library and Lessons were two places for the same thing, with different searches, repeated covers, zeroed-out metadata and text in English.">
       Videoteca e Aulas eram dois lugares para a mesma coisa, com buscas diferentes, capas repetidas, metadados zerados
       e textos em inglês.
     </p>
-    <p>
+    <p data-en="They became the Learning library, with Lessons and Videos tabs and a single search by title, subject, grade and term. Each card shows the subject, grade and term, instead of relying on the cover.">
       As duas viraram a Biblioteca de aprendizagem, com abas Aulas e Vídeos e uma busca única por título, matéria, série
       e bimestre. Cada card diz a matéria, a série e o bimestre, em vez de depender da capa.
     </p>
-    <p>
+    <p data-en="Inside the lesson, the goal comes first and the path has three steps. The text summary makes it possible to study without depending on the video.">
       Dentro da aula, o objetivo vem primeiro e o caminho tem três passos. O resumo em texto permite estudar sem
       depender do vídeo.
     </p>
   </CaseSection>
   <ShotRow
     shots={[
-      { src: antesAulas, alt: 'Lista de aulas antiga', caption: 'Antes · Aulas', tone: 'before' },
-      { src: alunoBiblioteca, alt: 'Biblioteca de aprendizagem no redesign', caption: 'Depois · Biblioteca de aprendizagem', tone: 'after' },
+      { src: antesAulas, alt: 'Lista de aulas antiga', caption: t('Antes · Aulas', "Before · Lessons"), tone: 'before' },
+      { src: alunoBiblioteca, alt: 'Biblioteca de aprendizagem no redesign', caption: t('Depois · Biblioteca de aprendizagem', "After · Learning library"), tone: 'after' },
     ]}
   />
   <ShotRow
     shots={[
-      { src: antesCurso, alt: 'Página de curso antiga', caption: 'Antes · Curso', tone: 'before' },
-      { src: alunoAula, alt: 'Conteúdo da aula no redesign', caption: 'Depois · Conteúdo da aula', tone: 'after' },
+      { src: antesCurso, alt: 'Página de curso antiga', caption: t('Antes · Curso', "Before · Course"), tone: 'before' },
+      { src: alunoAula, alt: 'Conteúdo da aula no redesign', caption: t('Depois · Conteúdo da aula', "After · Lesson content"), tone: 'after' },
     ]}
   />
 
-  <CaseSection id="d3" label="Decisão 3" title="Cadastros em que excluir deixa de ser a ação principal">
-    <p>
+  <CaseSection id="d3" label={t("Decisão 3", "Decision 3")} title={t("Cadastros em que excluir deixa de ser a ação principal", "Records where delete is no longer the main action")}>
+    <p data-en="In the old lists, the red trash icon was the strongest element in each row, labels broke across several lines next to the fields and Filter appeared in red.">
       Nas listas antigas, a lixeira vermelha era o elemento mais forte de cada linha, os rótulos quebravam em várias
       linhas ao lado dos campos e Filtrar aparecia em vermelho.
     </p>
-    <p>
+    <p data-en="Schools, Classes and Students now follow the same model: search and filters in a block with labels above the fields, register and import as page actions, and See details or Edit record on each row. Deactivate lives inside the details. Classes, below, is the example for all three.">
       Escolas, Turmas e Estudantes passaram a seguir o mesmo modelo: busca e filtros num bloco com rótulos acima dos
       campos, cadastrar e importar como ações da página, e Ver detalhes ou Editar cadastro em cada linha. Inativar fica
       dentro dos detalhes. Turmas, abaixo, serve de exemplo para as três.
     </p>
     <BulletList
       items={[
-        'Status com rótulo e cor: Ativa, Inativa, Em cadastro.',
-        'Série e turma como campos separados, em vez de “Nome da Turma” e “Turma”.',
-        'Importação com revisão dos registros antes de confirmar.',
+        t('Status com rótulo e cor: Ativa, Inativa, Em cadastro.', "Status with a label and color: Active, Inactive, Being registered."),
+        t('Série e turma como campos separados, em vez de “Nome da Turma” e “Turma”.', "Grade and class as separate fields, instead of “Class Name” and “Class”."),
+        t('Importação com revisão dos registros antes de confirmar.', "Import with a review of the records before confirming."),
       ]}
     />
   </CaseSection>
   <ShotRow
     shots={[
-      { src: antesTurmas, alt: 'Lista de turmas antiga', caption: 'Antes · Turmas', tone: 'before' },
-      { src: gestorTurmas, alt: 'Gestão de turmas no redesign', caption: 'Depois · Gestão de turmas', tone: 'after' },
+      { src: antesTurmas, alt: 'Lista de turmas antiga', caption: t('Antes · Turmas', "Before · Classes"), tone: 'before' },
+      { src: gestorTurmas, alt: 'Gestão de turmas no redesign', caption: t('Depois · Gestão de turmas', "After · Class management"), tone: 'after' },
     ]}
   />
 
-  <CaseSection id="d4" label="Decisão 4" title="Recados viram comunicação, com estado e destinatário">
-    <p>
+  <CaseSection id="d4" label={t("Decisão 4", "Decision 4")} title={t("Recados viram comunicação, com estado e destinatário", "Messages become communication, with status and recipient")}>
+    <p data-en="The old messages all started with the same sentence, with no date, sender or read indicator, and the empty calendar took up half the screen.">
       Os recados antigos começavam todos com a mesma frase, sem data, remetente ou sinal de leitura, e a agenda vazia
       ocupava metade da tela.
     </p>
-    <p>
+    <p data-en="In School communication, each notice shows whether it was read, the date, who sent it and to whom. Reading opens next to the list, a draft can be prepared on the same screen and the calendar has its own period, with a clear message when it is empty.">
       Em Comunicação escolar, cada comunicado mostra se foi lido, a data, quem enviou e para quem. A leitura abre ao
       lado da lista, um rascunho pode ser preparado na mesma tela e a agenda tem seu próprio período, com uma mensagem
       clara quando está vazia.
@@ -303,43 +304,43 @@ const categorias = [
   </CaseSection>
   <ShotRow
     shots={[
-      { src: antesRecados, alt: 'Recados e agenda antigos', caption: 'Antes · Recados', tone: 'before' },
-      { src: profComunicacao, alt: 'Comunicação escolar no redesign', caption: 'Depois · Comunicação escolar', tone: 'after' },
+      { src: antesRecados, alt: 'Recados e agenda antigos', caption: t('Antes · Recados', "Before · Messages"), tone: 'before' },
+      { src: profComunicacao, alt: 'Comunicação escolar no redesign', caption: t('Depois · Comunicação escolar', "After · School communication"), tone: 'after' },
     ]}
   />
 
-  <CaseSection id="evo" label="Evolução do produto" title="Dos cadastros ao acompanhamento">
-    <p>
+  <CaseSection id="evo" label={t("Evolução do produto", "Product evolution")} title={t("Dos cadastros ao acompanhamento", "From records to monitoring")}>
+    <p data-en="The old platform recorded schools, classes and students, but did not show how they were doing. There was no equivalent screen to compare.">
       A plataforma antiga registrava escolas, turmas e estudantes, mas não mostrava como eles estavam indo. Não havia
       uma tela equivalente para comparar.
     </p>
-    <p>
+    <p data-en="The proposal went beyond the visual request: use assessment results to guide support. The teacher starts from the class, gets to the student and opens an assessment; the administrator sees the group and, on the same screen, a student.">
       A proposta foi além do pedido visual: usar os resultados das avaliações para orientar o apoio. O professor parte
       da turma, chega ao estudante e abre uma avaliação; o gestor vê o grupo e, na mesma tela, um estudante.
     </p>
     <BulletList
       items={[
-        'Questões com maior índice de erro e uma sugestão de onde concentrar a revisão.',
-        'Desempenho do estudante ao lado da média da turma.',
-        'Revisão de cada questão com a resposta marcada, a correta e o status.',
-        'Limites explícitos: os resultados, sozinhos, não servem para diagnosticar evasão.',
+        t('Questões com maior índice de erro e uma sugestão de onde concentrar a revisão.', "Questions with the highest error rates and a suggestion of where to focus the review."),
+        t('Desempenho do estudante ao lado da média da turma.', "Student performance next to the class average."),
+        t('Revisão de cada questão com a resposta marcada, a correta e o status.', "A review of each question with the answer chosen, the correct one and the status."),
+        t('Limites explícitos: os resultados, sozinhos, não servem para diagnosticar evasão.', "Explicit limits: results alone are not enough to diagnose dropout."),
       ]}
     />
   </CaseSection>
   <ShotRow
     shots={[
-      { src: profTurma, alt: 'Acompanhamento da turma no redesign', caption: 'Novo · Acompanhamento da turma', tone: 'after' },
-      { src: profEstudante, alt: 'Acompanhamento do estudante no redesign', caption: 'Novo · Acompanhamento do estudante', tone: 'after' },
+      { src: profTurma, alt: 'Acompanhamento da turma no redesign', caption: t('Novo · Acompanhamento da turma', "New · Class monitoring"), tone: 'after' },
+      { src: profEstudante, alt: 'Acompanhamento do estudante no redesign', caption: t('Novo · Acompanhamento do estudante', "New · Student monitoring"), tone: 'after' },
     ]}
   />
   <ShotRow
     shots={[
-      { src: profAvaliacao, alt: 'Detalhes da avaliação no redesign', caption: 'Novo · Detalhes da avaliação', tone: 'after' },
-      { src: gestorAcomp, alt: 'Acompanhamento pedagógico do gestor no redesign', caption: 'Novo · Acompanhamento pedagógico (gestor)', tone: 'after' },
+      { src: profAvaliacao, alt: 'Detalhes da avaliação no redesign', caption: t('Novo · Detalhes da avaliação', "New · Assessment details"), tone: 'after' },
+      { src: gestorAcomp, alt: 'Acompanhamento pedagógico do gestor no redesign', caption: t('Novo · Acompanhamento pedagógico (gestor)', "New · Pedagogical monitoring (administrator)"), tone: 'after' },
     ]}
   />
   <div class="wrap--case shots-note">
-    <p>Clique em uma tela para vê-la inteira. Os dados nas telas são ilustrativos.</p>
+    <p data-en="Click a screen to see it in full. The data on the screens is illustrative.">Clique em uma tela para vê-la inteira. Os dados nas telas são ilustrativos.</p>
   </div>
 </CaseLayout>
 
