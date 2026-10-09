@@ -67,6 +67,9 @@ const actors = [...row.actors, designerActor];
             </div>
           ) : (
             <div class="stage">
+              {row.stat.title && (
+                <div class="panel-title stat-title" data-en={row.stat.title.en} set:html={row.stat.title.pt} />
+              )}
               <div class="big-num" set:html={row.stat.value} />
               <div class="cap" data-en={row.stat.caption.en} set:html={row.stat.caption.pt} />
               <ul>
@@ -269,6 +272,10 @@ const actors = [...row.actors, designerActor];
     transform: translateY(-0.08em);
   }
 
+  .stat-title {
+    margin-bottom: 18px;
+  }
+
   .cap {
     margin: -6px 0 28px;
     padding-left: 4px;
@@ -335,7 +342,7 @@ const actors = [...row.actors, designerActor];
 
   ul {
     width: 100%;
-    max-width: 240px;
+    max-width: 280px;
     padding-top: 16px;
     border-top: 1px solid var(--warm-14);
     list-style: none;

@@ -20,7 +20,7 @@ const fields = [
       <details class="item" id={`ch-${i + 1}`} open={i === 0}>
         <summary class="sum">
           <span class="idx">{String(i + 1).padStart(2, '0')}</span>
-          <span class="name">{c.name}</span>
+          <span class="name" data-en={c.name.en} set:html={c.name.pt} />
           <span class="headline" data-en={c.home.headline.en} set:html={c.home.headline.pt} />
           <span class="meta" data-en={c.home.meta.en} set:html={c.home.meta.pt} />
           <span class="sign" aria-hidden="true">+</span>

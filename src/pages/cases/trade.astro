@@ -205,15 +205,19 @@ const screens = [
     src: telaCadastro,
     alt: 'Primeira etapa do cadastro, com o essencial para começar',
     tint: 'rgba(176, 213, 240, 0.16)',
-    title: 'Cadastro em etapas',
-    text: 'Dados básicos primeiro, com acesso rápido ao app.',
+    title: 'Cadastro redesenhado',
+    text: 'Uma jornada organizada em duas etapas, separando o acesso inicial ao aplicativo da solicitação de crédito.',
   },
   {
     src: telaAjuste,
     alt: 'Nova funcionalidade de acompanhamento e ajuste do limite',
     tint: '#E7F5EF',
-    title: 'Novas funcionalidades',
-    text: 'Limite, boletos, configurações e FAQ no app.',
+    title: 'Acompanhamento financeiro',
+    text: 'Novas interfaces para consultar limites e boletos diretamente pelo aplicativo.',
+  },
+  {
+    title: 'Navegação e suporte',
+    text: 'Melhorias na organização das informações, configurações de conta e acesso a dúvidas frequentes.',
   },
 ];
 
@@ -281,10 +285,10 @@ const learnings = [
   image={cover.src}
   chapters={[
     { id: 'cap-contexto', label: 'Contexto' },
-    { id: 'cap-descoberta', label: 'Descoberta' },
+    { id: 'cap-descoberta', label: 'Investigação' },
     { id: 'cap-decisoes', label: 'Decisões' },
-    { id: 'cap-solucao', label: 'Solução' },
-    { id: 'cap-impacto', label: 'Impacto' },
+    { id: 'cap-solucao', label: 'Soluções' },
+    { id: 'cap-impacto', label: 'Entregas' },
   ]}
   ambient
   showLang
@@ -296,14 +300,14 @@ const learnings = [
       { label: 'FINTECH · VAREJO', color: '#561589' },
       { label: 'APP MOBILE', color: '#6E3FC8' },
     ]}
-    eyebrow="TRADE+ · PRODUCT DESIGN · UX/UI"
-    title='Um cadastro de 30+ telas escondia <span class="serif">um produto que ninguém via por inteiro</span>'
-    lead="Comecei com uma tarefa operacional: migrar as telas do Adobe XD para o Figma. No caminho, descobri que o entrave real não era o tamanho do fluxo — era o <strong>conhecimento fragmentado do produto</strong>, um “telefone sem fio” entre as pessoas que o construíram."
+    eyebrow="TRADE+ · PRODUCT DESIGN · UX/UI · FINTECH"
+    title='Redesenhando a experiência de cadastro e uso <span class="serif">de um aplicativo de crédito para varejistas</span>'
+    lead="O que começou como uma migração de telas do Adobe XD para o Figma revelou um desafio maior: um cadastro com mais de 30 telas, regras de negócio distribuídas entre diferentes equipes e oportunidades de melhoria na experiência do aplicativo."
     facts={[
-      { label: 'MEU PAPEL', value: 'Product Designer · Research' },
-      { label: 'SQUAD', value: 'Produto · Dev · Marketing · Suporte' },
+      { label: 'PAPEL', value: 'Product Designer · UX Research' },
+      { label: 'EQUIPE', value: 'Product Owner, liderança de UX, Desenvolvimento, Marketing e Suporte' },
       { label: 'ATUAÇÃO', value: 'Descoberta, redesign de fluxo e documentação' },
-      { label: 'PLATAFORMA', value: 'App mobile (iOS + Android)' },
+      { label: 'PLATAFORMA', value: 'Aplicativo mobile · iOS e Android' },
     ]}
     columns="minmax(0, 1.08fr) minmax(0, 0.92fr)"
     glowSize={480}
@@ -340,41 +344,46 @@ const learnings = [
 
   <!-- Contexto -->
   <section aria-labelledby="ctx-title" class="sec sec-narrow rv context">
-    <p class="eyebrow">Contexto</p>
-    <h2 id="ctx-title" class="h2">O produto e o que estava em jogo</h2>
+    <p class="eyebrow">Parte 1 · Contexto e desafio</p>
+    <h2 id="ctx-title" class="h2">Conhecendo o produto</h2>
     <p class="lead">
-      A Trademaster é uma fintech de crédito B2B que conecta grandes indústrias e distribuidores a pequenos e médios
-      varejistas — do mercadinho de bairro a lojas de construção, alimentos e bebidas. O diferencial:
-      a Trademaster <strong>assume o risco de inadimplência</strong>, com um motor de crédito próprio baseado em dados da cadeia. O
-      varejista compra com mais limite e prazo; a indústria vende mais sem carregar o risco.
+      A Trademaster é uma fintech que oferece soluções de crédito para o varejo, conectando indústrias e distribuidores
+      a pequenos e médios comerciantes. O <strong>Trade+</strong> é o aplicativo pelo qual os varejistas podem acessar
+      informações sobre seus limites, acompanhar operações financeiras e solicitar crédito.
     </p>
     <p class="lead">
-      O <strong>Trade+</strong> é o app pelo qual o varejista acessa esse crédito: visualiza limites e extratos e faz o
-      cadastro que dá início à relação.
+      O projeto começou com a migração das interfaces existentes para o Figma. Durante esse trabalho, identifiquei telas
+      que não estavam documentadas, inconsistências de navegação e funcionalidades que existiam no aplicativo, mas não
+      estavam representadas nos arquivos de design.
+    </p>
+    <h3 class="h3 sub-h">O desafio</h3>
+    <p class="lead">
+      O cadastro reunia mais de 30 telas e apresentava um volume elevado de informações, erros de validação e relatos de
+      desistência. Além disso, o aplicativo oferecia poucas funcionalidades que incentivassem o acesso recorrente do
+      usuário.
     </p>
     <p class="lead">
-      O cadastro é a porta de entrada, o primeiro passo para o varejista começar a comprar com crédito. E era
-      justamente nessa porta que o produto travava.
+      O desafio passou a ser compreender a jornada existente, <strong>simplificar o cadastro</strong> e identificar
+      oportunidades para tornar o aplicativo mais útil na rotina dos varejistas.
     </p>
   </section>
 
   <!-- O problema real -->
   <div id="cap-descoberta" class="band band--purple problem">
     <section aria-labelledby="prob-title" class="sec sec-narrow rv">
-      <p class="eyebrow">Descoberta · O problema real</p>
-      <h2 id="prob-title" class="h2">
-        Não era só um cadastro longo. Era um produto que ninguém enxergava por inteiro.
-      </h2>
+      <p class="eyebrow">Parte 2 · Investigação e descoberta</p>
+      <h2 id="prob-title" class="h2">Reconstruindo a visão do produto</h2>
       <p class="lead">
-        O pedido inicial era operacional: <strong>passar as telas do Adobe XD para o Figma</strong>. Migrando tela por
-        tela, o padrão apareceu — <strong>faltavam telas</strong>. Mexendo no próprio app, encontrei fluxos que existiam
-        em produção mas não estavam em lugar nenhum do arquivo de design.
+        O trabalho começou na prática: navegando pelo aplicativo e comparando o que eu encontrava ali com as telas
+        disponíveis no Adobe XD e no Figma. Foi nesse processo que apareceram as primeiras inconsistências. Havia telas
+        presentes no app que não estavam documentadas em lugar nenhum, telas no Figma que não existiam no Adobe XD e
+        partes da experiência que só podiam ser entendidas olhando diretamente para o produto em uso.
       </p>
       <p class="lead">
-        Ao reunir e organizar essas telas, o quadro ficou claro: textos de preenchimento, dados repetidos, decisões
-        soltas feitas por devs sem processo de UX — cada pessoa somando uma camada por cima da anterior.
-        Um <strong>“telefone sem fio”</strong> de requisitos onde ninguém detinha a visão completa. Minha tarefa deixou de
-        ser migrar telas e passou a ser <strong>reconstruir a visão do produto inteiro</strong>.
+        Esse mapeamento revelou que o problema não estava apenas no tamanho do cadastro, mas também na <strong
+          >ausência de uma visão única e confiável da jornada</strong
+        >. Antes de redesenhar, precisei mapear o que realmente fazia parte da experiência e organizar essas informações
+        de forma mais clara para o time.
       </p>
 
       <blockquote class="quote">
@@ -404,12 +413,14 @@ const learnings = [
   <!-- Reconstruindo uma visão compartilhada -->
   <section aria-labelledby="fontes-title" class="sec rv block">
     <div class="sec-narrow head head--lg">
-      <p class="eyebrow">Descoberta · Fontes de conhecimento</p>
+      <p class="eyebrow">Investigação · Fontes de conhecimento</p>
       <h2 id="fontes-title" class="h2">Reconstruindo uma visão compartilhada</h2>
       <p class="lead">
-        Se o problema era conhecimento espalhado, a primeira entrega foi juntá-lo. Fui atrás de quatro fontes reais —
-        cada uma respondendo a uma parte diferente da mesma
-        pergunta: <em>por que este cadastro ficou assim, e o que ele precisa ser?</em>
+        Para aprofundar o diagnóstico, trabalhei com meu líder de UX e busquei informações com diferentes áreas da
+        empresa. Com o Product Owner, investiguei as regras de negócio associadas aos dados solicitados. Com
+        Desenvolvimento, levantei informações sobre erros, cliques e comportamento no cadastro. Marketing e Suporte
+        contribuíram com o conhecimento sobre o público, as reclamações recorrentes e as necessidades que o aplicativo
+        ainda não atendia.
       </p>
     </div>
     <div class="cols-2 sources">
@@ -437,8 +448,8 @@ const learnings = [
   <!-- O que precisávamos descobrir — CSD -->
   <section aria-labelledby="csd-title" class="sec rv block">
     <div class="sec-narrow head head--md">
-      <p class="eyebrow">Descoberta · O que precisávamos descobrir</p>
-      <h2 id="csd-title" class="h2">Três perguntas que ainda não tinham resposta</h2>
+      <p class="eyebrow">Investigação · O que precisávamos descobrir</p>
+      <h2 id="csd-title" class="h2">Organizando descobertas e hipóteses</h2>
       <p class="lead">
         Antes da matriz, as perguntas. Com tanto conhecimento disperso, precisei separar o que de fato sabíamos do que
         só supúnhamos — e nomear o que faltava investigar:
@@ -447,8 +458,9 @@ const learnings = [
         {questions.map((q) => <li>{q}</li>)}
       </ul>
       <p class="lead">
-        Para responder sem achismo, conduzi uma <strong>Matriz CSD</strong> numa dinâmica online com Produto,
-        Desenvolvimento, Marketing e Suporte — cada área contribuindo em tempo real.
+        Conduzi uma dinâmica de <strong>Matriz CSD</strong> com Produto, Desenvolvimento, Marketing e Suporte para
+        organizar certezas, suposições e dúvidas. Essa atividade ajudou a identificar informações que precisavam ser
+        confirmadas e a alinhar o entendimento das equipes sobre os problemas do cadastro.
       </p>
     </div>
     <div class="cols-3 csd">
@@ -468,13 +480,12 @@ const learnings = [
   <!-- Entendendo o usuário — persona -->
   <section aria-labelledby="persona-title" class="sec rv block">
     <div class="sec-narrow head head--sm">
-      <p class="eyebrow">Descoberta · Entendendo o usuário</p>
+      <p class="eyebrow">Investigação · Entendendo o usuário</p>
       <h2 id="persona-title" class="h2">Eduardo, o varejista por trás do cadastro</h2>
       <p class="lead">
-        Uma das dúvidas da matriz era exatamente <em>quem é o usuário</em>. A persona foi construída a partir
-        do <strong>conhecimento acumulado pelo time de Marketing</strong> sobre o varejista atendido — uma representação
-        inicial que dá rosto às decisões, e que poderia (e deveria) ser aprofundada com pesquisa direta com usuários numa
-        fase seguinte.
+        A investigação também considerou um <strong>perfil inicial de varejista</strong> construído a partir do
+        conhecimento do time de Marketing, utilizado como referência para compreender objetivos e necessidades do
+        público.
       </p>
     </div>
     <PersonaCard
@@ -498,11 +509,17 @@ const learnings = [
 
   <!-- O que a investigação revelou -->
   <section aria-labelledby="dados-title" class="sec sec-narrow rv block findings">
-    <p class="eyebrow">Descoberta · Síntese</p>
-    <h2 id="dados-title" class="h2">O que a investigação revelou</h2>
+    <p class="eyebrow">Investigação · Síntese</p>
+    <h2 id="dados-title" class="h2">O que identificamos</h2>
     <p class="lead">
-      Cruzando a Matriz CSD, os dados internos e as reclamações, cinco pontos ficaram claros — e passaram a guiar cada
-      decisão.
+      As informações reunidas apontaram problemas que iam além da quantidade de telas. Alguns campos não tinham sua
+      necessidade claramente justificada, erros de preenchimento eram comunicados tardiamente e determinadas interfaces
+      ainda apresentavam textos provisórios.
+    </p>
+    <p class="lead">
+      Também identificamos uma oportunidade de separar o acesso inicial ao aplicativo da solicitação de crédito,
+      permitindo que o varejista conhecesse outras funcionalidades antes de iniciar um processo mais completo de
+      cadastro.
     </p>
     <div>
       {
@@ -523,11 +540,17 @@ const learnings = [
   <div id="cap-decisoes" class="band band--tint decisions">
     <section aria-labelledby="dec-title" class="sec rv dec-intro">
       <div class="sec-narrow">
-        <p class="eyebrow">Decisões · Frente 1</p>
-        <h2 id="dec-title" class="h2">Reconstruindo o cadastro, decisão por decisão</h2>
+        <p class="eyebrow">Parte 3 · Decisões de design</p>
+        <h2 id="dec-title" class="h2">01. Simplificar o cadastro sem comprometer as regras de negócio</h2>
+        <p class="lead">A principal mudança foi reorganizar o cadastro em <strong>duas etapas</strong>.</p>
         <p class="lead">
-          Cada mudança partiu de uma evidência concreta e virou uma decisão com intenção clara. O registro abaixo é o
-          log dessas decisões — o que existia antes, o que mudou e por quê.
+          Na primeira, priorizamos os dados básicos necessários para iniciar o acesso ao aplicativo. A segunda concentrou
+          as informações adicionais para o varejista interessado em solicitar e ativar uma linha de crédito.
+        </p>
+        <p class="lead">
+          Revisei os campos com base nas regras de negócio, simplifiquei textos e organizei as informações para reduzir a
+          complexidade do preenchimento. Também antecipei validações importantes, como a confirmação dos dados de
+          contato, evitando que determinados erros fossem identificados apenas no final da jornada.
         </p>
       </div>
     </section>
@@ -585,7 +608,20 @@ const learnings = [
     <section aria-labelledby="feat-title" class="sec rv dec-features">
       <div class="sec-narrow head">
         <p class="eyebrow">Decisões · Frente 2</p>
-        <h2 id="feat-title" class="h2">Novas funcionalidades mapeadas pela pesquisa</h2>
+        <h2 id="feat-title" class="h2">02. Ampliar as possibilidades de uso do aplicativo</h2>
+        <p class="lead">
+          A investigação indicou que a experiência precisava oferecer utilidade além da solicitação de crédito. Por isso,
+          também desenvolvi propostas de funcionalidades voltadas ao acompanhamento financeiro e à autonomia do
+          varejista.
+        </p>
+        <p class="lead">
+          Entre elas estavam a visualização dos limites utilizado e disponível, o acesso a boletos diretamente pelo
+          aplicativo, o gerenciamento de dados básicos e uma área de perguntas frequentes para consultas rápidas.
+        </p>
+        <p class="lead">
+          Essas propostas buscavam reunir informações e atividades relevantes em um único ambiente, reduzindo a
+          dependência de outros canais para operações cotidianas.
+        </p>
       </div>
       <div class="opportunity">
         <span class="pill pill--op">Oportunidade</span>
@@ -641,14 +677,17 @@ const learnings = [
   </div>
 
   <!-- Solução: wireflow -->
-  <section id="cap-solucao" aria-labelledby="wf-title" class="sec rv solution">
+  <section aria-labelledby="wf-title" class="sec rv solution">
     <div class="sec-narrow head head--sm">
-      <p class="eyebrow">Solução · A jornada</p>
-      <h2 id="wf-title" class="h2">Redesenhando a jornada, ponta a ponta</h2>
+      <p class="eyebrow">Decisões · Frente 3</p>
+      <h2 id="wf-title" class="h2">03. Documentar a jornada de ponta a ponta</h2>
       <p class="lead">
-        Percorri todo o cadastro como usuário, documentando cada etapa, os estados de erro e os pontos de acessibilidade
-        — e reconstruí o fluxo inteiro digitalmente. Cada decisão do usuário passou a ter um caminho claro, com estados
-        de erro e confirmação mapeados.
+        Além do redesign, estruturei um <strong>wireflow completo do cadastro</strong>, reunindo telas, conexões, regras e
+        estados de interação.
+      </p>
+      <p class="lead">
+        A documentação permitiu consolidar informações anteriormente distribuídas entre diferentes equipes, oferecendo
+        uma referência compartilhada para Produto e Desenvolvimento e facilitando futuras revisões do fluxo.
       </p>
     </div>
     <ProcessShot
@@ -670,39 +709,69 @@ const learnings = [
   </section>
 
   <!-- Solução: a nova experiência -->
-  <section aria-labelledby="exp-title" class="sec rv block block--sm">
+  <section id="cap-solucao" aria-labelledby="exp-title" class="sec rv block block--sm">
     <div class="sec-narrow head head--md">
-      <p class="eyebrow">Solução · A nova experiência</p>
-      <h2 id="exp-title" class="h2">Telas de alta fidelidade, navegáveis</h2>
+      <p class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
+      <h2 id="exp-title" class="h2">Do mapeamento às interfaces finais</h2>
       <p class="lead">
-        Entreguei o redesenho em alta fidelidade e navegável, para as partes interessadas visualizarem e interagirem com
-        as soluções antes da implementação — cobrindo tanto o cadastro redesenhado quanto as novas funcionalidades.
+        Com os principais problemas e direcionamentos definidos, desenvolvi as propostas de redesign e as novas
+        funcionalidades em alta fidelidade, criando protótipos navegáveis para apresentação e validação com as partes
+        envolvidas.
+      </p>
+      <p class="lead">
+        As interfaces contemplaram a nova estrutura do cadastro, ajustes de linguagem e validação, além das
+        funcionalidades de acompanhamento financeiro e suporte.
       </p>
     </div>
     <div class="cols-2 screens">
       {
-        screens.map((screen) => (
-          <div>
-            <div class="screen" style={`--tint:${screen.tint}`}>
-              <Image
-                src={screen.src}
-                alt={screen.alt}
-                widths={[480, 960]}
-                sizes="(max-width: 860px) 100vw, 480px"
-              />
+        screens.map((screen) =>
+          screen.src ? (
+            <div>
+              <div class="screen" style={`--tint:${screen.tint}`}>
+                <Image
+                  src={screen.src}
+                  alt={screen.alt}
+                  widths={[480, 960]}
+                  sizes="(max-width: 860px) 100vw, 480px"
+                />
+              </div>
+              <div class="title">{screen.title}</div>
+              <div class="text">{screen.text}</div>
             </div>
-            <div class="title">{screen.title}</div>
-            <div class="text">{screen.text}</div>
-          </div>
-        ))
+          ) : (
+            <div class="screen-note">
+              <div class="title">{screen.title}</div>
+              <div class="text">{screen.text}</div>
+            </div>
+          ),
+        )
       }
     </div>
   </section>
 
+  <!-- Entregas: o que foi entregue -->
+  <section id="cap-impacto" aria-labelledby="entregue-title" class="sec sec-narrow rv block delivered">
+    <p class="eyebrow">Parte 5 · Entregas e aprendizados</p>
+    <h2 id="entregue-title" class="h2">O que foi entregue</h2>
+    <p class="lead">
+      O projeto resultou em uma proposta de <strong>cadastro reorganizado em duas etapas</strong>, revisão dos campos e
+      validações, documentação completa do fluxo e interfaces de alta fidelidade navegáveis.
+    </p>
+    <p class="lead">
+      Também foram desenvolvidas propostas de novas funcionalidades para ampliar as possibilidades de utilização do
+      Trade+.
+    </p>
+    <p class="lead">
+      Além das entregas de design, o trabalho contribuiu para estabelecer uma visão compartilhada do produto e incorporar
+      práticas de investigação, documentação e validação à rotina da squad.
+    </p>
+  </section>
+
   <!-- Impacto: o que mudou -->
-  <section id="cap-impacto" aria-labelledby="mudou-title" class="sec rv block">
+  <section aria-labelledby="mudou-title" class="sec rv block">
     <div class="sec-narrow head head--md">
-      <p class="eyebrow">Impacto · O que mudou</p>
+      <p class="eyebrow">Entregas · O que mudou</p>
       <h2 id="mudou-title" class="h2">Antes e depois do cadastro</h2>
       <p class="lead">
         Mais do que uma lista de entregáveis, o projeto mudou a estrutura do produto e do trabalho em torno dele.
@@ -717,7 +786,7 @@ const learnings = [
   <div class="band reviews">
     <section aria-labelledby="rev-title" class="sec rv">
       <div class="reviews-head">
-        <p class="eyebrow">Impacto · Prova real</p>
+        <p class="eyebrow">Entregas · Prova real</p>
         <h2 id="rev-title" class="h2">O que os usuários disseram depois das mudanças</h2>
         <p class="lead">
           Avaliações orgânicas na loja de aplicativos após o redesenho entrar no ar. Não são teste de usabilidade formal
@@ -733,7 +802,7 @@ const learnings = [
 
   <!-- Impacto: o que ainda precisava ser validado -->
   <section aria-labelledby="valid-title" class="sec sec-narrow rv block block--sm validation">
-    <p class="eyebrow">Impacto · Próximos passos</p>
+    <p class="eyebrow">Entregas · Próximos passos</p>
     <h2 id="valid-title" class="h2">O que ainda precisava ser validado</h2>
     <p class="lead">
       As avaliações da loja são um sinal real e animador, mas orgânico e espontâneo — não substituem teste de usabilidade
@@ -769,7 +838,16 @@ const learnings = [
   <section aria-labelledby="ref-title" class="sec rv block block--sm">
     <div class="takeaways">
       <p class="eyebrow">Aprendizado</p>
-      <h2 id="ref-title" class="h2">O que ficou desse projeto</h2>
+      <h2 id="ref-title" class="h2">O que aprendi</h2>
+      <p class="lead">
+        Um dos principais aprendizados foi compreender a importância de alinhar diferentes áreas antes de definir
+        soluções. O problema do Trade+ não estava apenas nas interfaces, mas também na forma como as informações e
+        decisões sobre o produto estavam distribuídas entre as equipes.
+      </p>
+      <p class="lead">
+        A experiência reforçou o valor da colaboração entre Design, Produto e Desenvolvimento para tomar decisões
+        fundamentadas nas necessidades dos usuários e nas regras do negócio.
+      </p>
       <div class="cols-2 takeaway-cols">
         {
           learnings.map((l) => (
@@ -877,6 +955,21 @@ const learnings = [
 
   .context .lead + .lead {
     margin-top: 18px;
+  }
+
+  .context .sub-h {
+    margin: 40px 0 16px;
+  }
+
+  /* Sections that now open with more than one paragraph. */
+  .head .lead + .lead,
+  .delivered .lead + .lead,
+  .takeaways .lead + .lead {
+    margin-top: 16px;
+  }
+
+  .delivered .h2 {
+    margin-bottom: 22px;
   }
 
   /* ---------- O problema real ---------- */
@@ -1058,7 +1151,7 @@ const learnings = [
   }
 
   .dec-intro .lead {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
   }
 
   .sec.dec-log {
@@ -1196,6 +1289,17 @@ const learnings = [
     border-radius: 10px;
   }
 
+  .screen-note {
+    grid-column: 1 / -1;
+    padding: 20px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: var(--radius-xl);
+  }
+
+  .screens .screen-note .title {
+    margin-top: 0;
+  }
+
   .screens .title {
     margin-top: 14px;
     font-size: 14.5px;
@@ -1298,6 +1402,10 @@ const learnings = [
 
   .takeaways .h2 {
     margin-bottom: 30px;
+  }
+
+  .takeaways .lead:last-of-type {
+    margin-bottom: 36px;
   }
 
   .cols-2.takeaway-cols {

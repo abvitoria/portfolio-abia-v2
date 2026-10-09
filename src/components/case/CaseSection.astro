@@ -108,8 +108,20 @@ const { id, label, title, space = 'xl', noRule = false } = Astro.props;
   }
 
   @media (max-width: 820px) {
+    .cols {
+      row-gap: 20px;
+    }
+
+    .rule {
+      padding-top: 28px;
+    }
+
     header {
       position: static;
+    }
+
+    .wide {
+      margin-top: 32px;
     }
   }
 </style>
