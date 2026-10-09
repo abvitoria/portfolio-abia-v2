@@ -1,24 +1,26 @@
 ---
 /** Light vs dark: the same lesson card in both StartDev themes + the paired color tokens. */
+import { t } from '@/data/i18n';
+
 const themes = [
-  { label: 'Claro', dark: false },
-  { label: 'Escuro', dark: true },
+  { label: t('Claro', 'Light'), dark: false },
+  { label: t('Escuro', 'Dark'), dark: true },
 ];
 const tokens = [
-  { name: 'superfície', light: '#FFFFFF', dark: '#111B2E' },
-  { name: 'borda', light: '#EBEEF3', dark: '#22304C' },
-  { name: 'texto', light: '#03337B', dark: '#EAF1FB' },
-  { name: 'ação', light: '#013DAB', dark: '#7FB3FF' },
+  { name: t('superfície', 'surface'), light: '#FFFFFF', dark: '#111B2E' },
+  { name: t('borda', 'border'), light: '#EBEEF3', dark: '#22304C' },
+  { name: t('texto', 'text'), light: '#03337B', dark: '#EAF1FB' },
+  { name: t('ação', 'action'), light: '#013DAB', dark: '#7FB3FF' },
 ];
 ---
 
 <div class="pairs">
   <div class="themes">
     {
-      themes.map((t) => (
+      themes.map((th) => (
         <div class="theme">
-          <span class="theme-label">{t.label}</span>
-          <div class:list={['lesson', { 'lesson--dark': t.dark }]}>
+          <span class="theme-label" data-en={th.label.en} set:html={th.label.pt} />
+          <div class:list={['lesson', { 'lesson--dark': th.dark }]}>
             <div class="head">
               <span class="name">Variáveis e tipos de dados</span>
               <span class="time">45 min</span>
@@ -38,12 +40,12 @@ const tokens = [
       tokens.map((tk) => (
         <div class="token">
           <span class="swatch" style={`--l:${tk.light};--d:${tk.dark}`} />
-          <span>{tk.name}</span>
+          <span data-en={tk.name.en} set:html={tk.name.pt} />
         </div>
       ))
     }
   </div>
-  <p>Cada token tem par nos dois temas — o mesmo componente troca de tema sem perder contraste.</p>
+  <p data-en="Every token has a pair in both themes — the same component switches theme without losing contrast.">Cada token tem par nos dois temas — o mesmo componente troca de tema sem perder contraste.</p>
 </div>
 
 <style>
