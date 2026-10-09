@@ -1,4 +1,5 @@
 ---
+import { en, pt, type T } from '@/data/i18n';
 import { url } from '@/lib/url';
 /**
  * Editorial case opening (Trade+, Vitalis, StartDev): colored badges,
@@ -10,13 +11,13 @@ import { url } from '@/lib/url';
  *   </CaseIntro>
  */
 interface Props {
-  badges: { label: string; color: string }[];
-  eyebrow: string;
+  badges: { label: T; color: string }[];
+  eyebrow: T;
   /** Title (inline HTML allowed, e.g. <span class="serif">…</span>). */
-  title: string;
+  title: T;
   /** Lead paragraph (inline HTML allowed). */
-  lead: string;
-  facts: { label: string; value: string }[];
+  lead: T;
+  facts: { label: T; value: T }[];
   /** Facts as a ruled table (true) or a plain grid (false). */
   ruledFacts?: boolean;
   /** Glow color behind the visual (any CSS color). */
@@ -43,27 +44,25 @@ const {
 ---
 
 <section class="intro" aria-labelledby="case-title">
-  <a href={url('/cases/')} class="back">← Voltar aos cases</a>
+  <a href={url('/cases/')} class="back" data-en="← Back to cases">← Voltar aos cases</a>
   <div class="grid" style={`--cols:${columns}`}>
     <div>
       <div class="badges">
         {
           badges.map((b) => (
-            <span class="badge" style={`background:${b.color}`}>
-              {b.label}
-            </span>
+            <span class="badge" style={`background:${b.color}`} data-en={en(b.label)} set:html={pt(b.label)} />
           ))
         }
       </div>
-      <p class="eyebrow">{eyebrow}</p>
-      <h1 id="case-title" set:html={title} />
-      <p class="lead" set:html={lead} />
+      <p class="eyebrow" data-en={en(eyebrow)} set:html={pt(eyebrow)} />
+      <h1 id="case-title" data-en={en(title)} set:html={pt(title)} />
+      <p class="lead" data-en={en(lead)} set:html={pt(lead)} />
       <dl class:list={['facts', { 'facts--ruled': ruledFacts }]}>
         {
           facts.map((f) => (
             <div>
-              <dt>{f.label}</dt>
-              <dd set:html={f.value} />
+              <dt data-en={en(f.label)} set:html={pt(f.label)} />
+              <dd data-en={en(f.value)} set:html={pt(f.value)} />
             </div>
           ))
         }

@@ -8,7 +8,7 @@ import BaseLayout from './BaseLayout.astro';
 import CaseCTA from '@/components/case/CaseCTA.astro';
 import Lightbox from '@/components/case/Lightbox.astro';
 import SectionNav from '@/components/ui/SectionNav.astro';
-import { t } from '@/data/i18n';
+import { t, type T } from '@/data/i18n';
 
 interface Props {
   title: string;
@@ -16,11 +16,11 @@ interface Props {
   /** Cover used for social previews. */
   image?: string;
   /** Chapters for the floating pill: [{ id, label }] */
-  chapters?: { id: string; label: string }[];
+  chapters?: { id: string; label: T }[];
   ambient?: boolean;
   showLang?: boolean;
   /** Closing CTA copy (set `cta={false}` to render your own). */
-  cta?: { title?: string; text?: string } | false;
+  cta?: { title?: T; text?: T } | false;
 }
 
 const { title, description, image, chapters = [], ambient = false, showLang = false, cta = {} } = Astro.props;
@@ -36,7 +36,7 @@ const { title, description, image, chapters = [], ambient = false, showLang = fa
       chapters.length > 0 && (
         <SectionNav
           label="Capítulos do case"
-          items={chapters.map((c) => ({ id: c.id, label: t(c.label) }))}
+          items={chapters.map((c) => ({ id: c.id, label: typeof c.label === 'string' ? t(c.label) : c.label }))}
         />
       )
     }

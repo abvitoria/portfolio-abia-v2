@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import CaseLayout from '@/layouts/CaseLayout.astro';
+import { t } from '@/data/i18n';
 import CaseIntro from '@/components/case/CaseIntro.astro';
 import BeforeAfter from '@/components/case/trade/BeforeAfter.astro';
 import CsdColumn from '@/components/case/trade/CsdColumn.astro';
@@ -26,156 +27,213 @@ const summary = [
   {
     href: '#cap-descoberta',
     mark: '+30',
-    title: 'Telas de cadastro',
-    text: 'Um fluxo exaustivo que afastava mais do que convertia.',
-    cta: 'Ver a descoberta →',
+    title: t('Telas de cadastro', 'Sign-up screens'),
+    text: t('Um fluxo exaustivo que afastava mais do que convertia.', 'An exhausting flow that drove people away more than it converted.'),
+    cta: t('Ver a descoberta →', 'See the discovery →'),
   },
   {
     href: '#cap-descoberta',
     mark: '☍',
-    title: 'Conhecimento fragmentado',
-    text: 'Informação dispersa entre as áreas — um “telefone sem fio”.',
-    cta: 'Entender o problema →',
+    title: t('Conhecimento fragmentado', 'Fragmented knowledge'),
+    text: t('Informação dispersa entre as áreas — um “telefone sem fio”.', 'Information scattered across teams — a game of “telephone”.'),
+    cta: t('Entender o problema →', 'Understand the problem →'),
   },
   {
     href: '#cap-decisoes',
     mark: '→',
-    title: 'A direção tomada',
-    text: 'Cadastro em duas etapas, fluxo documentado e um motivo pra voltar ao app.',
-    cta: 'Ver as decisões →',
+    title: t('A direção tomada', 'The direction taken'),
+    text: t(
+      'Cadastro em duas etapas, fluxo documentado e um motivo pra voltar ao app.',
+      'A two-stage sign-up, a documented flow and a reason to come back to the app.',
+    ),
+    cta: t('Ver as decisões →', 'See the decisions →'),
   },
 ];
 
 const problemStats = [
-  { mark: '30+', text: 'telas num fluxo linear e exaustivo, com alta desistência.' },
+  { mark: '30+', text: t('telas num fluxo linear e exaustivo, com alta desistência.', 'screens in a linear, exhausting flow, with high drop-off.') },
   {
     mark: '✎',
-    text: 'telas ainda com <strong>Lorem Ipsum em produção</strong>, passando impressão de produto inacabado.',
+    text: t(
+      'telas ainda com <strong>Lorem Ipsum em produção</strong>, passando impressão de produto inacabado.',
+      'screens still showing <strong>Lorem Ipsum in production</strong>, making the product feel unfinished.',
+    ),
   },
   {
     mark: '↯',
-    text: 'nenhuma fonte única de verdade — a informação do produto vivia dispersa entre as áreas.',
+    text: t(
+      'nenhuma fonte única de verdade — a informação do produto vivia dispersa entre as áreas.',
+      'no single source of truth — product information was scattered across teams.',
+    ),
   },
 ];
 
 const sources = [
   {
-    title: 'Reunião com o P.O. — regras de negócio',
-    text: 'Pedi o propósito de cada dado do fluxo: por que ele é solicitado e qual regra o sustenta. Muitos campos existiam por inércia, sem ninguém ter revisitado o conjunto.',
+    title: t('Reunião com o P.O. — regras de negócio', 'Meeting with the PO — business rules'),
+    text: t(
+      'Pedi o propósito de cada dado do fluxo: por que ele é solicitado e qual regra o sustenta. Muitos campos existiam por inércia, sem ninguém ter revisitado o conjunto.',
+      'I asked for the purpose of every piece of data in the flow: why it is requested and which rule supports it. Many fields existed out of inertia, and no one had revisited the whole set.',
+    ),
   },
   {
-    title: 'Desenvolvimento — dados de comportamento',
-    text: 'Levantei com o time de dev o comportamento real: tela com mais erros, onde as pessoas clicavam, tempo gasto por tela e falhas recorrentes — a evidência de onde o fluxo travava.',
+    title: t('Desenvolvimento — dados de comportamento', 'Development — behavioral data'),
+    text: t(
+      'Levantei com o time de dev o comportamento real: tela com mais erros, onde as pessoas clicavam, tempo gasto por tela e falhas recorrentes — a evidência de onde o fluxo travava.',
+      'With the dev team, I gathered real behavior: the screen with the most errors, where people clicked, time spent per screen and recurring failures — the evidence of where the flow got stuck.',
+    ),
   },
   {
-    title: 'Marketing — quem é o usuário',
-    text: 'O time de Marketing detinha o conhecimento acumulado sobre o varejista atendido. Foi dessa base que construí a persona — uma representação inicial, não uma pesquisa direta com usuário final.',
+    title: t('Marketing — quem é o usuário', 'Marketing — who the user is'),
+    text: t(
+      'O time de Marketing detinha o conhecimento acumulado sobre o varejista atendido. Foi dessa base que construí a persona — uma representação inicial, não uma pesquisa direta com usuário final.',
+      'The Marketing team held the accumulated knowledge about the retailers served. I built the persona from that base — an initial representation, not direct research with end users.',
+    ),
   },
   {
-    title: 'Suporte — reclamações recorrentes',
-    text: 'Levantei a reclamação nº 1, o que o app não resolvia e o que o usuário esperava do cadastro — o termômetro qualitativo do problema, vindo de quem fala com o cliente todos os dias.',
+    title: t('Suporte — reclamações recorrentes', 'Support — recurring complaints'),
+    text: t(
+      'Levantei a reclamação nº 1, o que o app não resolvia e o que o usuário esperava do cadastro — o termômetro qualitativo do problema, vindo de quem fala com o cliente todos os dias.',
+      'I gathered the #1 complaint, what the app failed to solve and what users expected from sign-up — the qualitative gauge of the problem, coming from the people who talk to customers every day.',
+    ),
   },
 ];
 
 const questions = [
-  'Quais dados são realmente essenciais no cadastro?',
-  'Quem é, de fato, o usuário do produto?',
-  'Qual é a reclamação nº 1 no suporte?',
+  t('Quais dados são realmente essenciais no cadastro?', 'Which data is truly essential at sign-up?'),
+  t('Quem é, de fato, o usuário do produto?', 'Who, in fact, is the product’s user?'),
+  t('Qual é a reclamação nº 1 no suporte?', 'What is the #1 complaint at support?'),
 ];
 
 const csd = [
   {
-    label: 'Certezas',
+    label: t('Certezas', 'Certainties'),
     bar: '#4A9434',
     dot: '#4A9434',
     tint: '#D6F4C9',
     items: [
-      'O cadastro tem 30+ telas e gera alta desistência.',
-      'O design foi feito por devs, sem processo de UX/UI.',
-      'Há telas em produção com Lorem Ipsum.',
+      t('O cadastro tem 30+ telas e gera alta desistência.', 'Sign-up has 30+ screens and high drop-off.'),
+      t('O design foi feito por devs, sem processo de UX/UI.', 'The design was made by devs, with no UX/UI process.'),
+      t('Há telas em produção com Lorem Ipsum.', 'There are screens in production with Lorem Ipsum.'),
     ],
   },
   {
-    label: 'Suposições',
+    label: t('Suposições', 'Assumptions'),
     bar: '#0B7C8F',
     dot: '#5B9CC5',
     tint: '#CFE4EE',
     items: [
-      'A maioria quer explorar o app antes de pedir crédito.',
-      'Dividir o cadastro em etapas reduz o abandono.',
-      'Faltam funcionalidades que tragam o usuário de volta.',
+      t('A maioria quer explorar o app antes de pedir crédito.', 'Most users want to explore the app before applying for credit.'),
+      t('Dividir o cadastro em etapas reduz o abandono.', 'Splitting sign-up into stages reduces drop-off.'),
+      t('Faltam funcionalidades que tragam o usuário de volta.', 'Features that bring users back are missing.'),
     ],
   },
-  { label: 'Dúvidas', bar: 'var(--rose)', dot: 'var(--rose)', tint: 'var(--rose-lighter)', items: questions },
+  { label: t('Dúvidas', 'Doubts'), bar: 'var(--rose)', dot: 'var(--rose)', tint: 'var(--rose-lighter)', items: questions },
 ];
 
 const findings = [
-  { title: 'Excesso de dados solicitados', text: 'Boa parte sem propósito claro para o usuário.' },
-  { title: 'Cadastro extenso — 30+ telas', text: 'Demorado e cansativo, empurrando para a desistência.' },
   {
-    title: 'Interesse inicial diferente do esperado',
-    text: 'A maioria queria explorar o app e entender como funcionava antes de focar no pedido de crédito.',
+    title: t('Excesso de dados solicitados', 'Too much data requested'),
+    text: t('Boa parte sem propósito claro para o usuário.', 'Much of it with no clear purpose for the user.'),
   },
-  { title: 'Poucas funcionalidades recorrentes', text: 'Faltava motivo para voltar ao app fora do pedido de crédito.' },
-  { title: 'Textos vazios (Lorem Ipsum)', text: 'Placeholder em produção minava a percepção de qualidade.' },
+  {
+    title: t('Cadastro extenso — 30+ telas', 'Long sign-up — 30+ screens'),
+    text: t('Demorado e cansativo, empurrando para a desistência.', 'Slow and tiring, pushing people to give up.'),
+  },
+  {
+    title: t('Interesse inicial diferente do esperado', 'Initial interest different from expected'),
+    text: t(
+      'A maioria queria explorar o app e entender como funcionava antes de focar no pedido de crédito.',
+      'Most wanted to explore the app and understand how it worked before focusing on the credit application.',
+    ),
+  },
+  {
+    title: t('Poucas funcionalidades recorrentes', 'Few recurring features'),
+    text: t('Faltava motivo para voltar ao app fora do pedido de crédito.', 'There was no reason to return to the app beyond the credit application.'),
+  },
+  {
+    title: t('Textos vazios (Lorem Ipsum)', 'Empty copy (Lorem Ipsum)'),
+    text: t('Placeholder em produção minava a percepção de qualidade.', 'Placeholder text in production undermined the perception of quality.'),
+  },
 ];
 
 /** Decisions 02–05 (01 is the featured row with the screen). */
 const flowDecisions = [
   {
     n: '02',
-    title: 'Otimização de campos',
-    text: 'Só o <b>essencial</b> permaneceu — todo campo sem regra de negócio por trás foi cortado.',
-    evidence: 'campos sem propósito, confirmado com o P.O.',
-    intent: 'cada campo com um motivo real de existir',
+    title: t('Otimização de campos', 'Field optimization'),
+    text: t(
+      'Só o <b>essencial</b> permaneceu — todo campo sem regra de negócio por trás foi cortado.',
+      'Only the <b>essentials</b> stayed — every field without a business rule behind it was cut.',
+    ),
+    evidence: t('campos sem propósito, confirmado com o P.O.', 'fields with no purpose, confirmed with the PO'),
+    intent: t('cada campo com um motivo real de existir', 'every field with a real reason to exist'),
   },
   {
     n: '03',
-    title: 'Textos e ícones acessíveis',
-    text: '<b>Linguagem simples</b> e ícones reconhecíveis no lugar de rótulos ambíguos.',
-    evidence: 'Lorem Ipsum em produção, linguagem confusa',
-    intent: 'entender a tela sem esforço',
+    title: t('Textos e ícones acessíveis', 'Accessible copy and icons'),
+    text: t(
+      '<b>Linguagem simples</b> e ícones reconhecíveis no lugar de rótulos ambíguos.',
+      '<b>Plain language</b> and recognizable icons instead of ambiguous labels.',
+    ),
+    evidence: t('Lorem Ipsum em produção, linguagem confusa', 'Lorem Ipsum in production, confusing language'),
+    intent: t('entender a tela sem esforço', 'understand the screen effortlessly'),
   },
   {
     n: '04',
-    title: 'Validação antecipada',
-    text: '<b>Validação do contato</b> logo no começo do fluxo, e não na última tela.',
-    evidence: 'erros de contato só apareciam no fim',
-    intent: 'falhar cedo, não no fim',
+    title: t('Validação antecipada', 'Early validation'),
+    text: t(
+      '<b>Validação do contato</b> logo no começo do fluxo, e não na última tela.',
+      '<b>Contact validation</b> right at the start of the flow, not on the last screen.',
+    ),
+    evidence: t('erros de contato só apareciam no fim', 'contact errors only showed up at the end'),
+    intent: t('falhar cedo, não no fim', 'fail early, not at the end'),
   },
   {
     n: '05',
-    title: 'Documentação do fluxo',
-    text: '<b>Documentação ponta a ponta</b> como fonte única de verdade para produto e desenvolvimento.',
-    evidence: 'fluxo feito por devs sem UX',
-    intent: 'acabar com o retrabalho e alinhar o time',
+    title: t('Documentação do fluxo', 'Flow documentation'),
+    text: t(
+      '<b>Documentação ponta a ponta</b> como fonte única de verdade para produto e desenvolvimento.',
+      '<b>End-to-end documentation</b> as a single source of truth for product and development.',
+    ),
+    evidence: t('fluxo feito por devs sem UX', 'flow built by devs without UX'),
+    intent: t('acabar com o retrabalho e alinhar o time', 'end rework and align the team'),
   },
 ];
 
 const featureDecisions = [
   {
     n: '06',
-    title: 'Acompanhamento de limite',
-    text: '<b>Limite utilizado e disponível</b> sempre visível na home, com ajuste de percentual.',
-    evidence: 'sem visão do crédito, nada motivava abrir o app entre compras',
+    title: t('Acompanhamento de limite', 'Credit limit tracking'),
+    text: t(
+      '<b>Limite utilizado e disponível</b> sempre visível na home, com ajuste de percentual.',
+      '<b>Used and available limit</b> always visible on the home screen, with percentage adjustment.',
+    ),
+    evidence: t(
+      'sem visão do crédito, nada motivava abrir o app entre compras',
+      'with no view of their credit, nothing motivated opening the app between purchases',
+    ),
   },
   {
     n: '07',
-    title: 'Boletos direto no app',
-    text: '<b>Aba de boletos</b> dentro do próprio app, sem passar pelo desktop.',
-    evidence: 'boletos só existiam via desktop',
+    title: t('Boletos direto no app', 'Payment slips in the app'),
+    text: t('<b>Aba de boletos</b> dentro do próprio app, sem passar pelo desktop.', 'A <b>payment slips tab</b> inside the app, no desktop needed.'),
+    evidence: t('boletos só existiam via desktop', 'payment slips were only available on desktop'),
   },
   {
     n: '08',
-    title: 'Configurações de dados básicos',
-    text: '<b>Área de configurações</b> pra conferir e ajustar os dados quando quiser.',
-    evidence: 'dados só editáveis no cadastro inicial',
+    title: t('Configurações de dados básicos', 'Basic data settings'),
+    text: t(
+      '<b>Área de configurações</b> pra conferir e ajustar os dados quando quiser.',
+      'A <b>settings area</b> to review and update data at any time.',
+    ),
+    evidence: t('dados só editáveis no cadastro inicial', 'data was only editable during the initial sign-up'),
   },
   {
     n: '09',
-    title: 'FAQ para suporte rápido',
-    text: '<b>FAQ no app</b>, sem depender de atendimento humano.',
-    evidence: 'dúvidas recorrentes sobrecarregavam o Suporte',
+    title: t('FAQ para suporte rápido', 'FAQ for quick support'),
+    text: t('<b>FAQ no app</b>, sem depender de atendimento humano.', 'An <b>in-app FAQ</b>, without depending on human support.'),
+    evidence: t('dúvidas recorrentes sobrecarregavam o Suporte', 'recurring questions overloaded Support'),
   },
 ];
 
@@ -183,20 +241,20 @@ const fronts = [
   {
     icon: circulo,
     tint: 'rgba(158, 108, 239, 0.14)',
-    title: 'Otimizar o cadastro',
-    text: 'Reduzir fricção e abandono no fluxo.',
+    title: t('Otimizar o cadastro', 'Optimize sign-up'),
+    text: t('Reduzir fricção e abandono no fluxo.', 'Reduce friction and drop-off in the flow.'),
   },
   {
     icon: raio,
     tint: 'rgba(176, 213, 240, 0.16)',
-    title: 'Documentar telas e fluxo',
-    text: 'Acabar com o “telefone sem fio” no time.',
+    title: t('Documentar telas e fluxo', 'Document screens and flow'),
+    text: t('Acabar com o “telefone sem fio” no time.', 'End the game of “telephone” within the team.'),
   },
   {
     icon: estrela,
     tint: 'rgba(84, 206, 226, 0.16)',
-    title: 'Trazer insights de novas funcionalidades',
-    text: 'Dar um motivo para voltar ao app.',
+    title: t('Trazer insights de novas funcionalidades', 'Bring insights for new features'),
+    text: t('Dar um motivo para voltar ao app.', 'Give people a reason to return to the app.'),
   },
 ];
 
@@ -205,75 +263,127 @@ const screens = [
     src: telaCadastro,
     alt: 'Primeira etapa do cadastro, com o essencial para começar',
     tint: 'rgba(176, 213, 240, 0.16)',
-    title: 'Cadastro redesenhado',
-    text: 'Uma jornada organizada em duas etapas, separando o acesso inicial ao aplicativo da solicitação de crédito.',
+    title: t('Cadastro redesenhado', 'Redesigned sign-up'),
+    text: t(
+      'Uma jornada organizada em duas etapas, separando o acesso inicial ao aplicativo da solicitação de crédito.',
+      'A journey organized into two stages, separating initial access to the app from the credit application.',
+    ),
   },
   {
     src: telaAjuste,
     alt: 'Nova funcionalidade de acompanhamento e ajuste do limite',
     tint: '#E7F5EF',
-    title: 'Acompanhamento financeiro',
-    text: 'Novas interfaces para consultar limites e boletos diretamente pelo aplicativo.',
+    title: t('Acompanhamento financeiro', 'Financial tracking'),
+    text: t(
+      'Novas interfaces para consultar limites e boletos diretamente pelo aplicativo.',
+      'New interfaces to check limits and payment slips directly in the app.',
+    ),
   },
   {
-    title: 'Navegação e suporte',
-    text: 'Melhorias na organização das informações, configurações de conta e acesso a dúvidas frequentes.',
+    title: t('Navegação e suporte', 'Navigation and support'),
+    text: t(
+      'Melhorias na organização das informações, configurações de conta e acesso a dúvidas frequentes.',
+      'Improvements to information organization, account settings and access to frequently asked questions.',
+    ),
   },
 ];
 
 const changes = [
   {
-    before: 'Cadastro linear de 30+ telas, tudo de uma vez.',
-    after: 'Duas etapas, com acesso rápido ao app já no início.',
+    before: t('Cadastro linear de 30+ telas, tudo de uma vez.', 'A linear 30+ screen sign-up, all at once.'),
+    after: t('Duas etapas, com acesso rápido ao app já no início.', 'Two stages, with quick access to the app right from the start.'),
   },
   {
-    before: 'Dados pedidos sem propósito claro; erros só no fim.',
-    after: 'Só o essencial, cada campo justificado, com validação antecipada.',
+    before: t('Dados pedidos sem propósito claro; erros só no fim.', 'Data requested with no clear purpose; errors only at the end.'),
+    after: t(
+      'Só o essencial, cada campo justificado, com validação antecipada.',
+      'Only the essentials, every field justified, with early validation.',
+    ),
   },
   {
-    before: 'Conhecimento disperso — “telefone sem fio”, Lorem Ipsum em produção.',
-    after: 'Fluxo documentado de ponta a ponta, com conteúdo real e acessível.',
+    before: t(
+      'Conhecimento disperso — “telefone sem fio”, Lorem Ipsum em produção.',
+      'Scattered knowledge — a game of “telephone”, Lorem Ipsum in production.',
+    ),
+    after: t(
+      'Fluxo documentado de ponta a ponta, com conteúdo real e acessível.',
+      'An end-to-end documented flow, with real and accessible content.',
+    ),
   },
   {
-    before: 'App servia só ao fluxo de aprovação de crédito.',
-    after: 'Motivo de uso recorrente: limite, boletos, configurações e FAQ.',
+    before: t('App servia só ao fluxo de aprovação de crédito.', 'The app only served the credit approval flow.'),
+    after: t(
+      'Motivo de uso recorrente: limite, boletos, configurações e FAQ.',
+      'Reasons for recurring use: limit, payment slips, settings and FAQ.',
+    ),
   },
 ];
 
 const reviews = [
   {
-    title: 'Súper fácil',
+    title: t('Súper fácil', 'Super easy'),
     author: 'Ana_73',
-    text: 'Aplicativo muito intuitivo e fácil de usar, top! Parabéns Trademaster, ajudando o varejo a vender mais!',
+    text: t(
+      'Aplicativo muito intuitivo e fácil de usar, top! Parabéns Trademaster, ajudando o varejo a vender mais!',
+      'Very intuitive and easy-to-use app, awesome! Congrats Trademaster, helping retail sell more!',
+    ),
   },
-  { title: 'Showww', author: 'Malmelo', text: 'Super fácil e intuitivo.' },
-  { title: 'Muito prático', author: 'Leo_alpha', text: 'Excelente aplicativo. Cumpre tudo aquilo que promete.' },
+  { title: t('Showww', 'Amazing'), author: 'Malmelo', text: t('Super fácil e intuitivo.', 'Super easy and intuitive.') },
   {
-    title: 'Muito bom!',
+    title: t('Muito prático', 'Very practical'),
+    author: 'Leo_alpha',
+    text: t('Excelente aplicativo. Cumpre tudo aquilo que promete.', 'Excellent app. It delivers everything it promises.'),
+  },
+  {
+    title: t('Muito bom!', 'Very good!'),
     author: 'Pedro Igoa',
-    text: 'Extremamente intuitivo, fácil de usar e muito bom serviço prestado!',
+    text: t(
+      'Extremamente intuitivo, fácil de usar e muito bom serviço prestado!',
+      'Extremely intuitive, easy to use and very good service!',
+    ),
   },
 ];
 
 const evidenceBase = [
-  '<strong>Dado interno de comportamento</strong> — cliques, tempo por tela e erros recorrentes, levantados com Desenvolvimento antes de qualquer proposta.',
-  '<strong>Regras de negócio</strong> — cada campo cortado ou mantido foi decidido pelo motivo real de existir, direto com o P.O.',
-  '<strong>Validação cruzada na matriz CSD</strong> — Produto, Desenvolvimento, Marketing e Suporte revisaram as soluções, reduzindo o risco de decisão unilateral.',
+  t(
+    '<strong>Dado interno de comportamento</strong> — cliques, tempo por tela e erros recorrentes, levantados com Desenvolvimento antes de qualquer proposta.',
+    '<strong>Internal behavioral data</strong> — clicks, time per screen and recurring errors, gathered with Development before any proposal.',
+  ),
+  t(
+    '<strong>Regras de negócio</strong> — cada campo cortado ou mantido foi decidido pelo motivo real de existir, direto com o P.O.',
+    '<strong>Business rules</strong> — every field cut or kept was decided by its real reason to exist, directly with the PO.',
+  ),
+  t(
+    '<strong>Validação cruzada na matriz CSD</strong> — Produto, Desenvolvimento, Marketing e Suporte revisaram as soluções, reduzindo o risco de decisão unilateral.',
+    '<strong>Cross-validation in the CSD matrix</strong> — Product, Development, Marketing and Support reviewed the solutions, reducing the risk of unilateral decisions.',
+  ),
 ];
 
 const learnings = [
   {
-    title: 'Entrar num produto sem UX',
+    title: t('Entrar num produto sem UX', 'Joining a product with no UX'),
     items: [
-      'Antes de redesenhar qualquer tela, precisei reconstruir a visão do produto inteiro com quatro áreas que nunca tinham sentado juntas.',
-      'O time entendeu, na prática, como UX se conecta a negócio e a dado, não só a “telas bonitas”.',
+      t(
+        'Antes de redesenhar qualquer tela, precisei reconstruir a visão do produto inteiro com quatro áreas que nunca tinham sentado juntas.',
+        'Before redesigning any screen, I had to rebuild the vision of the whole product with four teams that had never sat down together.',
+      ),
+      t(
+        'O time entendeu, na prática, como UX se conecta a negócio e a dado, não só a “telas bonitas”.',
+        'The team saw in practice how UX connects to business and data, not just to “pretty screens”.',
+      ),
     ],
   },
   {
-    title: 'Rotinas de design na squad',
+    title: t('Rotinas de design na squad', 'Design routines in the squad'),
     items: [
-      'Implantei rotinas de design junto ao squad — documentação e discovery passaram a fazer parte do jeito de trabalhar.',
-      'Soluções entregues em alta fidelidade e navegáveis, prontas para a próxima etapa de validação.',
+      t(
+        'Implantei rotinas de design junto ao squad — documentação e discovery passaram a fazer parte do jeito de trabalhar.',
+        'I introduced design routines with the squad — documentation and discovery became part of how we worked.',
+      ),
+      t(
+        'Soluções entregues em alta fidelidade e navegáveis, prontas para a próxima etapa de validação.',
+        'Solutions delivered in high fidelity and clickable, ready for the next validation stage.',
+      ),
     ],
   },
 ];
@@ -284,30 +394,42 @@ const learnings = [
   description="Um cadastro de 30+ telas escondia um produto que ninguém via por inteiro. Descoberta, redesign de fluxo e documentação do app Trade+."
   image={cover.src}
   chapters={[
-    { id: 'cap-contexto', label: 'Contexto' },
-    { id: 'cap-descoberta', label: 'Investigação' },
-    { id: 'cap-decisoes', label: 'Decisões' },
-    { id: 'cap-solucao', label: 'Soluções' },
-    { id: 'cap-impacto', label: 'Entregas' },
+    { id: 'cap-contexto', label: t('Contexto', 'Context') },
+    { id: 'cap-descoberta', label: t('Investigação', 'Research') },
+    { id: 'cap-decisoes', label: t('Decisões', 'Decisions') },
+    { id: 'cap-solucao', label: t('Soluções', 'Solutions') },
+    { id: 'cap-impacto', label: t('Entregas', 'Delivery') },
   ]}
   ambient
   showLang
-  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+  cta={{ title: t('Tem um fluxo assim no seu produto?', 'Have a flow like this in your product?') }}
 >
   <CaseIntro
     badges={[
       { label: 'UX/UI CASE', color: '#0B7C8F' },
-      { label: 'FINTECH · VAREJO', color: '#561589' },
-      { label: 'APP MOBILE', color: '#6E3FC8' },
+      { label: t('FINTECH · VAREJO', 'FINTECH · RETAIL'), color: '#561589' },
+      { label: t('APP MOBILE', 'MOBILE APP'), color: '#6E3FC8' },
     ]}
     eyebrow="TRADE+ · PRODUCT DESIGN · UX/UI · FINTECH"
-    title='Redesenhando a experiência de cadastro e uso <span class="serif">de um aplicativo de crédito para varejistas</span>'
-    lead="O que começou como uma migração de telas do Adobe XD para o Figma revelou um desafio maior: um cadastro com mais de 30 telas, regras de negócio distribuídas entre diferentes equipes e oportunidades de melhoria na experiência do aplicativo."
+    title={t(
+      'Redesenhando a experiência de cadastro e uso <span class="serif">de um aplicativo de crédito para varejistas</span>',
+      'Redesigning the sign-up and usage experience <span class="serif">of a credit app for retailers</span>',
+    )}
+    lead={t(
+      'O que começou como uma migração de telas do Adobe XD para o Figma revelou um desafio maior: um cadastro com mais de 30 telas, regras de negócio distribuídas entre diferentes equipes e oportunidades de melhoria na experiência do aplicativo.',
+      'What started as a migration of screens from Adobe XD to Figma revealed a bigger challenge: a sign-up with more than 30 screens, business rules spread across different teams and opportunities to improve the app experience.',
+    )}
     facts={[
-      { label: 'PAPEL', value: 'Product Designer · UX Research' },
-      { label: 'EQUIPE', value: 'Product Owner, liderança de UX, Desenvolvimento, Marketing e Suporte' },
-      { label: 'ATUAÇÃO', value: 'Descoberta, redesign de fluxo e documentação' },
-      { label: 'PLATAFORMA', value: 'Aplicativo mobile · iOS e Android' },
+      { label: t('PAPEL', 'ROLE'), value: 'Product Designer · UX Research' },
+      {
+        label: t('EQUIPE', 'TEAM'),
+        value: t(
+          'Product Owner, liderança de UX, Desenvolvimento, Marketing e Suporte',
+          'Product Owner, UX lead, Development, Marketing and Support',
+        ),
+      },
+      { label: t('ATUAÇÃO', 'SCOPE'), value: t('Descoberta, redesign de fluxo e documentação', 'Discovery, flow redesign and documentation') },
+      { label: t('PLATAFORMA', 'PLATFORM'), value: t('Aplicativo mobile · iOS e Android', 'Mobile app · iOS and Android') },
     ]}
     columns="minmax(0, 1.08fr) minmax(0, 0.92fr)"
     glowSize={480}
@@ -326,15 +448,15 @@ const learnings = [
 
   <!-- Resumo / índice -->
   <section id="cap-contexto" aria-labelledby="resumo-title" class="sec rv summary">
-    <h2 id="resumo-title" class="sr-only">Resumo do case</h2>
+    <h2 data-en="Case summary" id="resumo-title" class="sr-only">Resumo do case</h2>
     <div class="cols-3">
       {
         summary.map((item) => (
           <a href={item.href} class="card card--link summary-card">
             <span class="mark">{item.mark}</span>
-            <div class="title">{item.title}</div>
-            <p>
-              {item.text} <span class="go">{item.cta}</span>
+            <div class="title" data-en={item.title.en} set:html={item.title.pt} />
+            <p data-en={`${item.text.en} <span class="go">${item.cta.en}</span>`}>
+              {item.text.pt} <span class="go">{item.cta.pt}</span>
             </p>
           </a>
         ))
@@ -344,25 +466,25 @@ const learnings = [
 
   <!-- Contexto -->
   <section aria-labelledby="ctx-title" class="sec sec-narrow rv context">
-    <p class="eyebrow">Parte 1 · Contexto e desafio</p>
-    <h2 id="ctx-title" class="h2">Conhecendo o produto</h2>
-    <p class="lead">
+    <p data-en="Part 1 · Context and challenge" class="eyebrow">Parte 1 · Contexto e desafio</p>
+    <h2 data-en="Getting to know the product" id="ctx-title" class="h2">Conhecendo o produto</h2>
+    <p data-en="Trademaster is a fintech that offers credit solutions for retail, connecting manufacturers and distributors to small and medium-sized merchants. <strong>Trade+</strong> is the app retailers use to check their limits, track financial operations and apply for credit." class="lead">
       A Trademaster é uma fintech que oferece soluções de crédito para o varejo, conectando indústrias e distribuidores
       a pequenos e médios comerciantes. O <strong>Trade+</strong> é o aplicativo pelo qual os varejistas podem acessar
       informações sobre seus limites, acompanhar operações financeiras e solicitar crédito.
     </p>
-    <p class="lead">
+    <p data-en="The project started with the migration of the existing interfaces to Figma. During that work, I found screens that were not documented, navigation inconsistencies and features that existed in the app but were not represented in the design files." class="lead">
       O projeto começou com a migração das interfaces existentes para o Figma. Durante esse trabalho, identifiquei telas
       que não estavam documentadas, inconsistências de navegação e funcionalidades que existiam no aplicativo, mas não
       estavam representadas nos arquivos de design.
     </p>
-    <h3 class="h3 sub-h">O desafio</h3>
-    <p class="lead">
+    <h3 data-en="The challenge" class="h3 sub-h">O desafio</h3>
+    <p data-en="The sign-up had more than 30 screens, with a heavy volume of information, validation errors and reports of people giving up. On top of that, the app offered few features that encouraged users to come back." class="lead">
       O cadastro reunia mais de 30 telas e apresentava um volume elevado de informações, erros de validação e relatos de
       desistência. Além disso, o aplicativo oferecia poucas funcionalidades que incentivassem o acesso recorrente do
       usuário.
     </p>
-    <p class="lead">
+    <p data-en="The challenge became understanding the existing journey, <strong>simplifying the sign-up</strong> and finding opportunities to make the app more useful in retailers’ daily routines." class="lead">
       O desafio passou a ser compreender a jornada existente, <strong>simplificar o cadastro</strong> e identificar
       oportunidades para tornar o aplicativo mais útil na rotina dos varejistas.
     </p>
@@ -371,15 +493,15 @@ const learnings = [
   <!-- O problema real -->
   <div id="cap-descoberta" class="band band--purple problem">
     <section aria-labelledby="prob-title" class="sec sec-narrow rv">
-      <p class="eyebrow">Parte 2 · Investigação e descoberta</p>
-      <h2 id="prob-title" class="h2">Reconstruindo a visão do produto</h2>
-      <p class="lead">
+      <p data-en="Part 2 · Research and discovery" class="eyebrow">Parte 2 · Investigação e descoberta</p>
+      <h2 data-en="Rebuilding the product vision" id="prob-title" class="h2">Reconstruindo a visão do produto</h2>
+      <p data-en="The work started hands-on: navigating the app and comparing what I found there with the screens available in Adobe XD and Figma. That is where the first inconsistencies appeared. There were screens in the app that were not documented anywhere, screens in Figma that did not exist in Adobe XD and parts of the experience that could only be understood by looking directly at the product in use." class="lead">
         O trabalho começou na prática: navegando pelo aplicativo e comparando o que eu encontrava ali com as telas
         disponíveis no Adobe XD e no Figma. Foi nesse processo que apareceram as primeiras inconsistências. Havia telas
         presentes no app que não estavam documentadas em lugar nenhum, telas no Figma que não existiam no Adobe XD e
         partes da experiência que só podiam ser entendidas olhando diretamente para o produto em uso.
       </p>
-      <p class="lead">
+      <p data-en="This mapping showed that the problem was not just the size of the sign-up, but also the <strong>lack of a single, reliable view of the journey</strong>. Before redesigning, I had to map what was really part of the experience and organize that information more clearly for the team." class="lead">
         Esse mapeamento revelou que o problema não estava apenas no tamanho do cadastro, mas também na <strong
           >ausência de uma visão única e confiável da jornada</strong
         >. Antes de redesenhar, precisei mapear o que realmente fazia parte da experiência e organizar essas informações
@@ -387,15 +509,15 @@ const learnings = [
       </p>
 
       <blockquote class="quote">
-        <p class="serif"><b>“Mais fácil conseguir um green card do que se cadastrar no app.”</b></p>
-        <cite>— relato real de um usuário</cite>
+        <p data-en="<b>“It’s easier to get a green card than to sign up for this app.”</b>" class="serif"><b>“Mais fácil conseguir um green card do que se cadastrar no app.”</b></p>
+        <cite data-en="— a real user’s comment">— relato real de um usuário</cite>
       </blockquote>
       <div class="cols-3 stats">
         {
           problemStats.map((stat) => (
             <div class="stat">
               <div class="mark">{stat.mark}</div>
-              <div class="text" set:html={stat.text} />
+              <div class="text" data-en={stat.text.en} set:html={stat.text.pt} />
             </div>
           ))
         }
@@ -403,7 +525,10 @@ const learnings = [
       <ProcessShot
         src={workshop5}
         alt="Todas as telas do cadastro reunidas pela primeira vez em uma única visão"
-        caption="Registro do processo original — as telas reunidas numa só visão pela primeira vez."
+        caption={t(
+          'Registro do processo original — as telas reunidas numa só visão pela primeira vez.',
+          'Record of the original process — the screens gathered in a single view for the first time.',
+        )}
         height={340}
         lifted
       />
@@ -413,9 +538,9 @@ const learnings = [
   <!-- Reconstruindo uma visão compartilhada -->
   <section aria-labelledby="fontes-title" class="sec rv block">
     <div class="sec-narrow head head--lg">
-      <p class="eyebrow">Investigação · Fontes de conhecimento</p>
-      <h2 id="fontes-title" class="h2">Reconstruindo uma visão compartilhada</h2>
-      <p class="lead">
+      <p data-en="Research · Sources of knowledge" class="eyebrow">Investigação · Fontes de conhecimento</p>
+      <h2 data-en="Rebuilding a shared vision" id="fontes-title" class="h2">Reconstruindo uma visão compartilhada</h2>
+      <p data-en="To deepen the diagnosis, I worked with my UX lead and sought information from different areas of the company. With the Product Owner, I looked into the business rules behind the requested data. With Development, I gathered information about errors, clicks and behavior during sign-up. Marketing and Support contributed what they knew about the audience, recurring complaints and the needs the app did not yet meet." class="lead">
         Para aprofundar o diagnóstico, trabalhei com meu líder de UX e busquei informações com diferentes áreas da
         empresa. Com o Product Owner, investiguei as regras de negócio associadas aos dados solicitados. Com
         Desenvolvimento, levantei informações sobre erros, cliques e comportamento no cadastro. Marketing e Suporte
@@ -429,9 +554,9 @@ const learnings = [
           <div class="card source">
             <div class="source-head">
               <span class="n">{String(i + 1).padStart(2, '0')}</span>
-              <div class="title">{source.title}</div>
+              <div class="title" data-en={source.title.en} set:html={source.title.pt} />
             </div>
-            <p>{source.text}</p>
+            <p data-en={source.text.en} set:html={source.text.pt} />
           </div>
         ))
       }
@@ -440,7 +565,10 @@ const learnings = [
       class="meeting"
       src={workshop1}
       alt="Reunião remota sobre dúvidas técnicas com o time de negócios (rostos borrados por privacidade)"
-      caption="Registro do processo original — alinhamento técnico com o time."
+      caption={t(
+        'Registro do processo original — alinhamento técnico com o time.',
+        'Record of the original process — technical alignment with the team.',
+      )}
       captionSize={11}
     />
   </section>
@@ -448,16 +576,16 @@ const learnings = [
   <!-- O que precisávamos descobrir — CSD -->
   <section aria-labelledby="csd-title" class="sec rv block">
     <div class="sec-narrow head head--md">
-      <p class="eyebrow">Investigação · O que precisávamos descobrir</p>
-      <h2 id="csd-title" class="h2">Organizando descobertas e hipóteses</h2>
-      <p class="lead">
+      <p data-en="Research · What we needed to find out" class="eyebrow">Investigação · O que precisávamos descobrir</p>
+      <h2 data-en="Organizing findings and hypotheses" id="csd-title" class="h2">Organizando descobertas e hipóteses</h2>
+      <p data-en="Before the matrix, the questions. With so much scattered knowledge, I had to separate what we actually knew from what we only assumed — and name what still needed investigating:" class="lead">
         Antes da matriz, as perguntas. Com tanto conhecimento disperso, precisei separar o que de fato sabíamos do que
         só supúnhamos — e nomear o que faltava investigar:
       </p>
       <ul class="questions">
-        {questions.map((q) => <li>{q}</li>)}
+        {questions.map((q) => <li data-en={q.en} set:html={q.pt} />)}
       </ul>
-      <p class="lead">
+      <p data-en="I ran a <strong>CSD Matrix</strong> session with Product, Development, Marketing and Support to organize certainties, assumptions and doubts. The activity helped identify information that needed confirmation and align the teams’ understanding of the sign-up problems." class="lead">
         Conduzi uma dinâmica de <strong>Matriz CSD</strong> com Produto, Desenvolvimento, Marketing e Suporte para
         organizar certezas, suposições e dúvidas. Essa atividade ajudou a identificar informações que precisavam ser
         confirmadas e a alinhar o entendimento das equipes sobre os problemas do cadastro.
@@ -470,7 +598,10 @@ const learnings = [
       class="board"
       src={matrizCsd}
       alt="Matriz CSD construída no board durante a dinâmica com o time"
-      caption="Registro do processo original — a matriz sendo preenchida ao vivo, com Produto, Desenvolvimento, Marketing e Suporte de forma online."
+      caption={t(
+        'Registro do processo original — a matriz sendo preenchida ao vivo, com Produto, Desenvolvimento, Marketing e Suporte de forma online.',
+        'Record of the original process — the matrix being filled in live, online, with Product, Development, Marketing and Support.',
+      )}
       height={340}
       captionSize={11.5}
       gap={18}
@@ -480,9 +611,9 @@ const learnings = [
   <!-- Entendendo o usuário — persona -->
   <section aria-labelledby="persona-title" class="sec rv block">
     <div class="sec-narrow head head--sm">
-      <p class="eyebrow">Investigação · Entendendo o usuário</p>
-      <h2 id="persona-title" class="h2">Eduardo, o varejista por trás do cadastro</h2>
-      <p class="lead">
+      <p data-en="Research · Understanding the user" class="eyebrow">Investigação · Entendendo o usuário</p>
+      <h2 data-en="Eduardo, the retailer behind the sign-up" id="persona-title" class="h2">Eduardo, o varejista por trás do cadastro</h2>
+      <p data-en="The research also considered an <strong>initial retailer profile</strong> built from the Marketing team’s knowledge, used as a reference to understand the audience’s goals and needs." class="lead">
         A investigação também considerou um <strong>perfil inicial de varejista</strong> construído a partir do
         conhecimento do time de Marketing, utilizado como referência para compreender objetivos e necessidades do
         público.
@@ -490,33 +621,47 @@ const learnings = [
     </div>
     <PersonaCard
       name="EDUARDO"
-      role="Dono de comércio de bairro há 8+ anos"
-      origin="Origem: conhecimento do time de Marketing"
-      quote="Busco crédito flexível que se adeque à minha loja, com taxas competitivas para um crescimento seguro."
+      role={t('Dono de comércio de bairro há 8+ anos', 'Neighborhood store owner for 8+ years')}
+      origin={t('Origem: conhecimento do time de Marketing', 'Source: Marketing team knowledge')}
+      quote={t(
+        'Busco crédito flexível que se adeque à minha loja, com taxas competitivas para um crescimento seguro.',
+        'I’m looking for flexible credit that fits my store, with competitive rates for safe growth.',
+      )}
       lists={[
         {
-          title: 'Interesses',
-          items: ['Prazos e pagamento flexíveis', 'Tecnologia para a loja', 'Meios de pagamento modernos'],
+          title: t('Interesses', 'Interests'),
+          items: [
+            t('Prazos e pagamento flexíveis', 'Flexible terms and payments'),
+            t('Tecnologia para a loja', 'Technology for the store'),
+            t('Meios de pagamento modernos', 'Modern payment methods'),
+          ],
         },
         {
-          title: 'Objetivos',
-          items: ['Abastecer melhor o estoque', 'Aumentar as vendas da loja', 'Pagamento integrado ao cliente'],
+          title: t('Objetivos', 'Goals'),
+          items: [
+            t('Abastecer melhor o estoque', 'Stock the store better'),
+            t('Aumentar as vendas da loja', 'Increase store sales'),
+            t('Pagamento integrado ao cliente', 'Integrated customer payments'),
+          ],
         },
       ]}
-      approach="Tem visão estratégica do varejo e busca constantemente formas de melhorar o negócio e a experiência de compra dos clientes."
+      approach={t(
+        'Tem visão estratégica do varejo e busca constantemente formas de melhorar o negócio e a experiência de compra dos clientes.',
+        'Has a strategic view of retail and is always looking for ways to improve the business and the customers’ shopping experience.',
+      )}
     />
   </section>
 
   <!-- O que a investigação revelou -->
   <section aria-labelledby="dados-title" class="sec sec-narrow rv block findings">
-    <p class="eyebrow">Investigação · Síntese</p>
-    <h2 id="dados-title" class="h2">O que identificamos</h2>
-    <p class="lead">
+    <p data-en="Research · Synthesis" class="eyebrow">Investigação · Síntese</p>
+    <h2 data-en="What we found" id="dados-title" class="h2">O que identificamos</h2>
+    <p data-en="The information gathered pointed to problems beyond the number of screens. Some fields had no clearly justified need, filling errors were reported too late and certain interfaces still showed placeholder text." class="lead">
       As informações reunidas apontaram problemas que iam além da quantidade de telas. Alguns campos não tinham sua
       necessidade claramente justificada, erros de preenchimento eram comunicados tardiamente e determinadas interfaces
       ainda apresentavam textos provisórios.
     </p>
-    <p class="lead">
+    <p data-en="We also found an opportunity to separate initial access to the app from the credit application, letting retailers explore other features before starting a more complete sign-up process." class="lead">
       Também identificamos uma oportunidade de separar o acesso inicial ao aplicativo da solicitação de crédito,
       permitindo que o varejista conhecesse outras funcionalidades antes de iniciar um processo mais completo de
       cadastro.
@@ -527,8 +672,8 @@ const learnings = [
           <div class="num-row">
             <span class="num-row__n">{String(i + 1).padStart(2, '0')}</span>
             <div>
-              <div class="finding-title">{f.title}</div>
-              <div class="finding-text">{f.text}</div>
+              <div class="finding-title" data-en={f.title.en} set:html={f.title.pt} />
+              <div class="finding-text" data-en={f.text.en} set:html={f.text.pt} />
             </div>
           </div>
         ))
@@ -540,14 +685,14 @@ const learnings = [
   <div id="cap-decisoes" class="band band--tint decisions">
     <section aria-labelledby="dec-title" class="sec rv dec-intro">
       <div class="sec-narrow">
-        <p class="eyebrow">Parte 3 · Decisões de design</p>
-        <h2 id="dec-title" class="h2">01. Simplificar o cadastro sem comprometer as regras de negócio</h2>
-        <p class="lead">A principal mudança foi reorganizar o cadastro em <strong>duas etapas</strong>.</p>
-        <p class="lead">
+        <p data-en="Part 3 · Design decisions" class="eyebrow">Parte 3 · Decisões de design</p>
+        <h2 data-en="01. Simplify sign-up without compromising business rules" id="dec-title" class="h2">01. Simplificar o cadastro sem comprometer as regras de negócio</h2>
+        <p data-en="The main change was to reorganize sign-up into <strong>two stages</strong>." class="lead">A principal mudança foi reorganizar o cadastro em <strong>duas etapas</strong>.</p>
+        <p data-en="In the first, we prioritized the basic data needed to start using the app. The second gathered the additional information for retailers interested in applying for and activating a credit line." class="lead">
           Na primeira, priorizamos os dados básicos necessários para iniciar o acesso ao aplicativo. A segunda concentrou
           as informações adicionais para o varejista interessado em solicitar e ativar uma linha de crédito.
         </p>
-        <p class="lead">
+        <p data-en="I reviewed the fields based on business rules, simplified the copy and organized the information to reduce the complexity of filling it in. I also moved important validations earlier, such as confirming contact details, so that certain errors were no longer caught only at the end of the journey." class="lead">
           Revisei os campos com base nas regras de negócio, simplifiquei textos e organizei as informações para reduzir a
           complexidade do preenchimento. Também antecipei validações importantes, como a confirmação dos dados de
           contato, evitando que determinados erros fossem identificados apenas no final da jornada.
@@ -555,19 +700,19 @@ const learnings = [
       </div>
     </section>
     <div class="sec dec-log">
-      <LogHead range="01 — 05 · cadastro" />
+      <LogHead range={t('01 — 05 · cadastro', '01 — 05 · sign-up')} />
       <div class="dlog">
         <div class="dlog-row dlog-feature">
           <div class="dlog-idx"><span class="n">01</span></div>
           <div class="dlog-main">
-            <h4>Cadastro em duas etapas</h4>
-            <p>
+            <h4 data-en="Two-stage sign-up">Cadastro em duas etapas</h4>
+            <p data-en="Basic data first; <b>credit activation later</b>, only for those who want it. The 30+ linear screens that caused drop-off became a short path with an optional second step.">
               Dados básicos primeiro; <b>ativação de crédito depois</b>, só para quem quiser. As 30+ telas lineares que
               geravam abandono viraram um caminho curto com um segundo passo opcional.
             </p>
             <div class="dlog-meta dlog-meta--inline">
-              <div><span class="k">Evidência</span><span class="v">30+ telas lineares, abandono alto</span></div>
-              <div><span class="k">Intenção</span><span class="v intent">explorar sem se comprometer de cara</span></div>
+              <div><span data-en="Evidence" class="k">Evidência</span><span data-en="30+ linear screens, high drop-off" class="v">30+ telas lineares, abandono alto</span></div>
+              <div><span data-en="Intent" class="k">Intenção</span><span data-en="explore without committing up front" class="v intent">explorar sem se comprometer de cara</span></div>
             </div>
           </div>
           <Image
@@ -585,17 +730,17 @@ const learnings = [
                 <span class="n">{d.n}</span>
               </div>
               <div class="dlog-main">
-                <h4>{d.title}</h4>
-                <p set:html={d.text} />
+                <h4 data-en={d.title.en} set:html={d.title.pt} />
+                <p data-en={d.text.en} set:html={d.text.pt} />
               </div>
               <div class="dlog-meta">
                 <div>
-                  <span class="k">Evidência</span>
-                  <span class="v">{d.evidence}</span>
+                  <span class="k" data-en="Evidence">Evidência</span>
+                  <span class="v" data-en={d.evidence.en} set:html={d.evidence.pt} />
                 </div>
                 <div>
-                  <span class="k">Intenção</span>
-                  <span class="v intent">{d.intent}</span>
+                  <span class="k" data-en="Intent">Intenção</span>
+                  <span class="v intent" data-en={d.intent.en} set:html={d.intent.pt} />
                 </div>
               </div>
             </div>
@@ -607,30 +752,30 @@ const learnings = [
     <!-- Frente 2: novas funcionalidades -->
     <section aria-labelledby="feat-title" class="sec rv dec-features">
       <div class="sec-narrow head">
-        <p class="eyebrow">Decisões · Frente 2</p>
-        <h2 id="feat-title" class="h2">02. Ampliar as possibilidades de uso do aplicativo</h2>
-        <p class="lead">
+        <p data-en="Decisions · Front 2" class="eyebrow">Decisões · Frente 2</p>
+        <h2 data-en="02. Expand how the app can be used" id="feat-title" class="h2">02. Ampliar as possibilidades de uso do aplicativo</h2>
+        <p data-en="The research showed that the experience needed to be useful beyond the credit application. So I also developed feature proposals focused on financial tracking and retailer autonomy." class="lead">
           A investigação indicou que a experiência precisava oferecer utilidade além da solicitação de crédito. Por isso,
           também desenvolvi propostas de funcionalidades voltadas ao acompanhamento financeiro e à autonomia do
           varejista.
         </p>
-        <p class="lead">
+        <p data-en="These included viewing used and available limits, accessing payment slips directly in the app, managing basic data and an FAQ area for quick questions." class="lead">
           Entre elas estavam a visualização dos limites utilizado e disponível, o acesso a boletos diretamente pelo
           aplicativo, o gerenciamento de dados básicos e uma área de perguntas frequentes para consultas rápidas.
         </p>
-        <p class="lead">
+        <p data-en="These proposals aimed to bring relevant information and activities together in one place, reducing reliance on other channels for everyday operations." class="lead">
           Essas propostas buscavam reunir informações e atividades relevantes em um único ambiente, reduzindo a
           dependência de outros canais para operações cotidianas.
         </p>
       </div>
       <div class="opportunity">
-        <span class="pill pill--op">Oportunidade</span>
-        <p>
+        <span data-en="Opportunity" class="pill pill--op">Oportunidade</span>
+        <p data-en="<strong>Most users wanted to explore the app before applying for credit.</strong> That is why each feature below offers a reason for recurring use — not just an approval flow.">
           <strong>A maioria queria explorar o app antes de pedir crédito.</strong> Por isso cada funcionalidade abaixo dá
           um motivo de uso recorrente — não só um fluxo de aprovação.
         </p>
       </div>
-      <LogHead range="06 — 09 · funcionalidades" />
+      <LogHead range={t('06 — 09 · funcionalidades', '06 — 09 · features')} />
       <div class="dlog dlog--cyan">
         {
           featureDecisions.map((d) => (
@@ -639,13 +784,13 @@ const learnings = [
                 <span class="n">{d.n}</span>
               </div>
               <div class="dlog-main">
-                <h4>{d.title}</h4>
-                <p set:html={d.text} />
+                <h4 data-en={d.title.en} set:html={d.title.pt} />
+                <p data-en={d.text.en} set:html={d.text.pt} />
               </div>
               <div class="dlog-meta">
                 <div>
-                  <span class="k">Evidência</span>
-                  <span class="v">{d.evidence}</span>
+                  <span class="k" data-en="Evidence">Evidência</span>
+                  <span class="v" data-en={d.evidence.en} set:html={d.evidence.pt} />
                 </div>
               </div>
             </div>
@@ -657,8 +802,8 @@ const learnings = [
     <!-- Três frentes -->
     <section aria-labelledby="obj-title" class="sec rv dec-fronts">
       <div class="sec-narrow head">
-        <p class="eyebrow">Resumo das decisões</p>
-        <h2 id="obj-title" class="h2">Três frentes de trabalho</h2>
+        <p data-en="Decision summary" class="eyebrow">Resumo das decisões</p>
+        <h2 data-en="Three fronts of work" id="obj-title" class="h2">Três frentes de trabalho</h2>
       </div>
       <div class="cols-3 fronts">
         {
@@ -667,8 +812,8 @@ const learnings = [
               <div class="icon" style={`--tint:${front.tint}`}>
                 <Image src={front.icon} alt="" aria-hidden="true" width={24} densities={[1, 2]} />
               </div>
-              <div class="title">{front.title}</div>
-              <div class="text">{front.text}</div>
+              <div class="title" data-en={front.title.en} set:html={front.title.pt} />
+              <div class="text" data-en={front.text.en} set:html={front.text.pt} />
             </div>
           ))
         }
@@ -679,13 +824,13 @@ const learnings = [
   <!-- Solução: wireflow -->
   <section aria-labelledby="wf-title" class="sec rv solution">
     <div class="sec-narrow head head--sm">
-      <p class="eyebrow">Decisões · Frente 3</p>
-      <h2 id="wf-title" class="h2">03. Documentar a jornada de ponta a ponta</h2>
-      <p class="lead">
+      <p data-en="Decisions · Front 3" class="eyebrow">Decisões · Frente 3</p>
+      <h2 data-en="03. Document the journey end to end" id="wf-title" class="h2">03. Documentar a jornada de ponta a ponta</h2>
+      <p data-en="Beyond the redesign, I built a <strong>complete sign-up wireflow</strong>, bringing together screens, connections, rules and interaction states." class="lead">
         Além do redesign, estruturei um <strong>wireflow completo do cadastro</strong>, reunindo telas, conexões, regras e
         estados de interação.
       </p>
-      <p class="lead">
+      <p data-en="The documentation consolidated information that had been spread across different teams, giving Product and Development a shared reference and making future revisions of the flow easier." class="lead">
         A documentação permitiu consolidar informações anteriormente distribuídas entre diferentes equipes, oferecendo
         uma referência compartilhada para Produto e Desenvolvimento e facilitando futuras revisões do fluxo.
       </p>
@@ -693,14 +838,20 @@ const learnings = [
     <ProcessShot
       src={wireframes}
       alt="Wireflow completo do cadastro do Trade+ reconstruído digitalmente, com todas as telas e conexões"
-      caption="O wireflow completo reconstruído digitalmente — a primeira documentação de ponta a ponta do fluxo, incluindo os pontos que antes viviam em Lorem Ipsum."
+      caption={t(
+        'O wireflow completo reconstruído digitalmente — a primeira documentação de ponta a ponta do fluxo, incluindo os pontos que antes viviam em Lorem Ipsum.',
+        'The complete wireflow rebuilt digitally — the first end-to-end documentation of the flow, including the parts that used to live in Lorem Ipsum.',
+      )}
       captionSize={12.5}
     />
     <ProcessShot
       class="mapping"
       src={fluxo}
       alt="Registro do processo original do mapeamento do fluxo"
-      caption="Registro do processo original — o mapeamento inicial do fluxo, validado com o time e depois reconstruído na versão limpa acima."
+      caption={t(
+        'Registro do processo original — o mapeamento inicial do fluxo, validado com o time e depois reconstruído na versão limpa acima.',
+        'Record of the original process — the initial flow mapping, validated with the team and then rebuilt in the clean version above.',
+      )}
       height={440}
       captionWidth={340}
       captionSize={13.5}
@@ -711,14 +862,14 @@ const learnings = [
   <!-- Solução: a nova experiência -->
   <section id="cap-solucao" aria-labelledby="exp-title" class="sec rv block block--sm">
     <div class="sec-narrow head head--md">
-      <p class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
-      <h2 id="exp-title" class="h2">Do mapeamento às interfaces finais</h2>
-      <p class="lead">
+      <p data-en="Part 4 · Solutions" class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
+      <h2 data-en="From mapping to final interfaces" id="exp-title" class="h2">Do mapeamento às interfaces finais</h2>
+      <p data-en="With the main problems and directions defined, I developed the redesign proposals and the new features in high fidelity, creating clickable prototypes for presentation and validation with stakeholders." class="lead">
         Com os principais problemas e direcionamentos definidos, desenvolvi as propostas de redesign e as novas
         funcionalidades em alta fidelidade, criando protótipos navegáveis para apresentação e validação com as partes
         envolvidas.
       </p>
-      <p class="lead">
+      <p data-en="The interfaces covered the new sign-up structure, language and validation adjustments, and the financial tracking and support features." class="lead">
         As interfaces contemplaram a nova estrutura do cadastro, ajustes de linguagem e validação, além das
         funcionalidades de acompanhamento financeiro e suporte.
       </p>
@@ -736,13 +887,13 @@ const learnings = [
                   sizes="(max-width: 860px) 100vw, 480px"
                 />
               </div>
-              <div class="title">{screen.title}</div>
-              <div class="text">{screen.text}</div>
+              <div class="title" data-en={screen.title.en} set:html={screen.title.pt} />
+              <div class="text" data-en={screen.text.en} set:html={screen.text.pt} />
             </div>
           ) : (
             <div class="screen-note">
-              <div class="title">{screen.title}</div>
-              <div class="text">{screen.text}</div>
+              <div class="title" data-en={screen.title.en} set:html={screen.title.pt} />
+              <div class="text" data-en={screen.text.en} set:html={screen.text.pt} />
             </div>
           ),
         )
@@ -752,17 +903,17 @@ const learnings = [
 
   <!-- Entregas: o que foi entregue -->
   <section id="cap-impacto" aria-labelledby="entregue-title" class="sec sec-narrow rv block delivered">
-    <p class="eyebrow">Parte 5 · Entregas e aprendizados</p>
-    <h2 id="entregue-title" class="h2">O que foi entregue</h2>
-    <p class="lead">
+    <p data-en="Part 5 · Delivery and learnings" class="eyebrow">Parte 5 · Entregas e aprendizados</p>
+    <h2 data-en="What was delivered" id="entregue-title" class="h2">O que foi entregue</h2>
+    <p data-en="The project resulted in a proposal for a <strong>sign-up reorganized into two stages</strong>, a review of fields and validations, complete flow documentation and clickable high-fidelity interfaces." class="lead">
       O projeto resultou em uma proposta de <strong>cadastro reorganizado em duas etapas</strong>, revisão dos campos e
       validações, documentação completa do fluxo e interfaces de alta fidelidade navegáveis.
     </p>
-    <p class="lead">
+    <p data-en="New feature proposals were also developed to expand how Trade+ can be used." class="lead">
       Também foram desenvolvidas propostas de novas funcionalidades para ampliar as possibilidades de utilização do
       Trade+.
     </p>
-    <p class="lead">
+    <p data-en="Beyond the design deliverables, the work helped establish a shared view of the product and bring research, documentation and validation practices into the squad’s routine." class="lead">
       Além das entregas de design, o trabalho contribuiu para estabelecer uma visão compartilhada do produto e incorporar
       práticas de investigação, documentação e validação à rotina da squad.
     </p>
@@ -771,9 +922,9 @@ const learnings = [
   <!-- Impacto: o que mudou -->
   <section aria-labelledby="mudou-title" class="sec rv block">
     <div class="sec-narrow head head--md">
-      <p class="eyebrow">Entregas · O que mudou</p>
-      <h2 id="mudou-title" class="h2">Antes e depois do cadastro</h2>
-      <p class="lead">
+      <p data-en="Delivery · What changed" class="eyebrow">Entregas · O que mudou</p>
+      <h2 data-en="Sign-up before and after" id="mudou-title" class="h2">Antes e depois do cadastro</h2>
+      <p data-en="More than a list of deliverables, the project changed the structure of the product and of the work around it." class="lead">
         Mais do que uma lista de entregáveis, o projeto mudou a estrutura do produto e do trabalho em torno dele.
       </p>
     </div>
@@ -786,25 +937,25 @@ const learnings = [
   <div class="band reviews">
     <section aria-labelledby="rev-title" class="sec rv">
       <div class="reviews-head">
-        <p class="eyebrow">Entregas · Prova real</p>
-        <h2 id="rev-title" class="h2">O que os usuários disseram depois das mudanças</h2>
-        <p class="lead">
+        <p data-en="Delivery · Real-world evidence" class="eyebrow">Entregas · Prova real</p>
+        <h2 data-en="What users said after the changes" id="rev-title" class="h2">O que os usuários disseram depois das mudanças</h2>
+        <p data-en="Organic app store reviews after the redesign went live. They are not a formal usability test — but they are the voice of people who use the app every day, and they point in the same direction as the decisions: an easier, more intuitive flow." class="lead">
           Avaliações orgânicas na loja de aplicativos após o redesenho entrar no ar. Não são teste de usabilidade formal
           — mas são a voz de quem usa o app no dia a dia, e apontam na mesma direção das decisões: fluxo mais fácil e
           intuitivo.
         </p>
       </div>
       <div class="review-grid">
-        {reviews.map((r) => <StoreReview {...r} when="Há 2 anos" />)}
+        {reviews.map((r) => <StoreReview {...r} when={t('Há 2 anos', '2 years ago')} />)}
       </div>
     </section>
   </div>
 
   <!-- Impacto: o que ainda precisava ser validado -->
   <section aria-labelledby="valid-title" class="sec sec-narrow rv block block--sm validation">
-    <p class="eyebrow">Entregas · Próximos passos</p>
-    <h2 id="valid-title" class="h2">O que ainda precisava ser validado</h2>
-    <p class="lead">
+    <p data-en="Delivery · Next steps" class="eyebrow">Entregas · Próximos passos</p>
+    <h2 data-en="What still needed validation" id="valid-title" class="h2">O que ainda precisava ser validado</h2>
+    <p data-en="The store reviews are a real and encouraging signal, but organic and spontaneous — they do not replace formal usability testing or structured post-launch tracking with metrics, which were not part of the scope. Even without those tests, every decision had a concrete basis:" class="lead">
       As avaliações da loja são um sinal real e animador, mas orgânico e espontâneo — não substituem teste de usabilidade
       formal nem um acompanhamento estruturado com métricas pós-entrega, que não fizeram parte do escopo. Mesmo sem esses
       testes, cada decisão teve uma base concreta:
@@ -814,20 +965,20 @@ const learnings = [
         evidenceBase.map((item) => (
           <div class="num-row">
             <span class="num-row__n">·</span>
-            <div class="lead" set:html={item} />
+            <div class="lead" data-en={item.en} set:html={item.pt} />
           </div>
         ))
       }
     </div>
     <div class="indicators">
-      <div class="k">INDICADORES A ACOMPANHAR NA PRÓXIMA FASE</div>
+      <div data-en="INDICATORS TO TRACK IN THE NEXT PHASE" class="k">INDICADORES A ACOMPANHAR NA PRÓXIMA FASE</div>
       <ul>
-        <li>Abandono no fluxo em duas etapas, comparado ao cadastro anterior</li>
-        <li>Volume de reclamações no suporte</li>
-        <li>Uso das novas funcionalidades (limite, boletos, FAQ)</li>
-        <li>Tempo de conclusão do cadastro</li>
+        <li data-en="Drop-off in the two-stage flow, compared with the previous sign-up">Abandono no fluxo em duas etapas, comparado ao cadastro anterior</li>
+        <li data-en="Volume of support complaints">Volume de reclamações no suporte</li>
+        <li data-en="Use of the new features (limit, payment slips, FAQ)">Uso das novas funcionalidades (limite, boletos, FAQ)</li>
+        <li data-en="Time to complete sign-up">Tempo de conclusão do cadastro</li>
       </ul>
-      <p>
+      <p data-en="Measuring these indicators would be the first step of a next phase, together with direct research and end-user testing.">
         Medir esses indicadores seria o primeiro passo de uma fase seguinte, junto com pesquisa direta e testes com
         usuário final.
       </p>
@@ -837,14 +988,14 @@ const learnings = [
   <!-- Aprendizado -->
   <section aria-labelledby="ref-title" class="sec rv block block--sm">
     <div class="takeaways">
-      <p class="eyebrow">Aprendizado</p>
-      <h2 id="ref-title" class="h2">O que aprendi</h2>
-      <p class="lead">
+      <p data-en="Learnings" class="eyebrow">Aprendizado</p>
+      <h2 data-en="What I learned" id="ref-title" class="h2">O que aprendi</h2>
+      <p data-en="One of the main learnings was understanding the importance of aligning different teams before defining solutions. Trade+’s problem was not only in the interfaces, but also in how information and decisions about the product were distributed across teams." class="lead">
         Um dos principais aprendizados foi compreender a importância de alinhar diferentes áreas antes de definir
         soluções. O problema do Trade+ não estava apenas nas interfaces, mas também na forma como as informações e
         decisões sobre o produto estavam distribuídas entre as equipes.
       </p>
-      <p class="lead">
+      <p data-en="The experience reinforced the value of collaboration between Design, Product and Development to make decisions grounded in user needs and business rules." class="lead">
         A experiência reforçou o valor da colaboração entre Design, Produto e Desenvolvimento para tomar decisões
         fundamentadas nas necessidades dos usuários e nas regras do negócio.
       </p>
@@ -852,15 +1003,15 @@ const learnings = [
         {
           learnings.map((l) => (
             <div>
-              <div class="k">{l.title}</div>
-              <ul>{l.items.map((item) => <li>{item}</li>)}</ul>
+              <div class="k" data-en={l.title.en} set:html={l.title.pt} />
+              <ul>{l.items.map((item) => <li data-en={item.en} set:html={item.pt} />)}</ul>
             </div>
           ))
         }
       </div>
       <div class="missed">
-        <div class="k">Oportunidades não aproveitadas</div>
-        <p>
+        <div data-en="Missed opportunities" class="k">Oportunidades não aproveitadas</div>
+        <p data-en="Within the scope, I was not able to run interviews and usability tests after the final decisions, or track the impact with real data. That remains the clearest next step — and a lesson about making room for validation from the very start of a project.">
           Não consegui, no escopo, rodar entrevistas e testes de usabilidade após as decisões finais, nem acompanhar o
           impacto com dados reais. Fica como o próximo passo mais claro — e como aprendizado sobre defender espaço para
           validação desde o começo do projeto.
@@ -940,7 +1091,7 @@ const learnings = [
     line-height: 1.6;
   }
 
-  .summary-card .go {
+  .summary-card :global(.go) {
     font-weight: 700;
   }
 

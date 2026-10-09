@@ -1,10 +1,12 @@
 ---
 /** App store review card: title, age, stars, author and text. */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
-  title: string;
+  title: T;
   author: string;
-  text: string;
-  when: string;
+  text: T;
+  when: T;
   /** Rating out of 5. */
   stars?: number;
 }
@@ -14,14 +16,14 @@ const { title, author, text, when, stars = 5 } = Astro.props;
 
 <article class="review">
   <div class="row">
-    <h3>{title}</h3>
-    <span class="meta">{when}</span>
+    <h3 data-en={en(title)} set:html={pt(title)} />
+    <span class="meta" data-en={en(when)} set:html={pt(when)} />
   </div>
   <div class="row row--stars">
     <span class="stars" role="img" aria-label={`${stars} de 5 estrelas`}>{'★'.repeat(stars)}</span>
     <span class="meta">{author}</span>
   </div>
-  <p>{text}</p>
+  <p data-en={en(text)} set:html={pt(text)} />
 </article>
 
 <style>

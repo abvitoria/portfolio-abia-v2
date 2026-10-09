@@ -1,8 +1,10 @@
 ---
 /** One column of the CSD matrix (Certezas / Suposições / Dúvidas). */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
-  label: string;
-  items: string[];
+  label: T;
+  items: T[];
   /** Top bar color. */
   bar: string;
   /** Dot color (glow uses the same hue). */
@@ -15,8 +17,8 @@ const { label, items, bar, dot, tint } = Astro.props;
 ---
 
 <div class="csd" style={`--bar:${bar};--dot:${dot};--tint:${tint}`}>
-  <p class="label"><span class="dot" aria-hidden="true"></span>{label}</p>
-  <ul>{items.map((item) => <li>{item}</li>)}</ul>
+  <p class="label"><span class="dot" aria-hidden="true"></span><span data-en={en(label)} set:html={pt(label)} /></p>
+  <ul>{items.map((item) => <li data-en={en(item)} set:html={pt(item)} />)}</ul>
 </div>
 
 <style>
