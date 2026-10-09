@@ -36,7 +36,13 @@ import { url } from '@/lib/url';
   .cases {
     position: relative;
     z-index: 2;
-    padding: 120px 0 140px;
+    padding: clamp(72px, 12vh, 120px) 0;
+  }
+
+  @media (max-width: 820px) {
+    .cases {
+      padding: 56px 0;
+    }
   }
 
   .cases .wrap {

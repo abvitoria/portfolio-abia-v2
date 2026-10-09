@@ -43,7 +43,13 @@ const side = {
   }
 
   .signoff--lg {
-    padding: 22vh 0 16vh;
+    padding: clamp(72px, 12vh, 120px) 0 16vh;
+  }
+
+  @media (max-width: 820px) {
+    .signoff--lg {
+      padding: 56px 0 12vh;
+    }
   }
 
   .signoff :global(.kick) {
