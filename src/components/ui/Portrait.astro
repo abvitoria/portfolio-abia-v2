@@ -1,0 +1,58 @@
+---
+/**
+ * Portrait frame. Renders the photo from src/assets/retrato/ when present,
+ * otherwise an empty frame that keeps the layout intact.
+ */
+import { Image } from 'astro:assets';
+import { portrait } from '@/data/portrait';
+
+interface Props {
+  alt: string;
+  /** Rendered width in CSS px (used to size the optimized image). */
+  width: number;
+  class?: string;
+  grayscale?: boolean;
+  loading?: 'eager' | 'lazy';
+}
+
+const { alt, width, class: className, grayscale = false, loading = 'lazy' } = Astro.props;
+---
+
+<div class:list={['portrait', { 'portrait--gray': grayscale, 'portrait--empty': !portrait }, className]}>
+  {
+    portrait && (
+      <Image
+        src={portrait}
+        alt={alt}
+        width={width}
+        densities={[1, 2]}
+        loading={loading}
+        fetchpriority={loading === 'eager' ? 'high' : 'auto'}
+      />
+    )
+  }
+  <slot />
+</div>
+
+<style>
+  .portrait {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .portrait--gray img {
+    filter: grayscale(1) contrast(1.05) brightness(0.9);
+  }
+
+  .portrait--empty {
+    background:
+      radial-gradient(circle at 30% 25%, rgba(158, 108, 239, 0.22), transparent 60%),
+      linear-gradient(160deg, rgba(243, 242, 255, 0.08), rgba(26, 20, 102, 0.4));
+  }
+</style>

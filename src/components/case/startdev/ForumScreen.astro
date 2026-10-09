@@ -1,0 +1,558 @@
+---
+/** Prototype screen "Fórum": filters, a resolved thread with replies, more topics and a side column. */
+import AppWindow from './AppWindow.astro';
+import SdIcon from './SdIcon.astro';
+
+const tags = ['repetição', 'git', 'ambiente', 'python'];
+const replies = [
+  {
+    initials: 'RS',
+    user: '@rafael',
+    accepted: true,
+    when: 'há 2 h',
+    text: '<b>@marielly</b>, falta incrementar o contador dentro do laço. Como o <b>i</b> nunca muda, a condição continua verdadeira para sempre. Acrescente <b>i = i + 1</b> como última linha do bloco.',
+    useful: '8 pessoas acharam útil',
+  },
+  {
+    initials: 'JL',
+    user: '@juliana',
+    accepted: false,
+    when: 'há 1 h',
+    text: 'Complementando: se preferir, o <b>for</b> resolve o mesmo caso sem contador manual — foi o que o monitor mostrou na correção da minha atividade.',
+    useful: '3 pessoas acharam útil',
+  },
+];
+const featured = ['Como formatar código no fórum', 'Repositório de exemplos das aulas', 'Erros mais comuns em lógica'];
+---
+
+<AppWindow url="app.startdev.com.br/forum" nav="forum">
+  <div class="sd-main sd-main--forum">
+    <div class="sd-hd">
+      <h1 class="sd-h1">Fórum</h1>
+      <div class="sd-tabs">
+        <span class="sd-tab on"><SdIcon name="users" size={15} />Comunidade</span>
+        <span class="sd-tab">Meus tópicos · 2</span>
+      </div>
+    </div>
+
+    <div class="sd-card sd-split">
+      <div class="feed">
+        <div class="search-row">
+          <div class="search">
+            <SdIcon name="search" size={15} stroke={2} />Pesquise por assunto, erro ou linguagem…
+          </div>
+          <button type="button" class="sd-btn"><SdIcon name="plus" size={15} stroke={2.4} />Novo tópico</button>
+        </div>
+        <div class="filters">
+          <div class="sd-seg" role="group" aria-label="Filtrar por situação">
+            <button type="button" aria-pressed="true">Todos <span class="n">42</span></button>
+            <button type="button" aria-pressed="false">
+              <SdIcon name="check" size={13} stroke={3.2} class="ok" />Resolvidas <span class="n">31</span>
+            </button>
+            <button type="button" aria-pressed="false">
+              <SdIcon name="alert" size={13} stroke={2.2} class="warn" />Sem resposta <span class="n">4</span>
+            </button>
+          </div>
+          <div class="tags">
+            <span class="sd-label">Tags</span>
+            <button type="button" class="sd-chip sd-chip--blue">
+              lógica<span class="sep"></span><SdIcon name="x" size={10} stroke={3} />
+            </button>
+            {
+              tags.map((t) => (
+                <button type="button" class="sd-chip sd-chip--outline">
+                  {t}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <article class="topic topic--ok">
+          <div class="who">
+            <span class="av">MB</span>
+            <div class="grow">
+              <div class="user">@marielly</div>
+              <div class="when">12 nov 2020, 19:35 · Lógica de programação</div>
+            </div>
+            <span class="sd-chip sd-chip--ok"><SdIcon name="check" size={11} stroke={3.4} />Resolvido</span>
+          </div>
+          <h2 class="lg">Por que meu <b>while</b> nunca para de rodar?</h2>
+          <p>
+            Estou fazendo o exercício da tabuada e o programa imprime a mesma linha para sempre. Coloquei o contador
+            antes do laço, como no exemplo da aula 03, mas não descobri onde está o erro.
+          </p>
+          <pre><code>i = 1
+while i &lt;= 10:
+    print(numero * i)</code></pre>
+          <div class="chips">
+            <span class="sd-chip">repetição</span>
+            <span class="sd-chip">python</span>
+            <span class="sd-chip">aula 03</span>
+          </div>
+          <div class="foot">
+            <button type="button" class="vote vote--on"><SdIcon name="thumbUp" size={15} />Útil · 12</button>
+            <button type="button" class="vote vote--icon" aria-label="Marcar como não útil">
+              <SdIcon name="thumbDown" size={15} />
+            </button>
+            <span class="end">
+              <button type="button" class="link"><SdIcon name="up" size={14} stroke={2.2} />Esconder 2 respostas</button>
+              <button type="button" class="link"><SdIcon name="reply" size={14} stroke={2.2} />Responder</button>
+            </span>
+          </div>
+        </article>
+
+        <div class="replies">
+          {
+            replies.map((r) => (
+              <article class:list={['topic', 'reply', { 'reply--accepted': r.accepted }]}>
+                <div class="who">
+                  <span class="av av--sm">{r.initials}</span>
+                  <span class="user">{r.user}</span>
+                  {r.accepted && <span class="sd-chip sd-chip--ok">resposta aceita</span>}
+                  <span class="when end">{r.when}</span>
+                </div>
+                <p set:html={r.text} />
+                <div class="foot">
+                  <span class="when">{r.useful}</span>
+                  <button type="button" class="link end">
+                    Responder
+                  </button>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+
+        <article class="topic topic--open">
+          <div class="who">
+            <span class="av">JL</span>
+            <div class="grow">
+              <div class="user">@juliana</div>
+              <div class="when">ontem, 21:04 · Atividades</div>
+            </div>
+            <span class="sd-chip sd-chip--warn">Sem resposta</span>
+          </div>
+          <h2>Alguém entendeu o enunciado da atividade do caixa eletrônico?</h2>
+          <p>A parte da validação de limite diário não ficou clara para mim: o limite conta por saque ou pela soma do dia?</p>
+          <div class="chips">
+            <span class="sd-chip">fluxograma</span>
+            <span class="sd-chip">atividade 02</span>
+          </div>
+          <div class="foot">
+            <span class="first">Seja a primeira pessoa a responder · +5 pontos</span>
+            <button type="button" class="sd-btn sd-btn--warn end">Responder</button>
+          </div>
+        </article>
+
+        <article class="topic">
+          <div class="who">
+            <span class="av">CT</span>
+            <div class="grow">
+              <div class="user">@carlos</div>
+              <div class="when">10 nov 2020, 08:12 · Ambiente de trabalho</div>
+            </div>
+          </div>
+          <h2>Instalei o VS Code mas o terminal não abre</h2>
+          <p>
+            No Windows aparece a mensagem de que o interpretador não foi encontrado. Já reinstalei duas vezes e o
+            problema continua.
+          </p>
+          <div class="chips">
+            <span class="sd-chip">ambiente</span>
+            <span class="sd-chip">windows</span>
+          </div>
+          <div class="foot">
+            <button type="button" class="vote"><SdIcon name="thumbUp" size={15} />Útil · 4</button>
+            <button type="button" class="link end"><SdIcon name="up" size={14} stroke={2.2} />Mostrar 11 respostas</button>
+          </div>
+        </article>
+      </div>
+
+      <aside class="side" aria-label="Destaques do fórum">
+        <div>
+          <div class="side-head"><SdIcon name="star" size={15} stroke={1.8} />Importante</div>
+          <p class="rules">
+            Leia as <a href="#ui-title">regras da comunidade</a> antes de publicar. Respostas com código formatado recebem
+            ajuda mais rápido.
+          </p>
+        </div>
+        <div>
+          <div class="side-head"><SdIcon name="link" size={15} />Links em destaque</div>
+          <div class="links">
+            {featured.map((f) => <a href="#ui-title">{f}</a>)}
+          </div>
+        </div>
+        <div class="sd-card promo">
+          <div class="promo-title">Responda e ganhe pontos</div>
+          <p>Cada resposta marcada como útil vale 5 pontos na loja de recompensas.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</AppWindow>
+
+<style>
+  .feed {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .search-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .search {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--sd-line);
+    border-radius: 9px;
+    background: var(--sd-soft);
+    font-size: 13px;
+    color: #8a93a3;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .ok {
+    color: var(--sd-green-ink);
+  }
+
+  .warn {
+    color: var(--sd-orange-ink);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .sep {
+    width: 1px;
+    height: 11px;
+    background: #bbd0f0;
+  }
+
+  .topic {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 22px;
+    border: 1px solid var(--sd-line);
+    border-left: 4px solid #4c86f5;
+    border-radius: 11px;
+    background: #fff;
+    color: var(--sd-text);
+  }
+
+  .topic--ok {
+    gap: 13px;
+    border-left-color: var(--sd-green);
+  }
+
+  .topic--open {
+    border-color: #fbd5b5;
+    border-left-color: #ea8c4a;
+    background: #fffcf9;
+  }
+
+  .who {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .grow {
+    flex: 1;
+  }
+
+  .av {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #d8dee9;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--sd-slate);
+  }
+
+  .topic--open .av {
+    background: var(--sd-orange-bg);
+    color: var(--sd-orange-ink);
+  }
+
+  .user {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .when {
+    font-size: 11.5px;
+    color: var(--sd-muted);
+  }
+
+  .end {
+    margin-left: auto;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--sd-ink);
+  }
+
+  h2.lg {
+    font-size: 21px;
+    line-height: 1.25;
+  }
+
+  .topic :global(b) {
+    color: var(--sd-ink);
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  pre {
+    overflow-x: auto;
+    margin: 0;
+    padding: 13px 15px;
+    border: 1px solid var(--sd-line);
+    border-radius: 8px;
+    background: #f2f5fa;
+  }
+
+  code {
+    font-family: var(--ff-sans);
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--sd-ink);
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--sd-line);
+  }
+
+  .topic--ok .foot {
+    padding-top: 13px;
+  }
+
+  .topic--open .foot {
+    border-top-color: #f3dfcc;
+  }
+
+  .vote {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--sd-line);
+    border-radius: 9px;
+    background: var(--sd-soft);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sd-text);
+    cursor: pointer;
+  }
+
+  .vote--on {
+    border-color: var(--sd-tint-line);
+    background: var(--sd-tint-2);
+    color: var(--sd-blue);
+  }
+
+  .vote--icon {
+    justify-content: center;
+    width: 44px;
+    padding: 0;
+    background: #fff;
+    color: var(--sd-muted);
+  }
+
+  .topic--ok .end {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 44px;
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sd-blue);
+    cursor: pointer;
+  }
+
+  .first {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--sd-orange-ink);
+  }
+
+  .topic--open .sd-btn {
+    height: 40px;
+  }
+
+  .replies {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    padding-left: 34px;
+  }
+
+  .reply {
+    gap: 11px;
+    padding: 17px 20px;
+    border-left-color: #c3cbd9;
+  }
+
+  .reply--accepted {
+    border-left-color: #4c86f5;
+  }
+
+  .reply .who {
+    gap: 9px;
+  }
+
+  .av--sm {
+    width: 28px;
+    height: 28px;
+    background: var(--sd-gray);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .reply--accepted .av--sm {
+    background: var(--sd-green-bg);
+    color: var(--sd-green-ink);
+  }
+
+  .reply .user {
+    font-size: 12.5px;
+  }
+
+  .reply p {
+    font-size: 13.5px;
+  }
+
+  .reply .foot {
+    flex-wrap: nowrap;
+    padding-top: 11px;
+  }
+
+  .reply .link {
+    font-size: 12.5px;
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .side-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 11px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--sd-line);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .side-head :global(svg) {
+    color: var(--sd-blue);
+  }
+
+  .rules {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  .rules a,
+  .links a {
+    font-weight: 600;
+    color: var(--sd-blue);
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .links a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 12.5px;
+  }
+
+  .promo {
+    padding: 16px;
+    background: var(--sd-soft);
+  }
+
+  .promo-title {
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .promo p {
+    font-size: 11.5px;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 900px) {
+    .replies {
+      padding-left: 16px;
+    }
+  }
+</style>

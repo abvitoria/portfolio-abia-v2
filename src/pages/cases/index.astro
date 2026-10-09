@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CaseRow from '@/components/cases-list/CaseRow.astro';
+import Chip from '@/components/ui/Chip.astro';
+import Kicker from '@/components/ui/Kicker.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import SectionNav from '@/components/ui/SectionNav.astro';
+import { cases } from '@/data/cases';
+import { t } from '@/data/i18n';
+---
+
+<BaseLayout
+  title="Cases"
+  description="Projetos de product design de Ábia Bognola, do problema à entrega: fintech, saúde pública, edtech e benefícios."
+>
+  <PageHero
+    id="p-title"
+    top={{
+      left: { strong: t('CASES SELECIONADOS', 'SELECTED WORK'), sub: t('Product design · UX/UI') },
+      right: { strong: '/work', sub: t(`índice · ${String(cases.length).padStart(2, '0')}`, `index · ${String(cases.length).padStart(2, '0')}`) },
+    }}
+    title={t('CASES<span class="n">.</span>', 'CASE STUDIES<span class="n">.</span>')}
+    sub={t('Conheça um pouco do <em>meu trabalho</em>.', 'Take a look at some of <em>my work</em>.')}
+    lead={t(
+      'Uma seleção de projetos, desafios e soluções que fizeram parte da minha jornada até aqui.',
+      'A selection of projects, challenges, and solutions that have shaped my journey so far.',
+    )}
+  />
+
+  <section class="rows" aria-label="Lista de cases">
+    {cases.map((entry, i) => <CaseRow entry={entry} index={i} />)}
+  </section>
+
+  <section class="outro" aria-label="Outros trabalhos">
+    <div class="wrap grid12">
+      <Kicker
+        class="kick"
+        label={t('· o que não está aqui', "· what's not here")}
+        title={t('mais projetos, menos cases', 'more projects, fewer cases')}
+      />
+      <p class="head rv" data-en="Not every project became a case here.">Nem todo projeto virou case por aqui.</p>
+      <p
+        class="body"
+        data-en="I've also worked with 4US Tecnologia, App Facilita, B9 Sistemas and ROIT Bank, and I have other cases and projects. If there's something specific you'd like to see, <b>get in touch</b>."
+      >
+        Também trabalhei com 4US Tecnologia, App Facilita, B9 Sistemas e ROIT Bank, e tenho outros cases e projetos. Se
+        quiser ver algo específico, <b>é só entrar em contato</b>.
+      </p>
+      <div class="cta"><Chip href="/contato/" en="Talk directly">Conversar direto</Chip></div>
+    </div>
+  </section>
+
+  <SectionNav
+    slot="after-main"
+    label="Cases nesta página"
+    showAfter={320}
+    items={cases.map((c, i) => ({ id: `row-${i + 1}`, n: String(i + 1).padStart(2, '0'), label: t(c.short) }))}
+  />
+</BaseLayout>
+
+<style>
+  .rows {
+    padding: 20px 0 40px;
+  }
+
+  .outro {
+    position: relative;
+    padding: 22vh 0 16vh;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .outro :global(.kick) {
+    grid-column: 1 / 4;
+  }
+
+  .head {
+    grid-column: 5 / 13;
+    max-width: 900px;
+    font-weight: 300;
+    font-size: clamp(30px, 4vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .body {
+    grid-column: 5 / 11;
+    max-width: 640px;
+    margin-top: 36px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--warm-70);
+  }
+
+  .body b {
+    font-weight: 500;
+    color: var(--warm);
+  }
+
+  .cta {
+    grid-column: 5 / 13;
+    margin-top: 36px;
+  }
+</style>

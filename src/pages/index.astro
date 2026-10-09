@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import CaseAccordion from '@/components/home/CaseAccordion.astro';
+import HomeHero from '@/components/home/HomeHero.astro';
+import Interlude from '@/components/home/Interlude.astro';
+import Prologue from '@/components/home/Prologue.astro';
+import Chip from '@/components/ui/Chip.astro';
+import SignOff from '@/components/ui/SignOff.astro';
+---
+
+<BaseLayout>
+  <HomeHero />
+  <Prologue />
+
+  <section class="cases" id="cases" aria-labelledby="cases-title">
+    <div class="wrap">
+      <div class="cases-head">
+        <div class="cases-intro">
+          <span class="label" data-en="· cases">· cases</span>
+          <h2 id="cases-title" data-en="Get to know a bit of my work and the projects I've worked on.">
+            Conheça um pouco do meu trabalho e dos projetos em que atuei.
+          </h2>
+        </div>
+        <Chip href="/cases/" en="All cases">Todos os cases</Chip>
+      </div>
+      <CaseAccordion />
+    </div>
+  </section>
+
+  <Interlude />
+  <SignOff kicker size="lg" />
+</BaseLayout>
+
+<style>
+  .cases {
+    position: relative;
+    z-index: 2;
+    padding: 120px 0 140px;
+  }
+
+  .cases .wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .cases-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+
+  .cases-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .cases-intro .label {
+    letter-spacing: 0.14em;
+  }
+
+  h2 {
+    max-width: 600px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--warm-70);
+  }
+</style>
+
+<script>
+  import '@/scripts/kinetic';
+</script>

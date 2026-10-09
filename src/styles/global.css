@@ -1,0 +1,10 @@
+/* ==========================================================================
+   Global stylesheet — imported once by BaseLayout.
+   Order matters: tokens → base → type → layout → motion.
+   Component styles live next to each component (scoped <style> blocks).
+   ========================================================================== */
+@import './tokens.css';
+@import './base.css';
+@import './typography.css';
+@import './layout.css';
+@import './motion.css';

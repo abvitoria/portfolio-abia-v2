@@ -1,0 +1,167 @@
+---
+/** Prototype screen "Atividades": counters + activity cards by status. */
+import AppWindow from './AppWindow.astro';
+import SdIcon from './SdIcon.astro';
+
+const stats = [
+  { label: 'Em atraso', value: '1', color: 'var(--sd-orange)' },
+  { label: 'Abertas', value: '2', color: 'var(--sd-blue)' },
+  { label: 'Concluídas', value: '5', color: 'var(--sd-green)' },
+];
+
+type Tone = 'late' | 'open' | 'locked' | 'done';
+const activities: { tone: Tone; chip: string; title: string; text: string; meta: string; cta: string }[] = [
+  {
+    tone: 'late',
+    chip: 'Venceu há 2 dias',
+    title: 'Algoritmo de troca de valores',
+    text: 'Escreva um algoritmo que troque o conteúdo de duas variáveis sem usar uma terceira. Módulo 01 · Aula 03.',
+    meta: 'Nível fácil · 10 pontos',
+    cta: 'Resolver agora',
+  },
+  {
+    tone: 'open',
+    chip: 'Entrega em 12/01',
+    title: 'Fluxograma de um caixa eletrônico',
+    text: 'Represente em fluxograma o saque com validação de saldo e limite diário. Módulo 01 · Aula 02.',
+    meta: 'Nível médio · 25 pontos',
+    cta: 'Continuar rascunho',
+  },
+  {
+    tone: 'locked',
+    chip: 'Liberada com o Módulo 02',
+    title: 'Tabuada com estrutura de repetição',
+    text: 'Imprima a tabuada de um número informado, usando <b>for</b> e depois <b>while</b>, comparando os dois.',
+    meta: 'Nível médio · 25 pontos',
+    cta: 'Bloqueada',
+  },
+  {
+    tone: 'done',
+    chip: 'Entregue · nota 9,0',
+    title: 'Pseudocódigo da média escolar',
+    text: 'Corrigido em 05/01 com comentário do monitor sobre nomes de variáveis.',
+    meta: '10 de 10 pontos',
+    cta: 'Ver correção',
+  },
+];
+
+const chipClass: Record<Tone, string> = {
+  late: 'sd-chip--warn',
+  open: 'sd-chip--navy',
+  locked: '',
+  done: 'sd-chip--ok',
+};
+---
+
+<AppWindow url="app.startdev.com.br/atividades" nav="atividades">
+  <div class="sd-main">
+    <div class="sd-hd">
+      <h1 class="sd-h1">Atividades</h1>
+      <div class="sd-tabs">
+        <span class="sd-tab on">Pendentes · 3</span>
+        <span class="sd-tab">Concluídas · 5</span>
+        <span class="sd-tab">Todas</span>
+      </div>
+    </div>
+    <div class="sd-stats">
+      {
+        stats.map((s) => (
+          <div class="sd-card sd-stat" style={`--c:${s.color}`}>
+            <div class="sd-label">{s.label}</div>
+            <strong>{s.value}</strong>
+          </div>
+        ))
+      }
+    </div>
+    <div class="list">
+      {
+        activities.map((a) => (
+          <div class:list={['act', `act--${a.tone}`]}>
+            <div>
+              <span class:list={['sd-chip', chipClass[a.tone]]}>
+                {a.tone === 'done' && <SdIcon name="check" size={11} stroke={3.4} />}
+                {a.chip}
+              </span>
+              <h3>{a.title}</h3>
+              <p set:html={a.text} />
+            </div>
+            <div class="side">
+              <span>{a.meta}</span>
+              <button
+                type="button"
+                class:list={[
+                  'sd-btn',
+                  {
+                    'sd-btn--warn': a.tone === 'late',
+                    'sd-btn--ghost': a.tone !== 'late',
+                    'sd-btn--off': a.tone === 'locked',
+                  },
+                ]}
+              >
+                {a.cta}
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</AppWindow>
+
+<style>
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .act {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 16px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid var(--sd-line);
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .act--late {
+    border-color: #fbd5b5;
+    background: #fff9f4;
+  }
+
+  .act--done {
+    border-color: #cbe9da;
+    background: #f7fbf8;
+  }
+
+  h3 {
+    margin: 9px 0 6px;
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--sd-text);
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 11.5px;
+    color: var(--sd-muted);
+  }
+
+  @media (max-width: 900px) {
+    .act {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

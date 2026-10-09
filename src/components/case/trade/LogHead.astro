@@ -1,0 +1,35 @@
+---
+/** Dashed mono header above a decision log: "Log de decisões ---- 01 — 05 · cadastro". */
+interface Props {
+  range: string;
+  label?: string;
+}
+
+const { range, label = 'Log de decisões' } = Astro.props;
+---
+
+<div class="log-head">
+  <span>{label}</span>
+  <span class="line" aria-hidden="true"></span>
+  <span>{range}</span>
+</div>
+
+<style>
+  .log-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 4px;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--warm-40);
+  }
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--warm-14) 0 5px, transparent 5px 9px);
+  }
+</style>

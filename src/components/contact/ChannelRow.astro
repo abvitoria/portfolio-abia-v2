@@ -1,0 +1,151 @@
+---
+/** One contact channel row (email, LinkedIn, cases): big value + note + arrow. */
+import BgNum from '@/components/ui/BgNum.astro';
+import DotLine from '@/components/ui/DotLine.astro';
+import type { L } from '@/data/i18n';
+
+interface Props {
+  n: string;
+  href: string;
+  external?: boolean;
+  ariaLabel: string;
+  kind: L;
+  value: L;
+  note: L;
+  foot: L;
+  action: L;
+}
+
+const { n, href, external = false, ariaLabel, kind, value, note, foot, action } = Astro.props;
+---
+
+<a
+  href={href}
+  class="channel"
+  aria-label={ariaLabel}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener' : undefined}
+>
+  <BgNum n={n} class="num" />
+  <div class="grid12">
+    <div class="idx">{n}</div>
+    <div class="kind" data-en={kind.en} set:html={kind.pt} />
+    <h2 class="value rv" data-en={value.en} set:html={value.pt} />
+    <p class="note" data-en={note.en} set:html={note.pt} />
+    <DotLine class="foot" label={foot} short />
+    <span class="arr" data-en={action.en}>{action.pt}</span>
+  </div>
+</a>
+
+<style>
+  .channel {
+    position: relative;
+    display: block;
+    overflow-x: clip;
+    padding: 56px 0;
+    border-top: 1px solid var(--warm-14);
+    color: inherit;
+  }
+
+  .channel:last-of-type {
+    border-bottom: 1px solid var(--warm-14);
+  }
+
+  .channel :global(.num) {
+    top: 40px;
+    font-size: clamp(140px, 22vw, 320px);
+  }
+
+  .grid12 {
+    position: relative;
+    z-index: 1;
+  }
+
+  .idx {
+    grid-column: 1 / 2;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--rose);
+  }
+
+  .kind {
+    grid-column: 2 / 5;
+    padding-top: 8px;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-40);
+  }
+
+  .value {
+    grid-column: 5 / 11;
+    font-family: var(--ff-display);
+    font-weight: 400;
+    font-size: clamp(38px, 5.5vw, 80px);
+    line-height: 0.94;
+    letter-spacing: -0.02em;
+    color: var(--warm);
+    word-break: break-word;
+    transition: color 0.3s;
+  }
+
+  .channel:hover .value {
+    color: var(--rose);
+  }
+
+  .note {
+    grid-column: 5 / 11;
+    max-width: 520px;
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--warm-70);
+  }
+
+  .channel :global(.foot) {
+    grid-column: 5 / 11;
+    margin-top: 22px;
+  }
+
+  .arr {
+    grid-column: 11 / 13;
+    justify-self: end;
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--ff-mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--warm-70);
+    transition: color 0.3s;
+  }
+
+  .arr::after {
+    content: '→';
+    transition: transform 0.3s;
+  }
+
+  .channel:hover .arr {
+    color: var(--warm);
+  }
+
+  .channel:hover .arr::after {
+    transform: translateX(8px);
+  }
+
+  @media (max-width: 820px) {
+    .channel :global(.num) {
+      top: 20px;
+      font-size: 120px;
+    }
+
+    .arr {
+      justify-self: start;
+      margin-top: 20px;
+    }
+  }
+</style>

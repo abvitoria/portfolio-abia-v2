@@ -1,0 +1,85 @@
+---
+/**
+ * Base document for every page: <head>, fonts, global CSS, header, footer
+ * and the shared client scripts (i18n, reveal).
+ */
+import { Font } from 'astro:assets';
+import '@/styles/global.css';
+import Ambient from '@/components/layout/Ambient.astro';
+import SiteFooter from '@/components/layout/SiteFooter.astro';
+import SiteHeader from '@/components/layout/SiteHeader.astro';
+import SkipLink from '@/components/layout/SkipLink.astro';
+import { site } from '@/data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Social preview image URL (absolute or root-relative). */
+  image?: string;
+  /** Aurora + cursor spotlight background. */
+  ambient?: boolean;
+  /** Show the PT/EN toggle in the header. */
+  showLang?: boolean;
+  /** Footer style, or false to omit it. */
+  footer?: 'dark' | 'paper' | false;
+  /** Extra class on <body> for page-level themes (e.g. "theme-paper"). */
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description = site.description,
+  image,
+  ambient = true,
+  showLang = true,
+  footer = 'dark',
+  bodyClass,
+} = Astro.props;
+
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.role}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <meta name="theme-color" content="#03043a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="pt_BR" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+
+    <!-- Flags JS as available before first paint so reveal states never flash. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
+
+    <Font cssVariable="--font-sans" preload={[{ weight: 400, style: 'normal' }]} />
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-mono" />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    {ambient && <Ambient />}
+    <SkipLink />
+    <SiteHeader showLang={showLang} />
+    <main id="conteudo">
+      <slot />
+    </main>
+    <slot name="after-main" />
+    {footer && <SiteFooter variant={footer} />}
+    <slot name="footer" />
+
+    <script>
+      import '@/scripts/reveal';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+/* ==========================================================================
+   Typography — the three type voices of the site.
+   .mono     technical labels, meta, indices
+   .display  Bebas Neue headlines
+   .italic   Poppins italic accents
+   ========================================================================== */
+.mono {
+  font-family: var(--ff-mono);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.display {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+}
+
+.italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Accent word inside a headline (".k" in the original markup) */
+.k {
+  color: var(--rose);
+}
+
+/* Inline emphasis that turns lilac + italic */
+.em-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--rose);
+}
+
+/* Small uppercase mono label: "· prólogo", "Problema", "Parte 1"… */
+.label {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+.label--cyan {
+  color: var(--gold);
+}
+
+.label--muted {
+  color: var(--warm-40);
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.lead strong,
+.lead b {
+  color: var(--warm);
+  font-weight: 600;
+}

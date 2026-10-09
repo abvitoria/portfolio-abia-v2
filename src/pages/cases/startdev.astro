@@ -1,0 +1,865 @@
+---
+import CaseLayout from '@/layouts/CaseLayout.astro';
+import CaseIntro from '@/components/case/CaseIntro.astro';
+import HeroScreen from '@/components/case/startdev/HeroScreen.astro';
+import LaptopFrame from '@/components/case/LaptopFrame.astro';
+import PanelFigure from '@/components/case/PanelFigure.astro';
+import PhoneGallery from '@/components/case/startdev/PhoneGallery.astro';
+import PointsPreview from '@/components/case/startdev/PointsPreview.astro';
+import Prototype from '@/components/case/startdev/Prototype.astro';
+import ThemePairs from '@/components/case/startdev/ThemePairs.astro';
+
+import cover from '@/assets/covers/capa-startdev.png';
+import bench from '@/assets/case/mercado-bench.jpg';
+import styleGuide from '@/assets/case/sg-clean.jpg';
+import userflow from '@/assets/case/userflow.jpg';
+import wireframe from '@/assets/case/wireframe-aula.png';
+
+const summary = [
+  {
+    href: '#cap-descoberta',
+    mark: '☍',
+    title: 'Ensino + comunidade + gamificação',
+    text: 'Uma proposta ambiciosa de negócio para virar uma interface única.',
+    cta: 'Ver o desafio →',
+  },
+  {
+    href: '#cap-descoberta',
+    mark: '20d',
+    title: 'Prazo real e apertado',
+    text: 'Web e mobile em ~20 dias, com pesquisa própria limitada.',
+    cta: 'Entender a restrição →',
+  },
+  {
+    href: '#cap-decisoes',
+    mark: '→',
+    title: 'A direção tomada',
+    text: 'Estrutura antes da estética: fluxo, wireframes, style guide e dark mode.',
+    cta: 'Ver as decisões →',
+  },
+];
+
+const challenge = [
+  { n: '3 em 1', text: 'Ensino, comunidade e gamificação num único produto.' },
+  { n: '~20 dias', text: 'Para entregar as versões web e mobile.' },
+  { n: '↯', text: 'Sem pesquisa própria de usuário no início do projeto.' },
+];
+
+const steps = [
+  {
+    title: 'Revisão do documento de especificações',
+    text: 'Li a fundo o que o cliente já havia definido de negócio e escopo, para não recomeçar do zero o que já estava resolvido.',
+  },
+  {
+    title: 'Roteiro de entrevista',
+    text: 'Montei um roteiro no Google Docs para conduzir a conversa com o cliente com foco, não uma reunião aberta, mas perguntas dirigidas às decisões de design.',
+  },
+  {
+    title: 'Entrevista com o cliente',
+    text: 'Levantei as expectativas de negócio e visuais, perguntando explicitamente sobre <strong>paleta de cores já existente</strong> e <strong>referências visuais</strong> que ele admirava o que evitou retrabalho estético mais à frente.',
+  },
+];
+
+const gamification = [
+  { title: 'Pontos por ajudar', text: 'Quem apoia outros usuários na comunidade acumula pontos.' },
+  { title: 'Troca por cursos', text: 'Pontos viram cursos ou descontos — valor concreto de volta.' },
+  {
+    title: 'Recompensa por progresso',
+    text: 'Completar cursos, avaliar aulas, responder atividades e interagir em fóruns rende pontos.',
+  },
+  { title: 'Metas visíveis', text: 'Pontuação e progresso no curso atual sempre à vista, dando sensação de avanço.' },
+];
+
+const pressure = [
+  { title: 'Priorização', text: 'Estrutura antes da estética, para não desperdiçar dias em retrabalho.' },
+  { title: 'Reaproveitamento', text: 'Proto-persona e marca do cliente usadas como ponto de partida legítimo.' },
+  { title: 'Liderança', text: 'Manter outros projetos e apoiar uma estagiária sem travar a entrega.' },
+];
+
+const learnings = [
+  {
+    title: 'O que funcionou',
+    items: [
+      'Fazer o user flow antes de tudo permitiu estimar telas e cortar escopo cedo — foi o que fez os 20 dias caberem.',
+      'Trabalhar dentro da marca do cliente, sem propor identidade nova, poupou dias de alinhamento visual.',
+    ],
+  },
+  {
+    title: 'O que eu faria diferente',
+    items: [
+      'Reservar espaço para pesquisa própria de usuário e validação com teste, mesmo que enxuta, defendendo isso já na negociação do prazo.',
+      'Acompanhar o produto após o lançamento para fechar o ciclo com dados reais de uso.',
+    ],
+  },
+];
+---
+
+<CaseLayout
+  title="StartDev — Aprender a programar sozinho é difícil e solitário"
+  description="Ensino, comunidade colaborativa e gamificação num só produto: a interface web e mobile da StartDev, desenhada em cerca de 20 dias."
+  image={cover.src}
+  chapters={[
+    { id: 'cap-contexto', label: 'Contexto' },
+    { id: 'cap-descoberta', label: 'Descoberta' },
+    { id: 'cap-decisoes', label: 'Decisões' },
+    { id: 'cap-solucao', label: 'Solução' },
+    { id: 'cap-impacto', label: 'Impacto' },
+  ]}
+  ambient
+  showLang
+  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+>
+  <CaseIntro
+    badges={[
+      { label: 'UX/UI CASE', color: '#0B7C8F' },
+      { label: 'EDTECH · COMUNIDADE', color: '#561589' },
+      { label: 'WEB + MOBILE', color: '#6E3FC8' },
+    ]}
+    eyebrow="STARTDEV · PRODUCT DESIGN · UX/UI"
+    title='Aprender a programar sozinho é difícil e <span class="serif">solitário</span>'
+    lead="Um cliente chegou com uma proposta ambiciosa: ensino, comunidade colaborativa e gamificação num só produto. Meu trabalho foi traduzir essa visão em uma interface coerente para web e mobile — <strong>em cerca de 20 dias</strong>, com pesquisa própria de usuário limitada."
+    facts={[
+      { label: 'MEU PAPEL', value: 'UX/UI Designer · projeto de cliente' },
+      { label: 'PLATAFORMA', value: 'Web responsivo + app mobile' },
+      { label: 'FERRAMENTAS', value: 'Figma · Google Docs · Sheets' },
+      { label: 'TEMAS', value: 'Claro &amp; escuro' },
+    ]}
+  >
+    <HeroScreen />
+    <div class="card deadline">
+      <span class="n">20</span>
+      <span>dias, do briefing<br />à entrega final</span>
+    </div>
+  </CaseIntro>
+
+  <!-- Resumo / índice -->
+  <section id="cap-contexto" aria-labelledby="resumo-title" class="sec rv summary">
+    <h2 id="resumo-title" class="sr-only">Resumo do case</h2>
+    <div class="cols-3">
+      {
+        summary.map((s) => (
+          <a href={s.href} class="card card--link summary-card">
+            <span class="mark">{s.mark}</span>
+            <div class="summary-title">{s.title}</div>
+            <p>
+              {s.text} <span class="more">{s.cta}</span>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Contexto -->
+  <section aria-labelledby="ctx-title" class="sec sec-narrow rv space-sm">
+    <p class="eyebrow">Contexto</p>
+    <h2 id="ctx-title" class="h2 h2--lg">O produto e o que estava em jogo</h2>
+    <p class="lead">
+      A <strong>StartDev</strong> é uma plataforma de ensino para desenvolvedores que vai além do curso: uma <strong
+        >comunidade colaborativa</strong
+      > onde os próprios usuários se ajudam a aprender. O engajamento é sustentado por um <strong>sistema de pontos</strong
+      > — quem ajuda outras pessoas acumula pontos que podem virar cursos ou descontos.
+    </p>
+    <p class="lead">
+      Era um projeto de cliente externo, não um produto interno. Isso muda o eixo do trabalho: mais do que resolver um
+      problema já diagnosticado, a prova de valor estava em <strong
+        >traduzir uma visão de negócio ambiciosa em uma interface coerente</strong
+      >, dentro de um prazo real.
+    </p>
+    <p class="lead">
+      O que estava em jogo era transformar uma ideia bem definida no papel em um produto navegável, consistente entre web
+      e mobile, pronto para desenvolvimento.
+    </p>
+  </section>
+
+  <!-- O desafio real -->
+  <div id="cap-descoberta" class="band band--purple space-sm">
+    <section aria-labelledby="prob-title" class="sec sec-narrow rv band-inner">
+      <p class="eyebrow">Descoberta · O desafio real</p>
+      <h2 id="prob-title" class="h2 h2--xl">Uma visão ambiciosa, um prazo curto e pouca pesquisa disponível</h2>
+      <p class="lead">
+        Quem começa a programar se perde entre vídeos soltos, falta de prática guiada e nenhum lugar para tirar dúvidas.
+        A aposta da StartDev era resolver isso juntando aula, prática e comunidade num só fluxo. Bonito no papel; denso
+        de traduzir em tela.
+      </p>
+      <p class="lead lead--last">
+        Some a isso a restrição concreta: <strong>cerca de 20 dias</strong> para entregar web e mobile, sem tempo hábil
+        para pesquisa própria de usuário do zero. O desafio não era criatividade — era <strong
+          >priorizar com precisão</strong
+        > e apoiar cada decisão em fontes já disponíveis, sem travar o cronograma.
+      </p>
+      <div class="cols-3">
+        {
+          challenge.map((c) => (
+            <div class="glass">
+              <div class="glass-n">{c.n}</div>
+              <div class="glass-text">{c.text}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <!-- Como cheguei na solução -->
+  <section aria-labelledby="proc-title" class="sec sec-narrow rv space-lg">
+    <p class="eyebrow">Descoberta · O ponto de partida</p>
+    <h2 id="proc-title" class="h2 h2--lg">Como cheguei na solução</h2>
+    <p class="lead lead--last">
+      Sem tempo para pesquisa do zero, comecei pelo que já existia e fui atrás do cliente para transformar a
+      especificação em direção de design. Um passo puxando o outro:
+    </p>
+    <div class="rows">
+      {
+        steps.map((s, i) => (
+          <div class="num-row">
+            <span class="num-row__n">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="row-title">{s.title}</div>
+              <div class="row-text" set:html={s.text} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Mercado -->
+  <section aria-labelledby="mkt-title" class="sec rv space-md">
+    <div class="sec-narrow head">
+      <p class="eyebrow">Descoberta · Mercado</p>
+      <h2 id="mkt-title" class="h2 h2--lg">Entendendo o mercado e o ajuste visual</h2>
+      <p class="lead">
+        Fiz uma pesquisa de concorrentes diretos e indiretos organizada no Google Sheets, cobrindo quatro frentes:
+        inspirações visuais de plataformas de tecnologia, empresas internacionais do mesmo ramo, as plataformas que os
+        desenvolvedores mais usam e referências de gamificação aplicada ao ensino. Recortei o que funcionava em cada
+        tela-chave — <strong>Home, Cursos e Perfil</strong> — para calibrar as expectativas do cliente contra o que o mercado
+        já entrega.
+      </p>
+    </div>
+    <PanelFigure
+      src={bench}
+      alt="Estudo comparativo de concorrentes organizado por Home, Cursos e Perfil, com prints reais das plataformas de referência"
+      caption="Painel de referências de concorrentes, agrupado pelas telas-chave do produto — a base visual e funcional que sustentou as decisões seguintes."
+      width={682}
+    />
+  </section>
+
+  <!-- Style guide e persona -->
+  <section aria-labelledby="ds-title" class="sec rv space-lg">
+    <div class="sec-narrow head">
+      <p class="eyebrow">Descoberta · Base de design</p>
+      <h2 id="ds-title" class="h2 h2--lg">Style guide primeiro, persona herdada</h2>
+      <p class="lead">
+        O cliente já tinha logomarca, paleta de cores e fontes definidas antes do projeto. Em vez de propor identidade
+        nova, meu primeiro passo de design foi <strong>construir um style guide no Figma</strong> para padronizar esses
+        elementos — cores, tipografia (Nordeco + Roboto), iconografia e grid responsivo dando ao produto uma base
+        consistente para crescer.
+      </p>
+    </div>
+    <PanelFigure
+      src={styleGuide}
+      alt="Style guide da StartDev no Figma: cores, tipografia, iconografia e grid responsivo"
+      caption="Style guide construído a partir da marca já existente do cliente — o primeiro passo para padronizar a interface."
+      padding={24}
+      class="sg"
+    />
+    <div class="sec-narrow">
+      <div class="note-box">
+        <span class="note-mark">✓</span>
+        <div>
+          <div class="note-title">Sobre a persona</div>
+          <p>
+            O time de marketing do cliente já tinha desenvolvido uma <strong>proto-persona</strong> antes do projeto começar,
+            e usei essa direção como ponto de partida um recurso pronto e legítimo, dado o prazo. Com 20 dias de prazo, essa
+            foi a base: <strong>não houve pesquisa própria de persona</strong> neste projeto, e o arquivo original não está
+            disponível para mostrar aqui.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Decisões -->
+  <div id="cap-decisoes" class="band band--tint space-lg">
+    <section aria-labelledby="flow-title" class="sec rv decisions-head">
+      <div class="sec-narrow">
+        <p class="eyebrow">Decisões</p>
+        <h2 id="flow-title" class="h2 h2--md">Estrutura antes da estética</h2>
+        <p class="lead">
+          Com o prazo curto, a sequência de decisões foi pensada para reduzir risco: mapear a jornada, validar a estrutura
+          e só então investir no pixel. Um código de cor acompanha o case inteiro:
+        </p>
+        <div class="legend">
+          <span class="pill pill--ev">Evidência</span>
+          <span class="pill pill--dec">Decisão</span>
+          <span class="pill pill--op">Oportunidade</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="sec flow">
+      <div class="dcard flow-card">
+        <h4>User flow antes dos wireframes</h4>
+        <p class="beat">
+          <span class="pill pill--ev">Evidência</span>Um produto que junta cursos, atividades e fórum tem muitas telas — e o
+          prazo era curto para estimar sem base.
+        </p>
+        <p class="beat">
+          <span class="pill pill--dec">Decisão</span>Desenhei o <b>user flow primeiro</b>, mapeando a jornada de ponta a
+          ponta — do cadastro e login à navegação por Cursos, Dashboard, Comunidade e Perfil — para estimar a quantidade de
+          telas e o tempo de desenvolvimento antes de detalhar qualquer interface.
+        </p>
+        <p class="int">Intenção — <span class="serif">saber o tamanho do trabalho antes de começar a construí-lo.</span></p>
+      </div>
+      <PanelFigure
+        src={userflow}
+        alt="User flow completo da StartDev: fluxo de cadastro, login e recuperação de senha, ramificando para Cursos, Dashboard, Comunidade e Perfil"
+        caption="User flow completo mapeado antes dos wireframes — a base para estimar telas e cronograma dentro do prazo."
+        width={702}
+        centered
+        class="userflow"
+      />
+    </div>
+
+    <section aria-labelledby="wire-title" class="sec rv wire">
+      <div class="sec-narrow head head--sm">
+        <p class="eyebrow">Decisões · Wireframes</p>
+        <h2 id="wire-title" class="h2 h2--md">Wireframes antes do pixel</h2>
+        <p class="lead">
+          Escolhi começar em wireframe de propósito: estrutura antes de estética. Assim eu podia ajustar hierarquia,
+          navegação e o player de aula rapidamente — e alinhar expectativas com o cliente antes de investir na versão de
+          alta fidelidade, o que protegia o cronograma de retrabalho tardio.
+        </p>
+      </div>
+      <LaptopFrame
+        maxWidth={840}
+        src={wireframe}
+        alt="Wireframe completo da tela de aula: player de vídeo, descrição, lista de módulos com progresso e comentários"
+        caption="Wireframe completo da tela de aula — role dentro da tela para ver o fluxo inteiro. Estrutura, navegação, player e módulos definidos antes de qualquer decisão estética."
+      />
+    </section>
+
+    <section aria-labelledby="dark-title" class="sec rv dark">
+      <div class="sec-narrow head head--sm">
+        <p class="eyebrow">Decisões · Alta fidelidade</p>
+        <h2 id="dark-title" class="h2">Dark mode como decisão fundamentada</h2>
+      </div>
+      <div class="dcard dark-card">
+        <div class="dark-text">
+          <p class="beat">
+            <span class="pill pill--ev">Evidência</span>O público-alvo do produto são <b>desenvolvedores</b> — que costumam
+            preferir interfaces com menos luminosidade, pelo hábito das próprias ferramentas de trabalho.
+          </p>
+          <p class="beat">
+            <span class="pill pill--dec">Decisão</span>Depois da validação do cliente, aumentei a fidelidade e <b
+              >propus o dark mode</b
+            > como tema de primeira classe — com tokens próprios de contraste e legibilidade, não um ajuste tardio de cor.
+          </p>
+          <p class="int">
+            Intenção — <span class="serif">falar a língua visual de quem vai usar o produto todo dia.</span>
+          </p>
+        </div>
+        <ThemePairs />
+      </div>
+    </section>
+  </div>
+
+  <!-- Gamificação -->
+  <section aria-labelledby="game-title" class="sec rv space-md">
+    <div class="sec-narrow head">
+      <p class="eyebrow">Solução · Gamificação</p>
+      <h2 id="game-title" class="h2 h2--lg">Progresso que dá motivo pra voltar</h2>
+      <p class="lead">
+        A gamificação não era enfeite — era o motor de engajamento do modelo de negócio. Desenhei o sistema para que
+        ajudar e aprender rendessem recompensa visível, com metas claras a cada etapa do estudo.
+      </p>
+    </div>
+    <div id="cap-solucao" class="game-grid">
+      {
+        gamification.map((g) => (
+          <div class="card game-card">
+            <div class="game-title">{g.title}</div>
+            <p>{g.text}</p>
+          </div>
+        ))
+      }
+    </div>
+    <div class="cols-2 points">
+      <PointsPreview />
+      <div class="card why">
+        <div class="why-label">Por que assim</div>
+        <p>
+          O saldo abre a tela porque é a informação que o aluno vem buscar. Logo abaixo, a distância até o próximo nível
+          transforma o número em <b>meta</b>, e o extrato mostra a relação entre esforço e recompensa.
+        </p>
+        <p>
+          Ganhos em verde e resgates em vermelho nunca aparecem sozinhos: o sinal vem sempre com o rótulo e o valor, para
+          não depender de cor.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- A interface final -->
+  <section aria-labelledby="ui-title" class="sec rv space-lg">
+    <div class="sec-narrow head head--lg">
+      <p class="eyebrow">Solução · A interface final</p>
+      <h2 id="ui-title" class="h2 h2--lg">Aula, prática e comunidade no mesmo lugar</h2>
+      <p class="lead">
+        Com a estrutura validada e o style guide no lugar, subi a fidelidade. Cada tela reforça clareza e continuidade —
+        do fórum às atividades de código, passando pela trilha de módulos com progresso.
+      </p>
+    </div>
+    <PhoneGallery />
+    <Prototype />
+  </section>
+
+  <!-- Impacto: restrição como senioridade -->
+  <div id="cap-impacto" class="band band--purple space-lg">
+    <section aria-labelledby="sen-title" class="sec sec-narrow rv band-inner">
+      <p class="eyebrow">Impacto · Gestão sob pressão</p>
+      <h2 id="sen-title" class="h2 h2--xl">Entregar web e mobile em 20 dias — sem parar o resto</h2>
+      <p class="lead lead--last">
+        A parte mais difícil deste projeto não aparece nas telas. Nos mesmos <strong>~20 dias</strong> em que entreguei as
+        versões web e mobile, eu gerenciava outros projetos em paralelo e apoiava uma estagiária. Foi um exercício de
+        priorização: decidir o que fazer primeiro, o que era bom o bastante, e onde apoiar a decisão em fontes já
+        existentes em vez de abrir uma frente nova de pesquisa que o cronograma não comportava.
+      </p>
+      <div class="cols-3">
+        {
+          pressure.map((p) => (
+            <div class="glass">
+              <div class="glass-title">{p.title}</div>
+              <div class="glass-text">{p.text}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <!-- Escopo entregue -->
+  <section aria-labelledby="scope-title" class="sec sec-narrow rv space-lg">
+    <p class="eyebrow">Impacto · Escopo entregue</p>
+    <h2 id="scope-title" class="h2 h2--lg">O que saiu do projeto</h2>
+    <p class="lead">
+      Ao fim dos 20 dias, entreguei três frentes unificadas — aula, prática e comunidade — nas <strong
+        >duas plataformas</strong
+      > (web responsivo e mobile), em tema claro e escuro, apoiadas por <strong>um style guide documentado</strong> no Figma.
+      Além do fluxo de cadastro e navegação, o produto passou a ter o motor de gamificação que sustenta o modelo de negócio:
+      pontos, trocas e recompensas por progresso.
+    </p>
+    <p class="lead lead--note">
+      São contagens de entregável, não métricas de resultado — a plataforma ainda não havia sido lançada no momento em que
+      este case foi escrito.
+    </p>
+  </section>
+
+  <!-- Retorno do cliente -->
+  <section aria-labelledby="ret-title" class="sec sec-narrow rv space-xs">
+    <div class="feedback">
+      <p class="eyebrow" id="ret-title">Retorno do cliente</p>
+      <p class="lead">
+        O retorno do cliente sobre as entregas foi positivo. Como a plataforma ainda não havia sido lançada quando escrevi
+        este case, não há dados de uso real nem depoimento público a citar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Aprendizados -->
+  <section aria-labelledby="ap-title" class="sec rv space-md">
+    <div class="learn">
+      <p class="eyebrow">Aprendizados</p>
+      <h2 id="ap-title" class="h2 h2--learn">O que ficou desse projeto</h2>
+      <div class="cols-2 learn-cols">
+        {
+          learnings.map((col) => (
+            <div>
+              <div class="learn-title">{col.title}</div>
+              <ul>
+                {col.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</CaseLayout>
+
+<style>
+  /* ---------- Vertical rhythm ---------- */
+  .summary {
+    margin-top: calc(104px * var(--sp, 1));
+  }
+
+  .space-xs {
+    margin-top: calc(80px * var(--sp, 1));
+  }
+
+  .space-sm {
+    margin-top: calc(96px * var(--sp, 1));
+  }
+
+  .space-md {
+    margin-top: calc(100px * var(--sp, 1));
+  }
+
+  .space-lg {
+    margin-top: calc(110px * var(--sp, 1));
+  }
+
+  /* Narrow text column nested in a wide section */
+  .head {
+    margin-bottom: 32px;
+  }
+
+  .head--sm {
+    margin-bottom: 24px;
+  }
+
+  .head--lg {
+    margin-bottom: 36px;
+  }
+
+  .h2.h2--md {
+    margin-bottom: 16px;
+  }
+
+  .h2.h2--lg {
+    margin-bottom: 18px;
+  }
+
+  .h2.h2--xl {
+    margin-bottom: 26px;
+  }
+
+  .lead + .lead {
+    margin-top: 18px;
+  }
+
+  .lead--last {
+    margin-bottom: 24px;
+  }
+
+  /* ---------- Hero ---------- */
+  .deadline {
+    position: absolute;
+    left: 32px;
+    bottom: -22px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 12px 16px;
+    border-radius: var(--radius-xl);
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .deadline .n {
+    font-family: var(--ff-display);
+    font-size: 30px;
+    line-height: 0.9;
+  }
+
+  /* ---------- Summary cards ---------- */
+  .card.summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 26px;
+  }
+
+  .mark {
+    font-family: var(--ff-display);
+    font-size: 44px;
+    line-height: 0.9;
+  }
+
+  .summary-title {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .summary-card p {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .more {
+    font-weight: 700;
+  }
+
+  /* ---------- Purple bands ---------- */
+  .sec.band-inner {
+    padding-block: calc(96px * var(--sp, 1));
+  }
+
+  .glass {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-n {
+    margin-bottom: 8px;
+    font-family: var(--ff-display);
+    font-size: 34px;
+    line-height: 1;
+    color: var(--rose-light);
+  }
+
+  .glass-title {
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-strong);
+  }
+
+  .glass-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #e4e2fa;
+  }
+
+  /* ---------- Process rows ---------- */
+  .rows .num-row:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .row-title {
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-body);
+  }
+
+  .row-text {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Style guide + persona ---------- */
+  .sg {
+    margin-bottom: 30px;
+  }
+
+  /* Legacy boxes were content-box: 760px of text plus their padding */
+  .sec-narrow > .note-box {
+    max-width: 816px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 28px;
+    border-radius: 18px;
+    background: rgba(158, 108, 239, 0.14);
+  }
+
+  .note-mark {
+    flex: none;
+    font-family: var(--ff-display);
+    font-size: 30px;
+    line-height: 1;
+    color: var(--rose-light);
+  }
+
+  .note-title {
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-strong);
+  }
+
+  .note-box p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ---------- Decisions band ---------- */
+  .sec.decisions-head {
+    padding-block: calc(96px * var(--sp, 1)) 40px;
+  }
+
+  .decisions-head .lead {
+    margin-bottom: 8px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .flow {
+    padding-bottom: 12px;
+  }
+
+  .dcard.flow-card {
+    max-width: 820px;
+    gap: 12px;
+  }
+
+  .beat .pill {
+    margin-right: 8px;
+  }
+
+  .int .serif {
+    font-size: 15px;
+  }
+
+  .userflow {
+    margin-top: 24px;
+  }
+
+  .userflow :global(img) {
+    border-radius: 0;
+  }
+
+  .sec.wire {
+    padding-block: 36px 40px;
+  }
+
+  .sec.dark {
+    padding-block: 20px calc(96px * var(--sp, 1));
+  }
+
+  .dcard.dark-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 32px;
+    align-items: center;
+    max-width: 940px;
+  }
+
+  .dark-text {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ---------- Gamification ---------- */
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .game-card {
+    padding: 22px 24px;
+  }
+
+  .game-title {
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .game-card p,
+  .why p {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .cols-2.points {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 20px;
+    align-items: stretch;
+    margin-top: 28px;
+  }
+
+  .why {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+    padding: 26px 28px;
+  }
+
+  .why-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .why p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* ---------- Scope / feedback ---------- */
+  .lead.lead--note {
+    margin-top: 14px;
+    font-size: 15px;
+  }
+
+  .sec-narrow > .feedback {
+    max-width: 828px;
+    padding: 30px 34px;
+    border-radius: 20px;
+    background: rgba(158, 108, 239, 0.14);
+  }
+
+  .feedback .eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .feedback .lead {
+    font-size: 16px;
+  }
+
+  /* ---------- Learnings ---------- */
+  .learn {
+    padding: 58px 48px;
+    border-radius: 32px;
+    background: linear-gradient(140deg, var(--plum), #5a2690);
+  }
+
+  .h2.h2--learn {
+    margin-bottom: 30px;
+  }
+
+  .cols-2.learn-cols {
+    gap: 36px;
+  }
+
+  .learn-title {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--rose-light);
+  }
+
+  .learn ul {
+    padding-left: 18px;
+  }
+
+  .learn li {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  @media (max-width: 860px) {
+    .cols-2.points,
+    .dcard.dark-card {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .learn {
+      padding: 40px 24px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .game-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+/**
+ * Phone mockup: dark bezel with a notch around a mobile screenshot.
+ *
+ *   <PhoneFrame src={img} alt="…" />
+ */
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  class?: string;
+}
+
+const { src, alt, class: className } = Astro.props;
+---
+
+<div class:list={['phone', className]}>
+  <div class="notch"></div>
+  <div class="screen">
+    <Image src={src} alt={alt} widths={[270, 375]} sizes="270px" />
+  </div>
+</div>
+
+<style>
+  .phone {
+    width: 290px;
+    padding: 10px;
+    border-radius: 34px;
+    background: #12324a;
+    box-shadow: 0 22px 50px rgba(18, 50, 74, 0.28);
+  }
+
+  .notch {
+    position: relative;
+    z-index: 2;
+    width: 110px;
+    height: 22px;
+    margin: -10px auto 0;
+    border-radius: 0 0 14px 14px;
+    background: #12324a;
+  }
+
+  .screen {
+    overflow: hidden;
+    border-radius: 26px;
+    background: rgba(10, 12, 74, 0.94);
+  }
+
+  .screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

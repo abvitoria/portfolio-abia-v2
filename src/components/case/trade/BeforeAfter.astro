@@ -1,0 +1,65 @@
+---
+/** One "Antes → Depois" comparison row. */
+interface Props {
+  before: string;
+  after: string;
+}
+
+const { before, after } = Astro.props;
+---
+
+<div class="card ba">
+  <div class="side">
+    <span class="k">Antes</span>{before}
+  </div>
+  <div class="arrow" aria-hidden="true">→</div>
+  <div class="side side--after">
+    <span class="k">Depois</span>{after}
+  </div>
+</div>
+
+<style>
+  .ba {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 26px;
+  }
+
+  .side {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .side--after {
+    font-weight: 600;
+  }
+
+  .k {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .arrow {
+    font-family: var(--ff-display);
+    font-size: 26px;
+    font-weight: 800;
+  }
+
+  @media (max-width: 560px) {
+    .ba {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .arrow {
+      transform: rotate(90deg);
+      justify-self: start;
+    }
+  }
+</style>

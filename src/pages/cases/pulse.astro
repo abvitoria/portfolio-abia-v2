@@ -1,0 +1,461 @@
+---
+import CaseLayout from '@/layouts/CaseLayout.astro';
+import BulletList from '@/components/case/BulletList.astro';
+import CaseHero from '@/components/case/CaseHero.astro';
+import CaseSection from '@/components/case/CaseSection.astro';
+import NumberedList from '@/components/case/NumberedList.astro';
+import PartHeading from '@/components/case/PartHeading.astro';
+import CategoryGrid from '@/components/case/pulse/CategoryGrid.astro';
+import ShotRow from '@/components/case/pulse/ShotRow.astro';
+
+import cover from '@/assets/covers/capa-pulse.png';
+import antesHome from '@/assets/pulse/pulse-antes-home.png';
+import antesAulas from '@/assets/pulse/pulse-antes-aulas.png';
+import antesCurso from '@/assets/pulse/pulse-antes-curso.png';
+import antesTurmas from '@/assets/pulse/pulse-antes-turmas.png';
+import antesRecados from '@/assets/pulse/pulse-antes-recados.png';
+import mapaNavegacao from '@/assets/pulse/novo-mapa-navegacao.png';
+import alunoInicio from '@/assets/pulse/telas/aluno-inicio.png';
+import alunoBiblioteca from '@/assets/pulse/telas/aluno-biblioteca.png';
+import alunoAula from '@/assets/pulse/telas/aluno-aula.png';
+import profInicio from '@/assets/pulse/telas/prof-inicio.png';
+import profComunicacao from '@/assets/pulse/telas/prof-comunicacao.png';
+import profTurma from '@/assets/pulse/telas/prof-turma.png';
+import profEstudante from '@/assets/pulse/telas/prof-estudante.png';
+import profAvaliacao from '@/assets/pulse/telas/prof-avaliacao.png';
+import gestorInicio from '@/assets/pulse/telas/gestor-inicio.png';
+import gestorTurmas from '@/assets/pulse/telas/gestor-turmas.png';
+import gestorAcomp from '@/assets/pulse/telas/gestor-acomp.png';
+
+const categorias = [
+  {
+    nome: 'Hierarquia',
+    cor: '#b79bf5',
+    itens: [
+      'Títulos, rótulos e ações com o mesmo peso visual.',
+      'Excluir é o elemento mais forte das tabelas.',
+      'Recados e vídeos sem nada que diferencie um do outro.',
+    ],
+  },
+  {
+    nome: 'Consistência',
+    cor: 'var(--gold)',
+    itens: [
+      'Dois estilos de ícone no menu e cabeçalhos diferentes entre áreas.',
+      'Três padrões de busca: barra com ícone, barra com botão e campos com Filtrar.',
+      'Português e inglês misturados; nomes diferentes no menu e na página.',
+    ],
+  },
+  {
+    nome: 'Layout',
+    cor: 'var(--warning)',
+    itens: [
+      'Rótulos que quebram em várias linhas ao lado dos campos.',
+      'Capas cortadas e rolagem horizontal.',
+      'Elementos sem alinhamento comum e áreas vazias.',
+    ],
+  },
+  {
+    nome: 'Conteúdo e dados',
+    cor: '#f28db5',
+    itens: [
+      'Metadados zerados exibidos em todos os cursos.',
+      'Itens de teste misturados ao conteúdo.',
+      'Campos sem validação entre si (cidade e estado).',
+    ],
+  },
+  {
+    nome: 'Arquitetura da informação',
+    cor: '#8fe2a8',
+    itens: [
+      'Aprendizagem e gestão no mesmo menu, no mesmo nível.',
+      'Videoteca e Aulas: dois lugares para conteúdo, com padrões diferentes.',
+      'Agenda dentro de Recados; recados repetidos na Home.',
+      'Escolas, Turmas e Estudantes repetem a mesma estrutura: base para um padrão único.',
+    ],
+  },
+];
+---
+
+<CaseLayout
+  title="Pulse Educação"
+  description="Redesign de uma plataforma educacional da rede pública: um pedido de ajuste visual que virou um diagnóstico do produto."
+  image={cover.src}
+  chapters={[
+    { id: 'parte-1', label: 'Contexto e desafio' },
+    { id: 'parte-2', label: 'Cenário anterior e diagnóstico' },
+    { id: 'parte-3', label: 'Decisões e redesign' },
+  ]}
+  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+>
+  <CaseHero
+    eyebrow="Pulse Educação · Product design"
+    title="Um pedido de ajuste visual que virou um diagnóstico do produto"
+    summary="Redesign de uma plataforma educacional da rede pública, usada por alunos do ensino fundamental e médio e pela gestão das escolas. O desafio não era só redesenhar as telas, mas entender o que realmente precisava melhorar."
+    cover={cover}
+    coverAlt="Capa do case Pulse Educação"
+    facts={[
+      { label: 'Papel', value: 'Product Designer' },
+      { label: 'Escopo', value: 'Exploração, diagnóstico e redesign' },
+      { label: 'Público', value: 'Alunos, professores e gestão escolar' },
+      { label: 'Plataforma', value: 'Web' },
+      { label: 'Duração', value: 'Cerca de 2 meses' },
+    ]}
+  />
+  <div class="wrap--case disclaimer">
+    <p>
+      Projeto real. Por confidencialidade, o nome, a marca e alguns elementos visuais foram trocados nesta apresentação.
+      Contexto, desafios e minha atuação foram mantidos como aconteceram.
+    </p>
+  </div>
+
+  <PartHeading id="parte-1" part="Parte 1" title="Contexto e desafio" />
+
+  <CaseSection id="ctx" label="Contexto" title="Aprender e administrar a escola na mesma plataforma" space="md">
+    <p>
+      A plataforma apoia escolas da rede pública. De um lado, conteúdo para os alunos: aulas, cursos e uma videoteca. Do
+      outro, a rotina da gestão: recados, agenda, indicadores e o cadastro de escolas, turmas, estudantes e professores.
+    </p>
+    <div class="areas">
+      <div class="box">
+        <span class="label label--cyan">Aprendizagem</span>
+        <span>Aulas e cursos · Videoteca · Recados e agenda</span>
+      </div>
+      <div class="box">
+        <span class="label label--rose">Gestão</span>
+        <span>Métricas · Escolas · Turmas · Estudantes · Professores</span>
+      </div>
+    </div>
+    <p>
+      São públicos e tarefas muito diferentes dividindo a mesma navegação, e isso pesou em boa parte do que encontrei.
+    </p>
+  </CaseSection>
+
+  <CaseSection id="papel" label="Meu papel" title="Entrei para melhorar o visual e comecei pelo produto">
+    <p>
+      Entrei como Product Designer com um pedido claro: melhorar a experiência de uso e a apresentação visual da
+      plataforma.
+    </p>
+    <p>
+      Ao explorar o sistema, vi que os problemas não estavam só na aparência. Antes de redesenhar, naveguei pela
+      plataforma, mapeei as telas e os recursos, e registrei o que encontrei, incluindo oportunidades que iam além do
+      pedido inicial.
+    </p>
+  </CaseSection>
+
+  <CaseSection id="desafio" label="O desafio" title="O pedido era visual. O problema não">
+    <div class="ask">
+      <div class="box box--lg">
+        <span class="label">O que foi pedido</span>
+        <span>Melhorar a experiência e a aparência das interfaces existentes.</span>
+      </div>
+      <div class="box box--lg box--found">
+        <span class="label label--cyan">O que a exploração mostrou</span>
+        <span>
+          Problemas de hierarquia, consistência, layout e organização das funcionalidades, além de oportunidades de
+          produto.
+        </span>
+      </div>
+    </div>
+    <p class="question">
+      Como repensar a plataforma indo além do visual, para que a navegação fique mais clara, consistente e próxima do
+      que cada público precisa?
+    </p>
+  </CaseSection>
+
+  <PartHeading id="parte-2" part="Parte 2" title="Cenário anterior e diagnóstico" />
+
+  <CaseSection id="proc" label="Processo" title="Explorar antes de redesenhar" space="md">
+    <NumberedList
+      items={[
+        '<strong>Explorar o produto.</strong> Navegar pela plataforma para entender a estrutura, os recursos e os contextos de uso.',
+        '<strong>Mapear as telas.</strong> Levantar as interfaces existentes, seus componentes, conteúdos e padrões de interação.',
+        '<strong>Diagnosticar.</strong> Agrupar inconsistências e problemas de organização por categoria.',
+        '<strong>Olhar para o produto.</strong> Registrar funcionalidades e oportunidades de negócio que iam além do pedido.',
+        '<strong>Redesenhar.</strong> Reformular as interfaces a partir do diagnóstico.',
+      ]}
+    />
+  </CaseSection>
+
+  <section class="wrap--case diag" aria-labelledby="diag-title" id="diag">
+    <div class="diag-body">
+      <div class="diag-intro">
+        <span class="tag-mono">Diagnóstico</span>
+        <h2 id="diag-title">Cinco tipos de problema, espalhados por todas as áreas</h2>
+        <p>
+          Observações de uma análise exploratória das telas. Não são problemas comprovados em testes com usuários.
+        </p>
+      </div>
+      <CategoryGrid categories={categorias} />
+    </div>
+  </section>
+
+  <PartHeading id="parte-3" part="Parte 3" title="Decisões e redesign" />
+
+  <CaseSection id="d1" label="Decisão 1" title="Cada perfil com sua navegação e seu ponto de partida">
+    <p>
+      O menu antigo colocava aulas, recados, métricas e cadastros no mesmo nível, para qualquer pessoa. E a Home abria
+      com um banner de boas-vindas que não levava a lugar nenhum.
+    </p>
+    <p>
+      Antes de redesenhar as telas, mapeei os caminhos de cada perfil: por onde entra, para onde vai e como volta.
+      Aluno, professor e gestor passaram a ter menu e tela inicial próprios, e cada Início abre com três ações para o
+      que fazer em seguida.
+    </p>
+    <BulletList
+      items={[
+        '<strong>Aluno:</strong> Início, Biblioteca, Meu acompanhamento e Novidades.',
+        '<strong>Professor:</strong> Início, Biblioteca, Acompanhamento e Comunicação.',
+        '<strong>Gestor:</strong> os mesmos, mais Gestão, que agrupa Escolas, Turmas e Estudantes.',
+        'O breadcrumb mostra onde a pessoa está na hierarquia, não o histórico de cliques. Ao voltar, filtros e contexto permanecem.',
+      ]}
+    />
+  </CaseSection>
+  <ShotRow
+    shots={[
+      { src: antesHome, alt: 'Home antiga, igual para todos os perfis', caption: 'Antes · Home igual para todos', tone: 'before' },
+      { src: alunoInicio, alt: 'Início do aluno no redesign', caption: 'Depois · Início do aluno', tone: 'after' },
+    ]}
+  />
+  <ShotRow
+    shots={[
+      { src: profInicio, alt: 'Início do professor no redesign', caption: 'Depois · Início do professor', tone: 'after' },
+      { src: gestorInicio, alt: 'Início do gestor no redesign', caption: 'Depois · Início do gestor', tone: 'after' },
+    ]}
+  />
+  <ShotRow
+    width="case"
+    aspect="16/9"
+    shots={[
+      {
+        src: mapaNavegacao,
+        alt: 'Mapa de navegação e caminhos por perfil',
+        caption: 'Processo · Mapa de navegação e caminhos por perfil',
+        tone: 'process',
+        bg: '#fff',
+      },
+    ]}
+  />
+
+  <CaseSection id="d2" label="Decisão 2" title="Um só lugar para estudar">
+    <p>
+      Videoteca e Aulas eram dois lugares para a mesma coisa, com buscas diferentes, capas repetidas, metadados zerados
+      e textos em inglês.
+    </p>
+    <p>
+      As duas viraram a Biblioteca de aprendizagem, com abas Aulas e Vídeos e uma busca única por título, matéria, série
+      e bimestre. Cada card diz a matéria, a série e o bimestre, em vez de depender da capa.
+    </p>
+    <p>
+      Dentro da aula, o objetivo vem primeiro e o caminho tem três passos. O resumo em texto permite estudar sem
+      depender do vídeo.
+    </p>
+  </CaseSection>
+  <ShotRow
+    shots={[
+      { src: antesAulas, alt: 'Lista de aulas antiga', caption: 'Antes · Aulas', tone: 'before' },
+      { src: alunoBiblioteca, alt: 'Biblioteca de aprendizagem no redesign', caption: 'Depois · Biblioteca de aprendizagem', tone: 'after' },
+    ]}
+  />
+  <ShotRow
+    shots={[
+      { src: antesCurso, alt: 'Página de curso antiga', caption: 'Antes · Curso', tone: 'before' },
+      { src: alunoAula, alt: 'Conteúdo da aula no redesign', caption: 'Depois · Conteúdo da aula', tone: 'after' },
+    ]}
+  />
+
+  <CaseSection id="d3" label="Decisão 3" title="Cadastros em que excluir deixa de ser a ação principal">
+    <p>
+      Nas listas antigas, a lixeira vermelha era o elemento mais forte de cada linha, os rótulos quebravam em várias
+      linhas ao lado dos campos e Filtrar aparecia em vermelho.
+    </p>
+    <p>
+      Escolas, Turmas e Estudantes passaram a seguir o mesmo modelo: busca e filtros num bloco com rótulos acima dos
+      campos, cadastrar e importar como ações da página, e Ver detalhes ou Editar cadastro em cada linha. Inativar fica
+      dentro dos detalhes. Turmas, abaixo, serve de exemplo para as três.
+    </p>
+    <BulletList
+      items={[
+        'Status com rótulo e cor: Ativa, Inativa, Em cadastro.',
+        'Série e turma como campos separados, em vez de “Nome da Turma” e “Turma”.',
+        'Importação com revisão dos registros antes de confirmar.',
+      ]}
+    />
+  </CaseSection>
+  <ShotRow
+    shots={[
+      { src: antesTurmas, alt: 'Lista de turmas antiga', caption: 'Antes · Turmas', tone: 'before' },
+      { src: gestorTurmas, alt: 'Gestão de turmas no redesign', caption: 'Depois · Gestão de turmas', tone: 'after' },
+    ]}
+  />
+
+  <CaseSection id="d4" label="Decisão 4" title="Recados viram comunicação, com estado e destinatário">
+    <p>
+      Os recados antigos começavam todos com a mesma frase, sem data, remetente ou sinal de leitura, e a agenda vazia
+      ocupava metade da tela.
+    </p>
+    <p>
+      Em Comunicação escolar, cada comunicado mostra se foi lido, a data, quem enviou e para quem. A leitura abre ao
+      lado da lista, um rascunho pode ser preparado na mesma tela e a agenda tem seu próprio período, com uma mensagem
+      clara quando está vazia.
+    </p>
+  </CaseSection>
+  <ShotRow
+    shots={[
+      { src: antesRecados, alt: 'Recados e agenda antigos', caption: 'Antes · Recados', tone: 'before' },
+      { src: profComunicacao, alt: 'Comunicação escolar no redesign', caption: 'Depois · Comunicação escolar', tone: 'after' },
+    ]}
+  />
+
+  <CaseSection id="evo" label="Evolução do produto" title="Dos cadastros ao acompanhamento">
+    <p>
+      A plataforma antiga registrava escolas, turmas e estudantes, mas não mostrava como eles estavam indo. Não havia
+      uma tela equivalente para comparar.
+    </p>
+    <p>
+      A proposta foi além do pedido visual: usar os resultados das avaliações para orientar o apoio. O professor parte
+      da turma, chega ao estudante e abre uma avaliação; o gestor vê o grupo e, na mesma tela, um estudante.
+    </p>
+    <BulletList
+      items={[
+        'Questões com maior índice de erro e uma sugestão de onde concentrar a revisão.',
+        'Desempenho do estudante ao lado da média da turma.',
+        'Revisão de cada questão com a resposta marcada, a correta e o status.',
+        'Limites explícitos: os resultados, sozinhos, não servem para diagnosticar evasão.',
+      ]}
+    />
+  </CaseSection>
+  <ShotRow
+    shots={[
+      { src: profTurma, alt: 'Acompanhamento da turma no redesign', caption: 'Novo · Acompanhamento da turma', tone: 'after' },
+      { src: profEstudante, alt: 'Acompanhamento do estudante no redesign', caption: 'Novo · Acompanhamento do estudante', tone: 'after' },
+    ]}
+  />
+  <ShotRow
+    shots={[
+      { src: profAvaliacao, alt: 'Detalhes da avaliação no redesign', caption: 'Novo · Detalhes da avaliação', tone: 'after' },
+      { src: gestorAcomp, alt: 'Acompanhamento pedagógico do gestor no redesign', caption: 'Novo · Acompanhamento pedagógico (gestor)', tone: 'after' },
+    ]}
+  />
+  <div class="wrap--case shots-note">
+    <p>Clique em uma tela para vê-la inteira. Os dados nas telas são ilustrativos.</p>
+  </div>
+</CaseLayout>
+
+<style>
+  .disclaimer {
+    margin: 56px auto 0;
+  }
+
+  .disclaimer p,
+  .shots-note p {
+    max-width: 760px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-subtle);
+  }
+
+  .shots-note {
+    margin: 0 auto;
+    padding-top: 16px;
+  }
+
+  /* Small bordered boxes: platform areas and "asked vs found" */
+  .areas,
+  .ask {
+    display: grid;
+    gap: 16px;
+  }
+
+  .areas {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    margin-top: 4px;
+  }
+
+  .ask {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    margin-bottom: 4px;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1px solid var(--warm-14);
+    border-radius: var(--radius-md);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .box--lg {
+    padding: 24px;
+    font-size: 16px;
+  }
+
+  .box--found {
+    border-color: rgba(84, 206, 226, 0.4);
+    color: var(--warm);
+  }
+
+  .label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+
+  .label--cyan {
+    color: var(--gold);
+  }
+
+  .label--rose {
+    color: var(--rose);
+  }
+
+  p.question {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--warm);
+    text-wrap: balance;
+  }
+
+  /* Diagnosis: full-width section, intro above the category grid */
+  .diag {
+    margin: 0 auto;
+    padding-top: calc(120px * var(--sp, 1));
+  }
+
+  .diag-body {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .diag-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 760px;
+  }
+
+  .diag-intro h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .diag-intro p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-subtle);
+  }
+</style>

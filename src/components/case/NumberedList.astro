@@ -1,0 +1,53 @@
+---
+/** Ruled, numbered list: "01  <strong>Cliente.</strong> Define saldo…". */
+interface Props {
+  /** Items (inline HTML allowed). */
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<ol class="numbered">
+  {
+    items.map((item, i) => (
+      <li>
+        <span class="n">{String(i + 1).padStart(2, '0')}</span>
+        <span set:html={item} />
+      </li>
+    ))
+  }
+</ol>
+
+<style>
+  .numbered {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    border-top: 1px solid var(--warm-14);
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--warm-14);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .n {
+    padding-top: 4px;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+  }
+
+  li :global(strong) {
+    color: var(--warm);
+  }
+</style>

@@ -1,0 +1,25 @@
+---
+/** Keyboard "skip to content" link; becomes visible on focus. */
+---
+
+<a href="#conteudo" class="skip" data-en="Skip to content">Pular para o conteúdo</a>
+
+<style>
+  .skip {
+    position: absolute;
+    left: 16px;
+    top: -48px;
+    z-index: var(--z-skip);
+    padding: 10px 18px;
+    border-radius: 10px;
+    background: var(--rose);
+    color: var(--void);
+    font-weight: 700;
+    font-size: 13px;
+    transition: top 0.2s;
+  }
+
+  .skip:focus {
+    top: 16px;
+  }
+</style>

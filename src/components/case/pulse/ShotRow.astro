@@ -1,0 +1,74 @@
+---
+/**
+ * Row of framed screenshots below a decision: before/after pairs, "Novo"
+ * pairs or a single process figure. Each shot scrolls inside a fixed-ratio
+ * frame and opens the Lightbox on click.
+ *
+ *   <ShotRow shots={[{ src, alt, caption: 'Antes · Home', tone: 'before' }, …]} />
+ *   <ShotRow width="case" aspect="16/9" shots={[…]} />   ← single figure at text width
+ */
+import type { ImageMetadata } from 'astro';
+import CaseFigure from '@/components/case/CaseFigure.astro';
+
+export interface Shot {
+  src: ImageMetadata;
+  alt: string;
+  caption: string;
+  /** Caption color: before (grey), after (cyan), process (lilac). */
+  tone?: 'before' | 'after' | 'process';
+  /** Frame background behind the screenshot. */
+  bg?: string;
+}
+
+interface Props {
+  shots: Shot[];
+  /** Frame ratio shared by every shot in the row. */
+  aspect?: string;
+  /** wide: 1320px two-up grid; case: one column at the case text width. */
+  width?: 'wide' | 'case';
+}
+
+const { shots, aspect = '2/1', width = 'wide' } = Astro.props;
+const sizes = width === 'wide' ? '(max-width: 1000px) 100vw, 640px' : '(max-width: 1160px) 100vw, 1112px';
+---
+
+<div class:list={['row', `row--${width}`]}>
+  {
+    shots.map((s) => (
+      <CaseFigure
+        src={s.src}
+        alt={s.alt}
+        caption={s.caption}
+        tone={s.tone}
+        captionMono
+        aspect={aspect}
+        scroll
+        bg={s.bg ?? '#f3f4f8'}
+        sizes={sizes}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .row {
+    display: grid;
+    align-items: start;
+    gap: 24px;
+    margin: 0 auto;
+    padding: 48px 24px 0;
+  }
+
+  .row--wide {
+    max-width: 1320px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+  }
+
+  .row--case {
+    max-width: var(--wrap-case);
+  }
+
+  .row :global(.fig) {
+    gap: 10px;
+  }
+</style>

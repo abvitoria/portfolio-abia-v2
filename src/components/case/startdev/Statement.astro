@@ -1,0 +1,83 @@
+---
+/**
+ * Points statement rows (dark theme): label + date on the left, signed value
+ * on the right — green for gains, red for redemptions ("−").
+ */
+interface Props {
+  items: { title: string; meta: string; value: string }[];
+  /** Tighter rows for the small preview. */
+  compact?: boolean;
+}
+
+const { items, compact = false } = Astro.props;
+---
+
+<div class:list={['statement', { 'statement--compact': compact }]}>
+  {
+    items.map((item) => (
+      <div class="row">
+        <div>
+          <div class="title">{item.title}</div>
+          <div class="meta">{item.meta}</div>
+        </div>
+        <div class:list={['value', { loss: item.value.startsWith('−') }]}>{item.value}</div>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 92px;
+    gap: 14px;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #1e2a42;
+  }
+
+  .title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #eaf1fb;
+  }
+
+  .meta {
+    margin-top: 2px;
+    font-size: 11.5px;
+    color: #8698b5;
+  }
+
+  .value {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+    color: #4ade80;
+  }
+
+  .value.loss {
+    color: #f0a5a5;
+  }
+
+  .statement--compact .row {
+    grid-template-columns: minmax(0, 1fr) 80px;
+    gap: 12px;
+    padding: 11px 0;
+  }
+
+  .statement--compact .row:last-child {
+    border-bottom: none;
+  }
+
+  .statement--compact .title {
+    font-size: 13px;
+  }
+
+  .statement--compact .meta {
+    font-size: 11px;
+  }
+
+  .statement--compact .value {
+    font-weight: 400;
+  }
+</style>

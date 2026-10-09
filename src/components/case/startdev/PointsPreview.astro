@@ -1,0 +1,66 @@
+---
+/** Compact dark "Pontos" screen next to the gamification cards. */
+import AppWindow from './AppWindow.astro';
+import Statement from './Statement.astro';
+
+const statement = [
+  { title: 'Resposta marcada como útil', meta: 'Hoje · Fórum', value: '+5' },
+  { title: 'Módulo 01 concluído', meta: '08 jan · Curso', value: '+50' },
+  { title: 'Resgate: curso de Git e GitHub', meta: '10 jan · Loja', value: '−150' },
+];
+---
+
+<AppWindow url="app.startdev.com.br/pontos" nav={false} dark class="preview">
+  <div class="sd-main">
+    <div>
+      <p class="sd-crumb">Saldo atualizado hoje</p>
+      <h3>840 pontos</h3>
+    </div>
+    <div class="sd-card level">
+      <div class="level-head">
+        <span>Faltam 160 para o nível Ouro</span>
+        <span class="ratio">840 / 1000</span>
+      </div>
+      <div class="sd-track" style="--p:84%"><span></span></div>
+    </div>
+    <Statement items={statement} compact />
+  </div>
+</AppWindow>
+
+<style>
+  .preview {
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+  }
+
+  .sd-main {
+    gap: 18px;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--sd-heading);
+  }
+
+  .level {
+    padding: 18px 20px;
+  }
+
+  .level-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--sd-heading);
+  }
+
+  .ratio {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--sd-link);
+  }
+</style>

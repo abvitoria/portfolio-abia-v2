@@ -1,0 +1,52 @@
+---
+/** Ruled definition list: term on the left, description spanning two columns. */
+interface Props {
+  /** Term + description (inline HTML allowed). */
+  items: { term: string; text: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<dl class="terms">
+  {
+    items.map((item) => (
+      <div class="row">
+        <dt set:html={item.term} />
+        <dd set:html={item.text} />
+      </div>
+    ))
+  }
+</dl>
+
+<style>
+  .terms {
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0 0;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: 6px 24px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--warm-14);
+  }
+
+  dt {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--warm);
+  }
+
+  dd {
+    grid-column: span 2;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+</style>

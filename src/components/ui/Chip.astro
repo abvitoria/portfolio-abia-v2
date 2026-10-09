@@ -1,0 +1,90 @@
+---
+/**
+ * Primary call-to-action: pill outline with a lilac fill that rises on hover
+ * and a trailing arrow. Renders as <a> when `href` is set, otherwise as a
+ * <button> (or a <span> when it lives inside another link).
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = {
+  href?: string;
+  /** Force the element; defaults to "a" with href, else "button". */
+  as?: 'a' | 'button' | 'span';
+  /** English label for the PT/EN toggle. */
+  en?: string;
+  /** Hide the trailing arrow. */
+  noArrow?: boolean;
+  class?: string;
+} & Omit<HTMLAttributes<'button'>, 'class'> &
+  Omit<HTMLAttributes<'a'>, 'class'>;
+
+const { href, as, en, noArrow = false, class: className, ...rest } = Astro.props;
+const Tag = as ?? (href ? 'a' : 'button');
+---
+
+<Tag
+  href={Tag === 'a' ? href : undefined}
+  class:list={['chip', { 'chip--no-arrow': noArrow }, className]}
+  data-en={en}
+  {...rest}
+>
+  <slot />
+</Tag>
+
+<style>
+  .chip {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 28px;
+    border: 1.5px solid var(--warm);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--warm);
+    font-family: var(--ff-sans);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      color 0.3s var(--ease-out),
+      border-color 0.3s;
+  }
+
+  .chip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--rose);
+    transform: translateY(101%);
+    transition: transform 0.55s var(--ease-out);
+  }
+
+  .chip::after {
+    content: '→';
+    transition: transform 0.35s var(--ease-out);
+  }
+
+  .chip--no-arrow::after {
+    content: none;
+  }
+
+  .chip:hover,
+  :global(a:hover) > .chip {
+    color: var(--void);
+    border-color: var(--rose);
+  }
+
+  .chip:hover::before,
+  :global(a:hover) > .chip::before {
+    transform: translateY(0);
+  }
+
+  .chip:hover::after,
+  :global(a:hover) > .chip::after {
+    transform: translateX(6px);
+  }
+</style>

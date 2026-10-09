@@ -1,0 +1,201 @@
+---
+/**
+ * Editorial case opening (Trade+, Vitalis, StartDev): colored badges,
+ * eyebrow, title with an accent phrase, lead, 2×2 facts and a visual on the
+ * right with a soft radial glow. The visual goes in the default slot.
+ *
+ *   <CaseIntro badges={[{ label: 'UX/UI CASE', color: '#0B7C8F' }]} … >
+ *     <img … />
+ *   </CaseIntro>
+ */
+interface Props {
+  badges: { label: string; color: string }[];
+  eyebrow: string;
+  /** Title (inline HTML allowed, e.g. <span class="serif">…</span>). */
+  title: string;
+  /** Lead paragraph (inline HTML allowed). */
+  lead: string;
+  facts: { label: string; value: string }[];
+  /** Facts as a ruled table (true) or a plain grid (false). */
+  ruledFacts?: boolean;
+  /** Glow color behind the visual (any CSS color). */
+  glow?: string;
+  glowSize?: number;
+  /** Grid template for text / visual columns. */
+  columns?: string;
+  /** Minimum height of the visual column. */
+  visualMinHeight?: number;
+}
+
+const {
+  badges,
+  eyebrow,
+  title,
+  lead,
+  facts,
+  ruledFacts = false,
+  glow = 'rgba(196, 168, 247, 0.42)',
+  glowSize = 420,
+  columns = 'minmax(0, 1fr) minmax(0, 1.02fr)',
+  visualMinHeight = 400,
+} = Astro.props;
+---
+
+<section class="intro" aria-labelledby="case-title">
+  <a href="/cases/" class="back">← Voltar aos cases</a>
+  <div class="grid" style={`--cols:${columns}`}>
+    <div>
+      <div class="badges">
+        {
+          badges.map((b) => (
+            <span class="badge" style={`background:${b.color}`}>
+              {b.label}
+            </span>
+          ))
+        }
+      </div>
+      <p class="eyebrow">{eyebrow}</p>
+      <h1 id="case-title" set:html={title} />
+      <p class="lead" set:html={lead} />
+      <dl class:list={['facts', { 'facts--ruled': ruledFacts }]}>
+        {
+          facts.map((f) => (
+            <div>
+              <dt>{f.label}</dt>
+              <dd set:html={f.value} />
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+    <div class="visual" style={`--glow:${glow};--glow-size:${glowSize}px;--min-h:${visualMinHeight}px`}>
+      <div class="glow" aria-hidden="true"></div>
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .intro {
+    max-width: var(--wrap-case);
+    margin: 2px auto 0;
+    padding: 2px 24px 0; /* CaseLayout already adds 120px at the top */
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 24px;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .back:hover {
+    color: var(--warm);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: var(--cols);
+    gap: 48px;
+    align-items: center;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(38px, 4.6vw, 56px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  h1 :global(.serif) {
+    font-size: 0.95em;
+  }
+
+  .lead {
+    margin: 0 0 30px;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 28px;
+    max-width: 520px;
+    margin: 0;
+  }
+
+  dt {
+    margin-bottom: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rose-light);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .facts--ruled {
+    gap: 0;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .facts--ruled div {
+    padding: 16px 20px 16px 0;
+    border-bottom: 1px solid var(--warm-14);
+  }
+
+  .facts--ruled div:nth-child(even) {
+    padding: 16px 0 16px 20px;
+    border-left: 1px solid var(--warm-14);
+  }
+
+  .facts--ruled dd {
+    font-size: 14.5px;
+  }
+
+  .visual {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: var(--min-h);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .glow {
+    position: absolute;
+    z-index: -1;
+    width: var(--glow-size);
+    height: var(--glow-size);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--glow), rgba(86, 21, 137, 0.08) 55%, transparent 72%);
+  }
+
+  @media (max-width: 860px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* The glow is wider than a phone screen. */
+    .visual {
+      min-height: 0;
+      overflow-x: clip;
+    }
+  }
+</style>

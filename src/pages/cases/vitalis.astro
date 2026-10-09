@@ -1,0 +1,1049 @@
+---
+import { Image } from 'astro:assets';
+import CaseLayout from '@/layouts/CaseLayout.astro';
+import CaseIntro from '@/components/case/CaseIntro.astro';
+import BrowserFrame from '@/components/case/vitalis/BrowserFrame.astro';
+import LaptopFrame from '@/components/case/LaptopFrame.astro';
+import PanelFigure from '@/components/case/PanelFigure.astro';
+import PhoneFrame from '@/components/case/vitalis/PhoneFrame.astro';
+import StyleGuide from '@/components/case/vitalis/StyleGuide.astro';
+
+import cover from '@/assets/covers/capa-vitalis.png';
+import pacienteInicio from '@/assets/vitalis/paciente-inicio.png';
+import userflow from '@/assets/vitalis/userflow.png';
+import wireframe from '@/assets/vitalis/wireframe-detalhes.png';
+import pacienteHome from '@/assets/vitalis/paciente-home.png';
+import agendamento from '@/assets/vitalis/agendamento.png';
+import preEntrada from '@/assets/vitalis/teleconsulta-preentrada.png';
+import video from '@/assets/vitalis/teleconsulta-video.png';
+import receitas from '@/assets/vitalis/receitas.png';
+import adminDashboard from '@/assets/vitalis/admin-dashboard.png';
+import heroMobile from '@/assets/vitalis/hero-mobile.png';
+import detalhesMobile from '@/assets/vitalis/detalhes-mobile.png';
+import receitasMobile from '@/assets/vitalis/receitas-mobile.png';
+
+// Lucide-style icon paths (24×24, stroke).
+const summary = [
+  {
+    href: '#cap-contexto',
+    icon: '<circle cx="9" cy="8" r="3"></circle><path d="M3.5 19a5.5 5.5 0 0 1 11 0"></path><path d="M16 5.5a3 3 0 0 1 0 5.2"></path><path d="M17 13.5a5.5 5.5 0 0 1 3.5 5.5"></path>',
+    title: 'Perfis, um só produto',
+    text: 'Paciente, médico e secretária, com necessidades e telas próprias.',
+    more: 'Ver o contexto →',
+  },
+  {
+    href: '#cap-processo',
+    icon: '<circle cx="12" cy="13" r="7"></circle><path d="M12 13V9"></path><path d="M9.5 3.5h5"></path>',
+    title: 'Prazo real apertado',
+    text: 'Cerca de um mês para entregar todos os fluxos.',
+    more: 'Ver o processo →',
+  },
+  {
+    href: '#cap-solucao',
+    icon: '<circle cx="12" cy="12" r="9"></circle><polygon points="15.5 8.5 10.5 10.5 8.5 15.5 13.5 13.5"></polygon>',
+    title: 'A direção tomada',
+    text: 'Estrutura antes da estética e acessibilidade como base.',
+    more: 'Ver a solução →',
+  },
+];
+
+const profiles = [
+  {
+    tint: 'rgba(176, 213, 240, 0.18)',
+    icon: '<circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 19a6.5 6.5 0 0 1 13 0"></path>',
+    title: 'Paciente',
+    text: 'Acesso fácil e direto, focado em agendar e entrar na teleconsulta rápido. Uso majoritariamente mobile.',
+  },
+  {
+    tint: 'rgba(126, 235, 224, 0.18)',
+    icon: '<path d="M6 3v5a4 4 0 0 0 8 0V3"></path><path d="M10 12v3a5 5 0 0 0 5 5 3 3 0 0 0 3-3v-2"></path><circle cx="18" cy="13" r="2"></circle>',
+    title: 'Médico',
+    text: 'Histórico do paciente acessível, chamada de vídeo integrada e emissão de guias. Uso desktop.',
+  },
+  {
+    tint: 'rgba(158, 108, 239, 0.22)',
+    icon: '<rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 3.5h6v3H9z"></path><path d="M8.5 11h7"></path><path d="M8.5 15h4"></path>',
+    title: 'Secretária / Triagem',
+    text: 'Gestão de filas, aprovação de comprovantes e agendamentos, sem o preenchimento manual de antes. Uso desktop.',
+  },
+];
+
+const steps = [
+  {
+    title: 'Revisão do documento de especificações',
+    text: 'Li o briefing do cliente de ponta a ponta para mapear escopo, regras e o que já estava definido.',
+  },
+  {
+    title: 'Roteiro de entrevista',
+    text: 'Montei um roteiro estruturado para conversar com o cliente sobre expectativas de negócio e de visual.',
+  },
+  {
+    title: 'Entrevista com o cliente',
+    text: 'Perguntei explicitamente sobre paleta de cores existente e referências visuais — para alinhar direção antes de investir tempo em pixel.',
+  },
+  {
+    title: 'Pesquisa de concorrentes',
+    text: 'Levantei concorrentes diretos e indiretos: plataformas de telemedicina e agendamento, serviços de saúde digital de fora do país e referências de interface na área da saúde.',
+  },
+];
+
+const accessProfiles = [
+  {
+    title: 'Usuário (paciente)',
+    text: 'Agenda consultas, entra na teleconsulta e acessa seus documentos. Acesso restrito aos próprios dados.',
+  },
+  {
+    title: 'Usuário Master / Administrador',
+    text: 'Gerencia usuários e perfis de acesso, com permissões configuráveis (ex.: Administrador, Consultas, Receitas).',
+  },
+  {
+    title: 'Secretária / responsável',
+    text: 'Faz a triagem: aprova comprovantes, gerencia a fila e os agendamentos do posto designado.',
+  },
+  {
+    title: 'Médico',
+    text: 'Atende as teleconsultas, acessa o histórico do paciente e emite receitas, atestados e pedidos de exame.',
+  },
+];
+
+const decisions = [
+  {
+    title: 'Alto contraste',
+    evidence: 'Uso frequente ao ar livre e em telas de baixa qualidade prejudica a leitura.',
+    decision: 'Paleta de <b>alto contraste</b> e tipografia legível, testadas para leitura sob luz forte.',
+  },
+  {
+    title: 'Botões grandes',
+    evidence: 'Parte do público é idosa e tem menos precisão de toque.',
+    decision: 'Alvos de toque <b>generosos</b> e ações principais sempre evidentes.',
+  },
+  {
+    title: 'Versão mobile leve',
+    evidence: 'Conexões de baixa largura de banda e aparelhos de baixo desempenho.',
+    decision: 'Mobile <b>enxuto</b>, focado no essencial do paciente, para carregar rápido.',
+  },
+];
+
+const navy = '#12324A';
+const teal = '#1CA9A0';
+const violet = '#6E3FC8';
+
+const screens = [
+  {
+    tag: 'PACIENTE · INÍCIO',
+    color: navy,
+    title: 'Um portal claro, com o essencial primeiro',
+    shots: [
+      {
+        src: pacienteHome,
+        alt: 'Tela inicial do paciente, com destaque para consultas online e acesso rápido a receitas, preparação e histórico',
+      },
+    ],
+    caption:
+      'Início com acesso rápido às tarefas mais comuns — agendar, ver consultas, receitas e atestados — e um caminho curto até a teleconsulta. O essencial primeiro, sem menu profundo.',
+  },
+  {
+    tag: 'AGENDAMENTO',
+    color: teal,
+    title: 'Escolher dia e horário sem depender da fila do posto',
+    shots: [
+      {
+        src: agendamento,
+        alt: 'Tela de agendamento de teleconsulta com calendário, horários disponíveis e lista de próximas consultas',
+      },
+    ],
+    caption:
+      'Calendário direto, horários em botões grandes e as próximas consultas sempre à vista — marcar um retorno deixa de exigir uma ida presencial.',
+  },
+  {
+    tag: 'TELECONSULTA',
+    color: navy,
+    title: 'Consentimento explícito e estados de espera bem resolvidos',
+    shots: [
+      {
+        src: preEntrada,
+        alt: 'Tela de pré-entrada da teleconsulta com dados do médico, horário e consentimento explícito de tratamento de dados de saúde',
+      },
+      {
+        src: video,
+        alt: 'Tela de teleconsulta por vídeo com aviso de que o médico ainda não entrou na chamada e opções de notificar suporte ou aguardar',
+      },
+    ],
+    caption:
+      'Antes de entrar, o paciente dá o consentimento de tratamento de dados de forma clara. Na sala, o estado “o médico ainda não entrou” oferece caminho (aguardar ou notificar o suporte) em vez de deixar a pessoa perdida.',
+  },
+  {
+    tag: 'DOCUMENTOS DIGITAIS',
+    color: violet,
+    title: 'Receitas, atestados e exames sem voltar ao balcão',
+    shots: [
+      {
+        src: receitas,
+        alt: 'Tela de receitas, atestados e pedidos de exame com abas, busca e cards de documentos para baixar ou visualizar',
+      },
+    ],
+    caption:
+      'Documentos emitidos nas teleconsultas ficam disponíveis para baixar ou visualizar — uma das dores que mais levava gente de volta à fila presencial.',
+    loose: true,
+  },
+  {
+    tag: 'ADMINISTRADORA · DESKTOP',
+    color: navy,
+    title: 'A gestão do posto num só painel',
+    shots: [
+      {
+        src: adminDashboard,
+        alt: 'Painel administrativo do posto: visão geral de atendimentos, consultas por bairro, especialidades procuradas e atividades pendentes a resolver',
+      },
+    ],
+    caption:
+      'A visão de gestão reúne o panorama do posto e uma fila de atividades pendentes com ação clara — aprovar comprovantes, revisar publicações e resolver transferências sem sair da tela.',
+    loose: true,
+  },
+];
+
+const phones = [
+  { src: heroMobile, alt: 'Seleção de perfil de acesso na versão mobile' },
+  {
+    src: detalhesMobile,
+    alt: 'Detalhes da consulta na versão mobile, com data, horário e ações de cancelar ou reagendar',
+  },
+  { src: receitasMobile, alt: 'Receitas ativas na versão mobile, com opções de baixar e visualizar' },
+];
+
+const learnings = [
+  {
+    title: 'Priorizar sob prazo',
+    items: [
+      'Com um mês para três perfis, decidi cedo o que ganharia alta fidelidade (a jornada do paciente) e o que ficaria mapeado só no fluxo (médico e secretária).',
+      'Começar por estrutura (flow e wireframe) antes da estética foi o que tornou o mês viável.',
+    ],
+  },
+  {
+    title: 'O que ficaria diferente',
+    items: [
+      'Uma pesquisa própria com usuários dos três perfis, em vez de partir só da documentação do cliente.',
+      'Acompanhar o uso após o lançamento para validar as decisões de acessibilidade com dado real.',
+    ],
+  },
+];
+---
+
+<CaseLayout
+  title="Vitalis Saúde · Telemedicina"
+  description="Telemedicina para três perfis muito diferentes em um mês: paciente, médico e secretária num só ecossistema da rede pública de saúde."
+  image={cover.src}
+  chapters={[
+    { id: 'cap-contexto', label: 'Contexto' },
+    { id: 'cap-processo', label: 'Processo' },
+    { id: 'cap-solucao', label: 'Solução' },
+    { id: 'cap-impacto', label: 'Impacto' },
+  ]}
+  ambient
+  showLang
+  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+>
+  <CaseIntro
+    badges={[
+      { label: 'UX/UI CASE', color: navy },
+      { label: 'SAÚDE · SETOR PÚBLICO', color: teal },
+      { label: 'MULTIPLATAFORMA', color: violet },
+    ]}
+    eyebrow="VITALIS SAÚDE · PRODUCT DESIGN · UX/UI"
+    title='Telemedicina para <span class="serif">três perfis</span> muito diferentes em um mês'
+    lead="Tirar pacientes de filas físicas e desafogar a triagem manual em postos de saúde — desenhando um ecossistema que servisse com igual facilidade a <strong>paciente, médico e secretária</strong>, cada um com proficiência digital e necessidades distintas."
+    facts={[
+      { label: 'MEU PAPEL', value: 'UX/UI · Research · Design system' },
+      { label: 'DURAÇÃO', value: '≈ 1 mês <span class="fact-note">· prazo apertado</span>' },
+      { label: 'FERRAMENTAS', value: 'Figma &amp; FigJam' },
+      { label: 'PLATAFORMA', value: 'Web · desktop &amp; mobile' },
+    ]}
+    ruledFacts
+    glow="rgba(28, 169, 160, 0.28)"
+    glowSize={360}
+    visualMinHeight={380}
+  >
+    <BrowserFrame url="vitalis-saude.gov.br/inicio" class="hero-browser">
+      <Image
+        src={pacienteInicio}
+        alt="Tela inicial do paciente na Vitalis Saúde, com acesso rápido a agendar consulta, receitas e histórico"
+        widths={[480, 940, 1440]}
+        sizes="(max-width: 860px) 100vw, 470px"
+        loading="eager"
+        fetchpriority="high"
+        class="hero-shot"
+      />
+    </BrowserFrame>
+    <div class="card hero-stat">
+      <span class="hero-stat__n">3</span>
+      <span class="hero-stat__label">perfis em um<br />só ecossistema</span>
+    </div>
+  </CaseIntro>
+
+  <!-- Resumo / índice -->
+  <section id="cap-contexto" aria-labelledby="resumo-title" class="rv sec summary">
+    <h2 id="resumo-title" class="sr-only">Resumo do case</h2>
+    <div class="cols-3">
+      {
+        summary.map((s) => (
+          <a href={s.href} class="card card--link summary-card">
+            <svg
+              width="34"
+              height="34"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              set:html={s.icon}
+            />
+            <span class="summary-card__title">{s.title}</span>
+            <p>
+              {s.text} <span class="summary-card__more">{s.more}</span>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Contexto -->
+  <section aria-labelledby="ctx-title" class="rv sec sec-narrow ctx">
+    <p class="eyebrow">Contexto</p>
+    <h2 id="ctx-title" class="h2">O produto e o que estava em jogo</h2>
+    <p class="lead">
+      A <strong>Vitalis Saúde</strong> foi concebida para aliviar o gargalo de atendimento em postos de saúde da rede
+      pública. A proposta era um sistema ponta a ponta que otimizasse o agendamento de consultas, a teleconsulta e a emissão
+      de documentos médicos digitais (receitas, atestados e pedidos de exame).
+    </p>
+    <p class="lead">
+      Não era um app único: era um ecossistema que precisava servir, com a mesma clareza, a três perfis com rotinas e níveis
+      de familiaridade digital bem diferentes.
+    </p>
+  </section>
+
+  <!-- Perfis -->
+  <section aria-labelledby="perfis-title" class="rv sec profiles">
+    <h2 id="perfis-title" class="sr-only">Perfis atendidos</h2>
+    <div class="cols-3">
+      {
+        profiles.map((p) => (
+          <div class="card profile">
+            <div class="profile__icon" style={`--tint:${p.tint}`}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                set:html={p.icon}
+              />
+            </div>
+            <div class="profile__title">{p.title}</div>
+            <p>{p.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- O problema -->
+  <div class="band band--purple problem">
+    <section aria-labelledby="prob-title" class="rv sec sec-narrow">
+      <p class="eyebrow">Contexto · O problema real</p>
+      <h2 id="prob-title" class="h2">Filas físicas extensas e uma triagem manual que travava todo mundo</h2>
+      <p class="lead">
+        Pacientes enfrentavam horas em filas presenciais só para agendar um retorno simples, pegar uma receita atualizada
+        ou retirar um atestado. Do outro lado do balcão, as secretárias se sobrecarregavam com preenchimento manual, e a
+        falta de um acompanhamento unificado alimentava o absenteísmo nas consultas.
+      </p>
+      <p class="lead">
+        O desafio central era desenhar um ecossistema que servisse com <strong
+          >igual facilidade a três perfis distintos</strong
+        >, com níveis de proficiência digital muito variados — do paciente idoso que abre o celular pela primeira vez ao
+        médico que precisa de eficiência entre uma consulta e outra.
+      </p>
+    </section>
+  </div>
+
+  <!-- Processo: ponto de partida -->
+  <section id="cap-processo" aria-labelledby="proc-title" class="rv sec sec-narrow process">
+    <p class="eyebrow">Processo · Ponto de partida</p>
+    <h2 id="proc-title" class="h2">Antes de desenhar, entender o negócio e o mercado</h2>
+    <p class="lead">
+      Com um prazo curto, não dava para improvisar. Estruturei a partida em passos objetivos, cada um respondendo a uma
+      pergunta concreta antes de eu tocar em qualquer tela:
+    </p>
+    <div>
+      {
+        steps.map((s, i) => (
+          <div class="num-row">
+            <span class="num-row__n">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="step__title">{s.title}</div>
+              <div class="step__text">{s.text}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="access">
+      <div class="access__head">
+        <span class="pill pill--dec">Decisão</span>
+        <div class="access__title">Mapeamento de perfis por documentação e regras de negócio</div>
+      </div>
+      <p class="access__text">
+        A partir da documentação do cliente e das regras de negócio, mapeei os perfis de acesso e o que cada um pode fazer
+        no sistema — a base que definiu permissões, telas e fluxos antes do desenho. Cada perfil ganhou um nível de acesso
+        e um posto de saúde designado.
+      </p>
+      <div class="cols-2 access__grid">
+        {
+          accessProfiles.map((a) => (
+            <div class="card access-card">
+              <div class="access-card__title">{a.title}</div>
+              <p>{a.text}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="access__note">
+        Os perfis vêm da documentação e das regras de negócio do cliente; neste projeto não houve pesquisa de persona com
+        usuário final.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sitemap / user flow -->
+  <section aria-labelledby="flow-title" class="rv sec flow">
+    <div class="sec-narrow intro-block">
+      <p class="eyebrow">Processo · Arquitetura</p>
+      <h2 id="flow-title" class="h2">Sitemap e user flow por perfil</h2>
+      <p class="lead">
+        Mapeei a jornada de cada perfil antes dos wireframes, para dimensionar o produto — quantidade de telas e estimativa
+        de tempo de desenvolvimento — e alinhar isso com o time desde o início.
+      </p>
+    </div>
+    <PanelFigure
+      src={userflow}
+      alt="Sitemap e user flow completos por perfil (usuário, usuário master, secretaria e médicos)"
+      caption="User flow completo por perfil — a base para estimar telas e prazo de desenvolvimento."
+      width={920}
+      centered
+    />
+  </section>
+
+  <!-- Solução: style guide + wireframes -->
+  <div id="cap-solucao" class="band band--tint solution">
+    <section aria-labelledby="ds-title" class="rv sec style-guide">
+      <div class="sec-narrow intro-block">
+        <p class="eyebrow">Solução · Fundação</p>
+        <h2 id="ds-title" class="h2">Um style guide antes de qualquer tela</h2>
+        <p class="lead">
+          O cliente já tinha logomarca, paleta e fontes definidas. Meu primeiro passo de design foi construir um <strong
+            >style guide no Figma</strong
+          > para padronizar esses elementos e garantir consistência entre web e mobile — e entre os três perfis. Não foi um
+          design system: é a gramática visual que as telas herdam, documentada abaixo com os valores realmente aplicados.
+        </p>
+      </div>
+      <StyleGuide />
+      <p class="style-guide__note">
+        Este projeto não teve um design system: não houve biblioteca versionada, governança ou documentação de
+        contribuição. O que existiu foi este style guide: tokens e componentes padronizados no Figma antes das telas. Os
+        valores acima foram extraídos das interfaces entregues.
+      </p>
+    </section>
+
+    <section aria-labelledby="wire-title" class="rv sec wireframes">
+      <div class="sec-narrow intro-block">
+        <p class="eyebrow">Solução · Estrutura antes da estética</p>
+        <h2 id="wire-title" class="h2">Wireframes de baixa fidelidade primeiro</h2>
+        <p class="lead">
+          Escolhi começar por wireframes de baixa fidelidade de propósito: definir estrutura e hierarquia antes da estética
+          permitia ajustes rápidos e, principalmente, alinhar expectativas com o cliente antes de investir na alta
+          fidelidade.
+        </p>
+      </div>
+      <PanelFigure
+        src={wireframe}
+        alt="Wireframe de baixa fidelidade da tela de detalhes da consulta: dados do atendimento, histórico, próximos passos e dúvidas frequentes"
+        caption="Wireframe lo-fi da tela de detalhes da consulta — estrutura, navegação e hierarquia resolvidas antes da estética, e validadas com o cliente."
+        width={820}
+        centered
+      />
+    </section>
+  </div>
+
+  <!-- Acessibilidade: evidência → decisão -->
+  <section aria-labelledby="acc-title" class="rv sec accessibility">
+    <div class="sec-narrow intro-block">
+      <p class="eyebrow">Solução · Decisões</p>
+      <h2 id="acc-title" class="h2">Acessibilidade como requisito do público</h2>
+      <p class="lead">
+        Público de saúde pública, muitos idosos, dispositivos modestos e conexões instáveis: cada decisão de UI partiu de
+        uma evidência concreta desse contexto.
+      </p>
+      <div class="legend">
+        <span class="pill pill--ev">Evidência</span>
+        <span class="pill pill--dec">Decisão</span>
+      </div>
+    </div>
+    <div class="cols-3 decisions">
+      {
+        decisions.map((d) => (
+          <div class="dcard">
+            <h4>{d.title}</h4>
+            <p class="beat">
+              <span class="pill pill--ev">Evidência</span>
+              {d.evidence}
+            </p>
+            <p class="beat">
+              <span class="pill pill--dec">Decisão</span>
+              <Fragment set:html={d.decision} />
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Solução: interfaces por perfil -->
+  <section aria-labelledby="exp-title" class="rv sec experience">
+    <div class="sec-narrow intro-block">
+      <p class="eyebrow">Solução · A experiência final</p>
+      <h2 id="exp-title" class="h2">Uma interface para cada perfil, um só sistema</h2>
+      <p class="lead">
+        Com o style guide e os wireframes validados, subi a fidelidade. Desktop para quem opera o dia a dia; mobile leve
+        para o paciente. Abaixo, a jornada do paciente ponta a ponta.
+      </p>
+    </div>
+
+    {
+      screens.map((s) => (
+        <div class:list={['screen', { 'screen--loose': s.loose }]}>
+          <span class="badge screen__tag" style={`background:${s.color}`}>
+            {s.tag}
+          </span>
+          <h3 class="screen__title">{s.title}</h3>
+          <div class="screen__shots">
+            {s.shots.map((shot) => (
+              <LaptopFrame src={shot.src} alt={shot.alt} height={460} />
+            ))}
+          </div>
+          <p class="screen__caption">{s.caption}</p>
+        </div>
+      ))
+    }
+
+    <div class="sec-narrow mobile-intro">
+      <span class="badge screen__tag" style={`background:${teal}`}>PACIENTE · MOBILE LEVE</span>
+      <h3 class="screen__title">A mesma experiência, enxuta para o celular</h3>
+      <p>
+        Para conexões instáveis e aparelhos modestos, a versão mobile prioriza o essencial do paciente — identificar-se,
+        acompanhar a consulta e acessar receitas — com alvos de toque generosos.
+      </p>
+    </div>
+    <div class="phones">
+      {phones.map((p) => <PhoneFrame src={p.src} alt={p.alt} />)}
+    </div>
+  </section>
+
+  <!-- Impacto: restrição como senioridade -->
+  <div id="cap-impacto" class="band band--purple impact">
+    <section aria-labelledby="prazo-title" class="rv sec sec-narrow">
+      <p class="eyebrow">Impacto · Gestão sob pressão</p>
+      <h2 id="prazo-title" class="h2">Entregar três perfis, em um mês, sem perder a base</h2>
+      <p class="lead">
+        A restrição de prazo foi o eixo do projeto. Foi ela que justificou começar pela pesquisa e pelos wireframes de
+        baixa fidelidade — priorizar o que destrava decisão em vez de perseguir o pixel cedo demais. Partir dos perfis já
+        descritos na documentação do cliente e construir um style guide logo no início foram escolhas para ganhar
+        velocidade sem abrir mão de consistência.
+      </p>
+      <p class="lead">
+        Na prática, isso significou decidir cedo o que aprofundar e o que deixar para uma fase seguinte — e a pesquisa com
+        usuário final ficou nessa segunda lista.
+      </p>
+    </section>
+  </div>
+
+  <!-- Escopo entregue (sem KPI) -->
+  <section aria-labelledby="escopo-title" class="rv sec sec-narrow scope">
+    <p class="eyebrow">Impacto · Escopo entregue</p>
+    <h2 id="escopo-title" class="h2">O que o projeto entregou</h2>
+    <p class="lead">
+      O escopo cobriu <strong>três perfis de usuário</strong> (paciente, médico e secretária) em <strong
+        >duas plataformas</strong
+      > (desktop e mobile), a partir de um <strong>style guide</strong> próprio e dos <strong>fluxos completos</strong> mapeados
+      por perfil — do agendamento à teleconsulta e à emissão de documentos digitais. As telas em alta fidelidade deste case
+      destacam a jornada do paciente; os fluxos de médico e secretária estão mapeados no sitemap acima. São contagens de
+      entregável, não métricas de resultado.
+    </p>
+  </section>
+
+  <!-- Retorno do cliente (neutro) -->
+  <section aria-labelledby="retorno-title" class="rv sec sec-narrow feedback">
+    <div class="feedback__box">
+      <p class="eyebrow" id="retorno-title">Impacto · Retorno</p>
+      <p class="feedback__text">
+        No momento da escrita deste case, a plataforma <strong>ainda não havia sido lançada</strong>, então não há dados de
+        uso em produção. O retorno do cliente sobre as entregas foi relatado como positivo — e os indicadores de sucesso
+        ficariam para uma fase de acompanhamento após o lançamento.
+      </p>
+    </div>
+  </section>
+
+  <!-- Aprendizados -->
+  <section aria-labelledby="apr-title" class="rv sec learnings">
+    <div class="learnings__box">
+      <p class="eyebrow">Aprendizados</p>
+      <h2 id="apr-title" class="h2">O que ficou desse projeto</h2>
+      <div class="cols-2 learnings__grid">
+        {
+          learnings.map((l) => (
+            <div>
+              <div class="learnings__title">{l.title}</div>
+              <ul>
+                {l.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</CaseLayout>
+
+<style>
+  /* ---------- Hero visual ---------- */
+  .hero-browser {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+  }
+
+  .hero-shot {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .hero-stat {
+    position: absolute;
+    left: -8px;
+    bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+  }
+
+  .hero-stat__n {
+    font-family: var(--ff-display);
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 0.9;
+  }
+
+  .hero-stat__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  :global(.fact-note) {
+    color: var(--rose-light);
+  }
+
+  /* ---------- Section rhythm ---------- */
+  .summary {
+    margin-top: calc(104px * var(--sp, 1));
+  }
+
+  .ctx {
+    margin-top: calc(96px * var(--sp, 1));
+  }
+
+  .profiles {
+    margin-top: 44px;
+  }
+
+  .problem {
+    margin-top: calc(96px * var(--sp, 1));
+  }
+
+  .problem section {
+    padding-top: calc(96px * var(--sp, 1));
+    padding-bottom: calc(96px * var(--sp, 1));
+  }
+
+  .impact section {
+    padding-top: calc(90px * var(--sp, 1));
+    padding-bottom: calc(90px * var(--sp, 1));
+  }
+
+  .process,
+  .solution,
+  .impact {
+    margin-top: calc(110px * var(--sp, 1));
+  }
+
+  .flow {
+    margin-top: calc(80px * var(--sp, 1));
+  }
+
+  .accessibility,
+  .experience {
+    margin-top: calc(104px * var(--sp, 1));
+  }
+
+  .scope {
+    margin-top: calc(100px * var(--sp, 1));
+  }
+
+  .feedback {
+    margin-top: 60px;
+  }
+
+  .learnings {
+    margin-top: calc(80px * var(--sp, 1));
+  }
+
+  /* ---------- Shared text bits ---------- */
+  .h2 {
+    margin-bottom: 18px;
+  }
+
+  .lead {
+    margin: 0 0 18px;
+  }
+
+  .lead:last-child {
+    margin-bottom: 0;
+  }
+
+  .intro-block {
+    margin-bottom: 30px;
+  }
+
+  /* ---------- Summary cards ---------- */
+  .summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 26px;
+    font-weight: 600;
+  }
+
+  .summary-card svg {
+    margin-bottom: 2px;
+    color: var(--text-body);
+  }
+
+  .summary-card__title {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .summary-card p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .summary-card__more {
+    font-weight: 700;
+  }
+
+  /* ---------- Contexto / perfis ---------- */
+  .ctx .h2 {
+    margin-bottom: 22px;
+  }
+
+  .profile {
+    padding: 26px;
+  }
+
+  .profile__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: var(--tint);
+  }
+
+  .profile__title {
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .profile p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* ---------- Bands ---------- */
+  .problem .h2 {
+    margin-bottom: 26px;
+  }
+
+  .impact .h2 {
+    margin-bottom: 24px;
+  }
+
+  .problem .lead,
+  .impact .lead {
+    margin-bottom: 22px;
+  }
+
+  .problem .lead:last-child,
+  .impact .lead:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ---------- Processo ---------- */
+  .process .lead {
+    margin-bottom: 22px;
+  }
+
+  .step__title {
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-body);
+  }
+
+  .step__text {
+    font-size: 14px;
+  }
+
+  .access {
+    margin-top: 32px;
+  }
+
+  .access__head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .access__head .pill {
+    flex: none;
+  }
+
+  .access__title {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .access__text {
+    margin: 0 0 18px;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+
+  .access__grid {
+    gap: 14px;
+  }
+
+  .access-card {
+    padding: 20px 22px;
+  }
+
+  .access-card__title {
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .access-card p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .access__note {
+    margin: 16px 0 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-subtle);
+  }
+
+  /* ---------- Solução ---------- */
+  .style-guide {
+    padding-top: calc(96px * var(--sp, 1));
+    padding-bottom: 40px;
+  }
+
+  .style-guide__note {
+    max-width: 820px;
+    margin: 14px 0 0;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--text-subtle);
+  }
+
+  .wireframes {
+    padding-top: 20px;
+    padding-bottom: calc(96px * var(--sp, 1));
+  }
+
+  .wireframes .intro-block {
+    margin-bottom: 28px;
+  }
+
+  /* ---------- Acessibilidade ---------- */
+  .accessibility .intro-block {
+    margin-bottom: 22px;
+  }
+
+  .accessibility .h2 {
+    margin-bottom: 16px;
+  }
+
+  .accessibility .lead {
+    margin-bottom: 8px;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .decisions {
+    gap: 20px;
+  }
+
+  .beat .pill {
+    margin-right: 8px;
+  }
+
+  /* ---------- Interfaces por perfil ---------- */
+  .experience .intro-block {
+    margin-bottom: 36px;
+  }
+
+  .screen {
+    margin-bottom: 44px;
+  }
+
+  .screen--loose {
+    margin-bottom: 52px;
+  }
+
+  .screen__tag {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .screen__title {
+    margin: 0 0 16px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .screen__shots {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .screen__caption {
+    margin: 16px 0 0;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--text-muted);
+  }
+
+  .mobile-intro {
+    margin-bottom: 26px;
+  }
+
+  .mobile-intro .screen__title {
+    margin-bottom: 10px;
+  }
+
+  .mobile-intro p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .phones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+  }
+
+  /* ---------- Impacto ---------- */
+  .feedback__box {
+    padding: 30px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(160deg, rgba(158, 108, 239, 0.16), rgba(158, 108, 239, 0.14));
+  }
+
+  .feedback__box .eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .feedback__text {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .learnings__box {
+    padding: 56px 46px;
+    border-radius: 32px;
+    background: linear-gradient(140deg, var(--plum), #5a2690);
+  }
+
+  .learnings__box .h2 {
+    margin-bottom: 30px;
+  }
+
+  .learnings__grid {
+    gap: 36px;
+  }
+
+  .learnings__title {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--rose-light);
+  }
+
+  .learnings ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  @media (max-width: 860px) {
+    .learnings__box {
+      padding: 40px 24px;
+    }
+  }
+</style>

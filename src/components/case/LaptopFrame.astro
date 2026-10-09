@@ -1,0 +1,141 @@
+---
+/**
+ * Laptop mockup: dark lid with a camera dot, a fixed-height screen where a
+ * tall screenshot scrolls, a metallic base and an optional caption.
+ *
+ *   <LaptopFrame src={img} alt="…" caption="…" height={460} />
+ */
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  /** Caption under the laptop (inline HTML allowed). */
+  caption?: string;
+  /** Visible screen height (px); the screenshot scrolls inside it. */
+  height?: number;
+  /** Device width (px). */
+  maxWidth?: number;
+  class?: string;
+}
+
+const { src, alt, caption, height = 440, maxWidth = 860, class: className } = Astro.props;
+const shown = maxWidth - 24;
+const widths = [480, shown, shown * 2].map((w) => Math.min(w, src.width));
+---
+
+<figure class:list={['laptop', className]} style={`--max:${maxWidth}px`}>
+  <div class="device">
+    <div class="lid">
+      <div class="screen" style={`--h:${height}px`} tabindex="0" role="group" aria-label={alt}>
+        <Image
+          src={src}
+          alt={alt}
+          width={Math.min(src.width, shown * 2)}
+          widths={[...new Set(widths)]}
+          sizes={`(max-width: ${maxWidth + 48}px) 100vw, ${shown}px`}
+        />
+      </div>
+    </div>
+    <div class="base"></div>
+  </div>
+  {caption && <figcaption set:html={caption} />}
+</figure>
+
+<style>
+  .laptop {
+    margin: 0;
+  }
+
+  .device {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+
+  .lid {
+    padding: 12px 12px 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background: #1c1c1f;
+    box-shadow: 0 20px 40px rgba(11, 12, 61, 0.18);
+  }
+
+  .lid::before {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    background: #3a3a3e;
+  }
+
+  /* Short screenshots shrink the screen; tall ones scroll inside it. */
+  .screen {
+    max-height: var(--h);
+    overflow: hidden auto;
+    border-radius: var(--radius-sm);
+    background: rgba(10, 12, 74, 0.94);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .screen::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  .screen::-webkit-scrollbar-thumb {
+    border: 2px solid #fff;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  .screen img {
+    width: 100%;
+    height: auto;
+  }
+
+  .base {
+    position: relative;
+    height: 15px;
+    margin: 0 -18px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(#dedee3, #b7b7bd);
+  }
+
+  .base::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 120px;
+    height: 7px;
+    border-radius: 0 0 8px 8px;
+    background: #a9a9af;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 560px) {
+    .lid {
+      padding: 8px 8px 0;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .base {
+      height: 10px;
+      margin: 0 -8px;
+    }
+
+    .base::after {
+      width: 64px;
+      height: 5px;
+    }
+  }
+
+  figcaption {
+    margin-top: 16px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--text-muted);
+  }
+</style>

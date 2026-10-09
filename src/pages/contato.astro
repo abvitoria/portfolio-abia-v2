@@ -1,0 +1,154 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BriefForm from '@/components/contact/BriefForm.astro';
+import ChannelRow from '@/components/contact/ChannelRow.astro';
+import Kicker from '@/components/ui/Kicker.astro';
+import PageHero from '@/components/ui/PageHero.astro';
+import SignOff from '@/components/ui/SignOff.astro';
+import { t } from '@/data/i18n';
+import { site } from '@/data/site';
+---
+
+<BaseLayout
+  title="Contato"
+  description="Freela, vaga efetiva ou mentoria: fale com Ábia Bognola por email, LinkedIn ou pelo briefing rápido."
+>
+  <PageHero
+    id="c-title"
+    top={{
+      left: { strong: t('CONVERSAR', "LET'S TALK"), sub: t('BRASIL · GMT−3', 'BRAZIL · GMT−3') },
+      right: { strong: '/contact', sub: t('resposta em 1 dia útil', 'reply within 1 business day') },
+    }}
+    open={t(
+      'Freela, vaga efetiva ou mentoria: <span class="k">me conta o que você precisa.</span>',
+      'Freelance, full-time or mentoring: <span class="k">tell me what you need.</span>',
+    )}
+    title={t('MANDA<br/>UM <span class="n script">oi</span>.')}
+    sub={t(
+      'Três formas de falar comigo, <em>conforme o que você precisa</em>.',
+      'Three ways to reach me, <em>depending on what you need</em>.',
+    )}
+    lead={t(
+      'Email para briefing e proposta. LinkedIn para recado rápido ou indicação. E <b>os cases</b>, se quiser entender meu processo antes de escrever.',
+      "Email for briefs and proposals. LinkedIn for quick notes or referrals. And the cases, if you'd like to see my process before writing.",
+    )}
+  />
+
+  <section class="channels" aria-label="Canais">
+    <div class="wrap">
+      <ChannelRow
+        n="01"
+        href={`mailto:${site.email}`}
+        ariaLabel="Enviar email"
+        kind={t('Email · briefing e proposta', 'Email · briefs and proposals')}
+        value={t('abiabognola14<br/>@gmail.com')}
+        note={t(
+          'Para briefing, orçamento ou apresentação de projeto — tudo o que precisa de contexto.',
+          'For briefs, budgets or project pitches — anything that needs context.',
+        )}
+        foot={t('resposta · ~1 dia', 'reply · ~1 day')}
+        action={t('Escrever', 'Write')}
+      />
+      <ChannelRow
+        n="02"
+        href={site.linkedin}
+        external
+        ariaLabel="LinkedIn (abre em nova aba)"
+        kind={t('LinkedIn · uma linha', 'LinkedIn · short line')}
+        value={t('/in/<br/>ábia-bognola')}
+        note={t(
+          'Recado rápido, conexão, indicação. Também é onde eu atualizo experiência e mentorias.',
+          'Quick note, intro, referral. Also where I keep experience and mentoring in sync.',
+        )}
+        foot={t('resposta · flexível', 'reply · flexible')}
+        action={t('Abrir', 'Open')}
+      />
+      <ChannelRow
+        n="03"
+        href="/cases/"
+        ariaLabel="Ver cases antes de escrever"
+        kind={t('Cases · antes de escrever', 'Cases · before writing')}
+        value={t('Lê os<br/>cases antes.', 'Read the<br/>cases first.')}
+        note={t(
+          'Cada case mostra o problema, as decisões e o que ficou sem validar — dá para ver se meu jeito de trabalhar serve ao seu time.',
+          'Each case shows the problem, the decisions and what was left unvalidated — enough to tell whether my way of working fits your team.',
+        )}
+        foot={t('leitura · no seu tempo', 'read · at your pace')}
+        action={t('Ver cases', 'See work')}
+      />
+    </div>
+  </section>
+
+  <section class="brief-sec" aria-labelledby="brief-title">
+    <div class="wrap grid12">
+      <Kicker
+        class="kick"
+        label={t('· briefing rápido', '· project brief')}
+        title={t('algumas coisas que adiantam', 'a few things that speed things up')}
+      />
+      <h2 id="brief-title" class="head rv" data-en="Tell me <em>about your</em><br/>project.">
+        Me conta <em>sobre o</em><br />seu projeto.
+      </h2>
+      <p
+        class="intro rv"
+        data-en="Answer what you can and skip what you can't. On the first reply I already send an <b>estimate and a scope cut</b>."
+      >
+        Responde o que quiser e pula o que não couber ainda. Na primeira resposta já devolvo <b
+          >estimativa e uma proposta de recorte de escopo</b
+        >.
+      </p>
+      <BriefForm />
+    </div>
+  </section>
+
+  <SignOff size="md" />
+</BaseLayout>
+
+<style>
+  .channels {
+    padding: 60px 0;
+  }
+
+  .brief-sec {
+    position: relative;
+    padding: 22vh 0 14vh;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .brief-sec :global(.kick) {
+    grid-column: 1 / 4;
+  }
+
+  .head {
+    grid-column: 5 / 13;
+    margin: 0 0 24px;
+    font-family: var(--ff-display);
+    font-weight: 400;
+    font-size: clamp(48px, 7vw, 110px);
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    color: var(--warm);
+  }
+
+  .head :global(em) {
+    font-family: var(--ff-sans);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.6em;
+    color: var(--rose);
+  }
+
+  .intro {
+    grid-column: 5 / 13;
+    max-width: 640px;
+    margin: 0 0 44px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--warm-70);
+  }
+
+  .intro b {
+    font-weight: 500;
+    color: var(--warm);
+  }
+</style>

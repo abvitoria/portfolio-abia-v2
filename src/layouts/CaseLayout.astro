@@ -1,0 +1,52 @@
+---
+/**
+ * Layout for case study pages. Adds the case pattern stylesheet, the
+ * chapter pill (SectionNav), the zoom Lightbox and the closing CTA.
+ */
+import '@/styles/case.css';
+import BaseLayout from './BaseLayout.astro';
+import CaseCTA from '@/components/case/CaseCTA.astro';
+import Lightbox from '@/components/case/Lightbox.astro';
+import SectionNav from '@/components/ui/SectionNav.astro';
+import { t } from '@/data/i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Cover used for social previews. */
+  image?: string;
+  /** Chapters for the floating pill: [{ id, label }] */
+  chapters?: { id: string; label: string }[];
+  ambient?: boolean;
+  showLang?: boolean;
+  /** Closing CTA copy (set `cta={false}` to render your own). */
+  cta?: { title?: string; text?: string } | false;
+}
+
+const { title, description, image, chapters = [], ambient = false, showLang = false, cta = {} } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image} ambient={ambient} showLang={showLang} footer={false}>
+  <div class="case">
+    <slot />
+    {cta && <CaseCTA {...cta} />}
+  </div>
+  <Fragment slot="after-main">
+    {
+      chapters.length > 0 && (
+        <SectionNav
+          label="Capítulos do case"
+          items={chapters.map((c) => ({ id: c.id, label: t(c.label) }))}
+        />
+      )
+    }
+    <Lightbox />
+  </Fragment>
+</BaseLayout>
+
+<style>
+  .case {
+    min-height: 100vh;
+    padding-top: 120px;
+  }
+</style>

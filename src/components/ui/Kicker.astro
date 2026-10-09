@@ -1,0 +1,45 @@
+---
+/**
+ * Section marker: small lilac mono label with an optional bold second line.
+ *   · prólogo
+ *   como vejo o design
+ */
+import type { L } from '@/data/i18n';
+
+interface Props {
+  label: L;
+  title?: L;
+  class?: string;
+}
+
+const { label, title, class: className } = Astro.props;
+const html = (l: L | undefined, key: 'pt' | 'en') =>
+  l ? (key === 'en' ? (l.en ?? l.pt) : l.pt) : undefined;
+const pt = title ? `${label.pt}<br/><b>${title.pt}</b>` : label.pt;
+const en =
+  label.en || title?.en
+    ? title
+      ? `${html(label, 'en')}<br/><b>${html(title, 'en')}</b>`
+      : html(label, 'en')
+    : undefined;
+---
+
+<div class:list={['kicker', className]} data-en={en} set:html={pt} />
+
+<style>
+  .kicker {
+    font-family: var(--ff-mono);
+    font-size: var(--fs-label);
+    letter-spacing: 0.1em;
+    line-height: 1.55;
+    text-transform: uppercase;
+    color: var(--rose);
+  }
+
+  .kicker :global(b) {
+    display: block;
+    margin-top: 6px;
+    font-weight: 500;
+    color: var(--warm);
+  }
+</style>

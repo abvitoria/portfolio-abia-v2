@@ -1,0 +1,26 @@
+---
+/** Small mono tag (case keywords). */
+import type { L } from '@/data/i18n';
+
+interface Props {
+  label: L;
+}
+
+const { label } = Astro.props;
+---
+
+<span class="tag" data-en={label.en} set:html={label.pt} />
+
+<style>
+  .tag {
+    padding: 5px 10px;
+    border: 1px solid var(--warm-14);
+    border-radius: var(--radius-xs);
+    background: rgba(255, 255, 255, 0.02);
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--warm-70);
+  }
+</style>

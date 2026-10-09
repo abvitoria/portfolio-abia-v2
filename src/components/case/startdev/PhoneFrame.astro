@@ -1,0 +1,82 @@
+---
+/**
+ * StartDev mobile app frame: phone bezel, status bar, app header and bottom
+ * tab bar around a screen body (default slot).
+ *
+ *   <PhoneFrame nav="forum">…</PhoneFrame>
+ *   <PhoneFrame nav={false} status="Rascunho salvo">…</PhoneFrame>   ← editor header, no tab bar
+ */
+import { Image } from 'astro:assets';
+import './startdev.css';
+import SdIcon, { type SdIconName } from './SdIcon.astro';
+import mark from '@/assets/case/startdev-mark.png';
+import avatar from '@/assets/case/marielly-avatar.png';
+
+type NavKey = 'inicio' | 'cursos' | 'atividades' | 'forum' | 'perfil';
+
+interface Props {
+  dark?: boolean;
+  /** Active tab; `false` hides the tab bar. */
+  nav?: NavKey | false;
+  /** Editor header: brand + this status text instead of the greeting. */
+  status?: string;
+}
+
+const { dark = false, nav = 'inicio', status } = Astro.props;
+
+const tabs: { key: NavKey; label: string; icon: SdIconName }[] = [
+  { key: 'inicio', label: 'Início', icon: 'home' },
+  { key: 'cursos', label: 'Cursos', icon: 'courses' },
+  { key: 'atividades', label: 'Atividades', icon: 'activities' },
+  { key: 'forum', label: 'Fórum', icon: 'forum' },
+  { key: 'perfil', label: 'Perfil', icon: 'profile' },
+];
+---
+
+<div class="sd-ph">
+  <div class:list={['sd-ph-scr', { 'sd-ph-scr--dark': dark }]}>
+    <div class="sd-ph-bar"><span>9:41</span><SdIcon name="signal" /></div>
+    <div class="sd-ph-head">
+      <Image src={mark} alt="Logo StartDev" class="sd-mark" width={26} densities={[1, 2]} />
+      {
+        status ? (
+          <>
+            <span class="who">StartDev</span>
+            <span class="status">{status}</span>
+          </>
+        ) : (
+          <>
+            <span class="who">Bem-vinda, Marielly</span>
+            <span class="sd-bell" role="img" aria-label="Notificações: 3 não lidas">
+              <SdIcon name="bell" size={14} />
+              <span class="bdg" />
+            </span>
+            <Image src={avatar} alt="" class="sd-avatar" width={30} densities={[1, 2]} />
+          </>
+        )
+      }
+    </div>
+    <div class="sd-ph-body">
+      <slot />
+    </div>
+    {
+      nav !== false && (
+        <nav class="sd-ph-nav" aria-label="Navegação do app">
+          {tabs.map((t) => (
+            <a href="#ui-title" class:list={{ on: t.key === nav }}>
+              <SdIcon name={t.icon} size={18} stroke={1.8} />
+              {t.label}
+            </a>
+          ))}
+        </nav>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .status {
+    font-size: 10.5px;
+    color: #6a727f;
+  }
+</style>

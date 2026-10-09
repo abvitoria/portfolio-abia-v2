@@ -1,0 +1,80 @@
+---
+/** Pill-shaped checkbox / radio group for the brief form. */
+import type { L } from '@/data/i18n';
+
+interface Props {
+  name: string;
+  type: 'checkbox' | 'radio';
+  /** `value` is what gets sent; `label` is what is shown. */
+  options: { value: string; label: L }[];
+}
+
+const { name, type, options } = Astro.props;
+---
+
+<div class="choices">
+  {
+    options.map((o) => (
+      <label class="choice">
+        <input type={type} name={name} value={o.value} />
+        <span data-en={o.label.en} set:html={o.label.pt} />
+      </label>
+    ))
+  }
+</div>
+
+<style>
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 4px;
+  }
+
+  .choice {
+    position: relative;
+    cursor: pointer;
+  }
+
+  input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  span {
+    display: inline-block;
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: var(--radius-pill);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-body);
+    user-select: none;
+    transition:
+      background 0.25s,
+      color 0.25s,
+      border-color 0.25s;
+  }
+
+  .choice:hover span {
+    border-color: var(--rose-light);
+    color: var(--text-strong);
+  }
+
+  input:checked + span {
+    border-color: var(--rose);
+    background: var(--rose);
+    color: var(--void);
+  }
+
+  input:focus-visible + span {
+    outline: 2px solid var(--rose);
+    outline-offset: 3px;
+  }
+</style>

@@ -1,0 +1,184 @@
+---
+import CaseLayout from '@/layouts/CaseLayout.astro';
+import BulletList from '@/components/case/BulletList.astro';
+import CaseFigure from '@/components/case/CaseFigure.astro';
+import CaseHero from '@/components/case/CaseHero.astro';
+import CaseSection from '@/components/case/CaseSection.astro';
+import CaseStep from '@/components/case/CaseStep.astro';
+import LearningList from '@/components/case/LearningList.astro';
+import NumberedList from '@/components/case/NumberedList.astro';
+import PartHeading from '@/components/case/PartHeading.astro';
+
+import cover from '@/assets/covers/capa-pdv.png';
+import clienteSelecionado from '@/assets/pdv/cliente-selecionado.png';
+import produtoValidar from '@/assets/pdv/produto-adicionado-validar.png';
+import pagamentoAlerta from '@/assets/pdv/pagamento-alerta-produto-sem-saldo.png';
+import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
+---
+
+<CaseLayout
+  title="PDV do vendedor MedMe"
+  description="Um ponto de venda criado do zero para os vendedores da MedMe: um fluxo em três etapas, cliente, produtos e pagamento."
+  image={cover.src}
+  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+>
+  <CaseHero
+    eyebrow="MedMe · Product design"
+    title="PDV do vendedor MedMe"
+    summary="Um ponto de venda criado do zero para os vendedores da MedMe, que até então registravam vendas por uma adaptação dentro do perfil de usuário comum."
+    cover={cover}
+    coverAlt="Capa do case PDV do vendedor MedMe"
+    facts={[
+      { label: 'Papel', value: 'Product Designer' },
+      { label: 'Time', value: 'Product Owner e desenvolvimento' },
+      { label: 'Escopo', value: 'Fluxo de nova venda' },
+      { label: 'Plataforma', value: 'Web' },
+      { label: 'Status', value: 'Em desenvolvimento' },
+    ]}
+  />
+
+  <PartHeading part="Parte 1" title="Contexto e problema" />
+
+  <CaseSection id="ctx" label="Contexto" title="Vender onde o colaborador está" space="md">
+    <p>
+      Os vendedores da MedMe atendem os colaboradores das empresas conveniadas, muitas vezes em eventos dentro das
+      próprias empresas. Na plataforma, eles registram vendas, acompanham o que já venderam e fazem simulações para o
+      cliente.
+    </p>
+    <p>
+      Como Product Designer, desenhei o fluxo de nova venda com o Product Owner, que trazia as regras de negócio, e com
+      o time de desenvolvimento.
+    </p>
+  </CaseSection>
+
+  <CaseSection id="prob" label="O problema" title="Não existia um sistema para vender">
+    <p>
+      Até então, as vendas eram feitas por uma adaptação dentro do perfil de usuário comum. Era uma ferramenta pensada
+      para outra pessoa e outra tarefa: o vendedor precisava contornar telas que não tinham sido feitas para registrar
+      uma venda para alguém.
+    </p>
+    <p class="emph">
+      O desafio era criar, do zero, um fluxo próprio para o vendedor, que desse conta das regras do benefício, como
+      saldo do colaborador, produtos elegíveis, entrega e formas de pagamento, sem transformar cada venda numa tarefa
+      complicada.
+    </p>
+  </CaseSection>
+
+  <PartHeading part="Parte 2" title="A decisão central" />
+
+  <CaseSection id="fluxo" label="Decisão" title="Um fluxo em três etapas: cliente, produtos e pagamento">
+    <p>
+      Uma venda tem dependências em ordem. Sem saber quem é o cliente, não há saldo, endereço nem regras do convênio. Sem
+      produtos, não há total. E só faz sentido escolher como pagar quando já se sabe quanto e o que o saldo cobre.
+    </p>
+    <p>
+      Por isso o fluxo segue essa ordem, e cada etapa libera a seguinte. Um indicador no topo mostra onde o vendedor
+      está, e as áreas ainda bloqueadas explicam o que falta para liberá-las, em vez de simplesmente sumir.
+    </p>
+    <NumberedList
+      items={[
+        '<strong>Cliente.</strong> Define saldo, endereço de entrega e as regras que valem para a venda.',
+        '<strong>Produtos.</strong> Monta a lista e mostra, item a item, o que pode ser pago com saldo.',
+        '<strong>Pagamento.</strong> Aplica o saldo e define como o cliente paga o restante.',
+      ]}
+    />
+    <p class="note">
+      As regras de cada etapa vieram do Product Owner. O desenho foi organizar essas regras numa sequência que o vendedor
+      consiga seguir durante o atendimento.
+    </p>
+  </CaseSection>
+
+  <PartHeading part="Parte 3" title="A solução, etapa por etapa" />
+
+  <CaseStep id="etapa-1" label="01 · Cliente" title="Encontrar o cliente e preparar a venda">
+    <p>
+      A busca aceita nome ou CPF e já mostra o saldo disponível no resultado. Ao selecionar o cliente, a venda ganha
+      filial, movimentação, canal e o endereço de entrega cadastrado.
+    </p>
+    <p>Endereço e frete são resolvidos ali mesmo, em modais, sem sair da venda.</p>
+    <CaseFigure
+      slot="media"
+      src={clienteSelecionado}
+      alt="Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito."
+      caption="Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito."
+    />
+  </CaseStep>
+
+  <CaseStep id="etapa-2" label="02 · Produtos" title="Montar a lista e saber o que o saldo cobre">
+    <p>
+      O vendedor busca no catálogo MedMe ou no próprio catálogo e ajusta quantidade e valor promocional na tabela.
+    </p>
+    <p>
+      Cada item pode ser validado contra o saldo do cliente e passa a mostrar se aceita ou não saldo. A informação
+      aparece no item, onde o vendedor decide o que vender.
+    </p>
+    <CaseFigure
+      slot="media"
+      src={produtoValidar}
+      alt="Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento."
+      caption="Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento."
+    />
+  </CaseStep>
+
+  <CaseStep id="etapa-3" label="03 · Pagamento" title="Aplicar o saldo e fechar o restante">
+    <p>
+      O vendedor escolhe entre venda presencial ou online, aplica o saldo do cliente, total ou parcial, e vê na hora
+      quanto falta receber.
+    </p>
+    <p>
+      O restante pode ser pago em dinheiro ou cartão. Quando um produto não aceita saldo, um aviso explica qual item e
+      qual valor precisa de outra forma de pagamento.
+    </p>
+    <CaseFigure
+      slot="media"
+      src={pagamentoAlerta}
+      alt="Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento."
+      caption="Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento."
+    />
+  </CaseStep>
+
+  <CaseStep id="etapa-4" label="04 · Confirmação" title="Revisar antes de registrar">
+    <p>
+      Antes de registrar, um resumo mostra cliente, itens, entrega, forma de pagamento e total a receber. Depois, a
+      venda recebe um número e o comprovante fica disponível na lista de vendas e é enviado ao cliente.
+    </p>
+    <CaseFigure
+      slot="media"
+      src={confirmarVenda}
+      alt="Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda."
+      caption="Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda."
+    />
+  </CaseStep>
+
+  <PartHeading part="Parte 4" title="Status e aprendizados" />
+
+  <CaseSection id="status" label="Status" title="Em desenvolvimento" space="md">
+    <BulletList
+      items={[
+        'O fluxo de nova venda está desenhado e em desenvolvimento.',
+        'As regras de negócio foram definidas com o Product Owner. Ainda não houve validação com vendedores nem dados de uso.',
+        'Por isso este case não traz resultados. O próximo passo é acompanhar as primeiras vendas registradas pelo novo fluxo e ajustar o que aparecer.',
+      ]}
+    />
+  </CaseSection>
+
+  <CaseSection id="apr" label="Aprendizados" title="O que este projeto ensinou">
+    <LearningList
+      items={[
+        {
+          title: 'A ordem do fluxo vem da dependência dos dados',
+          text: 'As três etapas não foram uma escolha visual. Elas seguem o que cada informação precisa para existir, e isso tornou mais fácil explicar o fluxo para o time e para quem vai usá-lo.',
+        },
+        {
+          title: 'Bloquear com explicação, não esconder',
+          text: 'Mostrar as áreas ainda indisponíveis, com o motivo, deixa claro o que vem a seguir. O vendedor enxerga a venda inteira desde o começo.',
+        },
+        {
+          title: 'Regra de negócio precisa aparecer onde a decisão acontece',
+          text: 'A elegibilidade ao saldo aparece no item e o aviso de valor restante aparece no pagamento. Concentrar tudo numa mensagem no fim deixaria o vendedor sem saber o que corrigir.',
+        },
+      ]}
+    />
+  </CaseSection>
+</CaseLayout>
+

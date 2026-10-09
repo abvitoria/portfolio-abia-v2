@@ -1,0 +1,326 @@
+---
+/**
+ * "Device" card for one design-thinking stage. Cards stack with sticky
+ * offsets as the visitor scrolls (see .stack in ProcessStack).
+ */
+interface Props {
+  step: number;
+  total: number;
+  label: string;
+  sub: string;
+  /** Body text; <mark> highlights a key sentence. */
+  text: string;
+}
+
+const { step, total, label, sub, text } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+const stages = Array.from({ length: total }, (_, i) => (i + 1 < step ? 'done' : i + 1 === step ? 'on' : ''));
+---
+
+<article class="card" style={`--i:${step - 1}`}>
+  <div class="head">
+    <span class="step">{pad(step)} <span class="of">/ {pad(total)}</span></span>
+    <div class="dots" aria-hidden="true">
+      {
+        stages.map((state, i) => (
+          <>
+            {i > 0 && <span class:list={['seg', { done: i < step }]} />}
+            <i class={state} />
+          </>
+        ))
+      }
+    </div>
+    <span class="etapa">ETAPA <span class="ring"></span></span>
+  </div>
+  <div class="body">
+    <div class="left">
+      <div class="num">{pad(step)}</div>
+      <div class="lbl">{label}</div>
+      <div class="sub"><span class="dash"></span>{sub}</div>
+      <div class="icon" aria-hidden="true"></div>
+      <div class="dotgrid" aria-hidden="true"></div>
+    </div>
+    <div class="right">
+      <p set:html={text} />
+    </div>
+  </div>
+  <div class="foot" aria-hidden="true">
+    <span class="flbl"><i></i>Modo<br />exploração</span>
+    <span class="scan"></span>
+    <span class="flbl"><i></i>Status<br />ativo</span>
+    <span class="sq"><i></i><i></i><i></i></span>
+  </div>
+</article>
+
+<style>
+  .card {
+    position: sticky;
+    top: calc(120px + var(--i) * 30px);
+    z-index: calc(var(--i) + 1);
+    margin-bottom: 38vh;
+    overflow: hidden;
+    border: 1px solid rgba(11, 12, 61, 0.14);
+    border-radius: 28px;
+    background: linear-gradient(160deg, #f7f6fe, #ecebfc);
+    box-shadow:
+      0 30px 60px rgba(11, 12, 61, 0.16),
+      0 4px 14px rgba(11, 12, 61, 0.05);
+  }
+
+  .card:last-child {
+    margin-bottom: 0;
+  }
+
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 24px 30px 20px;
+  }
+
+  .step {
+    font-family: var(--ff-mono);
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--rose-deep);
+  }
+
+  .of {
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+
+  .dots {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .dots i {
+    display: block;
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(11, 12, 61, 0.16);
+  }
+
+  .dots i.done {
+    background: var(--ink-2);
+  }
+
+  .dots i.on {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(110, 63, 200, 0.18);
+  }
+
+  .seg {
+    flex: 1;
+    height: 2px;
+    background: rgba(11, 12, 61, 0.14);
+  }
+
+  .seg.done {
+    background: var(--accent);
+  }
+
+  .etapa {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+    color: var(--ink-2);
+  }
+
+  .ring {
+    position: relative;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+  }
+
+  .ring::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    border-top: 1px solid rgba(11, 12, 61, 0.14);
+  }
+
+  .left {
+    position: relative;
+    padding: 34px 26px 76px;
+    border-right: 1px dashed rgba(11, 12, 61, 0.22);
+  }
+
+  .num {
+    font-family: var(--ff-display);
+    font-size: 70px;
+    line-height: 0.85;
+    color: var(--ink);
+  }
+
+  .lbl {
+    margin-top: 4px;
+    font-family: var(--ff-display);
+    font-size: 20px;
+    color: var(--rose-deep);
+  }
+
+  .sub {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 145px;
+    margin-top: 18px;
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    line-height: 1.55;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .dash {
+    flex-shrink: 0;
+    width: 18px;
+    height: 2px;
+    margin-top: 5px;
+    background: var(--accent);
+  }
+
+  .icon {
+    position: absolute;
+    left: 26px;
+    bottom: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(11, 12, 61, 0.18);
+    border-radius: 50%;
+  }
+
+  .icon::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(110, 63, 200, 0.14);
+  }
+
+  .dotgrid {
+    position: absolute;
+    right: 22px;
+    bottom: 24px;
+    width: 26px;
+    height: 26px;
+    background-image: radial-gradient(circle, rgba(11, 12, 61, 0.3) 1.4px, transparent 1.6px);
+    background-size: 7px 7px;
+  }
+
+  .right {
+    padding: 34px 36px;
+  }
+
+  .right p {
+    font-size: 16.5px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .right :global(mark) {
+    padding: 2px 9px;
+    border: 1px solid rgba(110, 63, 200, 0.25);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--rose-deep);
+    font-weight: 700;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 30px;
+    border-top: 1px solid rgba(11, 12, 61, 0.14);
+  }
+
+  .flbl {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .flbl i {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .scan {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(11, 12, 61, 0.3) 0 6px, transparent 6px 11px);
+  }
+
+  .sq {
+    display: flex;
+    gap: 4px;
+  }
+
+  .sq i {
+    width: 5px;
+    height: 5px;
+    background: rgba(11, 12, 61, 0.32);
+  }
+
+  @media (max-width: 960px) {
+    .card {
+      top: 80px;
+      margin-bottom: 24vh;
+    }
+
+    .body {
+      grid-template-columns: 1fr;
+    }
+
+    .left {
+      padding-bottom: 60px;
+      border-right: none;
+      border-bottom: 1px dashed rgba(11, 12, 61, 0.22);
+    }
+
+    .num {
+      font-size: 52px;
+    }
+  }
+</style>

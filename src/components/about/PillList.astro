@@ -1,0 +1,27 @@
+---
+/** Outline pill tags on the light About page (tools, community). */
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="pills" role="list">{items.map((item) => <li>{item}</li>)}</ul>
+
+<style>
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  li {
+    padding: 14px 28px;
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+</style>

@@ -1,0 +1,190 @@
+---
+/**
+ * Home hero: greeting and name in display type on the left, portrait on the
+ * right, role line below.
+ */
+import HeroTop from '@/components/ui/HeroTop.astro';
+import Portrait from '@/components/ui/Portrait.astro';
+import { t } from '@/data/i18n';
+---
+
+<section class="hero">
+  <div class="wrap grid12">
+    <HeroTop
+      class="top"
+      left={{
+        strong: t('PRODUCT DESIGNER'),
+        extra: t(' · UX / UI', ' · UX / UI'),
+        sub: t('BRASIL · GMT−3', 'BRAZIL · GMT−3'),
+      }}
+      right={{ strong: '/index', clock: true }}
+    />
+
+    <div class="stage">
+      <div class="intro">
+        <p class="open kin rv" data-en={'Hi, <span class="k">I\'m</span>'}>Olá, <span class="k">eu sou</span></p>
+        <h1 class="name kin rv" aria-label="Ábia Bognola">ÁBIA<span class="sig">BOGNOLA</span></h1>
+      </div>
+      <Portrait class="photo rv" alt="Retrato de Ábia Bognola" width={480} grayscale loading="eager" />
+    </div>
+
+    <div class="role rv">
+      <b data-en="Product Designer">Product Designer</b> · <span
+        data-en="UX Research · UI Design · Design Systems">UX Research · UI Design · Design System</span
+      >
+    </div>
+  </div>
+  <div class="cue" aria-hidden="true"><span data-en="scroll to begin">role para começar</span></div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 120px 0 80px;
+  }
+
+  .hero > .wrap {
+    width: 100%;
+  }
+
+  .hero :global(.top) {
+    margin-bottom: 6vh;
+  }
+
+  .stage {
+    grid-column: 1 / 13;
+    display: grid;
+    grid-template-columns: auto minmax(0, min(480px, 52vh));
+    justify-content: center;
+    gap: clamp(32px, 3vw, 56px);
+    align-items: center;
+  }
+
+  .open {
+    margin-bottom: clamp(32px, 4vw, 64px);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(16px, 1.8vw, 28px);
+    letter-spacing: 0.02em;
+    color: var(--warm-70);
+  }
+
+  .open :global(.k) {
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .name {
+    font-family: var(--ff-display);
+    font-weight: 400;
+    font-size: clamp(120px, 27vw, 440px);
+    line-height: 0.82;
+    letter-spacing: -0.028em;
+    color: var(--warm);
+  }
+
+  .sig {
+    display: block;
+    margin-top: 0.04em;
+    font-style: italic;
+    font-size: 0.4em;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: var(--rose);
+    text-shadow: 0 0 30px rgba(158, 108, 239, 0.35);
+  }
+
+  .stage :global(.photo) {
+    justify-self: end;
+    /* Keep the 4:5 frame inside short viewports too. */
+    width: min(100%, 480px, 52vh);
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--warm-14);
+    border-radius: var(--radius-xs);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  }
+
+  .stage :global(.photo)::after {
+    content: '[001]';
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    padding: 4px 8px;
+    background: rgba(3, 4, 58, 0.6);
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--warm);
+  }
+
+  .role {
+    grid-column: 1 / 13;
+    margin-top: clamp(40px, 6vh, 80px);
+    font-family: var(--ff-mono);
+    font-size: clamp(11px, 1.2vw, 16px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-40);
+  }
+
+  .role b {
+    font-weight: 500;
+    color: var(--warm);
+  }
+
+  .cue {
+    position: absolute;
+    right: 40px;
+    bottom: 32px;
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: right;
+    color: var(--warm-40);
+  }
+
+  .cue::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 38px;
+    margin: 14px 0 0 auto;
+    background: linear-gradient(180deg, var(--warm-40), transparent);
+    animation: cue 2.4s ease-in-out infinite;
+  }
+
+  @keyframes cue {
+    50% {
+      opacity: 0.3;
+      transform: translateY(6px);
+    }
+  }
+
+  @media (max-width: 820px) {
+    .hero {
+      padding: 96px 0 60px;
+    }
+
+    .stage {
+      grid-template-columns: 1fr;
+      justify-content: stretch;
+    }
+
+    .name {
+      font-size: clamp(96px, 34vw, 160px);
+    }
+
+    .cue {
+      display: none;
+    }
+
+    .stage :global(.photo) {
+      justify-self: start;
+      width: 70%;
+    }
+  }
+</style>

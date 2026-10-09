@@ -1,0 +1,115 @@
+---
+/**
+ * Process record: a photo/board shot with an italic caption beside it
+ * (fixed `height`) or below it (full width). Click-to-zoom via the Lightbox.
+ *
+ *   <ProcessShot src={img} alt="…" caption="…" height={340} />
+ *   <ProcessShot src={img} alt="…" caption="…" />   ← full width, caption below
+ */
+import type { ImageMetadata } from 'astro';
+import { getImage, Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption: string;
+  /** Rendered height in px; puts the caption beside the image. */
+  height?: number;
+  /** Max width of a side caption. */
+  captionWidth?: number;
+  captionSize?: number;
+  /** Softer border + drop shadow (for shots on a colored band). */
+  /** Space between a side image and its caption. */
+  gap?: number;
+  lifted?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  caption,
+  height,
+  captionWidth = 280,
+  captionSize = 12,
+  gap = 20,
+  lifted = false,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const zoomSrc = (await getImage({ src, width: Math.min(src.width, 2400), format: 'webp' })).src;
+const shotWidth = height ? Math.round((src.width * height) / src.height) : undefined;
+const widths = shotWidth
+  ? [shotWidth, shotWidth * 2].filter((w) => w <= src.width)
+  : [480, 800, 1120, 1600, 2240].filter((w) => w < src.width);
+if (!widths.length) widths.push(src.width);
+---
+
+<figure
+  {...rest}
+  class:list={['shot', { 'shot--side': height, 'shot--lifted': lifted }, className]}
+  style={`--cap-w:${captionWidth}px;--cap-fs:${captionSize}px;--gap:${gap}px${height ? `;--shot-h:${height}px` : ''}`}
+>
+  <Image
+    src={src}
+    alt={alt}
+    widths={widths}
+    sizes={shotWidth ? `${shotWidth}px` : '(max-width: 1128px) 100vw, 1080px'}
+    data-zoom={zoomSrc}
+  />
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .shot {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+  }
+
+  /* Full-width diagram */
+  .shot:not(.shot--side) img {
+    border-radius: 16px;
+    background: rgba(10, 12, 74, 0.94);
+    box-shadow: 0 16px 40px rgba(11, 12, 61, 0.08);
+  }
+
+  figcaption {
+    margin-top: 12px;
+    font-size: var(--cap-fs);
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  .shot--side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--gap);
+  }
+
+  .shot--side img {
+    width: auto;
+    max-width: 100%;
+    height: var(--shot-h);
+    object-fit: cover;
+  }
+
+  .shot--side figcaption {
+    max-width: var(--cap-w);
+    margin: 0;
+    font-style: italic;
+  }
+
+  .shot--lifted img {
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+  }
+</style>
