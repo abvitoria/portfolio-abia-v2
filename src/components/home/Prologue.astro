@@ -17,12 +17,11 @@ import { t } from '@/data/i18n';
 </section>
 
 <style>
+  /* Home sections share one rhythm: clamp(72px, 12vh, 120px) per side,
+     56px on phones (Prologue, cases, Interlude, SignOff lg). */
   .prologue {
     position: relative;
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    padding: 80px 0;
+    padding: clamp(72px, 12vh, 120px) 0;
   }
 
   .prologue :global(.mark) {
@@ -45,6 +44,10 @@ import { t } from '@/data/i18n';
   }
 
   @media (max-width: 820px) {
+    .prologue {
+      padding: 56px 0;
+    }
+
     .line {
       margin-top: 16px;
       font-size: 32px;

@@ -57,7 +57,13 @@ const acts = [
 <style>
   .interlude {
     position: relative;
-    padding: 20vh 0;
+    padding: clamp(72px, 12vh, 120px) 0;
+  }
+
+  @media (max-width: 820px) {
+    .interlude {
+      padding: 56px 0;
+    }
   }
 
   .interlude :global(.kick) {
