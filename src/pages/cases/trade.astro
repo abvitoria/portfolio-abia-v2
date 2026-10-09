@@ -394,6 +394,7 @@ const learnings = [
   description="Um cadastro de 30+ telas escondia um produto que ninguém via por inteiro. Descoberta, redesign de fluxo e documentação do app Trade+."
   image={cover.src}
   chapters={[
+    { id: 'cap-antes-depois', label: t('Antes e depois', 'Before and after') },
     { id: 'cap-contexto', label: t('Contexto', 'Context') },
     { id: 'cap-descoberta', label: t('Investigação', 'Research') },
     { id: 'cap-decisoes', label: t('Decisões', 'Decisions') },
@@ -407,10 +408,10 @@ const learnings = [
   <CaseIntro
     badges={[
       { label: 'UX/UI CASE', color: '#0B7C8F' },
-      { label: t('FINTECH · VAREJO', 'FINTECH · RETAIL'), color: '#561589' },
-      { label: t('APP MOBILE', 'MOBILE APP'), color: '#6E3FC8' },
+      { label: t('Fintech · Varejo', 'Fintech · Retail'), color: '#561589' },
+      { label: t('App mobile', 'Mobile app'), color: '#6E3FC8' },
     ]}
-    eyebrow="TRADE+ · PRODUCT DESIGN · UX/UI · FINTECH"
+    eyebrow="Trade+ · Product design · UX/UI · Fintech"
     title={t(
       'Redesenhando a experiência de cadastro e uso <span class="serif">de um aplicativo de crédito para varejistas</span>',
       'Redesigning the sign-up and usage experience <span class="serif">of a credit app for retailers</span>',
@@ -420,16 +421,16 @@ const learnings = [
       'What started as a migration of screens from Adobe XD to Figma revealed a bigger challenge: a sign-up with more than 30 screens, business rules spread across different teams and opportunities to improve the app experience.',
     )}
     facts={[
-      { label: t('PAPEL', 'ROLE'), value: 'Product Designer · UX Research' },
+      { label: t('Papel', 'Role'), value: 'Product Designer · UX Research' },
       {
-        label: t('EQUIPE', 'TEAM'),
+        label: t('Equipe', 'Team'),
         value: t(
           'Product Owner, liderança de UX, Desenvolvimento, Marketing e Suporte',
           'Product Owner, UX lead, Development, Marketing and Support',
         ),
       },
-      { label: t('ATUAÇÃO', 'SCOPE'), value: t('Descoberta, redesign de fluxo e documentação', 'Discovery, flow redesign and documentation') },
-      { label: t('PLATAFORMA', 'PLATFORM'), value: t('Aplicativo mobile · iOS e Android', 'Mobile app · iOS and Android') },
+      { label: t('Atuação', 'Scope'), value: t('Descoberta, redesign de fluxo e documentação', 'Discovery, flow redesign and documentation') },
+      { label: t('Plataforma', 'Platform'), value: t('Aplicativo mobile · iOS e Android', 'Mobile app · iOS and Android') },
     ]}
     columns="minmax(0, 1.08fr) minmax(0, 0.92fr)"
     glowSize={480}
@@ -445,6 +446,20 @@ const learnings = [
       fetchpriority="high"
     />
   </CaseIntro>
+
+  <!-- Antes e depois -->
+  <section id="cap-antes-depois" aria-labelledby="mudou-title" class="sec rv block before-after">
+    <div class="sec-narrow head head--md">
+      <p data-en="Overview · What changed" class="eyebrow">Visão geral · O que mudou</p>
+      <h2 data-en="Sign-up before and after" id="mudou-title" class="h2">Antes e depois do cadastro</h2>
+      <p data-en="More than a list of deliverables, the project changed the structure of the product and of the work around it." class="lead">
+        Mais do que uma lista de entregáveis, o projeto mudou a estrutura do produto e do trabalho em torno dele.
+      </p>
+    </div>
+    <div class="changes">
+      {changes.map((c) => <BeforeAfter {...c} />)}
+    </div>
+  </section>
 
   <!-- Resumo / índice -->
   <section id="cap-contexto" aria-labelledby="resumo-title" class="sec rv summary">
@@ -510,7 +525,7 @@ const learnings = [
 
       <blockquote class="quote">
         <p data-en="<b>“It’s easier to get a green card than to sign up for this app.”</b>" class="serif"><b>“Mais fácil conseguir um green card do que se cadastrar no app.”</b></p>
-        <cite data-en="— a real user’s comment">— relato real de um usuário</cite>
+        <cite data-en="A real user’s comment">Relato real de um usuário</cite>
       </blockquote>
       <div class="cols-3 stats">
         {
@@ -919,20 +934,6 @@ const learnings = [
     </p>
   </section>
 
-  <!-- Impacto: o que mudou -->
-  <section aria-labelledby="mudou-title" class="sec rv block">
-    <div class="sec-narrow head head--md">
-      <p data-en="Delivery · What changed" class="eyebrow">Entregas · O que mudou</p>
-      <h2 data-en="Sign-up before and after" id="mudou-title" class="h2">Antes e depois do cadastro</h2>
-      <p data-en="More than a list of deliverables, the project changed the structure of the product and of the work around it." class="lead">
-        Mais do que uma lista de entregáveis, o projeto mudou a estrutura do produto e do trabalho em torno dele.
-      </p>
-    </div>
-    <div class="changes">
-      {changes.map((c) => <BeforeAfter {...c} />)}
-    </div>
-  </section>
-
   <!-- Impacto: avaliações da loja -->
   <div class="band reviews">
     <section aria-labelledby="rev-title" class="sec rv">
@@ -971,7 +972,7 @@ const learnings = [
       }
     </div>
     <div class="indicators">
-      <div data-en="INDICATORS TO TRACK IN THE NEXT PHASE" class="k">INDICADORES A ACOMPANHAR NA PRÓXIMA FASE</div>
+      <div data-en="Indicators to track in the next phase" class="k">Indicadores a acompanhar na próxima fase</div>
       <ul>
         <li data-en="Drop-off in the two-stage flow, compared with the previous sign-up">Abandono no fluxo em duas etapas, comparado ao cadastro anterior</li>
         <li data-en="Volume of support complaints">Volume de reclamações no suporte</li>
@@ -1062,6 +1063,10 @@ const learnings = [
   }
 
   /* ---------- Resumo ---------- */
+  .before-after {
+    margin-top: calc(104px * var(--sp, 1));
+  }
+
   .summary {
     margin-top: calc(104px * var(--sp, 1));
   }

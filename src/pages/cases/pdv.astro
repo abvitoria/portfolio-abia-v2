@@ -100,6 +100,7 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
     <p data-en="Address and shipping are handled right there, in modals, without leaving the sale.">Endereço e frete são resolvidos ali mesmo, em modais, sem sair da venda.</p>
     <CaseFigure
       slot="media"
+      class="shot"
       src={clienteSelecionado}
       alt="Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito."
       caption={t("Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito.", "Once the customer is set, the sale gets a branch, transaction type, channel and delivery address. Products and payment stay locked, with the reason written out.")}
@@ -116,6 +117,7 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
     </p>
     <CaseFigure
       slot="media"
+      class="shot"
       src={produtoValidar}
       alt="Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento."
       caption={t("Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento.", "With items on the list, each product can be checked against the customer’s balance before moving on to payment.")}
@@ -133,6 +135,7 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
     </p>
     <CaseFigure
       slot="media"
+      class="shot"
       src={pagamentoAlerta}
       alt="Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento."
       caption={t("Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento.", "Balance applied, order total and amount still due. An item that does not accept the balance triggers a notice with the amount that needs another payment method.")}
@@ -146,6 +149,7 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
     </p>
     <CaseFigure
       slot="media"
+      class="shot"
       src={confirmarVenda}
       alt="Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda."
       caption={t("Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda.", "Summary of customer, items, delivery, payment and total before recording the sale.")}
@@ -183,4 +187,13 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
     />
   </CaseSection>
 </CaseLayout>
+
+<style>
+  /* Each step (text + screen) fits in one viewport: the screenshot's height
+     is capped by the viewport and its width follows the image ratio. */
+  .case :global(.shot) {
+    width: min(100%, calc(52vh * var(--ar)));
+    margin-inline: auto;
+  }
+</style>
 

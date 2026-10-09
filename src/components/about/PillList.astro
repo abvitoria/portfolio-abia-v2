@@ -1,13 +1,30 @@
 ---
 /** Outline pill tags on the light About page (tools, community). */
+import BrandIcon from '@/components/ui/BrandIcon.astro';
+import type { BrandName } from '@/data/brands';
+
 interface Props {
-  items: string[];
+  /** Plain labels, or labels with a brand logo before the name. */
+  items: (string | { label: string; icon: BrandName })[];
 }
 
 const { items } = Astro.props;
 ---
 
-<ul class="pills" role="list">{items.map((item) => <li>{item}</li>)}</ul>
+<ul class="pills" role="list">
+  {
+    items.map((item) =>
+      typeof item === 'string' ? (
+        <li>{item}</li>
+      ) : (
+        <li>
+          <BrandIcon name={item.icon} size={18} />
+          {item.label}
+        </li>
+      ),
+    )
+  }
+</ul>
 
 <style>
   .pills {
@@ -17,6 +34,9 @@ const { items } = Astro.props;
   }
 
   li {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     padding: 14px 28px;
     border: 1.5px solid var(--ink);
     border-radius: var(--radius-pill);

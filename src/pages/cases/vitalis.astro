@@ -143,7 +143,7 @@ const violet = '#6E3FC8';
 
 const screens = [
   {
-    tag: t('PACIENTE · INÍCIO', 'PATIENT · HOME'),
+    tag: t('Paciente · Início', 'Patient · Home'),
     color: navy,
     title: t('Área do paciente', 'Patient area'),
     shots: [
@@ -156,7 +156,7 @@ const screens = [
       t('A tela inicial reúne acesso aos serviços mais relevantes, como agendamento, próximas consultas, teleconsultas e documentos médicos. A organização prioriza a localização das informações e a continuidade das atividades.', 'The home screen brings together access to the most relevant services, such as scheduling, upcoming appointments, teleconsultations and medical documents. The layout prioritizes finding information and continuing tasks.'),
   },
   {
-    tag: t('AGENDAMENTO', 'SCHEDULING'),
+    tag: t('Agendamento', 'Scheduling'),
     color: teal,
     title: t('Agendamento de consultas', 'Appointment scheduling'),
     shots: [
@@ -169,7 +169,7 @@ const screens = [
       t('A jornada apresenta a seleção de datas e horários disponíveis, além da visualização dos agendamentos realizados. O objetivo foi reunir as informações necessárias à marcação e ao acompanhamento de consultas.', 'The journey shows available dates and times, along with the appointments already booked. The goal was to bring together the information needed to book and follow up on appointments.'),
   },
   {
-    tag: t('TELECONSULTA', 'TELECONSULTATION'),
+    tag: t('Teleconsulta', 'Teleconsultation'),
     color: navy,
     title: t('Teleconsulta', 'Teleconsultation'),
     shots: [
@@ -186,7 +186,7 @@ const screens = [
       t('A experiência contempla a preparação para o atendimento, o consentimento para tratamento de dados de saúde e os estados de espera durante a chamada. Também foram previstos feedbacks para situações como a ausência do médico na sala virtual, oferecendo orientações para o paciente durante o atendimento.', 'The experience covers preparing for the appointment, consent to the processing of health data and waiting states during the call. Feedback was also designed for situations such as the doctor not being in the virtual room, guiding the patient during the appointment.'),
   },
   {
-    tag: t('DOCUMENTOS DIGITAIS', 'DIGITAL DOCUMENTS'),
+    tag: t('Documentos digitais', 'Digital documents'),
     color: violet,
     title: t('Documentos médicos', 'Medical documents'),
     shots: [
@@ -200,7 +200,7 @@ const screens = [
     loose: true,
   },
   {
-    tag: t('ADMINISTRADORA · DESKTOP', 'ADMINISTRATOR · DESKTOP'),
+    tag: t('Administradora · Desktop', 'Administrator · Desktop'),
     color: navy,
     title: t('Gestão administrativa', 'Administrative management'),
     shots: [
@@ -260,10 +260,10 @@ const learnings = [
   <CaseIntro
     badges={[
       { label: 'UX/UI CASE', color: navy },
-      { label: t('SAÚDE · SETOR PÚBLICO', 'HEALTH · PUBLIC SECTOR'), color: teal },
-      { label: t('MULTIPLATAFORMA', 'CROSS-PLATFORM'), color: violet },
+      { label: t('Saúde · Setor público', 'Health · Public sector'), color: teal },
+      { label: t('Multiplataforma', 'Cross-platform'), color: violet },
     ]}
-    eyebrow={t('VITALIS SAÚDE · PRODUCT DESIGN · UX/UI · SAÚDE DIGITAL', 'VITALIS HEALTH · PRODUCT DESIGN · UX/UI · DIGITAL HEALTH')}
+    eyebrow={t('Vitalis Saúde · Product design · UX/UI · Saúde digital', 'Vitalis Health · Product design · UX/UI · Digital health')}
     title={t(
       'Projetando uma experiência de telemedicina <span class="serif">para pacientes e profissionais de saúde</span>',
       'Designing a telemedicine experience <span class="serif">for patients and healthcare professionals</span>',
@@ -273,16 +273,16 @@ const learnings = [
       'A digital platform for the public healthcare system, with dedicated journeys for <strong>patients, doctors and administrative staff</strong>, bringing appointments, teleconsultations and medical documents together in one place.',
     )}
     facts={[
-      { label: t('PAPEL', 'ROLE'), value: 'UX/UI Designer' },
+      { label: t('Papel', 'Role'), value: 'UX/UI Designer' },
       {
-        label: t('DURAÇÃO', 'DURATION'),
+        label: t('Duração', 'Duration'),
         value: t(
           'Aproximadamente 1 mês <span class="fact-note">· prazo apertado</span>',
           'About 1 month <span class="fact-note">· tight deadline</span>',
         ),
       },
-      { label: t('FERRAMENTAS', 'TOOLS'), value: 'Figma · FigJam' },
-      { label: t('PLATAFORMA', 'PLATFORM'), value: t('Web · Desktop e Mobile', 'Web · Desktop and Mobile') },
+      { label: t('Ferramentas', 'Tools'), tools: [{ label: 'Figma', icon: 'figma' }, { label: 'FigJam', icon: 'figjam' }] },
+      { label: t('Plataforma', 'Platform'), value: t('Web · Desktop e Mobile', 'Web · Desktop and Mobile') },
     ]}
     ruledFacts
     glow="rgba(28, 169, 160, 0.28)"
@@ -589,7 +589,7 @@ const learnings = [
     }
 
     <div class="sec-narrow mobile-intro">
-      <span data-en="PATIENT · LIGHTWEIGHT MOBILE" class="badge screen__tag" style={`background:${teal}`}>PACIENTE · MOBILE LEVE</span>
+      <span data-en="Patient · lightweight mobile" class="badge screen__tag" style={`background:${teal}`}>Paciente · mobile leve</span>
       <h3 data-en="Mobile experience" class="screen__title">Experiência mobile</h3>
       <p data-en="The mobile version prioritizes access to the patient’s main features, adapting navigation and how information is presented for smaller screens.">
         A versão mobile prioriza o acesso às principais funcionalidades do paciente, adaptando a navegação e a

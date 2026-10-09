@@ -65,7 +65,6 @@ const ogImage = image ? new URL(image, Astro.site).toString() : undefined;
 
     <Font cssVariable="--font-sans" preload={[{ weight: 400, style: 'normal' }]} />
     <Font cssVariable="--font-display" preload />
-    <Font cssVariable="--font-mono" />
     <slot name="head" />
   </head>
   <body class={bodyClass}>

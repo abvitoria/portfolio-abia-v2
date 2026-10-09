@@ -38,7 +38,23 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     ]}
   />
 
-  <PartHeading part={t("Parte 1", "Part 1")} title={t("Contexto e desafio", "Context and challenge")} />
+  <PartHeading part={t("Parte 1", "Part 1")} title={t("Antes e depois", "Before and after")} />
+
+  <section id="comparador" class="explorer wrap--case" aria-labelledby="ad-title">
+    <div class="explorer-body">
+      <div class="explorer-head">
+        <span data-en="Before and after" class="tag-mono">Antes e depois</span>
+        <h2 data-en="Eight comparisons, read through the problem" id="ad-title">Oito comparações, lidas pelo problema</h2>
+        <p data-en="Pick an area and switch between the old and new versions. Alongside, the problem, the decision, the solution and the benefit expected from it.">
+          Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o
+          benefício que se espera dela.
+        </p>
+      </div>
+      <ScreenCompare id="comparador" screens={telas} />
+    </div>
+  </section>
+
+  <PartHeading part={t("Parte 2", "Part 2")} title={t("Contexto e desafio", "Context and challenge")} />
 
   <CaseSection id="ctx" label={t("Contexto", "Context")} title={t("Uma ferramenta administrativa para o benefício farmácia", "An administrative tool for the pharmacy benefit")} space="md">
     <p data-en="MedMe offers a pharmacy benefit to partner companies. The HR Portal is where the Human Resources teams at those companies manage employees, track limits and spending, check reimbursements, access financial reports and administer the plan.">
@@ -72,7 +88,7 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     </p>
   </CaseSection>
 
-  <PartHeading part={t("Parte 2", "Part 2")} title={t("Meu processo", "My process")} />
+  <PartHeading part={t("Parte 3", "Part 3")} title={t("Meu processo", "My process")} />
 
   <CaseSection id="proc" label={t("Meu processo", "My process")} title={t("Da investigação ao QA", "From research to QA")}>
     <p data-en="There were no interviews or formal user tests. The understanding came from five sources: product demands, support tickets and information, analysis of the existing interface, benchmarking of administrative products and alignment with the Product Owner and the technical team.">
@@ -243,7 +259,7 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     <button data-en="See Dashboard before and after →" type="button" class="go" data-compare-go="dashboard">Ver Dashboard antes e depois →</button>
   </CaseSection>
 
-  <PartHeading part={t("Parte 3", "Part 3")} title={t("Entregas e resultados", "Delivery and results")} />
+  <PartHeading part={t("Parte 4", "Part 4")} title={t("Entregas e resultados", "Delivery and results")} />
 
   <CaseSection id="entregas" label={t("Entregas e resultados", "Delivery and results")} title={t("O que mudou e como foi recebido", "What changed and how it was received")} space="md">
     <p data-en="The project covered the modernization of eight areas of the portal, with unified interface patterns, reorganized journeys and new experiences for looking up reports and management information.">
@@ -325,21 +341,6 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
       ]}
     />
   </CaseSection>
-  <PartHeading part={t("Parte 4", "Part 4")} title={t("Antes e depois", "Before and after")} />
-
-  <section id="comparador" class="explorer wrap--case" aria-labelledby="ad-title">
-    <div class="explorer-body">
-      <div class="explorer-head">
-        <span data-en="Before and after" class="tag-mono">Antes e depois</span>
-        <h2 data-en="Eight comparisons, read through the problem" id="ad-title">Oito comparações, lidas pelo problema</h2>
-        <p data-en="Pick an area and switch between the old and new versions. Alongside, the problem, the decision, the solution and the benefit expected from it.">
-          Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o
-          benefício que se espera dela.
-        </p>
-      </div>
-      <ScreenCompare id="comparador" screens={telas} />
-    </div>
-  </section>
 </CaseLayout>
 
 <style>
@@ -368,8 +369,7 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
   .indicators-label {
     font-family: var(--ff-mono);
     font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--text-subtle);
   }
 

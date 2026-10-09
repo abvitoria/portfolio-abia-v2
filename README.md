@@ -70,16 +70,6 @@ O site é servido em uma subpasta (`/portfolio-abia-v2/`). Todo link interno pas
 
 Imagens importadas de `src/assets/` já recebem o prefixo automaticamente.
 
-## Formulário de contato (e-mail)
-
-O briefing em `/contato` é enviado pelo [Web3Forms](https://web3forms.com), que funciona sem servidor.
-
-1. Gere uma chave gratuita em web3forms.com com o e-mail que deve receber os briefings.
-2. No GitHub: *Settings → Secrets and variables → Actions → Variables* → crie `PUBLIC_WEB3FORMS_KEY` com a chave.
-3. Localmente, coloque a mesma chave em `.env` (veja `.env.example`).
-
-A chave é pública por design (ela vai no JavaScript do site). Sem a chave, ou se o envio falhar, o formulário abre o app de e-mail do visitante com o resumo preenchido. Há também um campo honeypot contra bots.
-
 ## Deploy (GitHub Pages)
 
 O workflow `.github/workflows/deploy.yml` builda e publica o site a cada push na `master`. Também é possível rodar manualmente em *Actions → Deploy to GitHub Pages → Run workflow*.
@@ -88,4 +78,4 @@ Configuração única: *Settings → Pages → Build and deployment → Source* 
 
 **Domínio próprio:** configure em *Settings → Pages → Custom domain*, depois troque `site` pelo domínio e remova `base` em `astro.config.mjs`.
 
-As fontes (Poppins, Bebas Neue, JetBrains Mono) são baixadas no build e servidas pelo próprio site, então nenhuma requisição vai ao Google Fonts.
+As fontes (Bebas Neue e Inter) são baixadas no build e servidas pelo próprio site, então nenhuma requisição vai ao Google Fonts.

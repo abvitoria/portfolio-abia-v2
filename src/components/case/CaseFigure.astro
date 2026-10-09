@@ -17,7 +17,7 @@ interface Props {
   caption?: T;
   /** Caption color: default/before (grey), after (cyan), process (lilac). */
   tone?: 'default' | 'before' | 'after' | 'process';
-  /** Small uppercase mono caption instead of a sentence. */
+  /** Small label-style caption instead of a sentence. */
   captionMono?: boolean;
   /** Fixed frame ratio (e.g. "2/1"). Defaults to the image's own ratio. */
   aspect?: string;
@@ -58,7 +58,7 @@ const widths = [480, 800, 1120, 1600, 2240].filter((w) => w < src.width);
 widths.push(Math.min(src.width, 2400));
 ---
 
-<figure class:list={['fig', className]}>
+<figure class:list={['fig', className]} style={`--ar:${ratio}`}>
   <div
     class:list={['frame', { 'frame--scroll': scroll, 'frame--bare': !framed }]}
     style={`aspect-ratio:${ratio};background:${bg}`}
@@ -114,8 +114,7 @@ widths.push(Math.min(src.width, 2400));
   figcaption.mono {
     font-family: var(--ff-mono);
     font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
   }
 
   .tone-after {

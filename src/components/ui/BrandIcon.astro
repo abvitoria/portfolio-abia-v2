@@ -1,0 +1,33 @@
+---
+/**
+ * Single-color brand glyph (fill = currentColor) for contact links and the
+ * tools list.
+ */
+import { brandPaths, type BrandName } from '@/data/brands';
+
+interface Props {
+  name: BrandName;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 16, class: className } = Astro.props;
+---
+
+<svg
+  class:list={['brand-icon', className]}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"><path d={brandPaths[name]} /></svg
+>
+
+<style>
+  .brand-icon {
+    flex: none;
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>

@@ -36,9 +36,11 @@
   --accent: #6e3fc8;
 
   /* ---- Typography ---- */
-  --ff-sans: var(--font-sans), 'Poppins', sans-serif;
+  /* Only two families on the site: Inter for text, Bebas Neue for display.
+     --ff-mono is kept as an alias so label styles read the same token. */
+  --ff-sans: var(--font-sans), 'Inter', sans-serif;
   --ff-display: var(--font-display), 'Bebas Neue', sans-serif;
-  --ff-mono: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
+  --ff-mono: var(--ff-sans);
 
   --fs-micro: 10.5px;
   --fs-label: 11px;
