@@ -1,4 +1,6 @@
 ---
+import BrandIcon from '@/components/ui/BrandIcon.astro';
+import type { BrandName } from '@/data/brands';
 import { en, pt, type T } from '@/data/i18n';
 import { url } from '@/lib/url';
 /**
@@ -17,7 +19,8 @@ interface Props {
   title: T;
   /** Lead paragraph (inline HTML allowed). */
   lead: T;
-  facts: { label: T; value: T }[];
+  /** Each fact has a text value, or a list of tools shown with their logos. */
+  facts: ({ label: T; value: T } | { label: T; tools: { label: string; icon: BrandName }[] })[];
   /** Facts as a ruled table (true) or a plain grid (false). */
   ruledFacts?: boolean;
   /** Glow color behind the visual (any CSS color). */
@@ -62,7 +65,18 @@ const {
           facts.map((f) => (
             <div>
               <dt data-en={en(f.label)} set:html={pt(f.label)} />
-              <dd data-en={en(f.value)} set:html={pt(f.value)} />
+              {'tools' in f ? (
+                <dd class="tools">
+                  {f.tools.map((tool) => (
+                    <span>
+                      <BrandIcon name={tool.icon} size={15} />
+                      {tool.label}
+                    </span>
+                  ))}
+                </dd>
+              ) : (
+                <dd data-en={en(f.value)} set:html={pt(f.value)} />
+              )}
             </div>
           ))
         }
@@ -139,8 +153,7 @@ const {
     margin-bottom: 5px;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--rose-light);
   }
 
@@ -148,6 +161,18 @@ const {
     margin: 0;
     font-size: 14px;
     font-weight: 600;
+  }
+
+  dd.tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  dd.tools span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
   }
 
   .facts--ruled {

@@ -9,6 +9,7 @@ export const site = {
     'Portfólio de Ábia Bognola, Product Designer (UX/UI). Cases de fintech, saúde e edtech, do problema à entrega.',
   email: 'abiabognola14@gmail.com',
   linkedin: 'https://www.linkedin.com/in/%C3%A1bia-bognola/',
+  whatsapp: 'https://wa.me/5562981011648',
   year: 2026,
 };
 

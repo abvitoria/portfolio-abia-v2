@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Typography — the three type voices of the site.
-   .mono     technical labels, meta, indices
+   Typography — two families: Inter (text) and Bebas Neue (display).
+   .mono     technical labels, meta, indices (Inter, tabular numbers)
    .display  Bebas Neue headlines
-   .italic   Poppins italic accents
+   .italic   Inter italic accents
    ========================================================================== */
 .mono {
   font-family: var(--ff-mono);
@@ -35,12 +35,11 @@
   color: var(--rose);
 }
 
-/* Small uppercase mono label: "· prólogo", "Problema", "Parte 1"… */
+/* Small label: "· prólogo", "Problema", "Parte 1"… */
 .label {
   font-family: var(--ff-mono);
   font-size: var(--fs-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--rose);
 }
 

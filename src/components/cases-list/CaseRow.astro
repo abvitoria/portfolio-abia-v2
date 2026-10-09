@@ -118,8 +118,7 @@ const actors = [...row.actors, designerActor];
     margin-bottom: 16px;
     font-family: var(--ff-mono);
     font-size: 10.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--warm-40);
   }
 
@@ -184,8 +183,7 @@ const actors = [...row.actors, designerActor];
   .fact-label {
     font-family: var(--ff-mono);
     font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--rose);
   }
 
@@ -281,8 +279,7 @@ const actors = [...row.actors, designerActor];
     padding-left: 4px;
     font-family: var(--ff-mono);
     font-size: 10.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--warm-40);
   }
 
@@ -294,8 +291,7 @@ const actors = [...row.actors, designerActor];
   .panel-title {
     font-family: var(--ff-mono);
     font-size: 10.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--rose);
   }
 
@@ -329,8 +325,7 @@ const actors = [...row.actors, designerActor];
     font-family: var(--ff-mono);
     font-size: 10.5px;
     line-height: 1.6;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--warm-70);
   }
 
@@ -349,8 +344,7 @@ const actors = [...row.actors, designerActor];
     font-family: var(--ff-mono);
     font-size: 11px;
     line-height: 2;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--warm-70);
   }
 
@@ -360,21 +354,8 @@ const actors = [...row.actors, designerActor];
     gap: 12px;
   }
 
-  li::before {
-    content: '';
-    flex: none;
-    width: 14px;
-    height: 1px;
-    background: var(--warm-14);
-  }
-
   li.self {
     color: var(--warm);
-  }
-
-  li.self::before {
-    width: 28px;
-    background: var(--rose);
   }
 
   @media (max-width: 820px) {

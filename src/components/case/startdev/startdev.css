@@ -398,7 +398,6 @@
   font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  text-transform: uppercase;
   color: var(--sd-muted);
 }
 
@@ -410,11 +409,10 @@
   color: var(--sd-text);
 }
 
-/* Small uppercase label ("Em atraso", "Tags", "Como ganhar pontos") */
+/* Small label ("Em atraso", "Tags", "Como ganhar pontos") */
 .sd-label {
   font-size: 9.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0.02em;
   color: var(--sd-muted);
 }
 

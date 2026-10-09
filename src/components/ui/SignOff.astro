@@ -1,8 +1,9 @@
 ---
 /**
- * Closing contact block: big "Manda um oi." headline, email link and a side
- * column with LinkedIn / about / availability. Used on Home and Contato.
+ * Closing contact block: big "Manda um oi." headline, WhatsApp link and a
+ * side column with LinkedIn / about / availability. Used on Home and Contato.
  */
+import BrandIcon from './BrandIcon.astro';
 import Kicker from './Kicker.astro';
 import { site } from '@/data/site';
 import { t } from '@/data/i18n';
@@ -16,8 +17,8 @@ interface Props {
 
 const { kicker = false, size = 'lg' } = Astro.props;
 const side = {
-  pt: `· <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a><br/>· <a href="${url('/sobre/')}">Sobre mim ↗</a><br/>· GMT−3 · Brasil<br/>· Aberta pra freela e efetivo`,
-  en: `· <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a><br/>· <a href="${url('/sobre/')}">About me ↗</a><br/>· GMT−3 · Brazil<br/>· Open to freelance and full-time`,
+  pt: `<a href="${url('/sobre/')}">Sobre mim ↗</a><br/>GMT−3 · Brasil<br/>Aberta pra freela e efetivo`,
+  en: `<a href="${url('/sobre/')}">About me ↗</a><br/>GMT−3 · Brazil<br/>Open to freelance and full-time`,
 };
 ---
 
@@ -30,8 +31,17 @@ const side = {
     >
       Manda um <span class="k">oi.</span><i>Respondo em até um dia útil.</i>
     </h2>
-    <a href={`mailto:${site.email}`} class="email rv">{site.email}</a>
-    <div class="side rv" data-en={side.en} set:html={side.pt} />
+    <a href={site.whatsapp} target="_blank" rel="noopener" class="talk rv">
+      <BrandIcon name="whatsapp" size={28} />
+      <span data-en="Talk to me ↗">Fale comigo ↗</span>
+    </a>
+    <div class="side rv">
+      <a href={site.linkedin} target="_blank" rel="noopener" class="linkedin">
+        <BrandIcon name="linkedin" size={16} />
+        LinkedIn ↗
+      </a>
+      <div data-en={side.en} set:html={side.pt} />
+    </div>
   </div>
 </section>
 
@@ -93,9 +103,13 @@ const side = {
     font-size: 0.32em;
   }
 
-  .email {
+  .talk {
     grid-column: 1 / 9;
     justify-self: start;
+    align-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
     margin-top: 56px;
     padding-bottom: 8px;
     border-bottom: 1px solid var(--warm-40);
@@ -107,7 +121,7 @@ const side = {
       border-color 0.3s;
   }
 
-  .email:hover {
+  .talk:hover {
     color: var(--rose);
     border-color: var(--rose);
   }
@@ -118,12 +132,32 @@ const side = {
     font-family: var(--ff-mono);
     font-size: 11px;
     line-height: 2.2;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
     color: var(--warm-70);
   }
 
-  .side :global(a) {
+  .side .linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding: 10px 18px;
+    border: 1px solid var(--warm-40);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    line-height: 1;
+    color: var(--warm);
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+
+  .side .linkedin:hover {
+    color: var(--rose);
+    border-color: var(--rose);
+  }
+
+  .side :global(div a) {
     border-bottom: 1px solid var(--warm-14);
     color: var(--warm);
     transition:
@@ -131,15 +165,14 @@ const side = {
       color 0.2s;
   }
 
-  .side :global(a:hover) {
+  .side :global(div a:hover) {
     color: var(--rose);
     border-color: var(--rose);
   }
 
   @media (max-width: 820px) {
-    .email {
-      font-size: 18px;
-      word-break: break-all;
+    .talk {
+      font-size: 22px;
     }
   }
 </style>

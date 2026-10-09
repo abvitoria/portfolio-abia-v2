@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import BriefForm from '@/components/contact/BriefForm.astro';
 import ChannelRow from '@/components/contact/ChannelRow.astro';
-import Kicker from '@/components/ui/Kicker.astro';
 import PageHero from '@/components/ui/PageHero.astro';
 import SignOff from '@/components/ui/SignOff.astro';
 import { t } from '@/data/i18n';
@@ -12,12 +10,12 @@ import { url } from '@/lib/url';
 
 <BaseLayout
   title="Contato"
-  description="Freela, vaga efetiva ou mentoria: fale com Ábia Bognola por email, LinkedIn ou pelo briefing rápido."
+  description="Freela, vaga efetiva ou mentoria: fale com Ábia Bognola por email, LinkedIn ou WhatsApp."
 >
   <PageHero
     id="c-title"
     top={{
-      left: { strong: t('CONVERSAR', "LET'S TALK"), sub: t('BRASIL · GMT−3', 'BRAZIL · GMT−3') },
+      left: { strong: t('Conversar', "Let's talk"), sub: t('Brasil · GMT−3', 'Brazil · GMT−3') },
       right: { strong: '/contact', sub: t('resposta em 1 dia útil', 'reply within 1 business day') },
     }}
     open={t(
@@ -80,76 +78,11 @@ import { url } from '@/lib/url';
     </div>
   </section>
 
-  <section class="brief-sec" aria-labelledby="brief-title">
-    <div class="wrap grid12">
-      <Kicker
-        class="kick"
-        label={t('· briefing rápido', '· project brief')}
-        title={t('algumas coisas que adiantam', 'a few things that speed things up')}
-      />
-      <h2 id="brief-title" class="head rv" data-en="Tell me <em>about your</em><br/>project.">
-        Me conta <em>sobre o</em><br />seu projeto.
-      </h2>
-      <p
-        class="intro rv"
-        data-en="Answer what you can and skip what you can't. On the first reply I already send an <b>estimate and a scope cut</b>."
-      >
-        Responde o que quiser e pula o que não couber ainda. Na primeira resposta já devolvo <b
-          >estimativa e uma proposta de recorte de escopo</b
-        >.
-      </p>
-      <BriefForm />
-    </div>
-  </section>
-
   <SignOff size="md" />
 </BaseLayout>
 
 <style>
   .channels {
     padding: 60px 0;
-  }
-
-  .brief-sec {
-    position: relative;
-    padding: 22vh 0 14vh;
-    border-top: 1px solid var(--warm-14);
-  }
-
-  .brief-sec :global(.kick) {
-    grid-column: 1 / 4;
-  }
-
-  .head {
-    grid-column: 5 / 13;
-    margin: 0 0 24px;
-    font-family: var(--ff-display);
-    font-weight: 400;
-    font-size: clamp(48px, 7vw, 110px);
-    line-height: 0.88;
-    letter-spacing: -0.02em;
-    color: var(--warm);
-  }
-
-  .head :global(em) {
-    font-family: var(--ff-sans);
-    font-style: italic;
-    font-weight: 400;
-    font-size: 0.6em;
-    color: var(--rose);
-  }
-
-  .intro {
-    grid-column: 5 / 13;
-    max-width: 640px;
-    margin: 0 0 44px;
-    font-size: 16px;
-    line-height: 1.75;
-    color: var(--warm-70);
-  }
-
-  .intro :global(b) {
-    font-weight: 500;
-    color: var(--warm);
   }
 </style>

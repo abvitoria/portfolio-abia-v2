@@ -1,7 +1,9 @@
 ---
-/** Closing block of every case: question + back / more cases buttons. */
+/** Closing block of every case: question, WhatsApp link + back / more cases buttons. */
+import BrandIcon from '@/components/ui/BrandIcon.astro';
 import Button from '@/components/ui/Button.astro';
 import { en, pt, t, type T } from '@/data/i18n';
+import { site } from '@/data/site';
 import { url } from '@/lib/url';
 
 interface Props {
@@ -21,6 +23,10 @@ const {
 <section class="cta wrap--case" aria-label="Contato">
   <h2 data-en={en(title)} set:html={pt(title)} />
   <p data-en={en(text)} set:html={pt(text)} />
+  <a href={site.whatsapp} target="_blank" rel="noopener" class="wa">
+    <BrandIcon name="whatsapp" size={20} />
+    <span data-en="Message me on WhatsApp ↗">Fale comigo no WhatsApp ↗</span>
+  </a>
   <div class="actions">
     <Button href={url('/cases/')} variant="ghost" data-back en="← Back to previous page">← Voltar à tela anterior</Button>
     <Button href={url('/cases/')} en="See more cases →">Ver mais cases →</Button>
@@ -61,6 +67,27 @@ const {
     font-size: 17px;
     line-height: 1.75;
     color: var(--warm-70);
+  }
+
+  .wa {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: -4px 0 24px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--warm-40);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--warm);
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .wa:hover {
+    color: var(--rose-light);
+    border-color: var(--rose-light);
   }
 
   .actions {

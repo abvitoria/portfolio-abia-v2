@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, envField, fontProviders } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 
 // Fonts are downloaded at build time and self-hosted (no Google Fonts request).
 const fontsource = fontProviders.fontsource();
@@ -16,16 +16,9 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
   },
-  env: {
-    schema: {
-      // Web3Forms access key (public by design). Without it the brief form
-      // falls back to opening the visitor's email app.
-      PUBLIC_WEB3FORMS_KEY: envField.string({ context: 'client', access: 'public', optional: true }),
-    },
-  },
   fonts: [
     {
-      name: 'Poppins',
+      name: 'Inter',
       cssVariable: '--font-sans',
       provider: fontsource,
       weights: [300, 400, 500, 600, 700, 800],
@@ -41,15 +34,6 @@ export default defineConfig({
       styles: ['normal'],
       subsets: ['latin'],
       fallbacks: ['sans-serif'],
-    },
-    {
-      name: 'JetBrains Mono',
-      cssVariable: '--font-mono',
-      provider: fontsource,
-      weights: [400, 500, 700],
-      styles: ['normal'],
-      subsets: ['latin'],
-      fallbacks: ['ui-monospace', 'monospace'],
     },
   ],
 });

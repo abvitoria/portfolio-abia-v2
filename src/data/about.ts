@@ -1,4 +1,5 @@
 /** Content for the About page (/sobre). */
+import type { BrandName } from './brands';
 import { t, type L } from './i18n';
 
 export const numbers: { value: string; label: L; accent?: boolean }[] = [
@@ -93,7 +94,13 @@ export const expertise: { letter: string; title: L; items: L[] }[] = [
   },
 ];
 
-export const tools = ['Figma', 'FigJam', 'Notion', 'Miro', 'Claude'];
+export const tools: { label: string; icon: BrandName }[] = [
+  { label: 'Figma', icon: 'figma' },
+  { label: 'FigJam', icon: 'figjam' },
+  { label: 'Notion', icon: 'notion' },
+  { label: 'Miro', icon: 'miro' },
+  { label: 'Claude', icon: 'claude' },
+];
 
 export const companies: { name: string; period: L }[] = [
   { name: 'MEDME SAÚDE', period: t('2025 · atual', '2025 · present') },
@@ -107,7 +114,7 @@ export const companies: { name: string; period: L }[] = [
 export const timeline: { year: string; until?: L; role: string; current?: boolean; company: string; desc: L }[] = [
   {
     year: '2025',
-    until: t('— atual', '— present'),
+    until: t('até hoje', 'to present'),
     role: 'Product Designer',
     current: true,
     company: 'MedMe Saúde',
@@ -118,14 +125,14 @@ export const timeline: { year: string; until?: L; role: string; current?: boolea
   },
   {
     year: '2024',
-    until: t('— 2025'),
+    until: t('até 2025', 'to 2025'),
     role: 'UX Designer',
     company: '4US Tecnologia',
     desc: t('Fluxos, interfaces e protótipos para produtos digitais.', 'Flows, interfaces and prototypes for digital products.'),
   },
   {
     year: '2023',
-    until: t('— 2024'),
+    until: t('até 2024', 'to 2024'),
     role: 'UX Research',
     company: 'App Facilita',
     desc: t(
@@ -135,7 +142,7 @@ export const timeline: { year: string; until?: L; role: string; current?: boolea
   },
   {
     year: '2022',
-    until: t('— 2023'),
+    until: t('até 2023', 'to 2023'),
     role: 'Product Designer',
     company: 'Trademaster',
     desc: t(
@@ -154,7 +161,7 @@ export const timeline: { year: string; until?: L; role: string; current?: boolea
   },
   {
     year: '2021',
-    until: t('— 2022'),
+    until: t('até 2022', 'to 2022'),
     role: 'UX/UI Designer',
     company: 'ROIT Bank',
     desc: t(

@@ -5,6 +5,7 @@ import { t } from '@/data/i18n';
 ---
 
 <section class="prologue">
+  <h1 class="sr-only">Ábia Bognola · Product Designer</h1>
   <div class="wrap grid12">
     <Kicker class="mark rv" label={t('· prólogo', '· prologue')} title={t('como vejo o design', 'how I see design')} />
     <p
@@ -22,6 +23,8 @@ import { t } from '@/data/i18n';
   .prologue {
     position: relative;
     padding: clamp(72px, 12vh, 120px) 0;
+    /* First block of the Home: clears the fixed header. */
+    padding-top: calc(var(--header-h) + clamp(72px, 12vh, 120px));
   }
 
   .prologue :global(.mark) {
@@ -45,7 +48,7 @@ import { t } from '@/data/i18n';
 
   @media (max-width: 820px) {
     .prologue {
-      padding: 56px 0;
+      padding: calc(var(--header-h) + 56px) 0 56px;
     }
 
     .line {

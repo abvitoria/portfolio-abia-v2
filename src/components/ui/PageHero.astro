@@ -1,7 +1,7 @@
 ---
 /**
- * Hero for inner pages (Cases, Contato): mono top strip, giant display
- * title, italic subtitle and lead. An optional greeting goes above the title.
+ * Hero for inner pages (Cases, Contato): optional mono top strip, giant
+ * display title, italic subtitle and lead. An optional greeting goes above the title.
  */
 import type { ComponentProps } from 'astro/types';
 import HeroTop from './HeroTop.astro';
@@ -9,7 +9,7 @@ import type { L } from '@/data/i18n';
 
 interface Props {
   id: string;
-  top: Omit<ComponentProps<typeof HeroTop>, 'class'>;
+  top?: Omit<ComponentProps<typeof HeroTop>, 'class'>;
   open?: L;
   title: L;
   sub: L;
@@ -21,7 +21,7 @@ const { id, top, open, title, sub, lead } = Astro.props;
 
 <section class="hero" aria-labelledby={id}>
   <div class="wrap grid12">
-    <HeroTop class="top" {...top} />
+    {top && <HeroTop class="top" {...top} />}
     {open && <p class="open rv" data-en={open.en} set:html={open.pt} />}
     <h1 id={id} class="title rv" data-en={title.en} set:html={title.pt} />
     <p class="sub rv" data-en={sub.en} set:html={sub.pt} />
