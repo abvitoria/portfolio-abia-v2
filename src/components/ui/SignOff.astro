@@ -6,6 +6,7 @@
 import Kicker from './Kicker.astro';
 import { site } from '@/data/site';
 import { t } from '@/data/i18n';
+import { url } from '@/lib/url';
 
 interface Props {
   /** Show the "· epílogo / contato" kicker above the headline. */
@@ -15,8 +16,8 @@ interface Props {
 
 const { kicker = false, size = 'lg' } = Astro.props;
 const side = {
-  pt: `· <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a><br/>· <a href="/sobre/">Sobre mim ↗</a><br/>· GMT−3 · Brasil<br/>· Aberta pra freela e efetivo`,
-  en: `· <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a><br/>· <a href="/sobre/">About me ↗</a><br/>· GMT−3 · Brazil<br/>· Open to freelance and full-time`,
+  pt: `· <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a><br/>· <a href="${url('/sobre/')}">Sobre mim ↗</a><br/>· GMT−3 · Brasil<br/>· Aberta pra freela e efetivo`,
+  en: `· <a href="${site.linkedin}" target="_blank" rel="noopener">LinkedIn ↗</a><br/>· <a href="${url('/sobre/')}">About me ↗</a><br/>· GMT−3 · Brazil<br/>· Open to freelance and full-time`,
 };
 ---
 

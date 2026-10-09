@@ -6,6 +6,7 @@
 import { Image } from 'astro:assets';
 import logo from '@/assets/brand/uxfinity-logo-branca.png';
 import { nav, site } from '@/data/site';
+import { url } from '@/lib/url';
 
 interface Props {
   /** Show the PT/EN toggle (pages without English copy hide it). */
@@ -14,12 +15,11 @@ interface Props {
 
 const { showLang = true } = Astro.props;
 const path = Astro.url.pathname.replace(/\/?$/, '/');
-const isActive = (href: string) =>
-  href === '/' ? path === '/' : path.startsWith(href);
+const isActive = (href: string) => (href === url('/') ? path === href : path.startsWith(href));
 ---
 
 <header class="hdr">
-  <a href="/" class="mark" aria-label={`${site.brand} · ${site.name} — início`}>
+  <a href={url('/')} class="mark" aria-label={`${site.brand} · ${site.name} — início`}>
     <Image src={logo} alt={site.brand} height={30} loading="eager" />
   </a>
   <div class="nav-wrap">

@@ -1,4 +1,5 @@
 ---
+import { url } from '@/lib/url';
 /**
  * Editorial case opening (Trade+, Vitalis, StartDev): colored badges,
  * eyebrow, title with an accent phrase, lead, 2×2 facts and a visual on the
@@ -42,7 +43,7 @@ const {
 ---
 
 <section class="intro" aria-labelledby="case-title">
-  <a href="/cases/" class="back">← Voltar aos cases</a>
+  <a href={url('/cases/')} class="back">← Voltar aos cases</a>
   <div class="grid" style={`--cols:${columns}`}>
     <div>
       <div class="badges">

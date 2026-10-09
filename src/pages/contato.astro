@@ -7,6 +7,7 @@ import PageHero from '@/components/ui/PageHero.astro';
 import SignOff from '@/components/ui/SignOff.astro';
 import { t } from '@/data/i18n';
 import { site } from '@/data/site';
+import { url } from '@/lib/url';
 ---
 
 <BaseLayout
@@ -65,7 +66,7 @@ import { site } from '@/data/site';
       />
       <ChannelRow
         n="03"
-        href="/cases/"
+        href={url('/cases/')}
         ariaLabel="Ver cases antes de escrever"
         kind={t('Cases · antes de escrever', 'Cases · before writing')}
         value={t('Lê os<br/>cases antes.', 'Read the<br/>cases first.')}

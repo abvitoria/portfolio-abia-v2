@@ -1,6 +1,7 @@
 ---
 /** Closing block of every case: question + back / more cases buttons. */
 import Button from '@/components/ui/Button.astro';
+import { url } from '@/lib/url';
 
 interface Props {
   title?: string;
@@ -17,8 +18,8 @@ const {
   <h2 set:html={title} />
   <p set:html={text} />
   <div class="actions">
-    <Button href="/cases/" variant="ghost" data-back>← Voltar à tela anterior</Button>
-    <Button href="/cases/">Ver mais cases →</Button>
+    <Button href={url('/cases/')} variant="ghost" data-back>← Voltar à tela anterior</Button>
+    <Button href={url('/cases/')}>Ver mais cases →</Button>
   </div>
 </section>
 

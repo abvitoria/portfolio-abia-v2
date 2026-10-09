@@ -5,6 +5,7 @@ import ProcessCard from '@/components/about/ProcessCard.astro';
 import Timeline from '@/components/about/Timeline.astro';
 import Portrait from '@/components/ui/Portrait.astro';
 import { community, companies, craft, education, expertise, numbers, process, timeline, tools } from '@/data/about';
+import { url } from '@/lib/url';
 ---
 
 <BaseLayout
@@ -65,7 +66,7 @@ import { community, companies, craft, education, expertise, numbers, process, ti
         <div class="kicker">03 · Filosofia</div>
         <h2 id="filo-title" class="disp h-lg">COMO EU<br />COSTUMO<br />TRABALHAR.</h2>
         <p class="pull">
-          As cinco etapas do design thinking, que guiam <a href="/cases/">cada projeto</a> e se ajustam ao prazo e ao que o
+          As cinco etapas do design thinking, que guiam <a href={url('/cases/')}>cada projeto</a> e se ajustam ao prazo e ao que o
           time tem disponível.
         </p>
       </div>
@@ -197,8 +198,8 @@ import { community, companies, craft, education, expertise, numbers, process, ti
           <h2>SE FIZER<br />SENTIDO, <em>me chame.</em></h2>
         </div>
         <div class="cta-btns">
-          <a href="/contato/" class="btn-solid">Fale comigo →</a>
-          <a href="/cases/" class="btn-outline">Ver os cases</a>
+          <a href={url('/contato/')} class="btn-solid">Fale comigo →</a>
+          <a href={url('/cases/')} class="btn-outline">Ver os cases</a>
         </div>
       </div>
     </div>

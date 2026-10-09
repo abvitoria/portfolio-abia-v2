@@ -4,6 +4,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import { t, type L } from './i18n';
+import { url } from '@/lib/url';
 import capaTrade from '@/assets/covers/capa-trade.png';
 import capaVitalis from '@/assets/covers/capa-vitalis.png';
 import capaStartdev from '@/assets/covers/capa-startdev.png';
@@ -326,4 +327,4 @@ export const cases: CaseEntry[] = [
 ];
 
 export const designerActor = designMe;
-export const caseHref = (slug: string) => `/cases/${slug}/`;
+export const caseHref = (slug: string) => url(`/cases/${slug}/`);

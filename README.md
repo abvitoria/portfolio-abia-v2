@@ -1,7 +1,8 @@
 # Portfólio · Ábia Bognola
 
 Portfólio de Product Design (UX/UI) feito com [Astro](https://astro.build).
-As páginas são geradas como HTML estático. Só o formulário de contato roda no servidor, como uma função serverless.
+Todas as páginas são geradas como HTML estático e publicadas no GitHub Pages:
+**https://abvitoria.github.io/portfolio-abia-v2/**
 
 ## Comandos
 
@@ -11,7 +12,7 @@ As páginas são geradas como HTML estático. Só o formulário de contato roda 
 | `npm run dev`     | Servidor local em `http://localhost:4321`        |
 | `npm run dev:stop` | Para um servidor de dev rodando em segundo plano |
 | `npm run dev:status` | Mostra se há um servidor de dev rodando        |
-| `npm run build`   | Gera o site de produção (`.vercel/output`)       |
+| `npm run build`   | Gera o site de produção em `dist/`               |
 | `npm run preview` | Serve o build localmente                         |
 | `npm run check`   | Checagem de tipos (Astro + TypeScript)           |
 
@@ -34,8 +35,8 @@ src/
 │       └── <slug>/    Componentes exclusivos de cada case
 ├── data/              Conteúdo estruturado (cases, sobre, site, i18n)
 ├── layouts/           BaseLayout (toda página) e CaseLayout (cases)
-├── lib/               Lógica compartilhada (validação do briefing)
-├── pages/             Rotas: /, /cases/, /cases/<slug>/, /sobre/, /contato/, /api/contato
+├── lib/               Lógica compartilhada (briefing, links com base path)
+├── pages/             Rotas: /, /cases/, /cases/<slug>/, /sobre/, /contato/
 ├── scripts/           JS do cliente (PT/EN, reveal, animação de palavras, spotlight)
 └── styles/            Biblioteca de CSS
     ├── tokens.css     Cores, tipografia, espaçamento, raios, sombras, motion
@@ -59,24 +60,32 @@ Cada componente `.astro` carrega o próprio CSS (com escopo). As classes globais
 
 O conteúdo é renderizado em português. A versão em inglês fica no atributo `data-en` (ou `data-en-placeholder`), e o botão PT/EN troca os textos sem recarregar a página (`src/scripts/i18n.ts`).
 
+## Links internos
+
+O site é servido em uma subpasta (`/portfolio-abia-v2/`). Todo link interno passa por `url()` de `src/lib/url.ts`:
+
+```astro
+<a href={url('/cases/')}>Cases</a>
+```
+
+Imagens importadas de `src/assets/` já recebem o prefixo automaticamente.
+
 ## Formulário de contato (e-mail)
 
-O briefing em `/contato` envia um POST para `/api/contato`, que manda o e-mail via [Resend](https://resend.com).
+O briefing em `/contato` é enviado pelo [Web3Forms](https://web3forms.com), que funciona sem servidor.
 
-1. Crie uma conta no Resend e gere uma API key.
-2. (Recomendado) Verifique seu domínio no Resend para enviar de um endereço próprio.
-3. Configure as variáveis de ambiente (localmente em `.env`, veja `.env.example`; na Vercel em *Settings → Environment Variables*):
+1. Gere uma chave gratuita em web3forms.com com o e-mail que deve receber os briefings.
+2. No GitHub: *Settings → Secrets and variables → Actions → Variables* → crie `PUBLIC_WEB3FORMS_KEY` com a chave.
+3. Localmente, coloque a mesma chave em `.env` (veja `.env.example`).
 
-| Variável             | Exemplo                                    |
-| -------------------- | ------------------------------------------ |
-| `RESEND_API_KEY`     | `re_xxx…`                                  |
-| `CONTACT_TO_EMAIL`   | `abiabognola14@gmail.com`                  |
-| `CONTACT_FROM_EMAIL` | `Portfólio <contato@seudominio.com>`       |
+A chave é pública por design (ela vai no JavaScript do site). Sem a chave, ou se o envio falhar, o formulário abre o app de e-mail do visitante com o resumo preenchido. Há também um campo honeypot contra bots.
 
-Sem a chave, o endpoint responde 503 e o formulário oferece enviar pelo app de e-mail (mailto com o resumo preenchido). O formulário também tem um campo honeypot contra bots, e o servidor valida e limita o tamanho de cada campo.
+## Deploy (GitHub Pages)
 
-## Deploy
+O workflow `.github/workflows/deploy.yml` builda e publica o site a cada push na `master`. Também é possível rodar manualmente em *Actions → Deploy to GitHub Pages → Run workflow*.
 
-O projeto está configurado para a **Vercel** (`@astrojs/vercel`): importe o repositório na Vercel e configure as variáveis acima. Para usar Netlify ou Cloudflare, troque o adapter em `astro.config.mjs` (`@astrojs/netlify` ou `@astrojs/cloudflare`).
+Configuração única: *Settings → Pages → Build and deployment → Source* = **GitHub Actions**.
+
+**Domínio próprio:** configure em *Settings → Pages → Custom domain*, depois troque `site` pelo domínio e remova `base` em `astro.config.mjs`.
 
 As fontes (Poppins, Bebas Neue, JetBrains Mono) são baixadas no build e servidas pelo próprio site, então nenhuma requisição vai ao Google Fonts.

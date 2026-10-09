@@ -5,6 +5,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
+import { url } from '@/lib/url';
 
 interface Props {
   eyebrow: string;
@@ -22,7 +23,7 @@ const { eyebrow, title, summary, cover, coverAlt, facts } = Astro.props;
 <section class="hero wrap--case" aria-labelledby="case-title">
   <div class="top">
     <div class="intro">
-      <a href="/cases/" class="back">← Voltar aos cases</a>
+      <a href={url('/cases/')} class="back">← Voltar aos cases</a>
       <span class="tag-mono">{eyebrow}</span>
       <h1 id="case-title" set:html={title} />
       <p class="summary" set:html={summary} />

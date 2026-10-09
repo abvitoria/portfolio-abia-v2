@@ -1,3 +1,5 @@
+import { url } from '@/lib/url';
+
 /** Site-wide constants: identity, contact channels and navigation. */
 export const site = {
   name: 'Ábia Bognola',
@@ -13,8 +15,8 @@ export const site = {
 export type NavItem = { href: string; pt: string; en: string };
 
 export const nav: NavItem[] = [
-  { href: '/', pt: 'Início', en: 'Home' },
-  { href: '/cases/', pt: 'Cases', en: 'Work' },
-  { href: '/sobre/', pt: 'Sobre', en: 'About' },
-  { href: '/contato/', pt: 'Contato', en: 'Contact' },
+  { href: url('/'), pt: 'Início', en: 'Home' },
+  { href: url('/cases/'), pt: 'Cases', en: 'Work' },
+  { href: url('/sobre/'), pt: 'Sobre', en: 'About' },
+  { href: url('/contato/'), pt: 'Contato', en: 'Contact' },
 ];

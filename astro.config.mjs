@@ -1,16 +1,16 @@
 // @ts-check
 import { defineConfig, envField, fontProviders } from 'astro/config';
-import vercel from '@astrojs/vercel';
 
 // Fonts are downloaded at build time and self-hosted (no Google Fonts request).
 const fontsource = fontProviders.fontsource();
 
 export default defineConfig({
-  site: 'https://abiabognola.com',
+  // Published on GitHub Pages at https://abvitoria.github.io/portfolio-abia-v2/
+  // With a custom domain, set `site` to it and remove `base`.
+  site: 'https://abvitoria.github.io',
+  base: '/portfolio-abia-v2',
   trailingSlash: 'ignore',
-  // Static by default; only /api/contato runs on demand (prerender = false).
   output: 'static',
-  adapter: vercel(),
   devToolbar: { enabled: false },
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   image: {
@@ -18,9 +18,9 @@ export default defineConfig({
   },
   env: {
     schema: {
-      RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
-      CONTACT_TO_EMAIL: envField.string({ context: 'server', access: 'secret', default: 'abiabognola14@gmail.com' }),
-      CONTACT_FROM_EMAIL: envField.string({ context: 'server', access: 'secret', default: 'Portfólio <onboarding@resend.dev>' }),
+      // Web3Forms access key (public by design). Without it the brief form
+      // falls back to opening the visitor's email app.
+      PUBLIC_WEB3FORMS_KEY: envField.string({ context: 'client', access: 'public', optional: true }),
     },
   },
   fonts: [

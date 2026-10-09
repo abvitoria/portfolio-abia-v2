@@ -1,7 +1,8 @@
 ---
 /**
- * Project brief form. Sends JSON to /api/contato (emailed via Resend).
- * If the API is unavailable, it offers a pre-filled mailto as fallback.
+ * Project brief form. Sends the brief through Web3Forms (static-friendly, no
+ * server needed). Without PUBLIC_WEB3FORMS_KEY, or if sending fails, it falls
+ * back to a pre-filled mailto.
  */
 import ChoiceGroup from './ChoiceGroup.astro';
 import Chip from '@/components/ui/Chip.astro';
@@ -31,7 +32,7 @@ const prazos = [
 ];
 ---
 
-<form class="brief rv" action="/api/contato" method="post" data-brief data-email={site.email}>
+<form class="brief rv" action="https://api.web3forms.com/submit" method="post" data-brief data-email={site.email}>
   <div class="field">
     <label for="br-name" data-en="Name">Nome</label>
     <input
@@ -131,6 +132,7 @@ const prazos = [
 </form>
 
 <script>
+  import { PUBLIC_WEB3FORMS_KEY } from 'astro:env/client';
   import { briefSubject, briefToText, parseBrief } from '@/lib/brief';
 
   document.querySelectorAll<HTMLFormElement>('[data-brief]').forEach((form) => {
@@ -145,9 +147,19 @@ const prazos = [
       if (!form.reportValidity()) return;
 
       const fd = new FormData(form);
-      const payload = { ...Object.fromEntries(fd), tipo: fd.getAll('tipo') };
-      const { brief } = parseBrief(payload);
-      mailto.href = `mailto:${email}?subject=${encodeURIComponent(briefSubject(brief))}&body=${encodeURIComponent(briefToText(brief))}`;
+      // Honeypot: real visitors never fill this hidden field.
+      if (String(fd.get('website') ?? '').trim()) return;
+
+      const { brief } = parseBrief({ ...Object.fromEntries(fd), tipo: fd.getAll('tipo') });
+      const subject = briefSubject(brief);
+      const message = briefToText(brief);
+      mailto.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+      // No key configured: go straight to the visitor's email app.
+      if (!PUBLIC_WEB3FORMS_KEY) {
+        window.location.href = mailto.href;
+        return;
+      }
 
       submit.disabled = true;
       form.setAttribute('aria-busy', 'true');
@@ -155,10 +167,18 @@ const prazos = [
       try {
         const res = await fetch(form.action, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: PUBLIC_WEB3FORMS_KEY,
+            subject,
+            from_name: brief.nome,
+            email: brief.email,
+            replyto: brief.email,
+            message,
+          }),
         });
-        if (!res.ok) throw new Error(String(res.status));
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.success) throw new Error(String(res.status));
         form.classList.add('sent');
         ok.hidden = false;
         ok.focus?.();

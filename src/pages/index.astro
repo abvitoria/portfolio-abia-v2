@@ -6,6 +6,7 @@ import Interlude from '@/components/home/Interlude.astro';
 import Prologue from '@/components/home/Prologue.astro';
 import Chip from '@/components/ui/Chip.astro';
 import SignOff from '@/components/ui/SignOff.astro';
+import { url } from '@/lib/url';
 ---
 
 <BaseLayout>
@@ -21,7 +22,7 @@ import SignOff from '@/components/ui/SignOff.astro';
             Conheça um pouco do meu trabalho e dos projetos em que atuei.
           </h2>
         </div>
-        <Chip href="/cases/" en="All cases">Todos os cases</Chip>
+        <Chip href={url('/cases/')} en="All cases">Todos os cases</Chip>
       </div>
       <CaseAccordion />
     </div>
