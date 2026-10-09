@@ -9,13 +9,14 @@ import AtividadesScreen from './AtividadesScreen.astro';
 import ForumScreen from './ForumScreen.astro';
 import NovoTopicoScreen from './NovoTopicoScreen.astro';
 import PontosScreen from './PontosScreen.astro';
+import { t } from '@/data/i18n';
 
 const screens = [
-  { id: 'aula', label: 'Aula', Screen: AulaScreen },
-  { id: 'atividades', label: 'Atividades', Screen: AtividadesScreen },
-  { id: 'forum', label: 'Fórum', Screen: ForumScreen },
-  { id: 'novo', label: 'Novo tópico', Screen: NovoTopicoScreen },
-  { id: 'pontos', label: 'Pontos · dark', Screen: PontosScreen },
+  { id: 'aula', label: t('Aula', 'Lesson'), Screen: AulaScreen },
+  { id: 'atividades', label: t('Atividades', 'Activities'), Screen: AtividadesScreen },
+  { id: 'forum', label: t('Fórum', 'Forum'), Screen: ForumScreen },
+  { id: 'novo', label: t('Novo tópico', 'New topic'), Screen: NovoTopicoScreen },
+  { id: 'pontos', label: t('Pontos · dark', 'Points · dark'), Screen: PontosScreen },
 ];
 ---
 
@@ -31,9 +32,9 @@ const screens = [
           aria-controls={`sd-panel-${s.id}`}
           aria-selected={i === 0 ? 'true' : 'false'}
           tabindex={i === 0 ? 0 : -1}
-        >
-          {s.label}
-        </button>
+          data-en={s.label.en}
+          set:html={s.label.pt}
+        />
       ))
     }
   </div>

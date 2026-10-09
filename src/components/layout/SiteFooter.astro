@@ -19,7 +19,7 @@ const { variant = 'dark' } = Astro.props;
         {site.name.toUpperCase()}
         <span class="dot">.</span>
       </div>
-      <div>© {site.year} · Portfólio de product design.</div>
+      <div data-en={`© ${site.year} · Product design portfolio.`}>© {site.year} · Portfólio de product design.</div>
     </footer>
   ) : (
     <footer class="foot">

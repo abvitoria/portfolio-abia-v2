@@ -8,12 +8,13 @@
  */
 import type { ImageMetadata } from 'astro';
 import { getImage, Image } from 'astro:assets';
+import { en, pt, type T } from '@/data/i18n';
 
 interface Props {
   src: ImageMetadata;
   alt: string;
   /** Caption (inline HTML allowed). */
-  caption?: string;
+  caption?: T;
   /** Caption color: default/before (grey), after (cyan), process (lilac). */
   tone?: 'default' | 'before' | 'after' | 'process';
   /** Small uppercase mono caption instead of a sentence. */
@@ -65,7 +66,7 @@ widths.push(Math.min(src.width, 2400));
   >
     <Image src={src} alt={alt} width={Math.min(src.width, 1600)} widths={widths} sizes={sizes} loading={loading} />
   </div>
-  {caption && <figcaption class:list={[`tone-${tone}`, { mono: captionMono }]} set:html={caption} />}
+  {caption && <figcaption class:list={[`tone-${tone}`, { mono: captionMono }]} data-en={en(caption)} set:html={pt(caption)} />}
 </figure>
 
 <style>

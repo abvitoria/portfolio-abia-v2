@@ -3,11 +3,13 @@
  * A solution step: small cyan label + h3 on the left, text on the right,
  * and a full-width figure (or anything) below via the "media" slot.
  */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
   id: string;
-  label: string;
+  label: T;
   /** Heading (inline HTML allowed). */
-  title: string;
+  title: T;
 }
 
 const { id, label, title } = Astro.props;
@@ -16,8 +18,8 @@ const { id, label, title } = Astro.props;
 <section class="step wrap--case" aria-labelledby={id}>
   <div class="cols">
     <div class="head">
-      <span class="label label--cyan">{label}</span>
-      <h3 id={id} set:html={title} />
+      <span class="label label--cyan" data-en={en(label)} set:html={pt(label)} />
+      <h3 id={id} data-en={en(title)} set:html={pt(title)} />
     </div>
     <div class="body">
       <slot />

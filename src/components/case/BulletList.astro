@@ -1,7 +1,9 @@
 ---
 /** Dotted bullet list (status, outcomes). Items may contain inline HTML. */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
-  items: string[];
+  items: T[];
   /** Dot color (any CSS color or token). */
   color?: string;
 }
@@ -14,7 +16,7 @@ const { items, color = 'var(--gold)' } = Astro.props;
     items.map((item) => (
       <li>
         <span class="dot" />
-        <span set:html={item} />
+        <span data-en={en(item)} set:html={pt(item)} />
       </li>
     ))
   }

@@ -9,11 +9,12 @@
  */
 import type { ImageMetadata } from 'astro';
 import CaseFigure from '@/components/case/CaseFigure.astro';
+import type { T } from '@/data/i18n';
 
 export interface Shot {
   src: ImageMetadata;
   alt: string;
-  caption: string;
+  caption: T;
   /** Caption color: before (grey), after (cyan), process (lilac). */
   tone?: 'before' | 'after' | 'process';
   /** Frame background behind the screenshot. */

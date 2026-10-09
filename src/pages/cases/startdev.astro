@@ -1,5 +1,6 @@
 ---
 import CaseLayout from '@/layouts/CaseLayout.astro';
+import { t } from '@/data/i18n';
 import CaseIntro from '@/components/case/CaseIntro.astro';
 import HeroScreen from '@/components/case/startdev/HeroScreen.astro';
 import LaptopFrame from '@/components/case/LaptopFrame.astro';
@@ -19,91 +20,91 @@ const summary = [
   {
     href: '#cap-descoberta',
     mark: '☍',
-    title: 'Ensino + comunidade + gamificação',
-    text: 'Uma proposta ambiciosa de negócio para virar uma interface única.',
-    cta: 'Ver o desafio →',
+    title: t('Ensino + comunidade + gamificação', 'Learning + community + gamification'),
+    text: t('Uma proposta ambiciosa de negócio para virar uma interface única.', 'An ambitious business proposal to turn into a single interface.'),
+    cta: t('Ver o desafio →', 'See the challenge →'),
   },
   {
     href: '#cap-descoberta',
     mark: '20d',
-    title: 'Prazo real e apertado',
-    text: 'Web e mobile em ~20 dias, com pesquisa própria limitada.',
-    cta: 'Entender a restrição →',
+    title: t('Prazo real e apertado', 'A real, tight deadline'),
+    text: t('Web e mobile em ~20 dias, com pesquisa própria limitada.', 'Web and mobile in ~20 days, with limited first-hand research.'),
+    cta: t('Entender a restrição →', 'Understand the constraint →'),
   },
   {
     href: '#cap-decisoes',
     mark: '→',
-    title: 'A direção tomada',
-    text: 'Estrutura antes da estética: fluxo, wireframes, style guide e dark mode.',
-    cta: 'Ver as decisões →',
+    title: t('A direção tomada', 'The direction taken'),
+    text: t('Estrutura antes da estética: fluxo, wireframes, style guide e dark mode.', 'Structure before aesthetics: flow, wireframes, style guide and dark mode.'),
+    cta: t('Ver as decisões →', 'See the decisions →'),
   },
 ];
 
 const challenge = [
-  { n: '3 em 1', text: 'Ensino, comunidade e gamificação num único produto.' },
-  { n: '~20 dias', text: 'Para entregar as versões web e mobile.' },
-  { n: '↯', text: 'Sem pesquisa própria de usuário no início do projeto.' },
+  { n: t('3 em 1', '3 in 1'), text: t('Ensino, comunidade e gamificação num único produto.', 'Learning, community and gamification in a single product.') },
+  { n: t('~20 dias', '~20 days'), text: t('Para entregar as versões web e mobile.', 'To deliver the web and mobile versions.') },
+  { n: t('↯'), text: t('Sem pesquisa própria de usuário no início do projeto.', 'No first-hand user research at the start of the project.') },
 ];
 
 const steps = [
   {
-    title: 'Revisão do documento de especificações',
-    text: 'Li a fundo o que o cliente já havia definido de negócio e escopo, para não recomeçar do zero o que já estava resolvido.',
+    title: t('Revisão do documento de especificações', 'Review of the specification document'),
+    text: t('Li a fundo o que o cliente já havia definido de negócio e escopo, para não recomeçar do zero o que já estava resolvido.', 'I read in depth what the client had already defined for business and scope, so as not to restart from scratch what was already solved.'),
   },
   {
-    title: 'Roteiro de entrevista',
-    text: 'Montei um roteiro no Google Docs para conduzir a conversa com o cliente com foco, não uma reunião aberta, mas perguntas dirigidas às decisões de design.',
+    title: t('Roteiro de entrevista', 'Interview script'),
+    text: t('Montei um roteiro no Google Docs para conduzir a conversa com o cliente com foco, não uma reunião aberta, mas perguntas dirigidas às decisões de design.', 'I put together a script in Google Docs to keep the conversation with the client focused — not an open-ended meeting, but questions aimed at design decisions.'),
   },
   {
-    title: 'Entrevista com o cliente',
-    text: 'Levantei as expectativas de negócio e visuais, perguntando explicitamente sobre <strong>paleta de cores já existente</strong> e <strong>referências visuais</strong> que ele admirava o que evitou retrabalho estético mais à frente.',
+    title: t('Entrevista com o cliente', 'Client interview'),
+    text: t('Levantei as expectativas de negócio e visuais, perguntando explicitamente sobre <strong>paleta de cores já existente</strong> e <strong>referências visuais</strong> que ele admirava o que evitou retrabalho estético mais à frente.', 'I gathered business and visual expectations, asking explicitly about the <strong>existing color palette</strong> and the <strong>visual references</strong> the client admired — which avoided aesthetic rework later on.'),
   },
 ];
 
 const gamification = [
-  { title: 'Pontos por ajudar', text: 'Quem apoia outros usuários na comunidade acumula pontos.' },
-  { title: 'Troca por cursos', text: 'Pontos viram cursos ou descontos — valor concreto de volta.' },
+  { title: t('Pontos por ajudar', 'Points for helping'), text: t('Quem apoia outros usuários na comunidade acumula pontos.', 'Those who help other users in the community earn points.') },
+  { title: t('Troca por cursos', 'Exchange for courses'), text: t('Pontos viram cursos ou descontos — valor concreto de volta.', 'Points turn into courses or discounts — concrete value in return.') },
   {
-    title: 'Recompensa por progresso',
-    text: 'Completar cursos, avaliar aulas, responder atividades e interagir em fóruns rende pontos.',
+    title: t('Recompensa por progresso', 'Rewards for progress'),
+    text: t('Completar cursos, avaliar aulas, responder atividades e interagir em fóruns rende pontos.', 'Completing courses, rating lessons, answering activities and interacting in forums earns points.'),
   },
-  { title: 'Metas visíveis', text: 'Pontuação e progresso no curso atual sempre à vista, dando sensação de avanço.' },
+  { title: t('Metas visíveis', 'Visible goals'), text: t('Pontuação e progresso no curso atual sempre à vista, dando sensação de avanço.', 'Score and progress in the current course always in view, giving a sense of advancement.') },
 ];
 
 const solutions = [
   {
-    title: 'Cursos e atividades',
-    text: 'Uma experiência para acessar conteúdos, acompanhar módulos e realizar exercícios, com informações de progresso ao longo da jornada.',
+    title: t('Cursos e atividades', 'Courses and activities'),
+    text: t('Uma experiência para acessar conteúdos, acompanhar módulos e realizar exercícios, com informações de progresso ao longo da jornada.', 'An experience for accessing content, following modules and doing exercises, with progress information throughout the journey.'),
   },
   {
-    title: 'Comunidade',
-    text: 'Um espaço dedicado à interação entre estudantes, permitindo criar discussões, compartilhar dúvidas e colaborar com outros participantes.',
+    title: t('Comunidade', 'Community'),
+    text: t('Um espaço dedicado à interação entre estudantes, permitindo criar discussões, compartilhar dúvidas e colaborar com outros participantes.', 'A space dedicated to interaction between students, for starting discussions, sharing questions and collaborating with other participants.'),
   },
   {
-    title: 'Experiência mobile',
-    text: 'Adaptação das principais funcionalidades para dispositivos móveis, preservando a organização das informações e os padrões visuais da plataforma.',
+    title: t('Experiência mobile', 'Mobile experience'),
+    text: t('Adaptação das principais funcionalidades para dispositivos móveis, preservando a organização das informações e os padrões visuais da plataforma.', 'The main features adapted for mobile devices, preserving the platform’s information organization and visual patterns.'),
   },
 ];
 
 const pressure = [
-  { title: 'Priorização', text: 'Estrutura antes da estética, para não desperdiçar dias em retrabalho.' },
-  { title: 'Reaproveitamento', text: 'Proto-persona e marca do cliente usadas como ponto de partida legítimo.' },
-  { title: 'Liderança', text: 'Manter outros projetos e apoiar uma estagiária sem travar a entrega.' },
+  { title: t('Priorização', 'Prioritization'), text: t('Estrutura antes da estética, para não desperdiçar dias em retrabalho.', 'Structure before aesthetics, so no days were wasted on rework.') },
+  { title: t('Reaproveitamento', 'Reuse'), text: t('Proto-persona e marca do cliente usadas como ponto de partida legítimo.', 'The client’s proto-persona and brand used as a legitimate starting point.') },
+  { title: t('Liderança', 'Leadership'), text: t('Manter outros projetos e apoiar uma estagiária sem travar a entrega.', 'Keeping other projects running and supporting an intern without blocking delivery.') },
 ];
 
 const learnings = [
   {
-    title: 'O que funcionou',
+    title: t('O que funcionou', 'What worked'),
     items: [
-      'Fazer o user flow antes de tudo permitiu estimar telas e cortar escopo cedo — foi o que fez os 20 dias caberem.',
-      'Trabalhar dentro da marca do cliente, sem propor identidade nova, poupou dias de alinhamento visual.',
+      t('Fazer o user flow antes de tudo permitiu estimar telas e cortar escopo cedo — foi o que fez os 20 dias caberem.', 'Doing the user flow before anything else made it possible to estimate screens and cut scope early — that is what made the 20 days fit.'),
+      t('Trabalhar dentro da marca do cliente, sem propor identidade nova, poupou dias de alinhamento visual.', 'Working within the client’s brand, without proposing a new identity, saved days of visual alignment.'),
     ],
   },
   {
-    title: 'O que eu faria diferente',
+    title: t('O que eu faria diferente', 'What I would do differently'),
     items: [
-      'Reservar espaço para pesquisa própria de usuário e validação com teste, mesmo que enxuta, defendendo isso já na negociação do prazo.',
-      'Acompanhar o produto após o lançamento para fechar o ciclo com dados reais de uso.',
+      t('Reservar espaço para pesquisa própria de usuário e validação com teste, mesmo que enxuta, defendendo isso já na negociação do prazo.', 'Make room for first-hand user research and test-based validation, even if lean, advocating for it as early as the deadline negotiation.'),
+      t('Acompanhar o produto após o lançamento para fechar o ciclo com dados reais de uso.', 'Follow the product after launch to close the loop with real usage data.'),
     ],
   },
 ];
@@ -114,51 +115,57 @@ const learnings = [
   description="Ensino, comunidade colaborativa e gamificação num só produto: a interface web e mobile da StartDev, desenhada em cerca de 20 dias."
   image={cover.src}
   chapters={[
-    { id: 'cap-contexto', label: 'Contexto' },
-    { id: 'cap-descoberta', label: 'Investigação' },
-    { id: 'cap-decisoes', label: 'Estruturação' },
-    { id: 'cap-solucao', label: 'Soluções' },
-    { id: 'cap-impacto', label: 'Entregas' },
+    { id: 'cap-contexto', label: t('Contexto', 'Context') },
+    { id: 'cap-descoberta', label: t('Investigação', 'Research') },
+    { id: 'cap-decisoes', label: t('Estruturação', 'Structuring') },
+    { id: 'cap-solucao', label: t('Soluções', 'Solutions') },
+    { id: 'cap-impacto', label: t('Entregas', 'Delivery') },
   ]}
   ambient
   showLang
-  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+  cta={{ title: t('Tem um fluxo assim no seu produto?', 'Have a flow like this in your product?') }}
 >
   <CaseIntro
     badges={[
       { label: 'UX/UI CASE', color: '#0B7C8F' },
-      { label: 'EDTECH · COMUNIDADE', color: '#561589' },
+      { label: t('EDTECH · COMUNIDADE', 'EDTECH · COMMUNITY'), color: '#561589' },
       { label: 'WEB + MOBILE', color: '#6E3FC8' },
     ]}
     eyebrow="STARTDEV · PRODUCT DESIGN · UX/UI · EDTECH"
-    title='Uma experiência de aprendizagem que conecta <span class="serif">teoria, prática e comunidade</span>'
-    lead="A StartDev é uma plataforma de ensino de programação que combina aulas, exercícios, interação entre estudantes e um sistema de gamificação, no qual a participação e o progresso podem gerar <strong>pontos e recompensas</strong>."
+    title={t(
+      'Uma experiência de aprendizagem que conecta <span class="serif">teoria, prática e comunidade</span>',
+      'A learning experience that connects <span class="serif">theory, practice and community</span>',
+    )}
+    lead={t(
+      'A StartDev é uma plataforma de ensino de programação que combina aulas, exercícios, interação entre estudantes e um sistema de gamificação, no qual a participação e o progresso podem gerar <strong>pontos e recompensas</strong>.',
+      'StartDev is a programming education platform that combines lessons, exercises, student interaction and a gamification system in which participation and progress can earn <strong>points and rewards</strong>.',
+    )}
     facts={[
-      { label: 'PAPEL', value: 'UX/UI Designer' },
-      { label: 'PLATAFORMAS', value: 'Web e mobile' },
-      { label: 'DURAÇÃO', value: 'Aproximadamente 20 dias' },
-      { label: 'FERRAMENTA DE DESIGN', value: 'Figma' },
-      { label: 'TEMAS', value: 'Claro &amp; escuro' },
+      { label: t('PAPEL', 'ROLE'), value: 'UX/UI Designer' },
+      { label: t('PLATAFORMAS', 'PLATFORMS'), value: t('Web e mobile', 'Web and mobile') },
+      { label: t('DURAÇÃO', 'DURATION'), value: t('Aproximadamente 20 dias', 'About 20 days') },
+      { label: t('FERRAMENTA DE DESIGN', 'DESIGN TOOL'), value: 'Figma' },
+      { label: t('TEMAS', 'THEMES'), value: t('Claro &amp; escuro', 'Light &amp; dark') },
     ]}
   >
     <HeroScreen />
     <div class="card deadline">
       <span class="n">20</span>
-      <span>dias, do briefing<br />à entrega final</span>
+      <span data-en="days, from brief<br />to final delivery">dias, do briefing<br />à entrega final</span>
     </div>
   </CaseIntro>
 
   <!-- Resumo / índice -->
   <section id="cap-contexto" aria-labelledby="resumo-title" class="sec rv summary">
-    <h2 id="resumo-title" class="sr-only">Resumo do case</h2>
+    <h2 data-en="Case summary" id="resumo-title" class="sr-only">Resumo do case</h2>
     <div class="cols-3">
       {
         summary.map((s) => (
           <a href={s.href} class="card card--link summary-card">
             <span class="mark">{s.mark}</span>
-            <div class="summary-title">{s.title}</div>
+            <div class="summary-title" data-en={s.title.en} set:html={s.title.pt} />
             <p>
-              {s.text} <span class="more">{s.cta}</span>
+              <span data-en={s.text.en} set:html={s.text.pt} /> <span class="more" data-en={s.cta.en} set:html={s.cta.pt} />
             </p>
           </a>
         ))
@@ -168,13 +175,13 @@ const learnings = [
 
   <!-- Contexto -->
   <section aria-labelledby="ctx-title" class="sec sec-narrow rv space-sm">
-    <p class="eyebrow">Parte 1 · Contexto e desafio</p>
-    <h2 id="ctx-title" class="h2 h2--lg">Conhecendo o projeto</h2>
-    <p class="lead">
+    <p data-en="Part 1 · Context and challenge" class="eyebrow">Parte 1 · Contexto e desafio</p>
+    <h2 data-en="Getting to know the project" id="ctx-title" class="h2 h2--lg">Conhecendo o projeto</h2>
+    <p data-en="<strong>StartDev</strong>’s proposal was to offer a learning experience that went beyond traditional lessons, encouraging practice and collaboration between students." class="lead">
       A proposta da <strong>StartDev</strong> era oferecer uma experiência de aprendizagem que fosse além das aulas
       tradicionais, incentivando a prática e a colaboração entre estudantes.
     </p>
-    <p class="lead">
+    <p data-en="The client had already defined the main features, the visual identity and the rewards system. My responsibility was to structure those ideas into a <strong>consistent digital experience for web and mobile</strong>." class="lead">
       O cliente já possuía uma definição das principais funcionalidades, da identidade visual e do sistema de
       recompensas. Minha responsabilidade foi estruturar essas ideias em uma <strong
         >experiência digital consistente para web e mobile</strong
@@ -185,13 +192,13 @@ const learnings = [
   <!-- O desafio real -->
   <div id="cap-descoberta" class="band band--purple space-sm">
     <section aria-labelledby="prob-title" class="sec sec-narrow rv band-inner">
-      <p class="eyebrow">Contexto · O desafio</p>
-      <h2 id="prob-title" class="h2 h2--xl">O desafio</h2>
-      <p class="lead">
+      <p data-en="Context · The challenge" class="eyebrow">Contexto · O desafio</p>
+      <h2 data-en="The challenge" id="prob-title" class="h2 h2--xl">O desafio</h2>
+      <p data-en="Organizing courses, hands-on activities, community and gamification within intuitive navigation, so that students could track their progress and reach the different features easily." class="lead">
         Organizar cursos, atividades práticas, comunidade e gamificação dentro de uma navegação intuitiva, permitindo que
         os estudantes acompanhassem seu progresso e acessassem as diferentes funcionalidades com facilidade.
       </p>
-      <p class="lead lead--last">
+      <p data-en="The project also had a deadline of <strong>about 20 days</strong>, which called for planning and validation throughout the development of the interfaces." class="lead lead--last">
         O projeto também tinha um prazo de <strong>aproximadamente 20 dias</strong>, exigindo planejamento e validações ao
         longo do desenvolvimento das interfaces.
       </p>
@@ -199,8 +206,8 @@ const learnings = [
         {
           challenge.map((c) => (
             <div class="glass">
-              <div class="glass-n">{c.n}</div>
-              <div class="glass-text">{c.text}</div>
+              <div class="glass-n" data-en={c.n.en} set:html={c.n.pt} />
+              <div class="glass-text" data-en={c.text.en} set:html={c.text.pt} />
             </div>
           ))
         }
@@ -210,14 +217,14 @@ const learnings = [
 
   <!-- Como cheguei na solução -->
   <section aria-labelledby="proc-title" class="sec sec-narrow rv space-lg">
-    <p class="eyebrow">Parte 2 · Investigação e planejamento</p>
-    <h2 id="proc-title" class="h2 h2--lg">Entendendo a proposta do cliente</h2>
-    <p class="lead">
+    <p data-en="Part 2 · Research and planning" class="eyebrow">Parte 2 · Investigação e planejamento</p>
+    <h2 data-en="Understanding the client’s proposal" id="proc-title" class="h2 h2--lg">Entendendo a proposta do cliente</h2>
+    <p data-en="I started by reviewing the project documentation and identifying questions about features, business rules and visual expectations. I organized a list of questions in Google Docs and talked with the client to clarify those points and better understand the expected direction." class="lead">
       Comecei revisando a documentação do projeto e identificando dúvidas sobre funcionalidades, regras de negócio e
       expectativas visuais. Organizei um roteiro de perguntas no Google Docs e conversei com o cliente para esclarecer
       esses pontos e compreender melhor o direcionamento esperado.
     </p>
-    <p class="lead lead--last">
+    <p data-en="I also used as a reference a <strong>proto-persona</strong> already developed by the Marketing team." class="lead lead--last">
       Também utilizei como referência uma <strong>proto-persona</strong> já desenvolvida pelo time de Marketing.
     </p>
     <div class="rows">
@@ -226,8 +233,8 @@ const learnings = [
           <div class="num-row">
             <span class="num-row__n">{String(i + 1).padStart(2, '0')}</span>
             <div>
-              <div class="row-title">{s.title}</div>
-              <div class="row-text" set:html={s.text} />
+              <div class="row-title" data-en={s.title.en} set:html={s.title.pt} />
+              <div class="row-text" data-en={s.text.en} set:html={s.text.pt} />
             </div>
           </div>
         ))
@@ -238,13 +245,13 @@ const learnings = [
   <!-- Mercado -->
   <section aria-labelledby="mkt-title" class="sec rv space-md">
     <div class="sec-narrow head">
-      <p class="eyebrow">Investigação · Mercado</p>
-      <h2 id="mkt-title" class="h2 h2--lg">Pesquisando referências</h2>
-      <p class="lead">
+      <p data-en="Research · Market" class="eyebrow">Investigação · Mercado</p>
+      <h2 data-en="Researching references" id="mkt-title" class="h2 h2--lg">Pesquisando referências</h2>
+      <p data-en="I ran an analysis of <strong>direct and indirect competitors</strong>, bringing together learning platforms, developer communities, international products and gamification references." class="lead">
         Realizei uma análise de <strong>concorrentes diretos e indiretos</strong>, reunindo plataformas de ensino,
         comunidades de desenvolvedores, produtos internacionais e referências de gamificação.
       </p>
-      <p class="lead">
+      <p data-en="I organized this research in Google Sheets, identifying navigation solutions, content presentation and interaction features that could contribute to StartDev’s development." class="lead">
         Organizei essa pesquisa no Google Sheets, identificando soluções de navegação, apresentação de conteúdos e
         recursos de interação que poderiam contribuir para o desenvolvimento da StartDev.
       </p>
@@ -252,7 +259,10 @@ const learnings = [
     <PanelFigure
       src={bench}
       alt="Estudo comparativo de concorrentes organizado por Home, Cursos e Perfil, com prints reais das plataformas de referência"
-      caption="Painel de referências de concorrentes, agrupado pelas telas-chave do produto — a base visual e funcional que sustentou as decisões seguintes."
+      caption={t(
+        'Painel de referências de concorrentes, agrupado pelas telas-chave do produto — a base visual e funcional que sustentou as decisões seguintes.',
+        'A board of competitor references, grouped by the product’s key screens — the visual and functional basis for the decisions that followed.',
+      )}
       width={682}
     />
   </section>
@@ -260,13 +270,13 @@ const learnings = [
   <!-- Style guide e persona -->
   <section id="cap-decisoes" aria-labelledby="ds-title" class="sec rv space-lg">
     <div class="sec-narrow head">
-      <p class="eyebrow">Parte 3 · Estruturação e design</p>
-      <h2 id="ds-title" class="h2 h2--lg">01. Definindo os padrões visuais</h2>
-      <p class="lead">
+      <p data-en="Part 3 · Structuring and design" class="eyebrow">Parte 3 · Estruturação e design</p>
+      <h2 data-en="01. Defining the visual patterns" id="ds-title" class="h2 h2--lg">01. Definindo os padrões visuais</h2>
+      <p data-en="Since the client already had a logo, colors and fonts defined, I developed a <strong>style guide in Figma</strong> to organize those elements and establish interface patterns." class="lead">
         Como o cliente já possuía logomarca, cores e fontes definidas, desenvolvi um <strong>style guide no Figma</strong>
         para organizar esses elementos e estabelecer padrões de interface.
       </p>
-      <p class="lead">
+      <p data-en="This foundation guided the development of the screens and helped keep visual consistency across features and devices." class="lead">
         Essa base orientou o desenvolvimento das telas e contribuiu para manter a consistência visual entre as diferentes
         funcionalidades e dispositivos.
       </p>
@@ -274,7 +284,10 @@ const learnings = [
     <PanelFigure
       src={styleGuide}
       alt="Style guide da StartDev no Figma: cores, tipografia, iconografia e grid responsivo"
-      caption="Style guide construído a partir da marca já existente do cliente — o primeiro passo para padronizar a interface."
+      caption={t(
+        'Style guide construído a partir da marca já existente do cliente — o primeiro passo para padronizar a interface.',
+        'A style guide built from the client’s existing brand — the first step toward a standardized interface.',
+      )}
       padding={24}
       class="sg"
     />
@@ -282,8 +295,8 @@ const learnings = [
       <div class="note-box">
         <span class="note-mark">✓</span>
         <div>
-          <div class="note-title">Sobre a persona</div>
-          <p>
+          <div data-en="About the persona" class="note-title">Sobre a persona</div>
+          <p data-en="The client’s marketing team had already developed a <strong>proto-persona</strong> before the project started, and I used that direction as a starting point — a ready, legitimate resource given the deadline. With 20 days, that was the foundation: <strong>there was no first-hand persona research</strong> in this project, and the original file is not available to show here.">
             O time de marketing do cliente já tinha desenvolvido uma <strong>proto-persona</strong> antes do projeto começar,
             e usei essa direção como ponto de partida um recurso pronto e legítimo, dado o prazo. Com 20 dias de prazo, essa
             foi a base: <strong>não houve pesquisa própria de persona</strong> neste projeto, e o arquivo original não está
@@ -298,42 +311,45 @@ const learnings = [
   <div class="band band--tint space-lg">
     <section aria-labelledby="flow-title" class="sec rv decisions-head">
       <div class="sec-narrow">
-        <p class="eyebrow">Estruturação · Jornada</p>
-        <h2 id="flow-title" class="h2 h2--md">02. Mapeando a jornada do estudante</h2>
-        <p class="lead">
+        <p data-en="Structuring · Journey" class="eyebrow">Estruturação · Jornada</p>
+        <h2 data-en="02. Mapping the student journey" id="flow-title" class="h2 h2--md">02. Mapeando a jornada do estudante</h2>
+        <p data-en="Before starting the wireframes, I developed the platform’s <strong>user flow</strong>, organizing the paths for sign-up, access to courses, activities, community and profile." class="lead">
           Antes de iniciar os wireframes, desenvolvi o <strong>user flow</strong> da plataforma, organizando os caminhos de
           cadastro, acesso aos cursos, atividades, comunidade e perfil.
         </p>
-        <p class="lead">
+        <p data-en="This mapping made it possible to see the full extent of the product, identify the screens needed and plan the work according to the available deadline." class="lead">
           Esse mapeamento permitiu visualizar a extensão do produto, identificar as telas necessárias e planejar o trabalho
           de acordo com o prazo disponível.
         </p>
         <div class="legend">
-          <span class="pill pill--ev">Evidência</span>
-          <span class="pill pill--dec">Decisão</span>
-          <span class="pill pill--op">Oportunidade</span>
+          <span data-en="Evidence" class="pill pill--ev">Evidência</span>
+          <span data-en="Decision" class="pill pill--dec">Decisão</span>
+          <span data-en="Opportunity" class="pill pill--op">Oportunidade</span>
         </div>
       </div>
     </section>
 
     <div class="sec flow">
       <div class="dcard flow-card">
-        <h4>User flow antes dos wireframes</h4>
-        <p class="beat">
+        <h4 data-en="User flow before wireframes">User flow antes dos wireframes</h4>
+        <p data-en="<span class=&quot;pill pill--ev&quot;>Evidence</span>A product that brings together courses, activities and a forum has many screens — and the deadline was too short to estimate without a basis." class="beat">
           <span class="pill pill--ev">Evidência</span>Um produto que junta cursos, atividades e fórum tem muitas telas — e o
           prazo era curto para estimar sem base.
         </p>
-        <p class="beat">
+        <p data-en="<span class=&quot;pill pill--dec&quot;>Decision</span>I designed the <b>user flow first</b>, mapping the journey end to end — from sign-up and login to navigating Courses, Dashboard, Community and Profile — to estimate the number of screens and development time before detailing any interface." class="beat">
           <span class="pill pill--dec">Decisão</span>Desenhei o <b>user flow primeiro</b>, mapeando a jornada de ponta a
           ponta — do cadastro e login à navegação por Cursos, Dashboard, Comunidade e Perfil — para estimar a quantidade de
           telas e o tempo de desenvolvimento antes de detalhar qualquer interface.
         </p>
-        <p class="int">Intenção — <span class="serif">saber o tamanho do trabalho antes de começar a construí-lo.</span></p>
+        <p data-en="Intent — <span class=&quot;serif&quot;>know the size of the work before starting to build it.</span>" class="int">Intenção — <span class="serif">saber o tamanho do trabalho antes de começar a construí-lo.</span></p>
       </div>
       <PanelFigure
         src={userflow}
         alt="User flow completo da StartDev: fluxo de cadastro, login e recuperação de senha, ramificando para Cursos, Dashboard, Comunidade e Perfil"
-        caption="User flow completo mapeado antes dos wireframes — a base para estimar telas e cronograma dentro do prazo."
+        caption={t(
+          'User flow completo mapeado antes dos wireframes — a base para estimar telas e cronograma dentro do prazo.',
+          'The complete user flow mapped before the wireframes — the basis for estimating screens and the schedule within the deadline.',
+        )}
         width={702}
         centered
         class="userflow"
@@ -342,13 +358,13 @@ const learnings = [
 
     <section aria-labelledby="wire-title" class="sec rv wire">
       <div class="sec-narrow head head--sm">
-        <p class="eyebrow">Estruturação · Wireframes</p>
-        <h2 id="wire-title" class="h2 h2--md">03. Explorando a estrutura das interfaces</h2>
-        <p class="lead">
+        <p data-en="Structuring · Wireframes" class="eyebrow">Estruturação · Wireframes</p>
+        <h2 data-en="03. Exploring the structure of the interfaces" id="wire-title" class="h2 h2--md">03. Explorando a estrutura das interfaces</h2>
+        <p data-en="With the journeys defined, I started developing <strong>wireframes</strong> to organize the information hierarchy, navigation and the main elements of each feature." class="lead">
           Com as jornadas definidas, comecei a desenvolver <strong>wireframes</strong> para organizar a hierarquia das
           informações, a navegação e os principais elementos de cada funcionalidade.
         </p>
-        <p class="lead">
+        <p data-en="This stage made it possible to adjust quickly and discuss solutions with the client before moving on to the final visual version." class="lead">
           Essa etapa permitiu realizar ajustes com maior agilidade e discutir as soluções com o cliente antes de avançar
           para a versão visual definitiva.
         </p>
@@ -357,35 +373,38 @@ const learnings = [
         maxWidth={840}
         src={wireframe}
         alt="Wireframe completo da tela de aula: player de vídeo, descrição, lista de módulos com progresso e comentários"
-        caption="Wireframe completo da tela de aula — role dentro da tela para ver o fluxo inteiro. Estrutura, navegação, player e módulos definidos antes de qualquer decisão estética."
+        caption={t(
+          'Wireframe completo da tela de aula — role dentro da tela para ver o fluxo inteiro. Estrutura, navegação, player e módulos definidos antes de qualquer decisão estética.',
+          'Complete wireframe of the lesson screen — scroll inside the screen to see the whole flow. Structure, navigation, player and modules defined before any aesthetic decision.',
+        )}
       />
     </section>
 
     <section aria-labelledby="dark-title" class="sec rv dark">
       <div class="sec-narrow head head--sm">
-        <p class="eyebrow">Estruturação · Alta fidelidade</p>
-        <h2 id="dark-title" class="h2">04. Refinando a experiência</h2>
-        <p class="lead">
+        <p data-en="Structuring · High fidelity" class="eyebrow">Estruturação · Alta fidelidade</p>
+        <h2 data-en="04. Refining the experience" id="dark-title" class="h2">04. Refinando a experiência</h2>
+        <p data-en="After the wireframes were validated, I developed the interfaces in high fidelity, applying the style guide and refining components and interaction patterns." class="lead">
           Após a validação dos wireframes, desenvolvi as interfaces em alta fidelidade, aplicando o style guide e refinando
           os componentes e padrões de interação.
         </p>
-        <p class="lead">
+        <p data-en="I also proposed a <strong>dark theme</strong> version, offering a visual alternative for the learning experience while keeping both themes consistent." class="lead">
           Também propus uma versão em <strong>tema escuro</strong>, oferecendo uma alternativa visual para a experiência de
           aprendizagem e mantendo a consistência entre os dois temas.
         </p>
       </div>
       <div class="dcard dark-card">
         <div class="dark-text">
-          <p class="beat">
+          <p data-en="<span class=&quot;pill pill--ev&quot;>Evidence</span>The product’s target audience is <b>developers</b> — who tend to prefer lower-luminance interfaces, out of habit from their own work tools." class="beat">
             <span class="pill pill--ev">Evidência</span>O público-alvo do produto são <b>desenvolvedores</b> — que costumam
             preferir interfaces com menos luminosidade, pelo hábito das próprias ferramentas de trabalho.
           </p>
-          <p class="beat">
+          <p data-en="<span class=&quot;pill pill--dec&quot;>Decision</span>After the client’s validation, I raised the fidelity and <b>proposed dark mode</b> as a first-class theme — with its own contrast and legibility tokens, not a late color tweak." class="beat">
             <span class="pill pill--dec">Decisão</span>Depois da validação do cliente, aumentei a fidelidade e <b
               >propus o dark mode</b
             > como tema de primeira classe — com tokens próprios de contraste e legibilidade, não um ajuste tardio de cor.
           </p>
-          <p class="int">
+          <p data-en="Intent — <span class=&quot;serif&quot;>speak the visual language of the people who will use the product every day.</span>" class="int">
             Intenção — <span class="serif">falar a língua visual de quem vai usar o produto todo dia.</span>
           </p>
         </div>
@@ -397,14 +416,14 @@ const learnings = [
   <!-- Gamificação -->
   <section aria-labelledby="game-title" class="sec rv space-md">
     <div class="sec-narrow head">
-      <p class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
-      <h2 id="game-title" class="h2 h2--lg">Aprendizagem, prática e colaboração</h2>
-      <p class="lead">
+      <p data-en="Part 4 · Solutions" class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
+      <h2 data-en="Learning, practice and collaboration" id="game-title" class="h2 h2--lg">Aprendizagem, prática e colaboração</h2>
+      <p data-en="The final interfaces bring together the main features planned for the platform, organizing different activities within the same experience." class="lead">
         As interfaces finais integram as principais funcionalidades previstas para a plataforma, organizando diferentes
         atividades dentro de uma mesma experiência.
       </p>
-      <h3 class="h3 sub-h">Gamificação</h3>
-      <p class="lead">
+      <h3 data-en="Gamification" class="h3 sub-h">Gamificação</h3>
+      <p data-en="The client’s rewards proposal was built into the interfaces, showing the score and benefits tied to taking part in activities, completing courses and interacting in the community." class="lead">
         A proposta de recompensas do cliente foi incorporada às interfaces, apresentando a pontuação e os benefícios
         associados à participação nas atividades, conclusão de cursos e interações na comunidade.
       </p>
@@ -413,8 +432,8 @@ const learnings = [
       {
         gamification.map((g) => (
           <div class="card game-card">
-            <div class="game-title">{g.title}</div>
-            <p>{g.text}</p>
+            <div class="game-title" data-en={g.title.en} set:html={g.title.pt} />
+            <p data-en={g.text.en} set:html={g.text.pt} />
           </div>
         ))
       }
@@ -422,12 +441,12 @@ const learnings = [
     <div class="cols-2 points">
       <PointsPreview />
       <div class="card why">
-        <div class="why-label">Por que assim</div>
-        <p>
+        <div data-en="Why this way" class="why-label">Por que assim</div>
+        <p data-en="The balance opens the screen because it is the information students come looking for. Right below it, the distance to the next level turns the number into a <b>goal</b>, and the statement shows the relationship between effort and reward.">
           O saldo abre a tela porque é a informação que o aluno vem buscar. Logo abaixo, a distância até o próximo nível
           transforma o número em <b>meta</b>, e o extrato mostra a relação entre esforço e recompensa.
         </p>
-        <p>
+        <p data-en="Gains in green and redemptions in red never appear on their own: the sign always comes with the label and the value, so nothing depends on color.">
           Ganhos em verde e resgates em vermelho nunca aparecem sozinhos: o sinal vem sempre com o rótulo e o valor, para
           não depender de cor.
         </p>
@@ -438,14 +457,14 @@ const learnings = [
   <!-- A interface final -->
   <section aria-labelledby="ui-title" class="sec rv space-lg">
     <div class="sec-narrow head head--lg">
-      <p class="eyebrow">Soluções · A interface final</p>
-      <h2 id="ui-title" class="h2 h2--lg">Aula, prática e comunidade no mesmo lugar</h2>
+      <p data-en="Solutions · The final interface" class="eyebrow">Soluções · A interface final</p>
+      <h2 data-en="Lessons, practice and community in one place" id="ui-title" class="h2 h2--lg">Aula, prática e comunidade no mesmo lugar</h2>
       <dl class="sol-items">
         {
           solutions.map((item) => (
             <div>
-              <dt>{item.title}</dt>
-              <dd>{item.text}</dd>
+              <dt data-en={item.title.en} set:html={item.title.pt} />
+              <dd data-en={item.text.en} set:html={item.text.pt} />
             </div>
           ))
         }
@@ -458,9 +477,9 @@ const learnings = [
   <!-- Impacto: restrição como senioridade -->
   <div id="cap-impacto" class="band band--purple space-lg">
     <section aria-labelledby="sen-title" class="sec sec-narrow rv band-inner">
-      <p class="eyebrow">Parte 5 · Entregas e resultados</p>
-      <h2 id="sen-title" class="h2 h2--xl">Entregar web e mobile em 20 dias — sem parar o resto</h2>
-      <p class="lead lead--last">
+      <p data-en="Part 5 · Delivery and results" class="eyebrow">Parte 5 · Entregas e resultados</p>
+      <h2 data-en="Delivering web and mobile in 20 days — without stopping everything else" id="sen-title" class="h2 h2--xl">Entregar web e mobile em 20 dias — sem parar o resto</h2>
+      <p data-en="The hardest part of this project does not show on the screens. In the same <strong>~20 days</strong> in which I delivered the web and mobile versions, I was managing other projects in parallel and supporting an intern. It was an exercise in prioritization: deciding what to do first, what was good enough, and where to ground decisions in existing sources instead of opening a new research front the schedule could not fit." class="lead lead--last">
         A parte mais difícil deste projeto não aparece nas telas. Nos mesmos <strong>~20 dias</strong> em que entreguei as
         versões web e mobile, eu gerenciava outros projetos em paralelo e apoiava uma estagiária. Foi um exercício de
         priorização: decidir o que fazer primeiro, o que era bom o bastante, e onde apoiar a decisão em fontes já
@@ -470,8 +489,8 @@ const learnings = [
         {
           pressure.map((p) => (
             <div class="glass">
-              <div class="glass-title">{p.title}</div>
-              <div class="glass-text">{p.text}</div>
+              <div class="glass-title" data-en={p.title.en} set:html={p.title.pt} />
+              <div class="glass-text" data-en={p.text.en} set:html={p.text.pt} />
             </div>
           ))
         }
@@ -481,21 +500,21 @@ const learnings = [
 
   <!-- Escopo entregue -->
   <section aria-labelledby="scope-title" class="sec sec-narrow rv space-lg">
-    <p class="eyebrow">Entregas · Escopo entregue</p>
-    <h2 id="scope-title" class="h2 h2--lg">O que foi entregue</h2>
-    <p class="lead">
+    <p data-en="Delivery · Scope delivered" class="eyebrow">Entregas · Escopo entregue</p>
+    <h2 data-en="What was delivered" id="scope-title" class="h2 h2--lg">O que foi entregue</h2>
+    <p data-en="The project resulted in StartDev’s <strong>web and mobile experiences</strong>, covering reference research, a style guide, user flow, wireframes and high-fidelity interfaces." class="lead">
       O projeto resultou no desenvolvimento das <strong>experiências web e mobile</strong> da StartDev, contemplando
       pesquisa de referências, style guide, user flow, wireframes e interfaces em alta fidelidade.
     </p>
-    <p class="lead">
+    <p data-en="The solutions brought learning, practice, community and gamification together in a consistent visual proposal, with light and dark theme versions." class="lead">
       As soluções integraram ensino, prática, comunidade e gamificação em uma proposta visual consistente, com versões em
       tema claro e escuro.
     </p>
-    <p class="lead">
+    <p data-en="The work was completed within the planned deadline and received positive feedback from the client on the result presented." class="lead">
       O trabalho foi concluído dentro do prazo previsto e recebeu feedback positivo do cliente sobre o resultado
       apresentado.
     </p>
-    <p class="lead lead--note">
+    <p data-en="These are deliverable counts, not outcome metrics — the platform had not yet launched when this case was written." class="lead lead--note">
       São contagens de entregável, não métricas de resultado — a plataforma ainda não havia sido lançada no momento em que
       este case foi escrito.
     </p>
@@ -504,8 +523,8 @@ const learnings = [
   <!-- Retorno do cliente -->
   <section aria-labelledby="ret-title" class="sec sec-narrow rv space-xs">
     <div class="feedback">
-      <p class="eyebrow" id="ret-title">Retorno do cliente</p>
-      <p class="lead">
+      <p data-en="Client feedback" class="eyebrow" id="ret-title">Retorno do cliente</p>
+      <p data-en="The client’s feedback on the deliverables was positive. Since the platform had not yet launched when I wrote this case, there is no real usage data or public testimonial to quote." class="lead">
         O retorno do cliente sobre as entregas foi positivo. Como a plataforma ainda não havia sido lançada quando escrevi
         este case, não há dados de uso real nem depoimento público a citar.
       </p>
@@ -515,16 +534,16 @@ const learnings = [
   <!-- Aprendizados -->
   <section aria-labelledby="ap-title" class="sec rv space-md">
     <div class="learn">
-      <p class="eyebrow">Aprendizados</p>
-      <h2 id="ap-title" class="h2 h2--learn">O que ficou desse projeto</h2>
+      <p data-en="Learnings" class="eyebrow">Aprendizados</p>
+      <h2 data-en="What this project left me" id="ap-title" class="h2 h2--learn">O que ficou desse projeto</h2>
       <div class="cols-2 learn-cols">
         {
           learnings.map((col) => (
             <div>
-              <div class="learn-title">{col.title}</div>
+              <div class="learn-title" data-en={col.title.en} set:html={col.title.pt} />
               <ul>
                 {col.items.map((item) => (
-                  <li>{item}</li>
+                  <li data-en={item.en} set:html={item.pt} />
                 ))}
               </ul>
             </div>

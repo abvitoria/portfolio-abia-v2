@@ -1,5 +1,6 @@
 ---
 import CaseLayout from '@/layouts/CaseLayout.astro';
+import { t } from '@/data/i18n';
 import BulletList from '@/components/case/BulletList.astro';
 import CaseFigure from '@/components/case/CaseFigure.astro';
 import CaseHero from '@/components/case/CaseHero.astro';
@@ -20,95 +21,96 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
   title="PDV do vendedor MedMe"
   description="Um ponto de venda criado do zero para os vendedores da MedMe: um fluxo em três etapas, cliente, produtos e pagamento."
   image={cover.src}
-  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+  showLang
+  cta={{ title: t('Tem um fluxo assim no seu produto?', 'Have a flow like this in your product?') }}
 >
   <CaseHero
     eyebrow="MedMe · Product design"
-    title="PDV do vendedor MedMe"
-    summary="Um ponto de venda criado do zero para os vendedores da MedMe, que até então registravam vendas por uma adaptação dentro do perfil de usuário comum."
+    title={t('PDV do vendedor MedMe', 'MedMe sales point of sale')}
+    summary={t("Um ponto de venda criado do zero para os vendedores da MedMe, que até então registravam vendas por uma adaptação dentro do perfil de usuário comum.", "A point of sale built from scratch for MedMe’s sales associates, who until then recorded sales through a workaround inside the regular user profile.")}
     cover={cover}
     coverAlt="Capa do case PDV do vendedor MedMe"
     facts={[
-      { label: 'Papel', value: 'Product Designer' },
-      { label: 'Time', value: 'Product Owner e desenvolvimento' },
-      { label: 'Escopo', value: 'Fluxo de nova venda' },
-      { label: 'Plataforma', value: 'Web' },
-      { label: 'Status', value: 'Em desenvolvimento' },
+      { label: t('Papel', "Role"), value: 'Product Designer' },
+      { label: t('Time', "Team"), value: t('Product Owner e desenvolvimento', "Product Owner and development") },
+      { label: t('Escopo', "Scope"), value: t('Fluxo de nova venda', "New sale flow") },
+      { label: t('Plataforma', "Platform"), value: 'Web' },
+      { label: 'Status', value: t('Em desenvolvimento', "In development") },
     ]}
   />
 
-  <PartHeading part="Parte 1" title="Contexto e problema" />
+  <PartHeading part={t("Parte 1", "Part 1")} title={t("Contexto e problema", "Context and problem")} />
 
-  <CaseSection id="ctx" label="Contexto" title="Vender onde o colaborador está" space="md">
-    <p>
+  <CaseSection id="ctx" label={t("Contexto", "Context")} title={t("Vender onde o colaborador está", "Selling where the employee is")} space="md">
+    <p data-en="MedMe’s sales associates serve employees of partner companies, often at events inside those companies. On the platform, they record sales, track what they have sold and run simulations for the customer.">
       Os vendedores da MedMe atendem os colaboradores das empresas conveniadas, muitas vezes em eventos dentro das
       próprias empresas. Na plataforma, eles registram vendas, acompanham o que já venderam e fazem simulações para o
       cliente.
     </p>
-    <p>
+    <p data-en="As Product Designer, I designed the new sale flow with the Product Owner, who brought the business rules, and with the development team.">
       Como Product Designer, desenhei o fluxo de nova venda com o Product Owner, que trazia as regras de negócio, e com
       o time de desenvolvimento.
     </p>
   </CaseSection>
 
-  <CaseSection id="prob" label="O problema" title="Não existia um sistema para vender">
-    <p>
+  <CaseSection id="prob" label={t("O problema", "The problem")} title={t("Não existia um sistema para vender", "There was no system for selling")}>
+    <p data-en="Until then, sales were made through a workaround inside the regular user profile. It was a tool built for another person and another task: the sales associate had to work around screens that had not been made to record a sale for someone else.">
       Até então, as vendas eram feitas por uma adaptação dentro do perfil de usuário comum. Era uma ferramenta pensada
       para outra pessoa e outra tarefa: o vendedor precisava contornar telas que não tinham sido feitas para registrar
       uma venda para alguém.
     </p>
-    <p class="emph">
+    <p data-en="The challenge was to create, from scratch, a dedicated flow for the sales associate that handled the benefit rules — employee balance, eligible products, delivery and payment methods — without turning every sale into a complicated task." class="emph">
       O desafio era criar, do zero, um fluxo próprio para o vendedor, que desse conta das regras do benefício, como
       saldo do colaborador, produtos elegíveis, entrega e formas de pagamento, sem transformar cada venda numa tarefa
       complicada.
     </p>
   </CaseSection>
 
-  <PartHeading part="Parte 2" title="A decisão central" />
+  <PartHeading part={t("Parte 2", "Part 2")} title={t("A decisão central", "The central decision")} />
 
-  <CaseSection id="fluxo" label="Decisão" title="Um fluxo em três etapas: cliente, produtos e pagamento">
-    <p>
+  <CaseSection id="fluxo" label={t("Decisão", "Decision")} title={t("Um fluxo em três etapas: cliente, produtos e pagamento", "A three-step flow: customer, products and payment")}>
+    <p data-en="A sale has dependencies in order. Without knowing who the customer is, there is no balance, address or plan rules. Without products, there is no total. And choosing how to pay only makes sense once you know how much it is and what the balance covers.">
       Uma venda tem dependências em ordem. Sem saber quem é o cliente, não há saldo, endereço nem regras do convênio. Sem
       produtos, não há total. E só faz sentido escolher como pagar quando já se sabe quanto e o que o saldo cobre.
     </p>
-    <p>
+    <p data-en="That is why the flow follows this order, and each step unlocks the next. An indicator at the top shows where the sales associate is, and the areas still locked explain what is missing to unlock them, instead of simply disappearing.">
       Por isso o fluxo segue essa ordem, e cada etapa libera a seguinte. Um indicador no topo mostra onde o vendedor
       está, e as áreas ainda bloqueadas explicam o que falta para liberá-las, em vez de simplesmente sumir.
     </p>
     <NumberedList
       items={[
-        '<strong>Cliente.</strong> Define saldo, endereço de entrega e as regras que valem para a venda.',
-        '<strong>Produtos.</strong> Monta a lista e mostra, item a item, o que pode ser pago com saldo.',
-        '<strong>Pagamento.</strong> Aplica o saldo e define como o cliente paga o restante.',
+        t('<strong>Cliente.</strong> Define saldo, endereço de entrega e as regras que valem para a venda.', "<strong>Customer.</strong> Sets the balance, delivery address and the rules that apply to the sale."),
+        t('<strong>Produtos.</strong> Monta a lista e mostra, item a item, o que pode ser pago com saldo.', "<strong>Products.</strong> Builds the list and shows, item by item, what can be paid with the balance."),
+        t('<strong>Pagamento.</strong> Aplica o saldo e define como o cliente paga o restante.', "<strong>Payment.</strong> Applies the balance and defines how the customer pays the rest."),
       ]}
     />
-    <p class="note">
+    <p data-en="The rules for each step came from the Product Owner. The design work was organizing those rules into a sequence the sales associate can follow while serving a customer." class="note">
       As regras de cada etapa vieram do Product Owner. O desenho foi organizar essas regras numa sequência que o vendedor
       consiga seguir durante o atendimento.
     </p>
   </CaseSection>
 
-  <PartHeading part="Parte 3" title="A solução, etapa por etapa" />
+  <PartHeading part={t("Parte 3", "Part 3")} title={t("A solução, etapa por etapa", "The solution, step by step")} />
 
-  <CaseStep id="etapa-1" label="01 · Cliente" title="Encontrar o cliente e preparar a venda">
-    <p>
+  <CaseStep id="etapa-1" label={t("01 · Cliente", "01 · Customer")} title={t("Encontrar o cliente e preparar a venda", "Find the customer and set up the sale")}>
+    <p data-en="The search accepts a name or CPF (Brazilian tax ID) and already shows the available balance in the result. Once the customer is selected, the sale gets a branch, transaction type, channel and the registered delivery address.">
       A busca aceita nome ou CPF e já mostra o saldo disponível no resultado. Ao selecionar o cliente, a venda ganha
       filial, movimentação, canal e o endereço de entrega cadastrado.
     </p>
-    <p>Endereço e frete são resolvidos ali mesmo, em modais, sem sair da venda.</p>
+    <p data-en="Address and shipping are handled right there, in modals, without leaving the sale.">Endereço e frete são resolvidos ali mesmo, em modais, sem sair da venda.</p>
     <CaseFigure
       slot="media"
       src={clienteSelecionado}
       alt="Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito."
-      caption="Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito."
+      caption={t("Com o cliente definido, a venda ganha filial, movimentação, canal e endereço de entrega. Produtos e pagamento continuam bloqueados, com o motivo escrito.", "Once the customer is set, the sale gets a branch, transaction type, channel and delivery address. Products and payment stay locked, with the reason written out.")}
     />
   </CaseStep>
 
-  <CaseStep id="etapa-2" label="02 · Produtos" title="Montar a lista e saber o que o saldo cobre">
-    <p>
+  <CaseStep id="etapa-2" label={t("02 · Produtos", "02 · Products")} title={t("Montar a lista e saber o que o saldo cobre", "Build the list and know what the balance covers")}>
+    <p data-en="The sales associate searches the MedMe catalog or their own catalog and adjusts quantity and promotional price in the table.">
       O vendedor busca no catálogo MedMe ou no próprio catálogo e ajusta quantidade e valor promocional na tabela.
     </p>
-    <p>
+    <p data-en="Each item can be checked against the customer’s balance and then shows whether or not it accepts the balance. The information appears on the item, where the sales associate decides what to sell.">
       Cada item pode ser validado contra o saldo do cliente e passa a mostrar se aceita ou não saldo. A informação
       aparece no item, onde o vendedor decide o que vender.
     </p>
@@ -116,16 +118,16 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
       slot="media"
       src={produtoValidar}
       alt="Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento."
-      caption="Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento."
+      caption={t("Com itens na lista, cada produto pode ser validado contra o saldo do cliente antes de seguir para o pagamento.", "With items on the list, each product can be checked against the customer’s balance before moving on to payment.")}
     />
   </CaseStep>
 
-  <CaseStep id="etapa-3" label="03 · Pagamento" title="Aplicar o saldo e fechar o restante">
-    <p>
+  <CaseStep id="etapa-3" label={t("03 · Pagamento", "03 · Payment")} title={t("Aplicar o saldo e fechar o restante", "Apply the balance and settle the rest")}>
+    <p data-en="The sales associate chooses between an in-person or online sale, applies the customer’s balance, in full or in part, and immediately sees how much is still due.">
       O vendedor escolhe entre venda presencial ou online, aplica o saldo do cliente, total ou parcial, e vê na hora
       quanto falta receber.
     </p>
-    <p>
+    <p data-en="The rest can be paid in cash or by card. When a product does not accept the balance, a notice explains which item and which amount need another payment method.">
       O restante pode ser pago em dinheiro ou cartão. Quando um produto não aceita saldo, um aviso explica qual item e
       qual valor precisa de outra forma de pagamento.
     </p>
@@ -133,12 +135,12 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
       slot="media"
       src={pagamentoAlerta}
       alt="Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento."
-      caption="Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento."
+      caption={t("Saldo aplicado, total do pedido e quanto falta receber. O item que não aceita saldo gera um aviso com o valor que precisa de outra forma de pagamento.", "Balance applied, order total and amount still due. An item that does not accept the balance triggers a notice with the amount that needs another payment method.")}
     />
   </CaseStep>
 
-  <CaseStep id="etapa-4" label="04 · Confirmação" title="Revisar antes de registrar">
-    <p>
+  <CaseStep id="etapa-4" label={t("04 · Confirmação", "04 · Confirmation")} title={t("Revisar antes de registrar", "Review before recording")}>
+    <p data-en="Before recording, a summary shows the customer, items, delivery, payment method and total due. Then the sale gets a number, and the receipt is available in the sales list and sent to the customer.">
       Antes de registrar, um resumo mostra cliente, itens, entrega, forma de pagamento e total a receber. Depois, a
       venda recebe um número e o comprovante fica disponível na lista de vendas e é enviado ao cliente.
     </p>
@@ -146,36 +148,36 @@ import confirmarVenda from '@/assets/pdv/modal-confirmar-venda.png';
       slot="media"
       src={confirmarVenda}
       alt="Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda."
-      caption="Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda."
+      caption={t("Resumo de cliente, itens, entrega, pagamento e total antes de registrar a venda.", "Summary of customer, items, delivery, payment and total before recording the sale.")}
     />
   </CaseStep>
 
-  <PartHeading part="Parte 4" title="Status e aprendizados" />
+  <PartHeading part={t("Parte 4", "Part 4")} title={t("Status e aprendizados", "Status and learnings")} />
 
-  <CaseSection id="status" label="Status" title="Em desenvolvimento" space="md">
+  <CaseSection id="status" label="Status" title={t('Em desenvolvimento', 'In development')} space="md">
     <BulletList
       items={[
-        'O fluxo de nova venda está desenhado e em desenvolvimento.',
-        'As regras de negócio foram definidas com o Product Owner. Ainda não houve validação com vendedores nem dados de uso.',
-        'Por isso este case não traz resultados. O próximo passo é acompanhar as primeiras vendas registradas pelo novo fluxo e ajustar o que aparecer.',
+        t('O fluxo de nova venda está desenhado e em desenvolvimento.', "The new sale flow is designed and in development."),
+        t('As regras de negócio foram definidas com o Product Owner. Ainda não houve validação com vendedores nem dados de uso.', "The business rules were defined with the Product Owner. There has been no validation with sales associates and no usage data yet."),
+        t('Por isso este case não traz resultados. O próximo passo é acompanhar as primeiras vendas registradas pelo novo fluxo e ajustar o que aparecer.', "That is why this case has no results. The next step is to follow the first sales recorded through the new flow and adjust whatever comes up."),
       ]}
     />
   </CaseSection>
 
-  <CaseSection id="apr" label="Aprendizados" title="O que este projeto ensinou">
+  <CaseSection id="apr" label={t("Aprendizados", "Learnings")} title={t("O que este projeto ensinou", "What this project taught me")}>
     <LearningList
       items={[
         {
-          title: 'A ordem do fluxo vem da dependência dos dados',
-          text: 'As três etapas não foram uma escolha visual. Elas seguem o que cada informação precisa para existir, e isso tornou mais fácil explicar o fluxo para o time e para quem vai usá-lo.',
+          title: t('A ordem do fluxo vem da dependência dos dados', "The order of the flow comes from data dependencies"),
+          text: t('As três etapas não foram uma escolha visual. Elas seguem o que cada informação precisa para existir, e isso tornou mais fácil explicar o fluxo para o time e para quem vai usá-lo.', "The three steps were not a visual choice. They follow what each piece of information needs in order to exist, which made the flow easier to explain to the team and to the people who will use it."),
         },
         {
-          title: 'Bloquear com explicação, não esconder',
-          text: 'Mostrar as áreas ainda indisponíveis, com o motivo, deixa claro o que vem a seguir. O vendedor enxerga a venda inteira desde o começo.',
+          title: t('Bloquear com explicação, não esconder', "Lock with an explanation, don’t hide"),
+          text: t('Mostrar as áreas ainda indisponíveis, com o motivo, deixa claro o que vem a seguir. O vendedor enxerga a venda inteira desde o começo.', "Showing the areas that are still unavailable, with the reason, makes it clear what comes next. The sales associate sees the whole sale from the start."),
         },
         {
-          title: 'Regra de negócio precisa aparecer onde a decisão acontece',
-          text: 'A elegibilidade ao saldo aparece no item e o aviso de valor restante aparece no pagamento. Concentrar tudo numa mensagem no fim deixaria o vendedor sem saber o que corrigir.',
+          title: t('Regra de negócio precisa aparecer onde a decisão acontece', "Business rules need to show up where the decision happens"),
+          text: t('A elegibilidade ao saldo aparece no item e o aviso de valor restante aparece no pagamento. Concentrar tudo numa mensagem no fim deixaria o vendedor sem saber o que corrigir.', "Balance eligibility shows on the item, and the remaining-amount notice shows at payment. Concentrating everything in one message at the end would leave the sales associate not knowing what to fix."),
         },
       ]}
     />

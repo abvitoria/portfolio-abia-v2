@@ -1,5 +1,6 @@
 ---
 import CaseLayout from '@/layouts/CaseLayout.astro';
+import { t } from '@/data/i18n';
 import BulletList from '@/components/case/BulletList.astro';
 import CaseFigure from '@/components/case/CaseFigure.astro';
 import CaseHero from '@/components/case/CaseHero.astro';
@@ -19,61 +20,62 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
   title="Modernização do Portal de RH da MedMe"
   description="Redesenho de uma ferramenta administrativa em uso diário: padrões reutilizáveis para todo o portal, uma nova forma de encontrar relatórios e uma transição gradual."
   image={cover.src}
-  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+  showLang
+  cta={{ title: t('Tem um fluxo assim no seu produto?', 'Have a flow like this in your product?') }}
 >
   <CaseHero
     eyebrow="MedMe · Product design"
-    title="Modernização do Portal de RH da MedMe"
-    summary="Redesenho de uma ferramenta administrativa em uso diário: padrões reutilizáveis para todo o portal, uma nova forma de encontrar relatórios e uma transição gradual para quem já conhecia a versão antiga."
+    title={t('Modernização do Portal de RH da MedMe', 'Modernizing the MedMe HR Portal')}
+    summary={t("Redesenho de uma ferramenta administrativa em uso diário: padrões reutilizáveis para todo o portal, uma nova forma de encontrar relatórios e uma transição gradual para quem já conhecia a versão antiga.", "Redesign of an administrative tool in daily use: reusable patterns for the whole portal, a new way to find reports and a gradual transition for people who already knew the old version.")}
     cover={cover}
     coverAlt="Capa do case MedMe Portal do RH"
     facts={[
-      { label: 'Papel', value: 'Product Designer' },
-      { label: 'Time', value: 'Product Owner, front-end e back-end' },
-      { label: 'Duração', value: 'Cerca de 6 meses' },
-      { label: 'Plataforma', value: 'Web · B2B' },
-      { label: 'Status', value: 'Em liberação gradual' },
+      { label: t('Papel', "Role"), value: 'Product Designer' },
+      { label: t('Time', "Team"), value: t('Product Owner, front-end e back-end', "Product Owner, front-end and back-end") },
+      { label: t('Duração', "Duration"), value: t('Cerca de 6 meses', "About 6 months") },
+      { label: t('Plataforma', "Platform"), value: 'Web · B2B' },
+      { label: 'Status', value: t('Em liberação gradual', "In gradual rollout") },
     ]}
   />
 
-  <PartHeading part="Parte 1" title="Contexto e desafio" />
+  <PartHeading part={t("Parte 1", "Part 1")} title={t("Contexto e desafio", "Context and challenge")} />
 
-  <CaseSection id="ctx" label="Contexto" title="Uma ferramenta administrativa para o benefício farmácia" space="md">
-    <p>
+  <CaseSection id="ctx" label={t("Contexto", "Context")} title={t("Uma ferramenta administrativa para o benefício farmácia", "An administrative tool for the pharmacy benefit")} space="md">
+    <p data-en="MedMe offers a pharmacy benefit to partner companies. The HR Portal is where the Human Resources teams at those companies manage employees, track limits and spending, check reimbursements, access financial reports and administer the plan.">
       A MedMe oferece benefício farmácia para empresas conveniadas. O Portal de RH é onde os responsáveis de Recursos
       Humanos dessas empresas gerenciam colaboradores, acompanham limites e gastos, consultam reembolsos, acessam
       relatórios financeiros e administram o convênio.
     </p>
-    <p>
+    <p data-en="As Product Designer, I was responsible for redesigning the experiences: interface structure, flows, prototypes and documentation for development. The Product Owner set the scope and priorities, and solutions were adjusted with front-end and back-end throughout implementation.">
       Como Product Designer, fui responsável pelo redesenho das experiências: estrutura das interfaces, fluxos,
       protótipos e documentação para desenvolvimento. O Product Owner definia escopo e prioridades, e as soluções eram
       ajustadas com front-end e back-end ao longo da implementação.
     </p>
   </CaseSection>
 
-  <CaseSection id="antes" label="O desafio" title="Modernizar uma experiência que cresceu de forma fragmentada">
-    <p>
+  <CaseSection id="antes" label={t("O desafio", "The challenge")} title={t("Modernizar uma experiência que cresceu de forma fragmentada", "Modernizing an experience that grew in a fragmented way")}>
+    <p data-en="The HR Portal brought together essential features for managing corporate benefits, but its interface had recurring problems with visual hierarchy, consistency and information organization.">
       O Portal de RH reunia funcionalidades essenciais para a gestão dos benefícios corporativos, mas sua interface
       apresentava problemas recorrentes de hierarquia visual, consistência e organização das informações.
     </p>
-    <p>
+    <p data-en="Analyzing the existing screens, I found different interaction patterns across features, hard-to-read tables, actions that were hard to spot and flows that required navigating through large volumes of information.">
       Ao analisar as telas existentes, identifiquei padrões de interação diferentes entre funcionalidades, tabelas com
       baixa legibilidade, ações pouco evidentes e fluxos que exigiam navegar por grandes volumes de informação.
     </p>
-    <p>
+    <p data-en="These difficulties were especially noticeable in employee management and reports, where clear information and easy operations are essential to the administrative routine.">
       Essas dificuldades eram especialmente perceptíveis nas áreas de gestão de colaboradores e relatórios, onde a
       clareza das informações e a facilidade de executar operações são fundamentais para a rotina administrativa.
     </p>
-    <p class="emph">
+    <p data-en="The challenge, then, was not just updating the portal’s look, but building a more coherent experience, able to simplify tasks and offer a consistent foundation for the product to evolve." class="emph">
       O desafio, portanto, não era apenas atualizar a aparência do portal, mas construir uma experiência mais coerente,
       capaz de simplificar tarefas e oferecer uma base consistente para a evolução do produto.
     </p>
   </CaseSection>
 
-  <PartHeading part="Parte 2" title="Meu processo" />
+  <PartHeading part={t("Parte 2", "Part 2")} title={t("Meu processo", "My process")} />
 
-  <CaseSection id="proc" label="Meu processo" title="Da investigação ao QA">
-    <p>
+  <CaseSection id="proc" label={t("Meu processo", "My process")} title={t("Da investigação ao QA", "From research to QA")}>
+    <p data-en="There were no interviews or formal user tests. The understanding came from five sources: product demands, support tickets and information, analysis of the existing interface, benchmarking of administrative products and alignment with the Product Owner and the technical team.">
       Não houve entrevistas nem testes formais com usuários. O entendimento veio de cinco fontes: demandas do produto,
       chamados e informações do suporte, análise da interface existente, benchmark de produtos administrativos e
       alinhamentos com o Product Owner e a equipe técnica.
@@ -81,27 +83,27 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     <TermList
       items={[
         {
-          term: '01 — Investigação e mapeamento',
-          text: 'Comecei estudando a documentação e explorando o portal existente para compreender suas funcionalidades, regras de negócio e limitações. Mapeei telas e ações, identifiquei inconsistências e analisei como os componentes do design system poderiam ser aplicados à modernização.',
+          term: t('01 — Investigação e mapeamento', "01 — Research and mapping"),
+          text: t('Comecei estudando a documentação e explorando o portal existente para compreender suas funcionalidades, regras de negócio e limitações. Mapeei telas e ações, identifiquei inconsistências e analisei como os componentes do design system poderiam ser aplicados à modernização.', "I started by studying the documentation and exploring the existing portal to understand its features, business rules and limitations. I mapped screens and actions, identified inconsistencies and analyzed how the design system components could be applied to the modernization."),
         },
         {
-          term: '02 — Exploração e validação',
-          text: 'Organizei os requisitos e desenvolvi as primeiras propostas em baixa fidelidade, utilizando o Claude como apoio à exploração das interfaces. Os direcionamentos foram discutidos com o Product Owner e o Tech Lead, permitindo revisar as soluções antes do refinamento visual.<br /><br />Além da padronização, algumas áreas exigiram mudanças estruturais. Foi o caso dos relatórios, cuja navegação precisava ser reorganizada, e do dashboard, que aproveitou investigações realizadas em paralelo para sua versão 2.0.',
+          term: t('02 — Exploração e validação', "02 — Exploration and validation"),
+          text: t('Organizei os requisitos e desenvolvi as primeiras propostas em baixa fidelidade, utilizando o Claude como apoio à exploração das interfaces. Os direcionamentos foram discutidos com o Product Owner e o Tech Lead, permitindo revisar as soluções antes do refinamento visual.<br /><br />Além da padronização, algumas áreas exigiram mudanças estruturais. Foi o caso dos relatórios, cuja navegação precisava ser reorganizada, e do dashboard, que aproveitou investigações realizadas em paralelo para sua versão 2.0.', "I organized the requirements and developed the first low-fidelity proposals, using Claude to support exploring the interfaces. The direction was discussed with the Product Owner and the Tech Lead, which allowed the solutions to be reviewed before visual refinement.<br /><br />Beyond standardization, some areas needed structural changes. That was the case for reports, whose navigation had to be reorganized, and for the dashboard, which built on research done in parallel for its 2.0 version."),
         },
         {
-          term: '03 — Refinamento e handoff',
-          text: 'Com as propostas alinhadas, trabalhei no Figma para refinar componentes, hierarquia visual, cores, espaçamentos e estados de interação. Mantive contato com desenvolvimento durante os ajustes e documentei os fluxos e funcionalidades para implementação.',
+          term: t('03 — Refinamento e handoff', "03 — Refinement and handoff"),
+          text: t('Com as propostas alinhadas, trabalhei no Figma para refinar componentes, hierarquia visual, cores, espaçamentos e estados de interação. Mantive contato com desenvolvimento durante os ajustes e documentei os fluxos e funcionalidades para implementação.', "With the proposals aligned, I worked in Figma to refine components, visual hierarchy, colors, spacing and interaction states. I stayed in touch with development during the adjustments and documented the flows and features for implementation."),
         },
         {
-          term: '04 — Acompanhamento e QA',
-          text: 'Minha atuação continuou durante o desenvolvimento, com revisões das interfaces implementadas e participação nos testes de qualidade. Identifiquei divergências visuais, bugs e comportamentos que precisavam de correção, acompanhando os ajustes antes da liberação.',
+          term: t('04 — Acompanhamento e QA', "04 — Follow-up and QA"),
+          text: t('Minha atuação continuou durante o desenvolvimento, com revisões das interfaces implementadas e participação nos testes de qualidade. Identifiquei divergências visuais, bugs e comportamentos que precisavam de correção, acompanhando os ajustes antes da liberação.', "My work continued during development, reviewing the implemented interfaces and taking part in quality testing. I identified visual differences, bugs and behaviors that needed fixing, and followed the adjustments before release."),
         },
       ]}
     />
   </CaseSection>
 
-  <CaseSection id="padrao" label="Decisão 1" title="Padronizar a experiência com o design system">
-    <p>
+  <CaseSection id="padrao" label={t("Decisão 1", "Decision 1")} title={t("Padronizar a experiência com o design system", "Standardize the experience with the design system")}>
+    <p data-en="MedMe’s design system, already used in other company products, provided the foundation. The decision was to handle every recurring need in the portal with a single solution, so HR recognizes how one screen behaves from another.">
       O design system da MedMe, já usado em outros produtos da empresa, deu a base. A decisão foi tratar cada
       necessidade recorrente do portal com uma única solução, para que o RH reconheça o comportamento de uma tela na
       outra.
@@ -109,61 +111,61 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     <TermList
       items={[
         {
-          term: 'Navegação e layout',
-          text: 'Menu lateral, título e uma descrição curta de cada área sempre na mesma posição. O usuário sabe onde está e para que serve a tela.',
+          term: t('Navegação e layout', "Navigation and layout"),
+          text: t('Menu lateral, título e uma descrição curta de cada área sempre na mesma posição. O usuário sabe onde está e para que serve a tela.', "Side menu, title and a short description of each area always in the same place. Users know where they are and what the screen is for."),
         },
         {
-          term: 'Hierarquia tipográfica',
-          text: 'Poucos tamanhos e pesos, com o dado principal de cada linha em destaque e as informações de apoio mais discretas.',
+          term: t('Hierarquia tipográfica', "Type hierarchy"),
+          text: t('Poucos tamanhos e pesos, com o dado principal de cada linha em destaque e as informações de apoio mais discretas.', "A few sizes and weights, with the main data in each row highlighted and supporting information more subdued."),
         },
         {
-          term: 'Tabelas, filtros e busca',
-          text: 'Busca e filtros reunidos numa mesma barra, junto da tabela que eles afetam.',
+          term: t('Tabelas, filtros e busca', "Tables, filters and search"),
+          text: t('Busca e filtros reunidos numa mesma barra, junto da tabela que eles afetam.', "Search and filters together in a single bar, next to the table they affect."),
         },
         {
-          term: 'Ações contextuais',
-          text: 'Ações próximas do item a que se referem, como no perfil do colaborador, que reúne editar, bloquear saldo, transferir CNPJ, resetar senha e desvincular.',
+          term: t('Ações contextuais', "Contextual actions"),
+          text: t('Ações próximas do item a que se referem, como no perfil do colaborador, que reúne editar, bloquear saldo, transferir CNPJ, resetar senha e desvincular.', "Actions close to the item they refer to, as in the employee profile, which brings together edit, block balance, transfer company ID (CNPJ), reset password and unlink."),
         },
         {
-          term: 'Status e retorno',
-          text: 'Status com rótulo, e não só cor, e aviso quando uma exportação começa ou um arquivo segue por e-mail.',
+          term: t('Status e retorno', "Status and feedback"),
+          text: t('Status com rótulo, e não só cor, e aviso quando uma exportação começa ou um arquivo segue por e-mail.', "Status with a label, not just color, and a notice when an export starts or a file is sent by email."),
         },
         {
-          term: 'Modais e confirmações',
-          text: 'Confirmação antes de ações difíceis de desfazer, como apagar um gestor ou desvincular um colaborador.',
+          term: t('Modais e confirmações', "Modals and confirmations"),
+          text: t('Confirmação antes de ações difíceis de desfazer, como apagar um gestor ou desvincular um colaborador.', "Confirmation before actions that are hard to undo, such as deleting a manager or unlinking an employee."),
         },
         {
-          term: 'Mensagens orientativas',
-          text: 'Quando uma busca não encontra resultado, a tela diz isso, em vez de mostrar uma tabela vazia.',
+          term: t('Mensagens orientativas', "Guidance messages"),
+          text: t('Quando uma busca não encontra resultado, a tela diz isso, em vez de mostrar uma tabela vazia.', "When a search finds nothing, the screen says so, instead of showing an empty table."),
         },
       ]}
     />
-    <p class="note">
+    <p data-en="Some of these changes are about consistency and appearance. Without user testing, they are presented here as grounded decisions, not as proven usability gains." class="note">
       Parte dessas mudanças é de consistência e aparência. Sem testes com usuários, elas são apresentadas aqui como
       decisões fundamentadas, e não como ganhos de usabilidade comprovados.
     </p>
   </CaseSection>
 
-  <CaseSection id="rel" label="Decisão 2" title="Trocar navegação por consulta nos relatórios">
-    <p>
+  <CaseSection id="rel" label={t("Decisão 2", "Decision 2")} title={t("Trocar navegação por consulta nos relatórios", "Replace navigation with querying in reports")}>
+    <p data-en="This was the area that changed completely. Standardizing the old screen would not have solved it, because the problem was in the structure: to reach a document, HR drilled down by company, then by year, then by month.">
       Foi a área que mudou por completo. Padronizar a tela antiga não resolveria, porque o problema estava na
       estrutura: para chegar a um documento, o RH descia por empresa, depois por ano e depois por mês.
     </p>
-    <p>
+    <p data-en="Someone looking for a closing usually already knows the company and the period. The new proposal starts from that: instead of walking a tree, HR states what they are looking for and the list responds.">
       Quem procura um fechamento normalmente já sabe a empresa e o período. A nova proposta parte disso: em vez de
       percorrer uma árvore, o RH informa o que procura e a lista responde.
     </p>
     <div class="models">
       <div class="model">
-        <span class="model-label">Modelo anterior · navegar</span>
-        <div class="model-tree">
+        <span data-en="Previous model · navigate" class="model-label">Modelo anterior · navegar</span>
+        <div data-en="Company<br />&nbsp;&nbsp;└ Year<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Month → its own table<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Month → its own table<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ …" class="model-tree">
           Empresa<br />&nbsp;&nbsp;└ Ano<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Mês → tabela própria<br
           />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Mês → tabela própria<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ …
         </div>
       </div>
       <div class="model model--new">
-        <span class="model-label">Novo modelo · consultar</span>
-        <div class="model-tree">
+        <span data-en="New model · query" class="model-label">Novo modelo · consultar</span>
+        <div data-en="[ companies ] [ year ] [ search ]<br />Jan · Feb · Mar … with status<br />Monthly summary<br />Reports grouped by company<br />&nbsp;&nbsp;└ report documents" class="model-tree">
           [ empresas ] [ ano ] [ busca ]<br />Jan · Fev · Mar … com status<br />Resumo do mês<br />Relatórios
           agrupados por empresa<br />&nbsp;&nbsp;└ documentos do relatório
         </div>
@@ -171,25 +173,25 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     </div>
     <BulletList
       items={[
-        'Filtros por empresa, ano e busca por empresa ou CNPJ',
-        'Meses do ano em abas, cada um com o status do fechamento: pago, pendente ou vencido',
-        'Resumo do mês com número de relatórios, valor total, empresas e pendências',
-        'Relatórios agrupados por empresa, com os documentos (resumido, nota de débito, completo, detalhado e customizados) abertos na própria linha',
-        'Download por relatório ou do mês inteiro, e agendamento de fechamento antecipado a partir da mesma tela',
+        t('Filtros por empresa, ano e busca por empresa ou CNPJ', "Filters by company and year, and search by company or company ID (CNPJ)"),
+        t('Meses do ano em abas, cada um com o status do fechamento: pago, pendente ou vencido', "Months of the year as tabs, each with its closing status: paid, pending or overdue"),
+        t('Resumo do mês com número de relatórios, valor total, empresas e pendências', "A monthly summary with the number of reports, total amount, companies and pending items"),
+        t('Relatórios agrupados por empresa, com os documentos (resumido, nota de débito, completo, detalhado e customizados) abertos na própria linha', "Reports grouped by company, with the documents (summary, debit note, complete, detailed and custom) opened right in the row"),
+        t('Download por relatório ou do mês inteiro, e agendamento de fechamento antecipado a partir da mesma tela', "Download per report or for the whole month, and scheduling an early closing from the same screen"),
       ]}
     />
     <div slot="wide" class="pair" role="group" aria-label="Relatórios antes e depois">
       <CaseFigure
         src={antesRelatorios}
         alt="Relatórios na versão antiga"
-        caption="Antes · histórico empilhado por mês"
+        caption={t("Antes · histórico empilhado por mês", "Before · history stacked by month")}
         captionMono
         sizes="(max-width: 1040px) 100vw, 540px"
       />
       <CaseFigure
         src={novoRelatorios}
         alt="Relatórios na versão nova"
-        caption="Depois · filtros, meses com status e documentos por relatório"
+        caption={t("Depois · filtros, meses com status e documentos por relatório", "After · filters, months with status and documents per report")}
         tone="after"
         captionMono
         sizes="(max-width: 1040px) 100vw, 540px"
@@ -197,8 +199,8 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     </div>
   </CaseSection>
 
-  <CaseSection id="colab" label="Decisão 3" title="Gestão de colaboradores e perfis de RH">
-    <p>
+  <CaseSection id="colab" label={t("Decisão 3", "Decision 3")} title={t("Gestão de colaboradores e perfis de RH", "Employee and HR profile management")}>
+    <p data-en="It is the most used part of the portal, and the one with the most screens doing the same job: listing people and acting on them. Users, Pre-registered and HR profile management now follow the same list model, with search, company filter and actions in the same place.">
       É a parte mais usada do portal, e a que tinha mais telas com a mesma função: listar pessoas e agir sobre elas.
       Usuários, Pré-cadastrados e Controle de perfis RH passaram a seguir o mesmo modelo de listagem, com busca, filtro
       por empresa e ações no mesmo lugar.
@@ -206,131 +208,131 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     <TermList
       items={[
         {
-          term: 'Consulta de colaboradores',
-          text: 'O perfil reúne, em blocos, dados pessoais, contato, dependentes, endereços, empresa, histórico de compras e regras de compra por categoria, além das ações administrativas sobre aquela pessoa.',
+          term: t('Consulta de colaboradores', "Employee lookup"),
+          text: t('O perfil reúne, em blocos, dados pessoais, contato, dependentes, endereços, empresa, histórico de compras e regras de compra por categoria, além das ações administrativas sobre aquela pessoa.', "The profile brings together, in blocks, personal data, contact, dependents, addresses, company, purchase history and purchase rules by category, along with the administrative actions for that person."),
         },
         {
-          term: 'Desvinculação em massa',
-          text: 'Já existia como um modal isolado. Passou a ficar no menu Ações da listagem de Usuários, junto das outras operações em lote.',
+          term: t('Desvinculação em massa', "Bulk unlinking"),
+          text: t('Já existia como um modal isolado. Passou a ficar no menu Ações da listagem de Usuários, junto das outras operações em lote.', "It already existed as an isolated modal. It moved into the Actions menu of the Users list, alongside the other bulk operations."),
         },
         {
-          term: 'Controle de perfis RH',
-          text: 'Listagem com busca por nome ou CPF junto do filtro de empresas e Adicionar RH como ação principal da tela. Editar e excluir seguem no menu da linha, com confirmação antes de apagar.',
+          term: t('Controle de perfis RH', "HR profile management"),
+          text: t('Listagem com busca por nome ou CPF junto do filtro de empresas e Adicionar RH como ação principal da tela. Editar e excluir seguem no menu da linha, com confirmação antes de apagar.', "A list with search by name or CPF next to the company filter, and Add HR as the screen’s primary action. Edit and delete stay in the row menu, with confirmation before deleting."),
         },
         {
-          term: 'Cadastro e pré-cadastro',
-          text: 'Formulário dividido em dados pessoais, contato e vínculo. Em Pré-cadastrados, adicionar, exportar, importar e consultar o relatório de importação ficam numa só barra, junto da busca.',
+          term: t('Cadastro e pré-cadastro', "Registration and pre-registration"),
+          text: t('Formulário dividido em dados pessoais, contato e vínculo. Em Pré-cadastrados, adicionar, exportar, importar e consultar o relatório de importação ficam numa só barra, junto da busca.', "A form split into personal data, contact and employment link. In Pre-registered, add, export, import and view the import report sit in a single bar next to the search."),
         },
       ]}
     />
-    <button type="button" class="go" data-compare-go="perfil-usuario">Ver Perfil do usuário antes e depois →</button>
+    <button data-en="See User profile before and after →" type="button" class="go" data-compare-go="perfil-usuario">Ver Perfil do usuário antes e depois →</button>
   </CaseSection>
 
-  <CaseSection id="dash" label="Decisão 4" title="Dashboard e informações gerenciais">
-    <p>
+  <CaseSection id="dash" label={t("Decisão 4", "Decision 4")} title={t("Dashboard e informações gerenciais", "Dashboard and management information")}>
+    <p data-en="The old dashboard revolved around a central chart, with loose indicators beside it and a campaign image that did not load. The new structure organizes the screen into reading blocks: featured campaigns, four indicators (spending over the last six months, current period, available balance and new employees), the financial analysis, users by registration status and the latest closings.">
       O dashboard antigo girava em torno de um gráfico central, com indicadores soltos ao lado e uma imagem de campanha
       que não carregava. A nova estrutura organiza a tela em blocos de leitura: campanhas em destaque, quatro
       indicadores (gastos dos últimos seis meses, período atual, saldo disponível e novos colaboradores), a análise
       financeira, os usuários por situação de cadastro e os últimos fechamentos.
     </p>
-    <p>
+    <p data-en="The intent is that, on opening the portal, HR understands the status of the plan before looking for a specific area. The financial analysis can be filtered by period and company and exported straight from the dashboard, and the users block highlights the registrations that need attention.">
       A intenção é que, ao abrir o portal, o RH entenda a situação do convênio antes de procurar uma área específica. A
       análise financeira pode ser filtrada por período e empresa e exportada direto do dashboard, e o bloco de usuários
       destaca os cadastros que precisam de atenção.
     </p>
-    <button type="button" class="go" data-compare-go="dashboard">Ver Dashboard antes e depois →</button>
+    <button data-en="See Dashboard before and after →" type="button" class="go" data-compare-go="dashboard">Ver Dashboard antes e depois →</button>
   </CaseSection>
 
-  <PartHeading part="Parte 3" title="Entregas e resultados" />
+  <PartHeading part={t("Parte 3", "Part 3")} title={t("Entregas e resultados", "Delivery and results")} />
 
-  <CaseSection id="entregas" label="Entregas e resultados" title="O que mudou e como foi recebido" space="md">
-    <p>
+  <CaseSection id="entregas" label={t("Entregas e resultados", "Delivery and results")} title={t("O que mudou e como foi recebido", "What changed and how it was received")} space="md">
+    <p data-en="The project covered the modernization of eight areas of the portal, with unified interface patterns, reorganized journeys and new experiences for looking up reports and management information.">
       O projeto contemplou a modernização de oito áreas do portal, com padrões de interface unificados, jornadas
       reorganizadas e novas experiências de consulta a relatórios e informações gerenciais.
     </p>
-    <p>
+    <p data-en="Implementation was carried out gradually, keeping access to the previous version. After delivery, the work received positive internal feedback, especially for the visual evolution and alignment with MedMe’s new identity.">
       A implementação foi conduzida gradualmente, preservando o acesso à versão anterior. Após a entrega, o trabalho
       recebeu feedbacks internos positivos, especialmente pela evolução visual e pelo alinhamento com a nova identidade
       da MedMe.
     </p>
   </CaseSection>
 
-  <CaseSection id="lanc" label="Lançamento" title="Uma transição em etapas">
-    <p>
+  <CaseSection id="lanc" label={t("Lançamento", "Launch")} title={t("Uma transição em etapas", "A staged transition")}>
+    <p data-en="The portal is part of HR’s routine. Switching everything at once would force people who knew the old version to relearn the whole system overnight.">
       O portal faz parte da rotina do RH. Trocar tudo de uma vez obrigaria quem já conhecia a versão antiga a
       reaprender o sistema inteiro de um dia para o outro.
     </p>
-    <p>
+    <p data-en="The team decided to introduce the new portal gradually. Areas are released step by step and both versions coexist during the transition. In the menu, the <strong>Back to old HR</strong> button gives users time to get used to the new organization without blocking an urgent task, such as a closing or a reimbursement.">
       A decisão do time foi apresentar o novo portal aos poucos. As áreas são liberadas gradualmente e as duas versões
       convivem durante a transição. No menu, o botão <strong>Voltar ao antigo RH</strong> dá tempo para o usuário se familiarizar
       com a nova organização sem travar uma tarefa urgente, como um fechamento ou um reembolso.
     </p>
   </CaseSection>
 
-  <CaseSection id="res" label="Resultados" title="O que foi entregue e o que ainda não dá para medir">
+  <CaseSection id="res" label={t("Resultados", "Results")} title={t("O que foi entregue e o que ainda não dá para medir", "What was delivered and what cannot be measured yet")}>
     <TermList
       items={[
         {
-          term: 'Entregas realizadas',
-          text: 'Padrões de página, tabela, formulário e modal sobre o design system; redesenho de Dashboard, Plano MedMe, Usuários, Perfil do usuário, Pré-cadastrados, Controle de perfis RH, Reembolsos e Fechamento/Relatórios; protótipos e documentação para desenvolvimento.',
+          term: t('Entregas realizadas', "Deliverables"),
+          text: t('Padrões de página, tabela, formulário e modal sobre o design system; redesenho de Dashboard, Plano MedMe, Usuários, Perfil do usuário, Pré-cadastrados, Controle de perfis RH, Reembolsos e Fechamento/Relatórios; protótipos e documentação para desenvolvimento.', "Page, table, form and modal patterns on top of the design system; redesign of Dashboard, MedMe Plan, Users, User profile, Pre-registered, HR profile management, Reimbursements and Closing/Reports; prototypes and documentation for development."),
         },
         {
-          term: 'Mudanças implementadas',
-          text: 'Nova versão do portal em liberação gradual, convivendo com a versão anterior e com o botão de retorno no menu.',
+          term: t('Mudanças implementadas', "Changes implemented"),
+          text: t('Nova versão do portal em liberação gradual, convivendo com a versão anterior e com o botão de retorno no menu.', "A new version of the portal in gradual rollout, alongside the previous version and with a return button in the menu."),
         },
         {
-          term: 'Benefícios esperados',
-          text: 'Menos esforço para encontrar informações e relatórios, comportamento previsível entre áreas e uma base reaproveitável para novas funcionalidades.',
+          term: t('Benefícios esperados', "Expected benefits"),
+          text: t('Menos esforço para encontrar informações e relatórios, comportamento previsível entre áreas e uma base reaproveitável para novas funcionalidades.', "Less effort to find information and reports, predictable behavior across areas and a reusable foundation for new features."),
         },
         {
-          term: 'Resultados medidos',
-          text: 'Ainda não há. A liberação está em andamento e nenhum indicador de impacto foi consolidado.',
+          term: t('Resultados medidos', "Measured results"),
+          text: t('Ainda não há. A liberação está em andamento e nenhum indicador de impacto foi consolidado.', "None yet. The rollout is in progress and no impact indicator has been consolidated."),
         },
       ]}
     />
     <div class="indicators">
-      <span class="indicators-label">Indicadores que poderiam ser acompanhados</span>
+      <span data-en="Indicators that could be tracked" class="indicators-label">Indicadores que poderiam ser acompanhados</span>
       <BulletList
         color="var(--rose-light)"
         items={[
-          'Volume de chamados de suporte por área, comparado ao período anterior',
-          'Uso do botão Voltar ao antigo RH, e em quais telas',
-          'Tempo e número de passos para localizar e baixar um fechamento',
+          t('Volume de chamados de suporte por área, comparado ao período anterior', "Volume of support tickets per area, compared with the previous period"),
+          t('Uso do botão Voltar ao antigo RH, e em quais telas', "Use of the Back to old HR button, and on which screens"),
+          t('Tempo e número de passos para localizar e baixar um fechamento', "Time and number of steps to find and download a closing"),
         ]}
       />
     </div>
   </CaseSection>
 
-  <CaseSection id="apr" label="Aprendizados" title="O que este projeto ensinou">
+  <CaseSection id="apr" label={t("Aprendizados", "Learnings")} title={t("O que este projeto ensinou", "What this project taught me")}>
     <LearningList
       items={[
         {
-          title: 'Definir padrões antes de redesenhar telas',
-          text: 'Com várias áreas para revisar, começar pela tela mais urgente teria criado um novo conjunto de exceções. Fechar primeiro como o portal lista, filtra e confirma fez cada tela seguinte ser uma aplicação, e não uma nova decisão.',
+          title: t('Definir padrões antes de redesenhar telas', "Define patterns before redesigning screens"),
+          text: t('Com várias áreas para revisar, começar pela tela mais urgente teria criado um novo conjunto de exceções. Fechar primeiro como o portal lista, filtra e confirma fez cada tela seguinte ser uma aplicação, e não uma nova decisão.', "With several areas to review, starting with the most urgent screen would have created a new set of exceptions. Settling first how the portal lists, filters and confirms made each following screen an application, not a new decision."),
         },
         {
-          title: 'Desenvolvimento como parte do desenho',
-          text: 'Os padrões só funcionaram porque foram combinados com front-end e back-end, considerando o que já existia no sistema e o que podia ser reaproveitado. Parte das soluções mudou durante a implementação, e isso melhorou o resultado.',
+          title: t('Desenvolvimento como parte do desenho', "Development as part of the design"),
+          text: t('Os padrões só funcionaram porque foram combinados com front-end e back-end, considerando o que já existia no sistema e o que podia ser reaproveitado. Parte das soluções mudou durante a implementação, e isso melhorou o resultado.', "The patterns only worked because they were agreed with front-end and back-end, considering what already existed in the system and what could be reused. Some solutions changed during implementation, and that improved the result."),
         },
         {
-          title: 'Consistência tem limite',
-          text: 'Aplicar o mesmo modelo de listagem em relatórios manteria o problema. Saber onde o padrão resolve e onde o fluxo pede uma estrutura própria foi uma das decisões mais importantes do projeto.',
+          title: t('Consistência tem limite', "Consistency has limits"),
+          text: t('Aplicar o mesmo modelo de listagem em relatórios manteria o problema. Saber onde o padrão resolve e onde o fluxo pede uma estrutura própria foi uma das decisões mais importantes do projeto.', "Applying the same list model to reports would have kept the problem. Knowing where the pattern works and where the flow calls for its own structure was one of the most important decisions in the project."),
         },
         {
-          title: 'Decidir sem validação formal',
-          text: 'Chamados de suporte e benchmark mostram onde há atrito, mas não explicam o motivo nem quem não chegou a reclamar. A liberação gradual reduz o risco; acompanhar o uso e conversar com alguns RHs durante a transição seria o próximo passo.',
+          title: t('Decidir sem validação formal', "Deciding without formal validation"),
+          text: t('Chamados de suporte e benchmark mostram onde há atrito, mas não explicam o motivo nem quem não chegou a reclamar. A liberação gradual reduz o risco; acompanhar o uso e conversar com alguns RHs durante a transição seria o próximo passo.', "Support tickets and benchmarking show where there is friction, but they do not explain why, or who never got around to complaining. The gradual rollout reduces risk; tracking usage and talking with a few HR teams during the transition would be the next step."),
         },
       ]}
     />
   </CaseSection>
-  <PartHeading part="Parte 4" title="Antes e depois" />
+  <PartHeading part={t("Parte 4", "Part 4")} title={t("Antes e depois", "Before and after")} />
 
   <section id="comparador" class="explorer wrap--case" aria-labelledby="ad-title">
     <div class="explorer-body">
       <div class="explorer-head">
-        <span class="tag-mono">Antes e depois</span>
-        <h2 id="ad-title">Oito comparações, lidas pelo problema</h2>
-        <p>
+        <span data-en="Before and after" class="tag-mono">Antes e depois</span>
+        <h2 data-en="Eight comparisons, read through the problem" id="ad-title">Oito comparações, lidas pelo problema</h2>
+        <p data-en="Pick an area and switch between the old and new versions. Alongside, the problem, the decision, the solution and the benefit expected from it.">
           Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o
           benefício que se espera dela.
         </p>

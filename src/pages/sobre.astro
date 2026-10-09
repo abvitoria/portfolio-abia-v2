@@ -19,24 +19,32 @@ import { url } from '@/lib/url';
   <section class="sec hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div>
-        <div class="kicker">01 · Sobre a designer</div>
+        <div class="kicker" data-en="01 · About the designer">01 · Sobre a designer</div>
         <h1 id="hero-title" class="disp">ÁBIA<br />BOGNOLA<span class="accent">.</span></h1>
-        <p class="hero-lead">Product designer há <strong>cinco anos</strong>, entre fintech, saúde pública e edtech.</p>
-        <p class="hero-text">
+        <p class="hero-lead" data-en="Product designer for <strong>five years</strong>, across fintech, public health and edtech.">
+          Product designer há <strong>cinco anos</strong>, entre fintech, saúde pública e edtech.
+        </p>
+        <p
+          class="hero-text"
+          data-en="I usually join products that grew without a UX process, or new products on tight deadlines. Either way, I start by gathering what already exists — documentation, business rules, brand — before opening Figma."
+        >
           Costumo entrar em produtos que cresceram sem processo de UX ou em produtos novos com prazo curto. Nos dois
           casos, começo reunindo o que já existe — documentação, regras de negócio, marca — antes de abrir o Figma.
         </p>
       </div>
       <div class="hero-side">
         <div class="photo-wrap">
-          <span class="imgtag imgtag--tl">Retrato · 2026</span>
+          <span class="imgtag imgtag--tl" data-en="Portrait · 2026">Retrato · 2026</span>
           <Portrait class="photo" alt="Retrato de Ábia Bognola" width={280} loading="eager" />
           <span class="imgtag imgtag--br">Goiânia · GO</span>
         </div>
         <div class="where">
-          <div class="where-title">Onde estou</div>
-          Goiânia, GO · remoto pra times em qualquer fuso do Brasil. Atualmente na MedMe Saúde, meio-período entre projetos
-          parceiros.
+          <div class="where-title" data-en="Where I am">Onde estou</div>
+          <span
+            data-en="Goiânia, GO · remote for teams in any Brazilian time zone. Currently at MedMe Saúde, part-time alongside partner projects."
+            >Goiânia, GO · remoto pra times em qualquer fuso do Brasil. Atualmente na MedMe Saúde, meio-período entre
+            projetos parceiros.</span
+          >
         </div>
       </div>
     </div>
@@ -45,13 +53,13 @@ import { url } from '@/lib/url';
   <!-- NÚMEROS -->
   <section class="sec rv" aria-label="Em números">
     <div class="wrap">
-      <div class="kicker kicker--lg">02 · Em números</div>
+      <div class="kicker kicker--lg" data-en="02 · By the numbers">02 · Em números</div>
       <div class="numbers">
         {
           numbers.map((n) => (
             <div class="number">
               <div class:list={['big-num', { 'big-num--accent': n.accent }]}>{n.value}</div>
-              <div class="number-label" set:html={n.label} />
+              <div class="number-label" data-en={n.label.en} set:html={n.label.pt} />
             </div>
           ))
         }
@@ -63,9 +71,12 @@ import { url } from '@/lib/url';
   <section class="sec rv" aria-labelledby="filo-title">
     <div class="wrap philo">
       <div class="philo-left">
-        <div class="kicker">03 · Filosofia</div>
-        <h2 id="filo-title" class="disp h-lg">COMO EU<br />COSTUMO<br />TRABALHAR.</h2>
-        <p class="pull">
+        <div class="kicker" data-en="03 · Philosophy">03 · Filosofia</div>
+        <h2 id="filo-title" class="disp h-lg" data-en="HOW I<br />USUALLY<br />WORK.">COMO EU<br />COSTUMO<br />TRABALHAR.</h2>
+        <p
+          class="pull"
+          data-en={`The five stages of design thinking, which guide <a href="${url('/cases/')}">every project</a> and adapt to the deadline and to what the team has available.`}
+        >
           As cinco etapas do design thinking, que guiam <a href={url('/cases/')}>cada projeto</a> e se ajustam ao prazo e ao que o
           time tem disponível.
         </p>
@@ -79,29 +90,32 @@ import { url } from '@/lib/url';
   <!-- PRINCÍPIO -->
   <section class="sec sec--ink rv" aria-label="Princípio de trabalho">
     <div class="wrap">
-      <div class="kicker kicker--quote">Princípio de trabalho</div>
-      <p class="disp quote">
+      <div class="kicker kicker--quote" data-en="Working principle">Princípio de trabalho</div>
+      <p
+        class="disp quote"
+        data-en="“Good research is about asking <span class='italic'>more and better questions</span> — and thinking critically about the answers.”"
+      >
         “Boa pesquisa é sobre fazer <span class="italic">mais e melhores perguntas</span> — e pensar criticamente sobre as
         respostas.”
       </p>
-      <div class="cite">— Erika Hall · autora de Just Enough Research</div>
+      <div class="cite" data-en="— Erika Hall · author of Just Enough Research">— Erika Hall · autora de Just Enough Research</div>
     </div>
   </section>
 
   <!-- EXPERTISE -->
   <section class="sec rv" aria-labelledby="exp-title">
     <div class="wrap">
-      <div class="kicker">04 · O que eu faço</div>
+      <div class="kicker" data-en="04 · What I do">04 · O que eu faço</div>
       <h2 id="exp-title" class="disp h-lg h-gap">EXPERTISE.</h2>
       <div class="expertise">
         {
           expertise.map((col) => (
             <div class="exp-col">
               <div class="disp exp-letter">{col.letter}</div>
-              <div class="exp-title">{col.title}</div>
+              <div class="exp-title" data-en={col.title.en} set:html={col.title.pt} />
               <ul class="tick">
                 {col.items.map((item) => (
-                  <li set:html={item} />
+                  <li data-en={item.en} set:html={item.pt} />
                 ))}
               </ul>
             </div>
@@ -109,7 +123,7 @@ import { url } from '@/lib/url';
         }
       </div>
       <div class="tools">
-        <span class="tools-label">Ferramentas</span>
+        <span class="tools-label" data-en="Tools">Ferramentas</span>
         <PillList items={tools} />
       </div>
     </div>
@@ -120,10 +134,13 @@ import { url } from '@/lib/url';
     <div class="wrap">
       <div class="split">
         <div>
-          <div class="kicker">05 · Passagens</div>
-          <h2 id="pass-title" class="disp h-md">POR ONDE<br />EU PASSEI.</h2>
+          <div class="kicker" data-en="05 · Where I’ve worked">05 · Passagens</div>
+          <h2 id="pass-title" class="disp h-md" data-en="WHERE<br />I’VE BEEN.">POR ONDE<br />EU PASSEI.</h2>
         </div>
-        <p class="body">
+        <p
+          class="body"
+          data-en="Digital banking, fintech, software houses and health — almost always on small teams, where design also organizes the process."
+        >
           Banco digital, fintech, softhouse e saúde — quase sempre em times pequenos, onde o design também organiza o
           processo.
         </p>
@@ -133,7 +150,7 @@ import { url } from '@/lib/url';
           companies.map((c) => (
             <div>
               {c.name}
-              <small>{c.period}</small>
+              <small data-en={c.period.en} set:html={c.period.pt} />
             </div>
           ))
         }
@@ -145,23 +162,23 @@ import { url } from '@/lib/url';
   <section class="sec rv" aria-labelledby="tl-title">
     <div class="wrap career">
       <div>
-        <div class="kicker">06 · Trajetória</div>
-        <h2 id="tl-title" class="disp h-sm">CINCO ANOS,<br />SEIS EMPRESAS.</h2>
+        <div class="kicker" data-en="06 · Career">06 · Trajetória</div>
+        <h2 id="tl-title" class="disp h-sm" data-en="FIVE YEARS,<br />SIX COMPANIES.">CINCO ANOS,<br />SEIS EMPRESAS.</h2>
         <Timeline items={timeline} />
       </div>
       <aside class="edu">
-        <div class="kicker kicker--sm">Formação</div>
+        <div class="kicker kicker--sm" data-en="Education">Formação</div>
         {
           education.map((e) => (
             <div class="edu-item">
               <div class="edu-period">{e.period}</div>
               <div class="edu-title">{e.title}</div>
-              <p class="edu-desc">{e.desc}</p>
+              <p class="edu-desc" data-en={e.desc.en} set:html={e.desc.pt} />
             </div>
           ))
         }
         <div class="edu-item edu-item--last">
-          <div class="kicker kicker--xs">Mentorias &amp; comunidade</div>
+          <div class="kicker kicker--xs" data-en="Mentoring &amp; community">Mentorias &amp; comunidade</div>
           <PillList items={community} />
         </div>
       </aside>
@@ -172,16 +189,18 @@ import { url } from '@/lib/url';
   <section class="sec rv" aria-labelledby="now-title">
     <div class="wrap craft">
       <div>
-        <div class="kicker">07 · Ofício</div>
-        <h2 id="now-title" class="disp h-md h-gap-sm">COISAS<br />QUE SAEM<br />DAS MINHAS<br />MÃOS.</h2>
-        <p class="body">O que eu entrego em cada fase de um projeto.</p>
+        <div class="kicker" data-en="07 · Craft">07 · Ofício</div>
+        <h2 id="now-title" class="disp h-md h-gap-sm" data-en="WHAT<br />I MAKE<br />WITH MY<br />HANDS.">
+          COISAS<br />QUE SAEM<br />DAS MINHAS<br />MÃOS.
+        </h2>
+        <p class="body" data-en="What I deliver at each phase of a project.">O que eu entrego em cada fase de um projeto.</p>
       </div>
       <div>
         {
           craft.map((c) => (
             <div class="q-block">
-              <div class="q-lbl">{c.label}</div>
-              <p class="q-a" set:html={c.text} />
+              <div class="q-lbl" data-en={c.label.en} set:html={c.label.pt} />
+              <p class="q-a" data-en={c.text.en} set:html={c.text.pt} />
             </div>
           ))
         }
@@ -194,12 +213,12 @@ import { url } from '@/lib/url';
     <div class="wrap cta-wrap">
       <div class="cta">
         <div>
-          <div class="kicker kicker--quote">08 · Próximos passos</div>
-          <h2>SE FIZER<br />SENTIDO, <em>me chame.</em></h2>
+          <div class="kicker kicker--quote" data-en="08 · Next steps">08 · Próximos passos</div>
+          <h2 data-en="IF IT<br />MAKES SENSE, <em>reach out.</em>">SE FIZER<br />SENTIDO, <em>me chame.</em></h2>
         </div>
         <div class="cta-btns">
-          <a href={url('/contato/')} class="btn-solid">Fale comigo →</a>
-          <a href={url('/cases/')} class="btn-outline">Ver os cases</a>
+          <a href={url('/contato/')} class="btn-solid" data-en="Talk to me →">Fale comigo →</a>
+          <a href={url('/cases/')} class="btn-outline" data-en="See the cases">Ver os cases</a>
         </div>
       </div>
     </div>
@@ -332,7 +351,7 @@ import { url } from '@/lib/url';
     color: var(--ink-2);
   }
 
-  .hero-lead strong {
+  .hero-lead :global(strong) {
     color: var(--ink);
   }
 
@@ -505,7 +524,7 @@ import { url } from '@/lib/url';
     color: var(--paper);
   }
 
-  .quote .italic {
+  .quote :global(.italic) {
     letter-spacing: -0.01em;
     color: var(--accent);
   }
@@ -744,7 +763,7 @@ import { url } from '@/lib/url';
     color: var(--paper);
   }
 
-  .cta h2 em {
+  .cta h2 :global(em) {
     display: inline-block;
     font-family: var(--ff-sans);
     font-style: italic;

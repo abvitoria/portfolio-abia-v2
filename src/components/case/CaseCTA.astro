@@ -1,25 +1,29 @@
 ---
 /** Closing block of every case: question + back / more cases buttons. */
 import Button from '@/components/ui/Button.astro';
+import { en, pt, t, type T } from '@/data/i18n';
 import { url } from '@/lib/url';
 
 interface Props {
-  title?: string;
-  text?: string;
+  title?: T;
+  text?: T;
 }
 
 const {
-  title = 'Tem um desafio parecido no seu produto?',
-  text = 'Me conta o contexto — respondo em até um dia útil.',
+  title = t('Tem um desafio parecido no seu produto?', 'Facing a similar challenge in your product?'),
+  text = t(
+    'Me conta o contexto — respondo em até um dia útil.',
+    "Tell me the context — I'll reply within one business day.",
+  ),
 } = Astro.props;
 ---
 
 <section class="cta wrap--case" aria-label="Contato">
-  <h2 set:html={title} />
-  <p set:html={text} />
+  <h2 data-en={en(title)} set:html={pt(title)} />
+  <p data-en={en(text)} set:html={pt(text)} />
   <div class="actions">
-    <Button href={url('/cases/')} variant="ghost" data-back>← Voltar à tela anterior</Button>
-    <Button href={url('/cases/')}>Ver mais cases →</Button>
+    <Button href={url('/cases/')} variant="ghost" data-back en="← Back to previous page">← Voltar à tela anterior</Button>
+    <Button href={url('/cases/')} en="See more cases →">Ver mais cases →</Button>
   </div>
 </section>
 

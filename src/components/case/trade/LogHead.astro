@@ -1,17 +1,19 @@
 ---
 /** Dashed mono header above a decision log: "Log de decisões ---- 01 — 05 · cadastro". */
+import { en, pt, t, type T } from '@/data/i18n';
+
 interface Props {
-  range: string;
-  label?: string;
+  range: T;
+  label?: T;
 }
 
-const { range, label = 'Log de decisões' } = Astro.props;
+const { range, label = t('Log de decisões', 'Decision log') } = Astro.props;
 ---
 
 <div class="log-head">
-  <span>{label}</span>
+  <span data-en={en(label)} set:html={pt(label)} />
   <span class="line" aria-hidden="true"></span>
-  <span>{range}</span>
+  <span data-en={en(range)} set:html={pt(range)} />
 </div>
 
 <style>

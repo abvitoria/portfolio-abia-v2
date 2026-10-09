@@ -3,8 +3,10 @@
  * Diagnosis categories: hairline grid of cards, each with a colored dot,
  * the category name and its findings.
  */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
-  categories: { nome: string; cor: string; itens: string[] }[];
+  categories: { nome: T; cor: string; itens: T[] }[];
 }
 
 const { categories } = Astro.props;
@@ -16,13 +18,13 @@ const { categories } = Astro.props;
       <article style={`--cat:${c.cor}`}>
         <div class="head">
           <span class="dot" />
-          <h3>{c.nome}</h3>
+          <h3 data-en={en(c.nome)} set:html={pt(c.nome)} />
         </div>
         <ul>
           {c.itens.map((it) => (
             <li>
               <span class="dash">—</span>
-              <span>{it}</span>
+              <span data-en={en(it)} set:html={pt(it)} />
             </li>
           ))}
         </ul>

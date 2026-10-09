@@ -4,31 +4,39 @@
  * color roles, type scale, component states and spacing. Uses the product
  * palette on purpose, so it stays light on the dark case page.
  */
+import { t } from '@/data/i18n';
+
 const swatches = [
-  { name: 'Navy · base', hex: '#0A192F', ratio: '17.6:1 AAA', status: 'pass' },
-  { name: 'Navy médio · nav ativa', hex: '#12324A', ratio: '13.3:1 AAA', status: 'pass' },
-  { name: 'Teal · ação', hex: '#009688', ratio: '3.7:1 AA large', status: 'warn' },
-  { name: 'Teal claro · status', hex: '#E0F2F1', ratio: '5.5:1 com texto', status: 'pass' },
-  { name: 'Fundo / superfície', hex: '#F4F7FE · #FFFFFF', ratio: 'Texto 16.3:1', status: 'pass', split: true },
+  { name: t('Navy · base'), hex: '#0A192F', ratio: t('17.6:1 AAA'), status: 'pass' },
+  { name: t('Navy médio · nav ativa', 'Mid navy · active nav'), hex: '#12324A', ratio: t('13.3:1 AAA'), status: 'pass' },
+  { name: t('Teal · ação', 'Teal · action'), hex: '#009688', ratio: t('3.7:1 AA large'), status: 'warn' },
+  { name: t('Teal claro · status', 'Light teal · status'), hex: '#E0F2F1', ratio: t('5.5:1 com texto', '5.5:1 with text'), status: 'pass' },
+  {
+    name: t('Fundo / superfície', 'Background / surface'),
+    hex: '#F4F7FE · #FFFFFF',
+    ratio: t('Texto 16.3:1', 'Text 16.3:1'),
+    status: 'pass',
+    split: true,
+  },
 ];
 
 const typeScale = [
-  { level: 'h1', sample: 'Receitas e Atestados', spec: 'H1 · 28 / 700 / 1.2' },
-  { level: 'h2', sample: 'Título de seção', spec: 'H2 · 20 / 600 / 1.3' },
-  { level: 'h3', sample: 'Nome do documento', spec: 'H3 · 16 / 600 / 1.4' },
+  { level: 'h1', sample: 'Receitas e Atestados', spec: t('H1 · 28 / 700 / 1.2') },
+  { level: 'h2', sample: 'Título de seção', spec: t('H2 · 20 / 600 / 1.3') },
+  { level: 'h3', sample: 'Nome do documento', spec: t('H3 · 16 / 600 / 1.4') },
   {
     level: 'body',
     sample: 'Consulte e baixe seus documentos médicos oficiais emitidos durante as teleconsultas.',
-    spec: 'Corpo · 15 / 400 / 1.6',
+    spec: t('Corpo · 15 / 400 / 1.6', 'Body · 15 / 400 / 1.6'),
   },
-  { level: 'label', sample: 'Receita digital', spec: 'Label · 12 / 600 / +6%' },
+  { level: 'label', sample: 'Receita digital', spec: t('Label · 12 / 600 / +6%') },
 ];
 
 const buttons = [
-  { state: 'Primário · default', label: 'Baixar', variant: 'primary' },
-  { state: 'Primário · hover', label: 'Baixar', variant: 'hover' },
-  { state: 'Primário · disabled', label: 'Baixar', variant: 'disabled' },
-  { state: 'Secundário', label: 'Visualizar', variant: 'secondary' },
+  { state: t('Primário · default', 'Primary · default'), label: 'Baixar', variant: 'primary' },
+  { state: t('Primário · hover', 'Primary · hover'), label: 'Baixar', variant: 'hover' },
+  { state: t('Primário · disabled', 'Primary · disabled'), label: 'Baixar', variant: 'disabled' },
+  { state: t('Secundário', 'Secondary'), label: 'Visualizar', variant: 'secondary' },
 ];
 
 const spacing = [
@@ -50,7 +58,7 @@ const radii = [6, 12, 16];
   </div>
   <div class="sg-body">
     <div class="sg-blk">
-      <div class="sg-lbl"><b>Cor</b>Papel funcional</div>
+      <div data-en="<b>Color</b>Functional role" class="sg-lbl"><b>Cor</b>Papel funcional</div>
       <div>
         <div class="swatches">
           {
@@ -58,15 +66,15 @@ const radii = [6, 12, 16];
               <div class="sg-sw">
                 <div class:list={['chip', { 'chip--split': s.split }]} style={`--c:${s.hex}`} />
                 <div class="meta">
-                  <div class="nm">{s.name}</div>
+                  <div class="nm" data-en={s.name.en} set:html={s.name.pt} />
                   <div class="hx">{s.hex}</div>
-                  <div class:list={['cr', s.status]}>{s.ratio}</div>
+                  <div class:list={['cr', s.status]} data-en={s.ratio.en} set:html={s.ratio.pt} />
                 </div>
               </div>
             ))
           }
         </div>
-        <p class="sg-note">
+        <p data-en="Teal is reserved for <b>action and status</b> — never for running text. In the contrast audit it passes AA for large text and components (3.7:1), so button labels live at 15px/600 on the solid fill, never teal on white." class="sg-note">
           O teal é reservado a <b>ação e status</b> — nunca a texto corrido. Na auditoria de contraste ele passa em AA
           para texto grande e componentes (3.7:1), então rótulos de botão vivem em 15px/600 sobre o preenchimento sólido,
           nunca em teal sobre branco.
@@ -75,17 +83,17 @@ const radii = [6, 12, 16];
     </div>
 
     <div class="sg-blk">
-      <div class="sg-lbl"><b>Tipografia</b>Poppins · escala</div>
+      <div data-en="<b>Typography</b>Poppins · scale" class="sg-lbl"><b>Tipografia</b>Poppins · escala</div>
       <div class="sg-type">
         {
           typeScale.map((t) => (
             <div class="r">
               <div class={`t-${t.level}`}>{t.sample}</div>
-              <div class="spec">{t.spec}</div>
+              <div class="spec" data-en={t.spec.en} set:html={t.spec.pt} />
             </div>
           ))
         }
-        <p class="sg-note">
+        <p data-en="Nothing below <b>15px</b> for reading text — the audience includes older people and low-quality screens. One family, five levels: fewer decisions while designing, less drift across the three profiles." class="sg-note">
           Nada abaixo de <b>15px</b> em texto de leitura — o público inclui idosos e telas de baixa qualidade. Uma família
           só, cinco níveis: menos decisão na hora de desenhar, menos deriva entre os três perfis.
         </p>
@@ -93,13 +101,13 @@ const radii = [6, 12, 16];
     </div>
 
     <div class="sg-blk">
-      <div class="sg-lbl"><b>Componentes</b>Variantes e estados</div>
+      <div data-en="<b>Components</b>Variants and states" class="sg-lbl"><b>Componentes</b>Variantes e estados</div>
       <div class="components">
         <div class="sg-cellrow">
           {
             buttons.map((b) => (
               <div class="sg-cell">
-                <span class="st">{b.state}</span>
+                <span class="st" data-en={b.state.en} set:html={b.state.pt} />
                 <span class={`sg-btn sg-btn--${b.variant}`}>{b.label}</span>
               </div>
             ))
@@ -107,7 +115,7 @@ const radii = [6, 12, 16];
         </div>
         <div class="sg-cellrow sg-cellrow--stretch">
           <div class="sg-cell search-cell">
-            <span class="st">Campo de busca · 44px</span>
+            <span data-en="Search field · 44px" class="st">Campo de busca · 44px</span>
             <div class="search">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A6779" stroke-width="2" aria-hidden="true"
                 ><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg
@@ -116,18 +124,18 @@ const radii = [6, 12, 16];
             </div>
           </div>
           <div class="sg-cell">
-            <span class="st">Aba ativa / inativa</span>
+            <span data-en="Active / inactive tab" class="st">Aba ativa / inativa</span>
             <div class="tabs">
               <span class="tab tab--active">Receitas</span>
               <span class="tab">Atestados</span>
             </div>
           </div>
           <div class="sg-cell">
-            <span class="st">Tag de status</span>
+            <span data-en="Status tag" class="st">Tag de status</span>
             <div class="status"><span class="t-label status-tag">Receita digital</span></div>
           </div>
         </div>
-        <p class="sg-note sg-note--flush">
+        <p data-en="Every interactive target is at least <b>44px tall</b>. States never rely on color alone: hover darkens, disabled loses saturation <i>and</i> text contrast, focus inherits the browser outline." class="sg-note sg-note--flush">
           Todo alvo interativo tem <b>44px de altura mínima</b>. Estados nunca dependem só de cor: hover escurece, disabled
           perde saturação <i>e</i> contraste de texto, foco herda o outline do navegador.
         </p>
@@ -135,7 +143,7 @@ const radii = [6, 12, 16];
     </div>
 
     <div class="sg-blk">
-      <div class="sg-lbl"><b>Espaçamento</b>Base 8</div>
+      <div data-en="<b>Spacing</b>8-pt base" class="sg-lbl"><b>Espaçamento</b>Base 8</div>
       <div>
         <div class="spacing">
           {
@@ -147,11 +155,11 @@ const radii = [6, 12, 16];
             ))
           }
           <div class="sg-cell radius-cell">
-            <span class="st">Raio</span>
+            <span data-en="Radius" class="st">Raio</span>
             <div class="radii">{radii.map((r) => <div class="radius" style={`--r:${r}px`} />)}</div>
           </div>
           <div class="sg-cell">
-            <span class="st">Ícone</span>
+            <span data-en="Icon" class="st">Ícone</span>
             <div class="icon-spec">
               <svg
                 width="22"
@@ -169,7 +177,7 @@ const radii = [6, 12, 16];
             </div>
           </div>
         </div>
-        <p class="sg-note">
+        <p data-en="An 8-pt grid for every padding, gap and component height. It is what keeps three profiles and two platforms looking like the same product without a formal design system." class="sg-note">
           Grade de 8 em todo padding, gap e altura de componente. É o que mantém três perfis e duas plataformas parecendo o
           mesmo produto sem precisar de um design system formal.
         </p>
@@ -256,7 +264,7 @@ const radii = [6, 12, 16];
     color: var(--sg-mute);
   }
 
-  .sg-lbl b {
+  .sg-lbl :global(b) {
     display: block;
     margin-bottom: 6px;
     font-family: var(--ff-sans);
@@ -350,7 +358,7 @@ const radii = [6, 12, 16];
     color: var(--sg-ink-2);
   }
 
-  .sg-note b {
+  .sg-note :global(b) {
     font-weight: 600;
     color: var(--sg-ink);
   }

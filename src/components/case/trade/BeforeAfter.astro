@@ -1,8 +1,10 @@
 ---
 /** One "Antes → Depois" comparison row. */
+import { en, pt, type T } from '@/data/i18n';
+
 interface Props {
-  before: string;
-  after: string;
+  before: T;
+  after: T;
 }
 
 const { before, after } = Astro.props;
@@ -10,11 +12,11 @@ const { before, after } = Astro.props;
 
 <div class="card ba">
   <div class="side">
-    <span class="k">Antes</span>{before}
+    <span class="k" data-en="Before">Antes</span><span data-en={en(before)} set:html={pt(before)} />
   </div>
   <div class="arrow" aria-hidden="true">→</div>
   <div class="side side--after">
-    <span class="k">Depois</span>{after}
+    <span class="k" data-en="After">Depois</span><span data-en={en(after)} set:html={pt(after)} />
   </div>
 </div>
 
