@@ -71,4 +71,16 @@ const sizes = width === 'wide' ? '(max-width: 1000px) 100vw, 640px' : '(max-widt
   .row :global(.fig) {
     gap: 10px;
   }
+
+  /* One column: consecutive rows read as one gallery, so they keep the
+     same gap as the shots inside a row. */
+  @media (max-width: 820px) {
+    .row {
+      padding-top: 32px;
+    }
+
+    .row + .row {
+      padding-top: 24px;
+    }
+  }
 </style>

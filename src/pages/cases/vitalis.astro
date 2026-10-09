@@ -132,7 +132,7 @@ const screens = [
   {
     tag: 'PACIENTE · INÍCIO',
     color: navy,
-    title: 'Um portal claro, com o essencial primeiro',
+    title: 'Área do paciente',
     shots: [
       {
         src: pacienteHome,
@@ -140,12 +140,12 @@ const screens = [
       },
     ],
     caption:
-      'Início com acesso rápido às tarefas mais comuns — agendar, ver consultas, receitas e atestados — e um caminho curto até a teleconsulta. O essencial primeiro, sem menu profundo.',
+      'A tela inicial reúne acesso aos serviços mais relevantes, como agendamento, próximas consultas, teleconsultas e documentos médicos. A organização prioriza a localização das informações e a continuidade das atividades.',
   },
   {
     tag: 'AGENDAMENTO',
     color: teal,
-    title: 'Escolher dia e horário sem depender da fila do posto',
+    title: 'Agendamento de consultas',
     shots: [
       {
         src: agendamento,
@@ -153,12 +153,12 @@ const screens = [
       },
     ],
     caption:
-      'Calendário direto, horários em botões grandes e as próximas consultas sempre à vista — marcar um retorno deixa de exigir uma ida presencial.',
+      'A jornada apresenta a seleção de datas e horários disponíveis, além da visualização dos agendamentos realizados. O objetivo foi reunir as informações necessárias à marcação e ao acompanhamento de consultas.',
   },
   {
     tag: 'TELECONSULTA',
     color: navy,
-    title: 'Consentimento explícito e estados de espera bem resolvidos',
+    title: 'Teleconsulta',
     shots: [
       {
         src: preEntrada,
@@ -170,12 +170,12 @@ const screens = [
       },
     ],
     caption:
-      'Antes de entrar, o paciente dá o consentimento de tratamento de dados de forma clara. Na sala, o estado “o médico ainda não entrou” oferece caminho (aguardar ou notificar o suporte) em vez de deixar a pessoa perdida.',
+      'A experiência contempla a preparação para o atendimento, o consentimento para tratamento de dados de saúde e os estados de espera durante a chamada. Também foram previstos feedbacks para situações como a ausência do médico na sala virtual, oferecendo orientações para o paciente durante o atendimento.',
   },
   {
     tag: 'DOCUMENTOS DIGITAIS',
     color: violet,
-    title: 'Receitas, atestados e exames sem voltar ao balcão',
+    title: 'Documentos médicos',
     shots: [
       {
         src: receitas,
@@ -183,13 +183,13 @@ const screens = [
       },
     ],
     caption:
-      'Documentos emitidos nas teleconsultas ficam disponíveis para baixar ou visualizar — uma das dores que mais levava gente de volta à fila presencial.',
+      'Receitas, atestados e pedidos de exame foram organizados em uma área dedicada, com busca, categorias e ações para visualizar ou baixar os documentos.',
     loose: true,
   },
   {
     tag: 'ADMINISTRADORA · DESKTOP',
     color: navy,
-    title: 'A gestão do posto num só painel',
+    title: 'Gestão administrativa',
     shots: [
       {
         src: adminDashboard,
@@ -197,7 +197,7 @@ const screens = [
       },
     ],
     caption:
-      'A visão de gestão reúne o panorama do posto e uma fila de atividades pendentes com ação clara — aprovar comprovantes, revisar publicações e resolver transferências sem sair da tela.',
+      'A experiência administrativa reúne informações sobre atendimentos, consultas e atividades pendentes, oferecendo uma visão geral das operações e acesso às ações necessárias para o gerenciamento dos serviços.',
     loose: true,
   },
 ];
@@ -235,9 +235,10 @@ const learnings = [
   image={cover.src}
   chapters={[
     { id: 'cap-contexto', label: 'Contexto' },
-    { id: 'cap-processo', label: 'Processo' },
-    { id: 'cap-solucao', label: 'Solução' },
-    { id: 'cap-impacto', label: 'Impacto' },
+    { id: 'cap-processo', label: 'Investigação' },
+    { id: 'cap-solucao', label: 'Decisões' },
+    { id: 'cap-experiencia', label: 'Soluções' },
+    { id: 'cap-impacto', label: 'Entregas' },
   ]}
   ambient
   showLang
@@ -249,14 +250,14 @@ const learnings = [
       { label: 'SAÚDE · SETOR PÚBLICO', color: teal },
       { label: 'MULTIPLATAFORMA', color: violet },
     ]}
-    eyebrow="VITALIS SAÚDE · PRODUCT DESIGN · UX/UI"
-    title='Telemedicina para <span class="serif">três perfis</span> muito diferentes em um mês'
-    lead="Tirar pacientes de filas físicas e desafogar a triagem manual em postos de saúde — desenhando um ecossistema que servisse com igual facilidade a <strong>paciente, médico e secretária</strong>, cada um com proficiência digital e necessidades distintas."
+    eyebrow="VITALIS SAÚDE · PRODUCT DESIGN · UX/UI · SAÚDE DIGITAL"
+    title='Projetando uma experiência de telemedicina <span class="serif">para pacientes e profissionais de saúde</span>'
+    lead="Uma plataforma digital para a rede pública de saúde, com jornadas específicas para <strong>pacientes, médicos e equipes administrativas</strong>, integrando agendamentos, teleconsultas e documentos médicos em um único ambiente."
     facts={[
-      { label: 'MEU PAPEL', value: 'UX/UI · Research · Design system' },
-      { label: 'DURAÇÃO', value: '≈ 1 mês <span class="fact-note">· prazo apertado</span>' },
-      { label: 'FERRAMENTAS', value: 'Figma &amp; FigJam' },
-      { label: 'PLATAFORMA', value: 'Web · desktop &amp; mobile' },
+      { label: 'PAPEL', value: 'UX/UI Designer' },
+      { label: 'DURAÇÃO', value: 'Aproximadamente 1 mês <span class="fact-note">· prazo apertado</span>' },
+      { label: 'FERRAMENTAS', value: 'Figma · FigJam' },
+      { label: 'PLATAFORMA', value: 'Web · Desktop e Mobile' },
     ]}
     ruledFacts
     glow="rgba(28, 169, 160, 0.28)"
@@ -311,16 +312,17 @@ const learnings = [
 
   <!-- Contexto -->
   <section aria-labelledby="ctx-title" class="rv sec sec-narrow ctx">
-    <p class="eyebrow">Contexto</p>
-    <h2 id="ctx-title" class="h2">O produto e o que estava em jogo</h2>
+    <p class="eyebrow">Parte 1 · Contexto e desafio</p>
+    <h2 id="ctx-title" class="h2">Conhecendo o projeto</h2>
     <p class="lead">
-      A <strong>Vitalis Saúde</strong> foi concebida para aliviar o gargalo de atendimento em postos de saúde da rede
-      pública. A proposta era um sistema ponta a ponta que otimizasse o agendamento de consultas, a teleconsulta e a emissão
-      de documentos médicos digitais (receitas, atestados e pedidos de exame).
+      A <strong>Vitalis Saúde</strong> foi concebida para digitalizar processos de atendimento na rede pública, oferecendo
+      alternativas às atividades que tradicionalmente dependiam do comparecimento presencial, como agendamentos,
+      consultas e acesso a documentos médicos.
     </p>
     <p class="lead">
-      Não era um app único: era um ecossistema que precisava servir, com a mesma clareza, a três perfis com rotinas e níveis
-      de familiaridade digital bem diferentes.
+      A proposta reunia diferentes experiências em uma mesma plataforma: pacientes poderiam acompanhar seus atendimentos,
+      médicos teriam acesso às informações necessárias para as consultas e equipes administrativas seriam responsáveis
+      pela organização dos serviços.
     </p>
   </section>
 
@@ -356,29 +358,31 @@ const learnings = [
   <!-- O problema -->
   <div class="band band--purple problem">
     <section aria-labelledby="prob-title" class="rv sec sec-narrow">
-      <p class="eyebrow">Contexto · O problema real</p>
-      <h2 id="prob-title" class="h2">Filas físicas extensas e uma triagem manual que travava todo mundo</h2>
+      <p class="eyebrow">Contexto · O desafio</p>
+      <h2 id="prob-title" class="h2">O desafio</h2>
       <p class="lead">
-        Pacientes enfrentavam horas em filas presenciais só para agendar um retorno simples, pegar uma receita atualizada
-        ou retirar um atestado. Do outro lado do balcão, as secretárias se sobrecarregavam com preenchimento manual, e a
-        falta de um acompanhamento unificado alimentava o absenteísmo nas consultas.
+        O principal desafio era estruturar <strong>jornadas e permissões para usuários com responsabilidades
+        diferentes</strong>, mantendo a navegação clara e a experiência consistente entre desktop e mobile.
       </p>
       <p class="lead">
-        O desafio central era desenhar um ecossistema que servisse com <strong
-          >igual facilidade a três perfis distintos</strong
-        >, com níveis de proficiência digital muito variados — do paciente idoso que abre o celular pela primeira vez ao
-        médico que precisa de eficiência entre uma consulta e outra.
+        Além da diversidade de funcionalidades, era necessário considerar a acessibilidade e a organização das informações
+        em um contexto no qual o acesso aos serviços de saúde precisa ser simples e compreensível.
       </p>
     </section>
   </div>
 
   <!-- Processo: ponto de partida -->
   <section id="cap-processo" aria-labelledby="proc-title" class="rv sec sec-narrow process">
-    <p class="eyebrow">Processo · Ponto de partida</p>
-    <h2 id="proc-title" class="h2">Antes de desenhar, entender o negócio e o mercado</h2>
+    <p class="eyebrow">Parte 2 · Investigação e estruturação</p>
+    <h2 id="proc-title" class="h2">Entendendo os requisitos</h2>
     <p class="lead">
-      Com um prazo curto, não dava para improvisar. Estruturei a partida em passos objetivos, cada um respondendo a uma
-      pergunta concreta antes de eu tocar em qualquer tela:
+      Comecei pela análise da documentação fornecida pelo cliente, identificando as funcionalidades previstas, regras de
+      negócio e responsabilidades de cada perfil. Também preparei um roteiro de perguntas para esclarecer expectativas,
+      limitações e direcionamentos visuais.
+    </p>
+    <p class="lead">
+      Em paralelo, analisei referências de plataformas de telemedicina, agendamento e serviços digitais de saúde para
+      compreender padrões de navegação e organização de informações aplicáveis ao projeto.
     </p>
     <div>
       {
@@ -423,11 +427,16 @@ const learnings = [
   <!-- Sitemap / user flow -->
   <section aria-labelledby="flow-title" class="rv sec flow">
     <div class="sec-narrow intro-block">
-      <p class="eyebrow">Processo · Arquitetura</p>
-      <h2 id="flow-title" class="h2">Sitemap e user flow por perfil</h2>
+      <p class="eyebrow">Investigação · Arquitetura</p>
+      <h2 id="flow-title" class="h2">Organizando jornadas e permissões</h2>
       <p class="lead">
-        Mapeei a jornada de cada perfil antes dos wireframes, para dimensionar o produto — quantidade de telas e estimativa
-        de tempo de desenvolvimento — e alinhar isso com o time desde o início.
+        Com os requisitos definidos, estruturei o <strong>sitemap e os user flows</strong>, mapeando os caminhos
+        necessários para acessar as principais funcionalidades.
+      </p>
+      <p class="lead">
+        A documentação contemplava pacientes, médicos, secretárias responsáveis pela triagem e administradores com
+        permissões específicas. Essa organização ajudou a definir quais informações e ações deveriam estar disponíveis para
+        cada perfil, além de dimensionar as telas necessárias.
       </p>
     </div>
     <PanelFigure
@@ -443,13 +452,15 @@ const learnings = [
   <div id="cap-solucao" class="band band--tint solution">
     <section aria-labelledby="ds-title" class="rv sec style-guide">
       <div class="sec-narrow intro-block">
-        <p class="eyebrow">Solução · Fundação</p>
-        <h2 id="ds-title" class="h2">Um style guide antes de qualquer tela</h2>
+        <p class="eyebrow">Parte 3 · Decisões de design</p>
+        <h2 id="ds-title" class="h2">01. Estabelecer uma linguagem visual consistente</h2>
         <p class="lead">
-          O cliente já tinha logomarca, paleta e fontes definidas. Meu primeiro passo de design foi construir um <strong
-            >style guide no Figma</strong
-          > para padronizar esses elementos e garantir consistência entre web e mobile — e entre os três perfis. Não foi um
-          design system: é a gramática visual que as telas herdam, documentada abaixo com os valores realmente aplicados.
+          O cliente já possuía uma identidade visual definida. A partir dela, desenvolvi um <strong>style guide</strong> no
+          Figma, organizando tipografia, cores, espaçamentos, componentes e estados de interação.
+        </p>
+        <p class="lead">
+          Essa base permitiu aplicar padrões consistentes às diferentes áreas da plataforma, preservando a identidade da
+          marca e reduzindo divergências entre as interfaces de desktop e mobile.
         </p>
       </div>
       <StyleGuide />
@@ -462,12 +473,15 @@ const learnings = [
 
     <section aria-labelledby="wire-title" class="rv sec wireframes">
       <div class="sec-narrow intro-block">
-        <p class="eyebrow">Solução · Estrutura antes da estética</p>
-        <h2 id="wire-title" class="h2">Wireframes de baixa fidelidade primeiro</h2>
+        <p class="eyebrow">Decisões · Estrutura antes da estética</p>
+        <h2 id="wire-title" class="h2">02. Definir a estrutura antes do refinamento visual</h2>
         <p class="lead">
-          Escolhi começar por wireframes de baixa fidelidade de propósito: definir estrutura e hierarquia antes da estética
-          permitia ajustes rápidos e, principalmente, alinhar expectativas com o cliente antes de investir na alta
-          fidelidade.
+          Desenvolvi <strong>wireframes de baixa fidelidade</strong> para explorar a organização das informações e os
+          caminhos de navegação antes de avançar para as interfaces finais.
+        </p>
+        <p class="lead">
+          Essa etapa permitiu discutir a estrutura das telas com o cliente, realizar ajustes e validar os direcionamentos
+          iniciais sem depender de componentes completamente estilizados.
         </p>
       </div>
       <PanelFigure
@@ -483,11 +497,15 @@ const learnings = [
   <!-- Acessibilidade: evidência → decisão -->
   <section aria-labelledby="acc-title" class="rv sec accessibility">
     <div class="sec-narrow intro-block">
-      <p class="eyebrow">Solução · Decisões</p>
-      <h2 id="acc-title" class="h2">Acessibilidade como requisito do público</h2>
+      <p class="eyebrow">Decisões · Acessibilidade</p>
+      <h2 id="acc-title" class="h2">03. Priorizar clareza e acessibilidade</h2>
       <p class="lead">
-        Público de saúde pública, muitos idosos, dispositivos modestos e conexões instáveis: cada decisão de UI partiu de
-        uma evidência concreta desse contexto.
+        Considerei aspectos de acessibilidade na definição das interfaces, especialmente contraste, legibilidade, tamanho
+        das áreas interativas e identificação de estados e ações.
+      </p>
+      <p class="lead">
+        Na experiência mobile do paciente, priorizei as funcionalidades essenciais e uma navegação direta, buscando
+        facilitar o acesso a consultas, agendamentos e documentos médicos.
       </p>
       <div class="legend">
         <span class="pill pill--ev">Evidência</span>
@@ -514,13 +532,13 @@ const learnings = [
   </section>
 
   <!-- Solução: interfaces por perfil -->
-  <section aria-labelledby="exp-title" class="rv sec experience">
+  <section id="cap-experiencia" aria-labelledby="exp-title" class="rv sec experience">
     <div class="sec-narrow intro-block">
-      <p class="eyebrow">Solução · A experiência final</p>
-      <h2 id="exp-title" class="h2">Uma interface para cada perfil, um só sistema</h2>
+      <p class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
+      <h2 id="exp-title" class="h2">Uma plataforma, diferentes jornadas</h2>
       <p class="lead">
-        Com o style guide e os wireframes validados, subi a fidelidade. Desktop para quem opera o dia a dia; mobile leve
-        para o paciente. Abaixo, a jornada do paciente ponta a ponta.
+        Com a estrutura e a linguagem visual estabelecidas, desenvolvi as interfaces em alta fidelidade, organizando as
+        funcionalidades de acordo com as responsabilidades de cada perfil.
       </p>
     </div>
 
@@ -543,10 +561,10 @@ const learnings = [
 
     <div class="sec-narrow mobile-intro">
       <span class="badge screen__tag" style={`background:${teal}`}>PACIENTE · MOBILE LEVE</span>
-      <h3 class="screen__title">A mesma experiência, enxuta para o celular</h3>
+      <h3 class="screen__title">Experiência mobile</h3>
       <p>
-        Para conexões instáveis e aparelhos modestos, a versão mobile prioriza o essencial do paciente — identificar-se,
-        acompanhar a consulta e acessar receitas — com alvos de toque generosos.
+        A versão mobile prioriza o acesso às principais funcionalidades do paciente, adaptando a navegação e a
+        apresentação das informações para telas menores.
       </p>
     </div>
     <div class="phones">
@@ -557,7 +575,7 @@ const learnings = [
   <!-- Impacto: restrição como senioridade -->
   <div id="cap-impacto" class="band band--purple impact">
     <section aria-labelledby="prazo-title" class="rv sec sec-narrow">
-      <p class="eyebrow">Impacto · Gestão sob pressão</p>
+      <p class="eyebrow">Parte 5 · Entregas e aprendizados</p>
       <h2 id="prazo-title" class="h2">Entregar três perfis, em um mês, sem perder a base</h2>
       <p class="lead">
         A restrição de prazo foi o eixo do projeto. Foi ela que justificou começar pela pesquisa e pelos wireframes de
@@ -574,22 +592,22 @@ const learnings = [
 
   <!-- Escopo entregue (sem KPI) -->
   <section aria-labelledby="escopo-title" class="rv sec sec-narrow scope">
-    <p class="eyebrow">Impacto · Escopo entregue</p>
-    <h2 id="escopo-title" class="h2">O que o projeto entregou</h2>
+    <p class="eyebrow">Entregas · Escopo entregue</p>
+    <h2 id="escopo-title" class="h2">O que foi entregue</h2>
     <p class="lead">
-      O escopo cobriu <strong>três perfis de usuário</strong> (paciente, médico e secretária) em <strong
-        >duas plataformas</strong
-      > (desktop e mobile), a partir de um <strong>style guide</strong> próprio e dos <strong>fluxos completos</strong> mapeados
-      por perfil — do agendamento à teleconsulta e à emissão de documentos digitais. As telas em alta fidelidade deste case
-      destacam a jornada do paciente; os fluxos de médico e secretária estão mapeados no sitemap acima. São contagens de
-      entregável, não métricas de resultado.
+      O projeto resultou na estruturação das <strong>jornadas e permissões dos diferentes perfis</strong>, com sitemap,
+      user flows, wireframes, style guide e interfaces em alta fidelidade para web e mobile.
+    </p>
+    <p class="lead">
+      As soluções foram desenvolvidas a partir dos requisitos do cliente, com uma linguagem visual consistente e atenção à
+      clareza das informações e à acessibilidade.
     </p>
   </section>
 
   <!-- Retorno do cliente (neutro) -->
   <section aria-labelledby="retorno-title" class="rv sec sec-narrow feedback">
     <div class="feedback__box">
-      <p class="eyebrow" id="retorno-title">Impacto · Retorno</p>
+      <p class="eyebrow" id="retorno-title">Entregas · Retorno</p>
       <p class="feedback__text">
         No momento da escrita deste case, a plataforma <strong>ainda não havia sido lançada</strong>, então não há dados de
         uso em produção. O retorno do cliente sobre as entregas foi relatado como positivo — e os indicadores de sucesso
@@ -602,7 +620,16 @@ const learnings = [
   <section aria-labelledby="apr-title" class="rv sec learnings">
     <div class="learnings__box">
       <p class="eyebrow">Aprendizados</p>
-      <h2 id="apr-title" class="h2">O que ficou desse projeto</h2>
+      <h2 id="apr-title" class="h2">O que aprendi</h2>
+      <p class="lead">
+        O principal aprendizado foi a importância de organizar as responsabilidades e os fluxos antes de desenvolver as
+        interfaces de um sistema com diferentes perfis de acesso.
+      </p>
+      <p class="lead">
+        O mapeamento inicial e a definição de padrões visuais ajudaram a conduzir o projeto dentro do prazo, mantendo a
+        consistência entre as jornadas e permitindo que as decisões fossem discutidas com o cliente ao longo do
+        desenvolvimento.
+      </p>
       <div class="cols-2 learnings__grid">
         {
           learnings.map((l) => (
@@ -711,7 +738,7 @@ const learnings = [
   }
 
   .feedback {
-    margin-top: 60px;
+    margin-top: calc(60px * var(--sp, 1));
   }
 
   .learnings {
@@ -1021,6 +1048,10 @@ const learnings = [
 
   .learnings__box .h2 {
     margin-bottom: 30px;
+  }
+
+  .learnings__box .lead:last-of-type {
+    margin-bottom: 36px;
   }
 
   .learnings__grid {

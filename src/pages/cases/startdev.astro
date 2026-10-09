@@ -70,6 +70,21 @@ const gamification = [
   { title: 'Metas visíveis', text: 'Pontuação e progresso no curso atual sempre à vista, dando sensação de avanço.' },
 ];
 
+const solutions = [
+  {
+    title: 'Cursos e atividades',
+    text: 'Uma experiência para acessar conteúdos, acompanhar módulos e realizar exercícios, com informações de progresso ao longo da jornada.',
+  },
+  {
+    title: 'Comunidade',
+    text: 'Um espaço dedicado à interação entre estudantes, permitindo criar discussões, compartilhar dúvidas e colaborar com outros participantes.',
+  },
+  {
+    title: 'Experiência mobile',
+    text: 'Adaptação das principais funcionalidades para dispositivos móveis, preservando a organização das informações e os padrões visuais da plataforma.',
+  },
+];
+
 const pressure = [
   { title: 'Priorização', text: 'Estrutura antes da estética, para não desperdiçar dias em retrabalho.' },
   { title: 'Reaproveitamento', text: 'Proto-persona e marca do cliente usadas como ponto de partida legítimo.' },
@@ -95,15 +110,15 @@ const learnings = [
 ---
 
 <CaseLayout
-  title="StartDev — Aprender a programar sozinho é difícil e solitário"
+  title="StartDev — Uma experiência de aprendizagem que conecta teoria, prática e comunidade"
   description="Ensino, comunidade colaborativa e gamificação num só produto: a interface web e mobile da StartDev, desenhada em cerca de 20 dias."
   image={cover.src}
   chapters={[
     { id: 'cap-contexto', label: 'Contexto' },
-    { id: 'cap-descoberta', label: 'Descoberta' },
-    { id: 'cap-decisoes', label: 'Decisões' },
-    { id: 'cap-solucao', label: 'Solução' },
-    { id: 'cap-impacto', label: 'Impacto' },
+    { id: 'cap-descoberta', label: 'Investigação' },
+    { id: 'cap-decisoes', label: 'Estruturação' },
+    { id: 'cap-solucao', label: 'Soluções' },
+    { id: 'cap-impacto', label: 'Entregas' },
   ]}
   ambient
   showLang
@@ -115,13 +130,14 @@ const learnings = [
       { label: 'EDTECH · COMUNIDADE', color: '#561589' },
       { label: 'WEB + MOBILE', color: '#6E3FC8' },
     ]}
-    eyebrow="STARTDEV · PRODUCT DESIGN · UX/UI"
-    title='Aprender a programar sozinho é difícil e <span class="serif">solitário</span>'
-    lead="Um cliente chegou com uma proposta ambiciosa: ensino, comunidade colaborativa e gamificação num só produto. Meu trabalho foi traduzir essa visão em uma interface coerente para web e mobile — <strong>em cerca de 20 dias</strong>, com pesquisa própria de usuário limitada."
+    eyebrow="STARTDEV · PRODUCT DESIGN · UX/UI · EDTECH"
+    title='Uma experiência de aprendizagem que conecta <span class="serif">teoria, prática e comunidade</span>'
+    lead="A StartDev é uma plataforma de ensino de programação que combina aulas, exercícios, interação entre estudantes e um sistema de gamificação, no qual a participação e o progresso podem gerar <strong>pontos e recompensas</strong>."
     facts={[
-      { label: 'MEU PAPEL', value: 'UX/UI Designer · projeto de cliente' },
-      { label: 'PLATAFORMA', value: 'Web responsivo + app mobile' },
-      { label: 'FERRAMENTAS', value: 'Figma · Google Docs · Sheets' },
+      { label: 'PAPEL', value: 'UX/UI Designer' },
+      { label: 'PLATAFORMAS', value: 'Web e mobile' },
+      { label: 'DURAÇÃO', value: 'Aproximadamente 20 dias' },
+      { label: 'FERRAMENTA DE DESIGN', value: 'Figma' },
       { label: 'TEMAS', value: 'Claro &amp; escuro' },
     ]}
   >
@@ -152,41 +168,32 @@ const learnings = [
 
   <!-- Contexto -->
   <section aria-labelledby="ctx-title" class="sec sec-narrow rv space-sm">
-    <p class="eyebrow">Contexto</p>
-    <h2 id="ctx-title" class="h2 h2--lg">O produto e o que estava em jogo</h2>
+    <p class="eyebrow">Parte 1 · Contexto e desafio</p>
+    <h2 id="ctx-title" class="h2 h2--lg">Conhecendo o projeto</h2>
     <p class="lead">
-      A <strong>StartDev</strong> é uma plataforma de ensino para desenvolvedores que vai além do curso: uma <strong
-        >comunidade colaborativa</strong
-      > onde os próprios usuários se ajudam a aprender. O engajamento é sustentado por um <strong>sistema de pontos</strong
-      > — quem ajuda outras pessoas acumula pontos que podem virar cursos ou descontos.
+      A proposta da <strong>StartDev</strong> era oferecer uma experiência de aprendizagem que fosse além das aulas
+      tradicionais, incentivando a prática e a colaboração entre estudantes.
     </p>
     <p class="lead">
-      Era um projeto de cliente externo, não um produto interno. Isso muda o eixo do trabalho: mais do que resolver um
-      problema já diagnosticado, a prova de valor estava em <strong
-        >traduzir uma visão de negócio ambiciosa em uma interface coerente</strong
-      >, dentro de um prazo real.
-    </p>
-    <p class="lead">
-      O que estava em jogo era transformar uma ideia bem definida no papel em um produto navegável, consistente entre web
-      e mobile, pronto para desenvolvimento.
+      O cliente já possuía uma definição das principais funcionalidades, da identidade visual e do sistema de
+      recompensas. Minha responsabilidade foi estruturar essas ideias em uma <strong
+        >experiência digital consistente para web e mobile</strong
+      >.
     </p>
   </section>
 
   <!-- O desafio real -->
   <div id="cap-descoberta" class="band band--purple space-sm">
     <section aria-labelledby="prob-title" class="sec sec-narrow rv band-inner">
-      <p class="eyebrow">Descoberta · O desafio real</p>
-      <h2 id="prob-title" class="h2 h2--xl">Uma visão ambiciosa, um prazo curto e pouca pesquisa disponível</h2>
+      <p class="eyebrow">Contexto · O desafio</p>
+      <h2 id="prob-title" class="h2 h2--xl">O desafio</h2>
       <p class="lead">
-        Quem começa a programar se perde entre vídeos soltos, falta de prática guiada e nenhum lugar para tirar dúvidas.
-        A aposta da StartDev era resolver isso juntando aula, prática e comunidade num só fluxo. Bonito no papel; denso
-        de traduzir em tela.
+        Organizar cursos, atividades práticas, comunidade e gamificação dentro de uma navegação intuitiva, permitindo que
+        os estudantes acompanhassem seu progresso e acessassem as diferentes funcionalidades com facilidade.
       </p>
       <p class="lead lead--last">
-        Some a isso a restrição concreta: <strong>cerca de 20 dias</strong> para entregar web e mobile, sem tempo hábil
-        para pesquisa própria de usuário do zero. O desafio não era criatividade — era <strong
-          >priorizar com precisão</strong
-        > e apoiar cada decisão em fontes já disponíveis, sem travar o cronograma.
+        O projeto também tinha um prazo de <strong>aproximadamente 20 dias</strong>, exigindo planejamento e validações ao
+        longo do desenvolvimento das interfaces.
       </p>
       <div class="cols-3">
         {
@@ -203,11 +210,15 @@ const learnings = [
 
   <!-- Como cheguei na solução -->
   <section aria-labelledby="proc-title" class="sec sec-narrow rv space-lg">
-    <p class="eyebrow">Descoberta · O ponto de partida</p>
-    <h2 id="proc-title" class="h2 h2--lg">Como cheguei na solução</h2>
+    <p class="eyebrow">Parte 2 · Investigação e planejamento</p>
+    <h2 id="proc-title" class="h2 h2--lg">Entendendo a proposta do cliente</h2>
+    <p class="lead">
+      Comecei revisando a documentação do projeto e identificando dúvidas sobre funcionalidades, regras de negócio e
+      expectativas visuais. Organizei um roteiro de perguntas no Google Docs e conversei com o cliente para esclarecer
+      esses pontos e compreender melhor o direcionamento esperado.
+    </p>
     <p class="lead lead--last">
-      Sem tempo para pesquisa do zero, comecei pelo que já existia e fui atrás do cliente para transformar a
-      especificação em direção de design. Um passo puxando o outro:
+      Também utilizei como referência uma <strong>proto-persona</strong> já desenvolvida pelo time de Marketing.
     </p>
     <div class="rows">
       {
@@ -227,14 +238,15 @@ const learnings = [
   <!-- Mercado -->
   <section aria-labelledby="mkt-title" class="sec rv space-md">
     <div class="sec-narrow head">
-      <p class="eyebrow">Descoberta · Mercado</p>
-      <h2 id="mkt-title" class="h2 h2--lg">Entendendo o mercado e o ajuste visual</h2>
+      <p class="eyebrow">Investigação · Mercado</p>
+      <h2 id="mkt-title" class="h2 h2--lg">Pesquisando referências</h2>
       <p class="lead">
-        Fiz uma pesquisa de concorrentes diretos e indiretos organizada no Google Sheets, cobrindo quatro frentes:
-        inspirações visuais de plataformas de tecnologia, empresas internacionais do mesmo ramo, as plataformas que os
-        desenvolvedores mais usam e referências de gamificação aplicada ao ensino. Recortei o que funcionava em cada
-        tela-chave — <strong>Home, Cursos e Perfil</strong> — para calibrar as expectativas do cliente contra o que o mercado
-        já entrega.
+        Realizei uma análise de <strong>concorrentes diretos e indiretos</strong>, reunindo plataformas de ensino,
+        comunidades de desenvolvedores, produtos internacionais e referências de gamificação.
+      </p>
+      <p class="lead">
+        Organizei essa pesquisa no Google Sheets, identificando soluções de navegação, apresentação de conteúdos e
+        recursos de interação que poderiam contribuir para o desenvolvimento da StartDev.
       </p>
     </div>
     <PanelFigure
@@ -246,15 +258,17 @@ const learnings = [
   </section>
 
   <!-- Style guide e persona -->
-  <section aria-labelledby="ds-title" class="sec rv space-lg">
+  <section id="cap-decisoes" aria-labelledby="ds-title" class="sec rv space-lg">
     <div class="sec-narrow head">
-      <p class="eyebrow">Descoberta · Base de design</p>
-      <h2 id="ds-title" class="h2 h2--lg">Style guide primeiro, persona herdada</h2>
+      <p class="eyebrow">Parte 3 · Estruturação e design</p>
+      <h2 id="ds-title" class="h2 h2--lg">01. Definindo os padrões visuais</h2>
       <p class="lead">
-        O cliente já tinha logomarca, paleta de cores e fontes definidas antes do projeto. Em vez de propor identidade
-        nova, meu primeiro passo de design foi <strong>construir um style guide no Figma</strong> para padronizar esses
-        elementos — cores, tipografia (Nordeco + Roboto), iconografia e grid responsivo dando ao produto uma base
-        consistente para crescer.
+        Como o cliente já possuía logomarca, cores e fontes definidas, desenvolvi um <strong>style guide no Figma</strong>
+        para organizar esses elementos e estabelecer padrões de interface.
+      </p>
+      <p class="lead">
+        Essa base orientou o desenvolvimento das telas e contribuiu para manter a consistência visual entre as diferentes
+        funcionalidades e dispositivos.
       </p>
     </div>
     <PanelFigure
@@ -281,14 +295,18 @@ const learnings = [
   </section>
 
   <!-- Decisões -->
-  <div id="cap-decisoes" class="band band--tint space-lg">
+  <div class="band band--tint space-lg">
     <section aria-labelledby="flow-title" class="sec rv decisions-head">
       <div class="sec-narrow">
-        <p class="eyebrow">Decisões</p>
-        <h2 id="flow-title" class="h2 h2--md">Estrutura antes da estética</h2>
+        <p class="eyebrow">Estruturação · Jornada</p>
+        <h2 id="flow-title" class="h2 h2--md">02. Mapeando a jornada do estudante</h2>
         <p class="lead">
-          Com o prazo curto, a sequência de decisões foi pensada para reduzir risco: mapear a jornada, validar a estrutura
-          e só então investir no pixel. Um código de cor acompanha o case inteiro:
+          Antes de iniciar os wireframes, desenvolvi o <strong>user flow</strong> da plataforma, organizando os caminhos de
+          cadastro, acesso aos cursos, atividades, comunidade e perfil.
+        </p>
+        <p class="lead">
+          Esse mapeamento permitiu visualizar a extensão do produto, identificar as telas necessárias e planejar o trabalho
+          de acordo com o prazo disponível.
         </p>
         <div class="legend">
           <span class="pill pill--ev">Evidência</span>
@@ -324,12 +342,15 @@ const learnings = [
 
     <section aria-labelledby="wire-title" class="sec rv wire">
       <div class="sec-narrow head head--sm">
-        <p class="eyebrow">Decisões · Wireframes</p>
-        <h2 id="wire-title" class="h2 h2--md">Wireframes antes do pixel</h2>
+        <p class="eyebrow">Estruturação · Wireframes</p>
+        <h2 id="wire-title" class="h2 h2--md">03. Explorando a estrutura das interfaces</h2>
         <p class="lead">
-          Escolhi começar em wireframe de propósito: estrutura antes de estética. Assim eu podia ajustar hierarquia,
-          navegação e o player de aula rapidamente — e alinhar expectativas com o cliente antes de investir na versão de
-          alta fidelidade, o que protegia o cronograma de retrabalho tardio.
+          Com as jornadas definidas, comecei a desenvolver <strong>wireframes</strong> para organizar a hierarquia das
+          informações, a navegação e os principais elementos de cada funcionalidade.
+        </p>
+        <p class="lead">
+          Essa etapa permitiu realizar ajustes com maior agilidade e discutir as soluções com o cliente antes de avançar
+          para a versão visual definitiva.
         </p>
       </div>
       <LaptopFrame
@@ -342,8 +363,16 @@ const learnings = [
 
     <section aria-labelledby="dark-title" class="sec rv dark">
       <div class="sec-narrow head head--sm">
-        <p class="eyebrow">Decisões · Alta fidelidade</p>
-        <h2 id="dark-title" class="h2">Dark mode como decisão fundamentada</h2>
+        <p class="eyebrow">Estruturação · Alta fidelidade</p>
+        <h2 id="dark-title" class="h2">04. Refinando a experiência</h2>
+        <p class="lead">
+          Após a validação dos wireframes, desenvolvi as interfaces em alta fidelidade, aplicando o style guide e refinando
+          os componentes e padrões de interação.
+        </p>
+        <p class="lead">
+          Também propus uma versão em <strong>tema escuro</strong>, oferecendo uma alternativa visual para a experiência de
+          aprendizagem e mantendo a consistência entre os dois temas.
+        </p>
       </div>
       <div class="dcard dark-card">
         <div class="dark-text">
@@ -368,11 +397,16 @@ const learnings = [
   <!-- Gamificação -->
   <section aria-labelledby="game-title" class="sec rv space-md">
     <div class="sec-narrow head">
-      <p class="eyebrow">Solução · Gamificação</p>
-      <h2 id="game-title" class="h2 h2--lg">Progresso que dá motivo pra voltar</h2>
+      <p class="eyebrow">Parte 4 · Soluções desenvolvidas</p>
+      <h2 id="game-title" class="h2 h2--lg">Aprendizagem, prática e colaboração</h2>
       <p class="lead">
-        A gamificação não era enfeite — era o motor de engajamento do modelo de negócio. Desenhei o sistema para que
-        ajudar e aprender rendessem recompensa visível, com metas claras a cada etapa do estudo.
+        As interfaces finais integram as principais funcionalidades previstas para a plataforma, organizando diferentes
+        atividades dentro de uma mesma experiência.
+      </p>
+      <h3 class="h3 sub-h">Gamificação</h3>
+      <p class="lead">
+        A proposta de recompensas do cliente foi incorporada às interfaces, apresentando a pontuação e os benefícios
+        associados à participação nas atividades, conclusão de cursos e interações na comunidade.
       </p>
     </div>
     <div id="cap-solucao" class="game-grid">
@@ -404,12 +438,18 @@ const learnings = [
   <!-- A interface final -->
   <section aria-labelledby="ui-title" class="sec rv space-lg">
     <div class="sec-narrow head head--lg">
-      <p class="eyebrow">Solução · A interface final</p>
+      <p class="eyebrow">Soluções · A interface final</p>
       <h2 id="ui-title" class="h2 h2--lg">Aula, prática e comunidade no mesmo lugar</h2>
-      <p class="lead">
-        Com a estrutura validada e o style guide no lugar, subi a fidelidade. Cada tela reforça clareza e continuidade —
-        do fórum às atividades de código, passando pela trilha de módulos com progresso.
-      </p>
+      <dl class="sol-items">
+        {
+          solutions.map((item) => (
+            <div>
+              <dt>{item.title}</dt>
+              <dd>{item.text}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </div>
     <PhoneGallery />
     <Prototype />
@@ -418,7 +458,7 @@ const learnings = [
   <!-- Impacto: restrição como senioridade -->
   <div id="cap-impacto" class="band band--purple space-lg">
     <section aria-labelledby="sen-title" class="sec sec-narrow rv band-inner">
-      <p class="eyebrow">Impacto · Gestão sob pressão</p>
+      <p class="eyebrow">Parte 5 · Entregas e resultados</p>
       <h2 id="sen-title" class="h2 h2--xl">Entregar web e mobile em 20 dias — sem parar o resto</h2>
       <p class="lead lead--last">
         A parte mais difícil deste projeto não aparece nas telas. Nos mesmos <strong>~20 dias</strong> em que entreguei as
@@ -441,14 +481,19 @@ const learnings = [
 
   <!-- Escopo entregue -->
   <section aria-labelledby="scope-title" class="sec sec-narrow rv space-lg">
-    <p class="eyebrow">Impacto · Escopo entregue</p>
-    <h2 id="scope-title" class="h2 h2--lg">O que saiu do projeto</h2>
+    <p class="eyebrow">Entregas · Escopo entregue</p>
+    <h2 id="scope-title" class="h2 h2--lg">O que foi entregue</h2>
     <p class="lead">
-      Ao fim dos 20 dias, entreguei três frentes unificadas — aula, prática e comunidade — nas <strong
-        >duas plataformas</strong
-      > (web responsivo e mobile), em tema claro e escuro, apoiadas por <strong>um style guide documentado</strong> no Figma.
-      Além do fluxo de cadastro e navegação, o produto passou a ter o motor de gamificação que sustenta o modelo de negócio:
-      pontos, trocas e recompensas por progresso.
+      O projeto resultou no desenvolvimento das <strong>experiências web e mobile</strong> da StartDev, contemplando
+      pesquisa de referências, style guide, user flow, wireframes e interfaces em alta fidelidade.
+    </p>
+    <p class="lead">
+      As soluções integraram ensino, prática, comunidade e gamificação em uma proposta visual consistente, com versões em
+      tema claro e escuro.
+    </p>
+    <p class="lead">
+      O trabalho foi concluído dentro do prazo previsto e recebeu feedback positivo do cliente sobre o resultado
+      apresentado.
     </p>
     <p class="lead lead--note">
       São contagens de entregável, não métricas de resultado — a plataforma ainda não havia sido lançada no momento em que
@@ -543,6 +588,35 @@ const learnings = [
 
   .lead--last {
     margin-bottom: 24px;
+  }
+
+  .sub-h {
+    margin: 32px 0 14px;
+  }
+
+  .sol-items {
+    display: grid;
+    gap: 18px;
+    margin: 0;
+  }
+
+  .sol-items > div {
+    padding-left: 16px;
+    border-left: 2px solid var(--rose);
+  }
+
+  .sol-items dt {
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+
+  .sol-items dd {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-muted);
   }
 
   /* ---------- Hero ---------- */
@@ -695,7 +769,7 @@ const learnings = [
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 14px;
+    margin-top: 24px;
   }
 
   .flow {

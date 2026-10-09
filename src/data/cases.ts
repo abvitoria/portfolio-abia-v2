@@ -17,7 +17,7 @@ export type CaseEntry = {
   /** Short label for compact navigation (section pill). */
   short: string;
   /** Name as shown in the home accordion. */
-  name: string;
+  name: L;
   cover: ImageMetadata;
   coverAlt: string;
   /** Home accordion */
@@ -41,7 +41,8 @@ export type CaseEntry = {
     body: L;
     beat: L;
     tags: L[];
-    stat: { value: string; caption: L };
+    /** Stat frame; `title` is an optional label above the number. */
+    stat: { value: string; caption: L; title?: L };
     actors: L[];
     status: L;
   };
@@ -53,7 +54,7 @@ export const cases: CaseEntry[] = [
   {
     slug: 'trade',
     short: 'Trade+',
-    name: 'TRADE+',
+    name: t('TRADE+'),
     cover: capaTrade,
     coverAlt: 'Tela de cadastro do Trade+',
     home: {
@@ -112,7 +113,7 @@ export const cases: CaseEntry[] = [
   {
     slug: 'vitalis',
     short: 'Vitalis',
-    name: 'VITALIS',
+    name: t('VITALIS'),
     cover: capaVitalis,
     coverAlt: 'Início do paciente na Vitalis Saúde',
     home: {
@@ -136,7 +137,15 @@ export const cases: CaseEntry[] = [
       role: 'UX/UI · Research · Style guide',
     },
     row: {
-      title: t('VITALIS<br/>SAÚDE'),
+      title: t('VITALIS<br/>SAÚDE', 'VITALIS<br/>HEALTH'),
+      context: t(
+        'Uma plataforma de telemedicina voltada à rede pública, com experiências para pacientes, médicos e secretárias. O desafio era organizar diferentes responsabilidades, tarefas e permissões de acesso em uma experiência clara e consistente para web e mobile.',
+        'A telemedicine platform designed for the public healthcare system, with dedicated experiences for patients, doctors, and administrative staff. The challenge was to organize different responsibilities, tasks, and access permissions into a clear, consistent experience across web and mobile.',
+      ),
+      myRole: t(
+        'A partir da documentação e das regras de negócio fornecidas pelo cliente, estruturei as jornadas e permissões de cada perfil. Desenvolvi os fluxos, wireframes e interfaces com uma abordagem mobile-first, considerando acessibilidade desde as primeiras etapas e estabelecendo padrões visuais para manter a consistência entre dispositivos.',
+        "Using the client's documentation and business rules, I structured the user journeys and access permissions for each role. I designed the flows, wireframes, and interfaces using a mobile-first approach, considering accessibility from the early stages and establishing visual patterns to ensure consistency across devices.",
+      ),
       meta: t('Saúde pública <span>·</span> Cliente externo <span>·</span> ≈ 1 mês', 'Public healthcare <span>·</span> External client <span>·</span> ≈ 1 month'),
       body: t(
         'Plataforma de telemedicina para postos de saúde com <b>três perfis de usuário</b> (paciente, médico e secretária) em web e mobile — cada um com proficiência digital e necessidade bem diferente.',
@@ -155,7 +164,7 @@ export const cases: CaseEntry[] = [
   {
     slug: 'startdev',
     short: 'StartDev',
-    name: 'STARTDEV',
+    name: t('STARTDEV'),
     cover: capaStartdev,
     coverAlt: 'Telas da StartDev em dark mode',
     home: {
@@ -180,6 +189,14 @@ export const cases: CaseEntry[] = [
     },
     row: {
       title: t('STARTDEV'),
+      context: t(
+        'Uma plataforma de ensino de programação que combina conteúdos teóricos, atividades práticas, gamificação e interação entre estudantes. O desafio era organizar essas diferentes experiências em um produto intuitivo e consistente, permitindo que os usuários transitassem entre aprendizado, prática e comunidade em web e mobile.',
+        'A programming education platform that combines theoretical content, hands-on exercises, gamification, and student interaction. The challenge was to bring these different experiences together into an intuitive, consistent product, allowing users to move seamlessly between learning, practice, and community across web and mobile.',
+      ),
+      myRole: t(
+        'Estruturei as jornadas de navegação e organizei as funcionalidades para facilitar o acesso aos conteúdos, exercícios e espaços de interação. A partir da identidade visual existente, desenvolvi padrões de interface, validei wireframes com o cliente e projetei as experiências para web e mobile, contemplando temas claro e escuro.',
+        'I structured the user journeys and organized features to make learning materials, exercises, and community spaces easier to access. Building on the existing visual identity, I established interface patterns, validated wireframes with the client, and designed the web and mobile experiences, including light and dark modes.',
+      ),
       meta: t('Ed-tech <span>·</span> Cliente externo <span>·</span> ≈ 20 dias', 'Ed-tech <span>·</span> External client <span>·</span> ≈ 20 days'),
       body: t(
         'Plataforma de ensino para devs com comunidade colaborativa e gamificação por pontos. Prazo real: <b>cerca de 20 dias</b> pra entregar web + mobile — em paralelo a outros projetos e apoiando uma estagiária.',
@@ -190,15 +207,19 @@ export const cases: CaseEntry[] = [
         'Client already had brand, palette and fonts. First move was a style guide to standardize; then came user flow, lo-fi wireframes validated with the client and hi-fi in dark mode (developer audience).',
       ),
       tags: [t('Prazo apertado', 'Tight deadline'), t('Style guide'), t('Gamificação', 'Gamification'), t('Dark mode')],
-      stat: { value: '20<span class="k">d</span>', caption: t('dias · do brief ao handoff', 'days · from brief to handoff') },
-      actors: [t('Web'), t('Mobile'), t('Design system'), t('Estagiária em paralelo', 'Intern in parallel')],
+      stat: {
+        title: t('Experiência multiplataforma', 'Cross-platform experience'),
+        value: '02',
+        caption: t('Experiências — web e mobile', 'Web & mobile experiences'),
+      },
+      actors: [t('Aprendizagem', 'Learning'), t('Prática e gamificação', 'Practice & gamification'), t('Comunidade', 'Community')],
       status: t('case · publicado', 'case · published'),
     },
   },
   {
     slug: 'medme-rh',
     short: 'MedMe RH',
-    name: 'MEDME RH',
+    name: t('MEDME RH', 'MEDME HR PORTAL'),
     cover: capaMedme,
     coverAlt: 'Capa do case MedMe Portal do RH',
     home: {
@@ -223,6 +244,14 @@ export const cases: CaseEntry[] = [
     },
     row: {
       title: t('PORTAL<br/>DE RH', 'MEDME<br/>HR PORTAL'),
+      context: t(
+        'O portal utilizado pelos RHs de empresas conveniadas reunia funcionalidades de gestão de colaboradores, limites, reembolsos e fechamentos. Com a evolução do produto, diferenças nos padrões de navegação, tabelas pouco legíveis e ações de difícil localização tornaram as atividades administrativas mais complexas. O desafio era modernizar a experiência sem comprometer a continuidade das operações.',
+        'The portal used by HR teams at partner companies brought together employee management, benefit limits, reimbursements, and financial closing processes. As the product evolved, inconsistent navigation patterns, hard-to-read tables, and difficult-to-find actions made administrative tasks more complex. The challenge was to modernize the experience without disrupting ongoing operations.',
+      ),
+      myRole: t(
+        'A partir da análise das interfaces existentes, demandas de suporte e referências de mercado, redesenhei oito áreas do portal com base no design system da MedMe. Reorganizei a navegação, os filtros e as ações, além de estruturar uma nova experiência para consulta e exportação de relatórios. As soluções foram alinhadas com Product Owner e desenvolvimento, considerando uma implementação gradual ao lado da versão anterior.',
+        "Drawing on an analysis of the existing interfaces, support requests, and industry references, I redesigned eight areas of the portal using MedMe's design system. I restructured navigation, filters, and actions, and designed a new experience for accessing and exporting reports. I collaborated with the Product Owner and development team to align the solutions with a phased rollout alongside the existing version.",
+      ),
       meta: t('Benefícios <span>·</span> Portal web B2B <span>·</span> ≈ 6 meses', 'Benefits <span>·</span> B2B web portal <span>·</span> ≈ 6 months'),
       body: t(
         'Redesenho do portal onde o RH das empresas conveniadas gerencia colaboradores, limites, reembolsos e fechamentos. <b>Um sistema em uso diário</b>, refeito sobre o design system da MedMe e liberado aos poucos, ao lado da versão antiga.',
@@ -241,7 +270,7 @@ export const cases: CaseEntry[] = [
   {
     slug: 'pdv',
     short: 'MedMe PDV',
-    name: 'MEDME PDV',
+    name: t('MEDME PDV', 'MEDME POS'),
     cover: capaPdv,
     coverAlt: 'Capa do case PDV do vendedor MedMe',
     home: {
@@ -265,7 +294,15 @@ export const cases: CaseEntry[] = [
       role: 'Product Designer',
     },
     row: {
-      title: t('PDV DO<br/>VENDEDOR', 'SALES<br/>POS'),
+      title: t('MEDME<br/>PDV', 'MEDME<br/>POS'),
+      context: t(
+        'O registro de vendas acontecia por meio de funcionalidades adaptadas de um ambiente originalmente desenvolvido para beneficiários, sem uma jornada específica para os atendentes. O desafio era estruturar uma ferramenta dedicada à operação comercial, considerando suas etapas, regras de negócio e necessidades durante o atendimento.',
+        'Sales were recorded through features adapted from a platform originally designed for beneficiaries, without a dedicated workflow for sales associates. The challenge was to design a point-of-sale experience tailored to sales operations, accounting for its different stages, business rules, and day-to-day customer service needs.',
+      ),
+      myRole: t(
+        'A partir das regras de negócio apresentadas pelo Product Owner, projetei uma jornada de venda organizada em três etapas: identificação do cliente, seleção dos produtos e pagamento. Estruturei a navegação e as interfaces para apresentar informações de saldo e condições de compra nos momentos relevantes, orientando as decisões ao longo do atendimento.',
+        'Based on the business rules provided by the Product Owner, I designed a three-stage sales journey: customer identification, product selection, and payment. I structured the navigation and interfaces to display available balances and purchase conditions at relevant decision points, guiding sales associates throughout the process.',
+      ),
       meta: t('Benefícios <span>·</span> Ferramenta de venda <span>·</span> Em desenvolvimento', 'Benefits <span>·</span> Sales tool <span>·</span> In development'),
       body: t(
         'Um ponto de venda criado do zero para os vendedores da MedMe, que antes registravam vendas por <b>uma adaptação dentro do perfil de usuário comum</b>.',
@@ -276,15 +313,19 @@ export const cases: CaseEntry[] = [
         'Business rules from the Product Owner organized into a three-step flow — customer, products, payment — where each step unlocks the next and balance rules show up where the decision happens.',
       ),
       tags: [t('Produto novo', 'New product'), t('Desenho de fluxo', 'Flow design'), t('Regras de negócio', 'Business rules'), t('Design system')],
-      stat: { value: '3', caption: t('etapas · uma venda', 'steps · one sale') },
-      actors: [t('Cliente', 'Customer'), t('Produtos', 'Products'), t('Pagamento', 'Payment')],
+      stat: { value: '03', caption: t('Etapas da jornada', 'Sales journey stages') },
+      actors: [
+        t('01 — Identificação do cliente', '01 — Customer identification'),
+        t('02 — Seleção de produtos', '02 — Product selection'),
+        t('03 — Pagamento', '03 — Payment'),
+      ],
       status: t('case · em desenvolvimento', 'case · in development'),
     },
   },
   {
     slug: 'pulse',
     short: 'Pulse',
-    name: 'PULSE EDUCAÇÃO',
+    name: t('PULSE EDUCAÇÃO', 'PULSE EDUCATION'),
     cover: capaPulse,
     coverAlt: 'Capa do case Pulse Educação',
     home: {
@@ -309,6 +350,14 @@ export const cases: CaseEntry[] = [
     },
     row: {
       title: t('PULSE<br/>EDUCAÇÃO'),
+      context: t(
+        'Uma plataforma de ensino e gestão escolar que reunia funcionalidades acadêmicas e administrativas, mas apresentava inconsistências na navegação, na organização das informações e nos padrões de interface. O desafio era modernizar a experiência existente e incorporar uma nova funcionalidade de acompanhamento pedagógico, prevista para apoiar a identificação de estudantes em risco de evasão escolar.',
+        'An education and school management platform that combined academic and administrative features but lacked consistency in navigation, information organization, and interface patterns. The challenge was to modernize the existing experience and incorporate a planned student monitoring feature designed to help identify students at risk of dropping out.',
+      ),
+      myRole: t(
+        'Analisei a estrutura da plataforma e redesenhei suas principais interfaces, reorganizando a navegação de acordo com as necessidades de alunos, professores e gestores. Também projetei a nova área de acompanhamento pedagógico, estruturando a visualização de indicadores de desempenho, resultados de avaliações e riscos de evasão para facilitar a interpretação das informações pelas equipes escolares.',
+        "I analyzed the platform's structure and redesigned its main interfaces, reorganizing navigation around the needs of students, teachers, and school administrators. I also designed the new student monitoring dashboard, structuring the visualization of academic performance indicators, assessment results, and dropout risk data to help school staff interpret information more effectively.",
+      ),
       meta: t('Edtech <span>·</span> Rede pública <span>·</span> Redesign', 'Ed-tech <span>·</span> Public schools <span>·</span> Redesign'),
       body: t(
         'Uma plataforma de ensino e gestão escolar em que o pedido era visual e o problema estava <b>na organização do produto</b>.',
@@ -319,8 +368,8 @@ export const cases: CaseEntry[] = [
         'I explored and diagnosed the old screens, separated navigation by role and proposed pedagogical follow-up for teachers and managers, documented in a navigation map by role.',
       ),
       tags: [t('Diagnóstico de produto', 'Product diagnosis'), t('Arquitetura da informação', 'Information architecture'), t('Redesign'), t('Visão de produto', 'Product vision')],
-      stat: { value: '3', caption: t('perfis · uma plataforma', 'roles · one platform') },
-      actors: [t('Aluno', 'Student'), t('Professor', 'Teacher'), t('Gestor', 'Manager')],
+      stat: { value: '3', caption: t('perfis · uma plataforma', 'user roles · one platform') },
+      actors: [t('Aluno', 'Student'), t('Professor', 'Teacher'), t('Gestor', 'School administrator')],
       status: t('case · redesign'),
     },
   },
