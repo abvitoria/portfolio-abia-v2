@@ -1,0 +1,67 @@
+---
+/** Closing block of every case: question + back / more cases buttons. */
+import Button from '@/components/ui/Button.astro';
+import { url } from '@/lib/url';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Tem um desafio parecido no seu produto?',
+  text = 'Me conta o contexto — respondo em até um dia útil.',
+} = Astro.props;
+---
+
+<section class="cta wrap--case" aria-label="Contato">
+  <h2 set:html={title} />
+  <p set:html={text} />
+  <div class="actions">
+    <Button href={url('/cases/')} variant="ghost" data-back>← Voltar à tela anterior</Button>
+    <Button href={url('/cases/')}>Ver mais cases →</Button>
+  </div>
+</section>
+
+<script>
+  // "Back" returns to the previous page when the visitor came from this site.
+  document.querySelectorAll<HTMLAnchorElement>('[data-back]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      if (document.referrer.startsWith(location.origin) && history.length > 1) {
+        e.preventDefault();
+        history.back();
+      }
+    });
+  });
+</script>
+
+<style>
+  .cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: calc(120px * var(--sp, 1)) auto 0;
+    padding-bottom: calc(96px * var(--sp, 1));
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    margin: 0 0 16px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--warm-70);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+</style>

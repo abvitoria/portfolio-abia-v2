@@ -1,0 +1,62 @@
+---
+/**
+ * Status strip: glowing dot · label · dashed line · trailing text.
+ * Used at the foot of case frames and contact channels.
+ */
+import type { L } from '@/data/i18n';
+
+interface Props {
+  label: L;
+  trail?: string;
+  /** Fixed-width dashed line instead of a flexible one. */
+  short?: boolean;
+  class?: string;
+}
+
+const { label, trail, short = false, class: className } = Astro.props;
+---
+
+<div class:list={['dotline', { 'dotline--short': short }, className]}>
+  <span class="dot"></span>
+  <span data-en={label.en} set:html={label.pt} />
+  <span class="line"></span>
+  {trail && <span>{trail}</span>}
+</div>
+
+<style>
+  .dotline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--ff-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-40);
+  }
+
+  .dot {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rose);
+    box-shadow: 0 0 0 3px rgba(158, 108, 239, 0.22);
+    transition: box-shadow 0.5s;
+  }
+
+  :global(a:hover) .dot {
+    box-shadow: 0 0 0 6px rgba(158, 108, 239, 0.32);
+  }
+
+  .line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--warm-14) 0 5px, transparent 5px 9px);
+  }
+
+  .dotline--short .line {
+    flex: none;
+    width: 70px;
+  }
+</style>

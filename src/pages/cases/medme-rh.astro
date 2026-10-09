@@ -1,0 +1,437 @@
+---
+import CaseLayout from '@/layouts/CaseLayout.astro';
+import BulletList from '@/components/case/BulletList.astro';
+import CaseFigure from '@/components/case/CaseFigure.astro';
+import CaseHero from '@/components/case/CaseHero.astro';
+import CaseSection from '@/components/case/CaseSection.astro';
+import LearningList from '@/components/case/LearningList.astro';
+import NumberedList from '@/components/case/NumberedList.astro';
+import PartHeading from '@/components/case/PartHeading.astro';
+import ScreenCompare from '@/components/case/medme-rh/ScreenCompare.astro';
+import TermList from '@/components/case/medme-rh/TermList.astro';
+import { telas } from '@/components/case/medme-rh/telas';
+
+import cover from '@/assets/covers/capa-medme.png';
+import antesRelatorios from '@/assets/medme/antes-relatorios.png';
+import novoRelatorios from '@/assets/medme/novo-relatorios.png';
+---
+
+<CaseLayout
+  title="Modernização do Portal de RH da MedMe"
+  description="Redesenho de uma ferramenta administrativa em uso diário: padrões reutilizáveis para todo o portal, uma nova forma de encontrar relatórios e uma transição gradual."
+  image={cover.src}
+  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+>
+  <CaseHero
+    eyebrow="MedMe · Product design"
+    title="Modernização do Portal de RH da MedMe"
+    summary="Redesenho de uma ferramenta administrativa em uso diário: padrões reutilizáveis para todo o portal, uma nova forma de encontrar relatórios e uma transição gradual para quem já conhecia a versão antiga."
+    cover={cover}
+    coverAlt="Capa do case MedMe Portal do RH"
+    facts={[
+      { label: 'Papel', value: 'Product Designer' },
+      { label: 'Time', value: 'Product Owner, front-end e back-end' },
+      { label: 'Duração', value: 'Cerca de 6 meses' },
+      { label: 'Plataforma', value: 'Web · B2B' },
+      { label: 'Status', value: 'Em liberação gradual' },
+    ]}
+  />
+
+  <PartHeading part="Parte 1" title="Contexto e problema" />
+
+  <CaseSection id="ctx" label="Contexto" title="Uma ferramenta administrativa para o benefício farmácia" space="md">
+    <p>
+      A MedMe oferece benefício farmácia para empresas conveniadas. O Portal de RH é onde os responsáveis de Recursos
+      Humanos dessas empresas gerenciam colaboradores, acompanham limites e gastos, consultam reembolsos, acessam
+      relatórios financeiros e administram o convênio.
+    </p>
+    <p>
+      Como Product Designer, fui responsável pelo redesenho das experiências: estrutura das interfaces, fluxos,
+      protótipos e documentação para desenvolvimento. O Product Owner definia escopo e prioridades, e as soluções eram
+      ajustadas com front-end e back-end ao longo da implementação.
+    </p>
+  </CaseSection>
+
+  <CaseSection id="antes" label="O desafio" title="Modernizar uma experiência que cresceu de forma fragmentada">
+    <p>
+      O Portal de RH reunia funcionalidades essenciais para a gestão dos benefícios corporativos, mas sua interface
+      apresentava problemas recorrentes de hierarquia visual, consistência e organização das informações.
+    </p>
+    <p>
+      Ao analisar as telas existentes, identifiquei padrões de interação diferentes entre funcionalidades, tabelas com
+      baixa legibilidade, ações pouco evidentes e fluxos que exigiam navegar por grandes volumes de informação.
+    </p>
+    <p>
+      Essas dificuldades eram especialmente perceptíveis nas áreas de gestão de colaboradores e relatórios, onde a
+      clareza das informações e a facilidade de executar operações são fundamentais para a rotina administrativa.
+    </p>
+    <p class="emph">
+      O desafio, portanto, não era apenas atualizar a aparência do portal, mas construir uma experiência mais coerente,
+      capaz de simplificar tarefas e oferecer uma base consistente para a evolução do produto.
+    </p>
+  </CaseSection>
+
+  <PartHeading part="Parte 2" title="Processo e decisões" />
+
+  <CaseSection id="proc" label="Processo" title="Das inconsistências aos padrões">
+    <p>
+      Não houve entrevistas nem testes formais com usuários. O entendimento veio de cinco fontes: demandas do produto,
+      chamados e informações do suporte, análise da interface existente, benchmark de produtos administrativos e
+      alinhamentos com o Product Owner e a equipe técnica.
+    </p>
+    <NumberedList
+      items={[
+        '<strong>Mapear as diferenças.</strong> Comparar como cada área resolvia a mesma necessidade: listar, buscar, filtrar, editar, confirmar.',
+        '<strong>Definir os padrões.</strong> Escolher uma única forma para cada uma dessas necessidades, a partir do design system da MedMe.',
+        '<strong>Reorganizar as áreas.</strong> Aplicar os padrões tela a tela e repensar os fluxos em que só padronizar não resolvia, como relatórios.',
+        '<strong>Entregar em etapas.</strong> Documentar para o time e liberar a nova versão aos poucos, mantendo a antiga disponível.',
+      ]}
+    />
+  </CaseSection>
+
+  <CaseSection id="padrao" label="Decisão 1" title="Padronizar a experiência com o design system">
+    <p>
+      O design system da MedMe, já usado em outros produtos da empresa, deu a base. A decisão foi tratar cada
+      necessidade recorrente do portal com uma única solução, para que o RH reconheça o comportamento de uma tela na
+      outra.
+    </p>
+    <TermList
+      items={[
+        {
+          term: 'Navegação e layout',
+          text: 'Menu lateral, título e uma descrição curta de cada área sempre na mesma posição. O usuário sabe onde está e para que serve a tela.',
+        },
+        {
+          term: 'Hierarquia tipográfica',
+          text: 'Poucos tamanhos e pesos, com o dado principal de cada linha em destaque e as informações de apoio mais discretas.',
+        },
+        {
+          term: 'Tabelas, filtros e busca',
+          text: 'Busca e filtros reunidos numa mesma barra, junto da tabela que eles afetam.',
+        },
+        {
+          term: 'Ações contextuais',
+          text: 'Ações próximas do item a que se referem, como no perfil do colaborador, que reúne editar, bloquear saldo, transferir CNPJ, resetar senha e desvincular.',
+        },
+        {
+          term: 'Status e retorno',
+          text: 'Status com rótulo, e não só cor, e aviso quando uma exportação começa ou um arquivo segue por e-mail.',
+        },
+        {
+          term: 'Modais e confirmações',
+          text: 'Confirmação antes de ações difíceis de desfazer, como apagar um gestor ou desvincular um colaborador.',
+        },
+        {
+          term: 'Mensagens orientativas',
+          text: 'Quando uma busca não encontra resultado, a tela diz isso, em vez de mostrar uma tabela vazia.',
+        },
+      ]}
+    />
+    <p class="note">
+      Parte dessas mudanças é de consistência e aparência. Sem testes com usuários, elas são apresentadas aqui como
+      decisões fundamentadas, e não como ganhos de usabilidade comprovados.
+    </p>
+  </CaseSection>
+
+  <CaseSection id="rel" label="Decisão 2" title="Trocar navegação por consulta nos relatórios">
+    <p>
+      Foi a área que mudou por completo. Padronizar a tela antiga não resolveria, porque o problema estava na
+      estrutura: para chegar a um documento, o RH descia por empresa, depois por ano e depois por mês.
+    </p>
+    <p>
+      Quem procura um fechamento normalmente já sabe a empresa e o período. A nova proposta parte disso: em vez de
+      percorrer uma árvore, o RH informa o que procura e a lista responde.
+    </p>
+    <div class="models">
+      <div class="model">
+        <span class="model-label">Modelo anterior · navegar</span>
+        <div class="model-tree">
+          Empresa<br />&nbsp;&nbsp;└ Ano<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Mês → tabela própria<br
+          />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ Mês → tabela própria<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└ …
+        </div>
+      </div>
+      <div class="model model--new">
+        <span class="model-label">Novo modelo · consultar</span>
+        <div class="model-tree">
+          [ empresas ] [ ano ] [ busca ]<br />Jan · Fev · Mar … com status<br />Resumo do mês<br />Relatórios
+          agrupados por empresa<br />&nbsp;&nbsp;└ documentos do relatório
+        </div>
+      </div>
+    </div>
+    <BulletList
+      items={[
+        'Filtros por empresa, ano e busca por empresa ou CNPJ',
+        'Meses do ano em abas, cada um com o status do fechamento: pago, pendente ou vencido',
+        'Resumo do mês com número de relatórios, valor total, empresas e pendências',
+        'Relatórios agrupados por empresa, com os documentos (resumido, nota de débito, completo, detalhado e customizados) abertos na própria linha',
+        'Download por relatório ou do mês inteiro, e agendamento de fechamento antecipado a partir da mesma tela',
+      ]}
+    />
+    <div slot="wide" class="pair" role="group" aria-label="Relatórios antes e depois">
+      <CaseFigure
+        src={antesRelatorios}
+        alt="Relatórios na versão antiga"
+        caption="Antes · histórico empilhado por mês"
+        captionMono
+        sizes="(max-width: 1040px) 100vw, 540px"
+      />
+      <CaseFigure
+        src={novoRelatorios}
+        alt="Relatórios na versão nova"
+        caption="Depois · filtros, meses com status e documentos por relatório"
+        tone="after"
+        captionMono
+        sizes="(max-width: 1040px) 100vw, 540px"
+      />
+    </div>
+  </CaseSection>
+
+  <CaseSection id="colab" label="Decisão 3" title="Gestão de colaboradores e perfis de RH">
+    <p>
+      É a parte mais usada do portal, e a que tinha mais telas com a mesma função: listar pessoas e agir sobre elas.
+      Usuários, Pré-cadastrados e Controle de perfis RH passaram a seguir o mesmo modelo de listagem, com busca, filtro
+      por empresa e ações no mesmo lugar.
+    </p>
+    <TermList
+      items={[
+        {
+          term: 'Consulta de colaboradores',
+          text: 'O perfil reúne, em blocos, dados pessoais, contato, dependentes, endereços, empresa, histórico de compras e regras de compra por categoria, além das ações administrativas sobre aquela pessoa.',
+        },
+        {
+          term: 'Desvinculação em massa',
+          text: 'Já existia como um modal isolado. Passou a ficar no menu Ações da listagem de Usuários, junto das outras operações em lote.',
+        },
+        {
+          term: 'Controle de perfis RH',
+          text: 'Listagem com busca por nome ou CPF junto do filtro de empresas e Adicionar RH como ação principal da tela. Editar e excluir seguem no menu da linha, com confirmação antes de apagar.',
+        },
+        {
+          term: 'Cadastro e pré-cadastro',
+          text: 'Formulário dividido em dados pessoais, contato e vínculo. Em Pré-cadastrados, adicionar, exportar, importar e consultar o relatório de importação ficam numa só barra, junto da busca.',
+        },
+      ]}
+    />
+    <button type="button" class="go" data-compare-go="perfil-usuario">Ver Perfil do usuário antes e depois →</button>
+  </CaseSection>
+
+  <CaseSection id="dash" label="Decisão 4" title="Dashboard e informações gerenciais">
+    <p>
+      O dashboard antigo girava em torno de um gráfico central, com indicadores soltos ao lado e uma imagem de campanha
+      que não carregava. A nova estrutura organiza a tela em blocos de leitura: campanhas em destaque, quatro
+      indicadores (gastos dos últimos seis meses, período atual, saldo disponível e novos colaboradores), a análise
+      financeira, os usuários por situação de cadastro e os últimos fechamentos.
+    </p>
+    <p>
+      A intenção é que, ao abrir o portal, o RH entenda a situação do convênio antes de procurar uma área específica. A
+      análise financeira pode ser filtrada por período e empresa e exportada direto do dashboard, e o bloco de usuários
+      destaca os cadastros que precisam de atenção.
+    </p>
+    <button type="button" class="go" data-compare-go="dashboard">Ver Dashboard antes e depois →</button>
+  </CaseSection>
+
+  <PartHeading part="Parte 3" title="Soluções e comparações" />
+
+  <section id="comparador" class="explorer wrap--case" aria-labelledby="ad-title">
+    <div class="explorer-body">
+      <div class="explorer-head">
+        <span class="tag-mono">Antes e depois</span>
+        <h2 id="ad-title">Oito comparações, lidas pelo problema</h2>
+        <p>
+          Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o
+          benefício que se espera dela.
+        </p>
+      </div>
+      <ScreenCompare id="comparador" screens={telas} />
+    </div>
+  </section>
+
+  <PartHeading part="Parte 4" title="Resultados e aprendizados" />
+
+  <CaseSection id="lanc" label="Lançamento" title="Uma transição em etapas" space="md">
+    <p>
+      O portal faz parte da rotina do RH. Trocar tudo de uma vez obrigaria quem já conhecia a versão antiga a
+      reaprender o sistema inteiro de um dia para o outro.
+    </p>
+    <p>
+      A decisão do time foi apresentar o novo portal aos poucos. As áreas são liberadas gradualmente e as duas versões
+      convivem durante a transição. No menu, o botão <strong>Voltar ao antigo RH</strong> dá tempo para o usuário se familiarizar
+      com a nova organização sem travar uma tarefa urgente, como um fechamento ou um reembolso.
+    </p>
+  </CaseSection>
+
+  <CaseSection id="res" label="Resultados" title="O que foi entregue e o que ainda não dá para medir">
+    <TermList
+      items={[
+        {
+          term: 'Entregas realizadas',
+          text: 'Padrões de página, tabela, formulário e modal sobre o design system; redesenho de Dashboard, Plano MedMe, Usuários, Perfil do usuário, Pré-cadastrados, Controle de perfis RH, Reembolsos e Fechamento/Relatórios; protótipos e documentação para desenvolvimento.',
+        },
+        {
+          term: 'Mudanças implementadas',
+          text: 'Nova versão do portal em liberação gradual, convivendo com a versão anterior e com o botão de retorno no menu.',
+        },
+        {
+          term: 'Benefícios esperados',
+          text: 'Menos esforço para encontrar informações e relatórios, comportamento previsível entre áreas e uma base reaproveitável para novas funcionalidades.',
+        },
+        {
+          term: 'Resultados medidos',
+          text: 'Ainda não há. A liberação está em andamento e nenhum indicador de impacto foi consolidado.',
+        },
+      ]}
+    />
+    <div class="indicators">
+      <span class="indicators-label">Indicadores que poderiam ser acompanhados</span>
+      <BulletList
+        color="var(--rose-light)"
+        items={[
+          'Volume de chamados de suporte por área, comparado ao período anterior',
+          'Uso do botão Voltar ao antigo RH, e em quais telas',
+          'Tempo e número de passos para localizar e baixar um fechamento',
+        ]}
+      />
+    </div>
+  </CaseSection>
+
+  <CaseSection id="apr" label="Aprendizados" title="O que este projeto ensinou">
+    <LearningList
+      items={[
+        {
+          title: 'Definir padrões antes de redesenhar telas',
+          text: 'Com várias áreas para revisar, começar pela tela mais urgente teria criado um novo conjunto de exceções. Fechar primeiro como o portal lista, filtra e confirma fez cada tela seguinte ser uma aplicação, e não uma nova decisão.',
+        },
+        {
+          title: 'Desenvolvimento como parte do desenho',
+          text: 'Os padrões só funcionaram porque foram combinados com front-end e back-end, considerando o que já existia no sistema e o que podia ser reaproveitado. Parte das soluções mudou durante a implementação, e isso melhorou o resultado.',
+        },
+        {
+          title: 'Consistência tem limite',
+          text: 'Aplicar o mesmo modelo de listagem em relatórios manteria o problema. Saber onde o padrão resolve e onde o fluxo pede uma estrutura própria foi uma das decisões mais importantes do projeto.',
+        },
+        {
+          title: 'Decidir sem validação formal',
+          text: 'Chamados de suporte e benchmark mostram onde há atrito, mas não explicam o motivo nem quem não chegou a reclamar. A liberação gradual reduz o risco; acompanhar o uso e conversar com alguns RHs durante a transição seria o próximo passo.',
+        },
+      ]}
+    />
+  </CaseSection>
+</CaseLayout>
+
+<style>
+  /* Decisão 2: old tree vs new query model */
+  .models {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 24px;
+    margin-top: 8px;
+  }
+
+  .model {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--warm-14);
+    border-radius: var(--radius-md);
+  }
+
+  .model--new {
+    border-color: rgba(84, 206, 226, 0.4);
+  }
+
+  .model-label,
+  .indicators-label {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-subtle);
+  }
+
+  .model--new .model-label {
+    color: var(--gold);
+  }
+
+  .model-tree {
+    font-family: var(--ff-mono);
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--text-muted);
+  }
+
+  .model--new .model-tree {
+    color: var(--warm);
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr));
+    align-items: start;
+    gap: 32px;
+  }
+
+  /* "Ver … antes e depois →" shortcuts into the explorer */
+  .go {
+    align-self: flex-start;
+    padding: 4px 0;
+    border: 0;
+    background: none;
+    color: var(--rose-light);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .go:hover {
+    color: var(--warm);
+  }
+
+  .indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  .indicators-label {
+    color: var(--rose-light);
+  }
+
+  /* Parte 3: full-width section (no sticky label column) */
+  .explorer {
+    margin: 0 auto;
+    padding-top: calc(120px * var(--sp, 1));
+  }
+
+  .explorer-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 40px;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .explorer-head {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 760px;
+  }
+
+  .explorer-head h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
+  }
+
+  .explorer-head p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+</style>

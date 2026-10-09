@@ -1,0 +1,602 @@
+---
+/** Three mobile screens of the final interface: fórum (light), trilha (dark) and novo tópico (light). */
+import PhoneFrame from './PhoneFrame.astro';
+import SdIcon, { type SdIconName } from './SdIcon.astro';
+
+const modules = [
+  { title: 'Fundamentos da lógica', module: 'Módulo 01', progress: 40 },
+  { title: 'Estruturas de repetição', module: 'Módulo 02', progress: 0 },
+  { title: 'Vetores e matrizes', module: 'Módulo 03', progress: 0 },
+];
+const tools: { icon: SdIconName; on?: boolean }[] = [{ icon: 'link' }, { icon: 'code', on: true }, { icon: 'list' }, { icon: 'listOl' }];
+---
+
+<div class="cols-3 phones">
+  <div>
+    <PhoneFrame nav="forum">
+      <h3 class="title">Fórum</h3>
+      <div class="search"><SdIcon name="search" size={14} stroke={2} />Buscar dúvida…</div>
+      <div class="sd-seg seg" role="group" aria-label="Filtrar por situação">
+        <button type="button" aria-pressed="true">Todas</button>
+        <button type="button" aria-pressed="false">Resolvidas</button>
+        <button type="button" aria-pressed="false">Abertas</button>
+      </div>
+      <div class="tags">
+        <span class="sd-label">Tags</span>
+        <button type="button" class="sd-chip sd-chip--blue">lógica<SdIcon name="x" size={9} stroke={3} /></button>
+        <button type="button" class="sd-chip sd-chip--outline">git</button>
+        <button type="button" class="sd-chip sd-chip--outline">python</button>
+      </div>
+      <div class="topics">
+        <div class="topic">
+          <div class="q">Por que meu <b>while</b> nunca para?</div>
+          <div class="by">Marielly · há 2 h</div>
+          <div class="topic-foot">
+            <span class="sd-chip sd-chip--ok"><SdIcon name="check" size={10} stroke={3.4} />resolvido</span>
+            <span class="count">6 respostas</span>
+          </div>
+        </div>
+        <div class="topic topic--open">
+          <div class="q">Alguém entendeu a atividade do caixa?</div>
+          <div class="by">Juliana · ontem</div>
+          <div class="topic-foot">
+            <span class="sd-chip sd-chip--warn"><SdIcon name="alert" size={10} stroke={2.6} />sem resposta</span>
+            <span class="count">seja o primeiro<SdIcon name="right" size={10} stroke={2.6} /></span>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="sd-btn sd-btn--block">Nova pergunta</button>
+    </PhoneFrame>
+    <div class="cap-title">Fórum da comunidade</div>
+    <div class="cap-text">Tópicos, tags e busca para tirar dúvidas.</div>
+  </div>
+
+  <div>
+    <PhoneFrame nav="cursos" dark>
+      <div>
+        <h3 class="title title--sm">Sua trilha</h3>
+        <div class="sub">Lógica de programação</div>
+      </div>
+      <div class="course">
+        <div class="row">
+          <span class="row-title">40% do curso</span>
+          <span class="pct">2/5 aulas</span>
+        </div>
+        <div class="sd-track" style="--p:40%"><span></span></div>
+        <p>Continue em <b>Variáveis e tipos de dados</b>.</p>
+      </div>
+      <div class="modules">
+        {
+          modules.map((m) => (
+            <div class:list={['module', { 'module--locked': m.progress === 0 }]}>
+              <div class="row">
+                <div class="row-title">{m.title}</div>
+                <span class="pct">{m.progress ? `${m.progress}%` : 'Bloqueado'}</span>
+              </div>
+              <div class="sub">{m.module}</div>
+              <div class="sd-track" style={`--p:${m.progress}%`}>
+                <span />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <button type="button" class="sd-btn sd-btn--block sd-btn--sm">Continuar aula</button>
+    </PhoneFrame>
+    <div class="cap-title">Trilha de módulos</div>
+    <div class="cap-text">Progresso visível em cada módulo do curso.</div>
+  </div>
+
+  <div>
+    <PhoneFrame nav={false} status="Rascunho salvo">
+      <div class="draft">
+        <a href="#ui-title" class="back"><SdIcon name="left" size={13} stroke={2.4} />Voltar ao fórum</a>
+        <div>
+          <h3 class="title title--sm">Novo tópico</h3>
+          <p class="hint">Contexto claro recebe resposta mais rápido.</p>
+        </div>
+        <div class="field">
+          <label for="sd-mt">Título <span class="sd-req">*</span></label>
+          <div class="box box--focus">
+            <input id="sd-mt" type="text" value="Por que meu while nunca para de rodar?" readonly />
+          </div>
+          <p class="help">Uma frase específica responde 3× mais rápido.</p>
+        </div>
+        <div class="field">
+          <span class="field-label">Texto <span class="sd-req">*</span></span>
+          <div class="editor">
+            <div class="toolbar">
+              {
+                tools.map((t) => (
+                  <span class:list={['tool', { on: t.on }]}>
+                    <SdIcon name={t.icon} size={13} />
+                  </span>
+                ))
+              }
+              <span class="preview">Pré-visualizar</span>
+            </div>
+            <p class="text">
+              Estou no exercício da tabuada e o programa imprime a mesma linha para sempre. Coloquei o contador antes do
+              laço e não achei o erro.
+            </p>
+            <div class="attach">
+              <span class="add"><SdIcon name="image" size={13} />Adicionar imagem</span>
+              <span class="small">PNG ou JPG, até 2 MB</span>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <span class="field-label">Categoria <span class="sd-req">*</span></span>
+          <div class="box">
+            <span class="value">Lógica de programação</span>
+            <SdIcon name="down" size={14} stroke={2.2} />
+          </div>
+          <p class="help">Define em qual mural o tópico aparece.</p>
+        </div>
+        <div class="field">
+          <span class="field-label">Tags</span>
+          <div class="box box--tags">
+            <span class="tag">repetição <SdIcon name="x" size={9} stroke={3} /></span>
+            <span class="tag">python <SdIcon name="x" size={9} stroke={3} /></span>
+            <span class="placeholder">Adicione até 5 tags…</span>
+          </div>
+          <p class="help">Até 5 tags — elas alimentam o filtro do fórum.</p>
+        </div>
+        <div class="publish">
+          <div class="buttons">
+            <button type="button" class="sd-btn sd-btn--ghost sd-btn--sm">Salvar rascunho</button>
+            <button type="button" class="sd-btn sd-btn--sm"><SdIcon name="send" size={14} />Publicar</button>
+          </div>
+          <div class="saved"><SdIcon name="check" size={11} stroke={3.2} />Rascunho salvo há 1 min</div>
+        </div>
+      </div>
+    </PhoneFrame>
+    <div class="cap-title">Novo tópico no mobile</div>
+    <div class="cap-text">Título, tag e descrição com código em uma tela só.</div>
+  </div>
+</div>
+
+<style>
+  .cols-3.phones {
+    gap: 22px;
+  }
+
+  .cap-title {
+    margin-top: 14px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+
+  .cap-text {
+    margin-top: 2px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  /* ---- Shared phone content ---- */
+  .title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--sd-heading);
+  }
+
+  .title--sm {
+    font-size: 18px;
+  }
+
+  .sd-btn--sm {
+    height: 42px;
+  }
+
+  /* ---- Fórum ---- */
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--sd-line);
+    border-radius: 10px;
+    background: #f2f5fa;
+    font-size: 12.5px;
+    color: #8a93a3;
+  }
+
+  .seg {
+    display: flex;
+    gap: 2px;
+  }
+
+  .seg button {
+    flex: 1;
+    min-width: 0;
+    min-height: 36px;
+    padding: 0;
+    font-size: 11px;
+  }
+
+  .seg button[aria-pressed='true'] {
+    font-weight: 700;
+    box-shadow: 0 2px 6px -2px rgba(1, 61, 171, 0.5);
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tags .sd-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .tags .sd-chip {
+    gap: 5px;
+  }
+
+  .topics {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .topic {
+    padding: 13px;
+    border: 1px solid var(--sd-line);
+    border-radius: 11px;
+    background: #fff;
+  }
+
+  .topic--open {
+    padding: 14px;
+    border-color: #f3d9bc;
+    background: #fffcf9;
+  }
+
+  .q {
+    font-size: 13.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    color: var(--sd-ink);
+  }
+
+  .by {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #8a93a3;
+  }
+
+  .topic-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 10px;
+    margin-top: 11px;
+    padding-top: 11px;
+    border-top: 1px solid #f0f2f6;
+  }
+
+  .topic--open .topic-foot {
+    border-top-color: #f3e2cc;
+  }
+
+  .topic-foot .sd-chip {
+    flex: none;
+    gap: 5px;
+  }
+
+  .count {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--sd-blue);
+  }
+
+  /* ---- Trilha (dark) ---- */
+  .sub {
+    margin-top: 1px;
+    font-size: 10.5px;
+    color: #8698b5;
+  }
+
+  .course {
+    padding: 14px;
+    border: 1px solid #22304c;
+    border-radius: 12px;
+    background: #16233a;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .course .row {
+    margin-bottom: 9px;
+  }
+
+  .row-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #eaf1fb;
+  }
+
+  .pct {
+    font-size: 10.5px;
+    white-space: nowrap;
+    color: #7fb3ff;
+  }
+
+  .course .sd-track {
+    height: 7px;
+    background: #0b1220;
+  }
+
+  .course p {
+    margin: 10px 0 0;
+    font-size: 11px;
+    line-height: 1.55;
+    color: #8698b5;
+  }
+
+  .modules {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .module {
+    padding: 13px;
+    border: 1px solid #22304c;
+    border-radius: 11px;
+    background: #111b2e;
+  }
+
+  .module .pct {
+    font-size: 10px;
+  }
+
+  .module .sub {
+    margin-top: 4px;
+  }
+
+  .module .sd-track {
+    height: 5px;
+    margin-top: 9px;
+    border-radius: 4px;
+  }
+
+  .module--locked {
+    border-color: #1e2a42;
+    background: transparent;
+    opacity: 0.6;
+  }
+
+  .module--locked .pct {
+    color: #7c8ca8;
+  }
+
+  /* ---- Novo tópico ---- */
+  .draft {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sd-blue);
+  }
+
+  .hint {
+    margin: 4px 0 0;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--sd-muted);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .field label,
+  .field-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--sd-text);
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--sd-line-3);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--sd-muted);
+  }
+
+  .box--focus {
+    border: 1.5px solid var(--sd-blue);
+    box-shadow: 0 0 0 3px rgba(1, 61, 171, 0.08);
+  }
+
+  .box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 12.5px;
+    text-overflow: ellipsis;
+    color: var(--sd-ink);
+  }
+
+  .value {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    font-size: 12.5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--sd-ink);
+  }
+
+  .box--tags {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 10px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    min-height: 26px;
+    padding: 0 9px;
+    border-radius: 6px;
+    background: var(--sd-tint);
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--sd-blue);
+  }
+
+  .placeholder {
+    font-size: 11px;
+    color: var(--sd-faint);
+  }
+
+  .help {
+    margin: 1px 0 0;
+    font-size: 10px;
+    line-height: 1.45;
+    color: #8a93a3;
+  }
+
+  .editor {
+    overflow: hidden;
+    border: 1px solid var(--sd-line-3);
+    border-radius: 9px;
+    background: #fff;
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--sd-line-2);
+    background: #fafbfd;
+  }
+
+  .tool {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    color: var(--sd-slate);
+  }
+
+  .tool.on {
+    background: var(--sd-tint);
+    color: var(--sd-blue);
+  }
+
+  .preview {
+    margin-left: auto;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--sd-blue);
+  }
+
+  .text {
+    margin: 0;
+    padding: 10px 12px 12px;
+    font-size: 11.5px;
+    line-height: 1.6;
+  }
+
+  .attach {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    border-top: 1px solid var(--sd-line-2);
+    background: #fafbfd;
+  }
+
+  .add {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    padding: 0 12px;
+    border: 1.5px solid var(--sd-blue);
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--sd-blue);
+  }
+
+  .small {
+    font-size: 9.5px;
+    color: #8a93a3;
+  }
+
+  .publish {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 2px;
+    padding-top: 14px;
+    border-top: 1px solid var(--sd-line-2);
+  }
+
+  .buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .buttons .sd-btn {
+    flex: 1;
+    gap: 7px;
+    padding: 0 12px;
+    font-size: 12.5px;
+  }
+
+  .saved {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: var(--sd-green-ink);
+  }
+</style>

@@ -1,0 +1,853 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PillList from '@/components/about/PillList.astro';
+import ProcessCard from '@/components/about/ProcessCard.astro';
+import Timeline from '@/components/about/Timeline.astro';
+import Portrait from '@/components/ui/Portrait.astro';
+import { community, companies, craft, education, expertise, numbers, process, timeline, tools } from '@/data/about';
+import { url } from '@/lib/url';
+---
+
+<BaseLayout
+  title="Sobre"
+  description="Ábia Bognola é Product Designer há cinco anos, entre fintech, saúde pública e edtech. Processo, trajetória e o que entrega em cada fase."
+  ambient={false}
+  footer="paper"
+  bodyClass="theme-paper"
+>
+  <!-- HERO -->
+  <section class="sec hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker">01 · Sobre a designer</div>
+        <h1 id="hero-title" class="disp">ÁBIA<br />BOGNOLA<span class="accent">.</span></h1>
+        <p class="hero-lead">Product designer há <strong>cinco anos</strong>, entre fintech, saúde pública e edtech.</p>
+        <p class="hero-text">
+          Costumo entrar em produtos que cresceram sem processo de UX ou em produtos novos com prazo curto. Nos dois
+          casos, começo reunindo o que já existe — documentação, regras de negócio, marca — antes de abrir o Figma.
+        </p>
+      </div>
+      <div class="hero-side">
+        <div class="photo-wrap">
+          <span class="imgtag imgtag--tl">Retrato · 2026</span>
+          <Portrait class="photo" alt="Retrato de Ábia Bognola" width={280} loading="eager" />
+          <span class="imgtag imgtag--br">Goiânia · GO</span>
+        </div>
+        <div class="where">
+          <div class="where-title">Onde estou</div>
+          Goiânia, GO · remoto pra times em qualquer fuso do Brasil. Atualmente na MedMe Saúde, meio-período entre projetos
+          parceiros.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="sec rv" aria-label="Em números">
+    <div class="wrap">
+      <div class="kicker kicker--lg">02 · Em números</div>
+      <div class="numbers">
+        {
+          numbers.map((n) => (
+            <div class="number">
+              <div class:list={['big-num', { 'big-num--accent': n.accent }]}>{n.value}</div>
+              <div class="number-label" set:html={n.label} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FILOSOFIA -->
+  <section class="sec rv" aria-labelledby="filo-title">
+    <div class="wrap philo">
+      <div class="philo-left">
+        <div class="kicker">03 · Filosofia</div>
+        <h2 id="filo-title" class="disp h-lg">COMO EU<br />COSTUMO<br />TRABALHAR.</h2>
+        <p class="pull">
+          As cinco etapas do design thinking, que guiam <a href={url('/cases/')}>cada projeto</a> e se ajustam ao prazo e ao que o
+          time tem disponível.
+        </p>
+      </div>
+      <div class="philo-stack">
+        {process.map((p, i) => <ProcessCard step={i + 1} total={process.length} {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCÍPIO -->
+  <section class="sec sec--ink rv" aria-label="Princípio de trabalho">
+    <div class="wrap">
+      <div class="kicker kicker--quote">Princípio de trabalho</div>
+      <p class="disp quote">
+        “Boa pesquisa é sobre fazer <span class="italic">mais e melhores perguntas</span> — e pensar criticamente sobre as
+        respostas.”
+      </p>
+      <div class="cite">— Erika Hall · autora de Just Enough Research</div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE -->
+  <section class="sec rv" aria-labelledby="exp-title">
+    <div class="wrap">
+      <div class="kicker">04 · O que eu faço</div>
+      <h2 id="exp-title" class="disp h-lg h-gap">EXPERTISE.</h2>
+      <div class="expertise">
+        {
+          expertise.map((col) => (
+            <div class="exp-col">
+              <div class="disp exp-letter">{col.letter}</div>
+              <div class="exp-title">{col.title}</div>
+              <ul class="tick">
+                {col.items.map((item) => (
+                  <li set:html={item} />
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <div class="tools">
+        <span class="tools-label">Ferramentas</span>
+        <PillList items={tools} />
+      </div>
+    </div>
+  </section>
+
+  <!-- PASSAGENS -->
+  <section class="sec rv" aria-labelledby="pass-title">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="kicker">05 · Passagens</div>
+          <h2 id="pass-title" class="disp h-md">POR ONDE<br />EU PASSEI.</h2>
+        </div>
+        <p class="body">
+          Banco digital, fintech, softhouse e saúde — quase sempre em times pequenos, onde o design também organiza o
+          processo.
+        </p>
+      </div>
+      <div class="logos">
+        {
+          companies.map((c) => (
+            <div>
+              {c.name}
+              <small>{c.period}</small>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAJETÓRIA + FORMAÇÃO -->
+  <section class="sec rv" aria-labelledby="tl-title">
+    <div class="wrap career">
+      <div>
+        <div class="kicker">06 · Trajetória</div>
+        <h2 id="tl-title" class="disp h-sm">CINCO ANOS,<br />SEIS EMPRESAS.</h2>
+        <Timeline items={timeline} />
+      </div>
+      <aside class="edu">
+        <div class="kicker kicker--sm">Formação</div>
+        {
+          education.map((e) => (
+            <div class="edu-item">
+              <div class="edu-period">{e.period}</div>
+              <div class="edu-title">{e.title}</div>
+              <p class="edu-desc">{e.desc}</p>
+            </div>
+          ))
+        }
+        <div class="edu-item edu-item--last">
+          <div class="kicker kicker--xs">Mentorias &amp; comunidade</div>
+          <PillList items={community} />
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- OFÍCIO -->
+  <section class="sec rv" aria-labelledby="now-title">
+    <div class="wrap craft">
+      <div>
+        <div class="kicker">07 · Ofício</div>
+        <h2 id="now-title" class="disp h-md h-gap-sm">COISAS<br />QUE SAEM<br />DAS MINHAS<br />MÃOS.</h2>
+        <p class="body">O que eu entrego em cada fase de um projeto.</p>
+      </div>
+      <div>
+        {
+          craft.map((c) => (
+            <div class="q-block">
+              <div class="q-lbl">{c.label}</div>
+              <p class="q-a" set:html={c.text} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-sec rv" aria-label="Convite">
+    <div class="wrap cta-wrap">
+      <div class="cta">
+        <div>
+          <div class="kicker kicker--quote">08 · Próximos passos</div>
+          <h2>SE FIZER<br />SENTIDO, <em>me chame.</em></h2>
+        </div>
+        <div class="cta-btns">
+          <a href={url('/contato/')} class="btn-solid">Fale comigo →</a>
+          <a href={url('/cases/')} class="btn-outline">Ver os cases</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  :global(body.theme-paper) {
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  :global(body.theme-paper) :focus-visible {
+    outline: 3px solid var(--accent);
+  }
+
+  /* 1360px of content + 2 × 40px gutter */
+  .wrap {
+    max-width: 1440px;
+  }
+
+  .sec {
+    padding: 110px 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .hero {
+    padding-top: 70px;
+  }
+
+  .disp {
+    font-family: var(--ff-display);
+    font-weight: 400;
+    line-height: 0.86;
+    letter-spacing: 0.005em;
+  }
+
+  .accent {
+    color: var(--accent);
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .kicker::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .kicker--lg {
+    margin-bottom: 60px;
+  }
+
+  .kicker--quote {
+    margin-bottom: 40px;
+  }
+
+  .cta .kicker--quote {
+    margin-bottom: 24px;
+  }
+
+  .kicker--sm {
+    margin-bottom: 26px;
+  }
+
+  .kicker--xs {
+    margin-bottom: 14px;
+  }
+
+  .h-lg {
+    margin: 0 0 24px;
+    font-size: clamp(48px, 6vw, 88px);
+  }
+
+  .h-md {
+    font-size: clamp(44px, 5.5vw, 80px);
+  }
+
+  .h-sm {
+    margin: 0 0 48px;
+    font-size: clamp(44px, 5vw, 72px);
+  }
+
+  .h-gap {
+    margin-bottom: 60px;
+  }
+
+  .h-gap-sm {
+    margin-bottom: 24px;
+  }
+
+  .body {
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+
+  /* Hero */
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 70px;
+    align-items: end;
+  }
+
+  h1 {
+    margin: 0 0 26px;
+    font-size: clamp(64px, 10vw, 152px);
+    color: var(--ink);
+  }
+
+  .hero-lead {
+    max-width: 640px;
+    margin-top: 24px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .hero-lead strong {
+    color: var(--ink);
+  }
+
+  .hero-text {
+    max-width: 600px;
+    margin-top: 14px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-2);
+  }
+
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 22px;
+    justify-self: end;
+  }
+
+  .photo-wrap {
+    position: relative;
+  }
+
+  .photo-wrap :global(.photo) {
+    width: 280px;
+    height: 340px;
+    background: var(--paper-2);
+  }
+
+  .imgtag {
+    position: absolute;
+    z-index: 1;
+    padding: 6px 10px;
+    background: var(--ink);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--paper);
+  }
+
+  .imgtag--tl {
+    top: -14px;
+    left: -14px;
+  }
+
+  .imgtag--br {
+    right: -14px;
+    bottom: -14px;
+    background: var(--accent);
+  }
+
+  .where {
+    max-width: 280px;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: right;
+    color: var(--ink-2);
+  }
+
+  .where-title {
+    margin-bottom: 10px;
+    font-family: var(--ff-display);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* Numbers */
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    align-items: end;
+  }
+
+  .number {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .big-num {
+    font-family: var(--ff-display);
+    font-size: 220px;
+    line-height: 0.82;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .big-num--accent {
+    font-size: 80px;
+    line-height: 0.86;
+    color: var(--accent);
+  }
+
+  .number-label {
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+  }
+
+  .number-label :global(.ink) {
+    color: var(--ink);
+  }
+
+  /* Philosophy */
+  .philo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+    gap: 80px;
+    align-items: start;
+  }
+
+  .philo-left {
+    position: sticky;
+    top: 110px;
+  }
+
+  .pull {
+    max-width: 820px;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .pull a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .philo-stack {
+    position: relative;
+    padding-bottom: 40vh;
+  }
+
+  /* Principle */
+  .sec--ink {
+    border-bottom: none;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .quote {
+    max-width: 1200px;
+    margin: 0 0 20px;
+    font-size: clamp(38px, 5.4vw, 80px);
+    color: var(--paper);
+  }
+
+  .quote .italic {
+    letter-spacing: -0.01em;
+    color: var(--accent);
+  }
+
+  .cite {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(236, 228, 214, 0.55);
+  }
+
+  /* Expertise */
+  .expertise {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-block: 3px solid var(--ink);
+  }
+
+  .exp-col {
+    padding: 36px 32px;
+    border-right: 1px solid var(--ink);
+  }
+
+  .exp-col:first-child {
+    padding-left: 0;
+  }
+
+  .exp-col:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .exp-letter {
+    font-size: 56px;
+    color: var(--accent);
+  }
+
+  .exp-title {
+    margin: 14px 0 20px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .tick {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .tick li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 12px;
+    align-items: baseline;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .tick li::before {
+    content: '→';
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .tools-label {
+    margin-right: 12px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  /* Companies */
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 60px;
+  }
+
+  .logos {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid var(--ink);
+  }
+
+  .logos > div {
+    flex: 1 1 220px;
+    padding: 22px 26px;
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--ff-display);
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  .logos small {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--ink-2);
+  }
+
+  /* Career */
+  .career {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .edu {
+    position: sticky;
+    top: 24px;
+    padding: 36px 32px;
+    border: 1px solid var(--ink);
+  }
+
+  .edu-item {
+    padding: 20px 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .edu-item--last {
+    padding: 22px 0 4px;
+  }
+
+  .edu-period {
+    font-family: var(--ff-display);
+    font-size: 24px;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .edu-title {
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .edu-desc {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+
+  /* Craft */
+  .craft {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 80px;
+    align-items: start;
+  }
+
+  .craft .body {
+    max-width: 460px;
+  }
+
+  .q-block {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 36px;
+    padding: 32px 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .q-block:last-child {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .q-lbl {
+    font-family: var(--ff-display);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+  }
+
+  .q-a {
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .q-a :global(strong) {
+    padding: 0 4px;
+    background: var(--paper-2);
+  }
+
+  /* CTA */
+  .cta-sec {
+    padding: 80px 40px 40px;
+  }
+
+  .cta-wrap {
+    padding: 0;
+  }
+
+  .cta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+    padding: 100px 60px;
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .cta h2 {
+    margin: 0;
+    font-family: var(--ff-display);
+    font-weight: 400;
+    font-size: 110px;
+    line-height: 0.86;
+    letter-spacing: 0.005em;
+    color: var(--paper);
+  }
+
+  .cta h2 em {
+    display: inline-block;
+    font-family: var(--ff-sans);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.68em;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    transform: translateY(-0.06em);
+  }
+
+  .cta-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btn-solid,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 26px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition:
+      transform 0.2s,
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .btn-solid {
+    background: var(--accent);
+    color: var(--paper);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--paper);
+    color: var(--paper);
+  }
+
+  .btn-solid:hover,
+  .btn-outline:hover {
+    background: var(--paper);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 960px) {
+    .sec {
+      padding: 70px 0;
+    }
+
+    .wrap {
+      padding: 0 24px;
+    }
+
+    .hero-grid,
+    .philo,
+    .split,
+    .career,
+    .craft {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .hero-side {
+      align-items: flex-start;
+      justify-self: start;
+    }
+
+    .where {
+      text-align: left;
+    }
+
+    .philo-left,
+    .edu {
+      position: static;
+    }
+
+    .numbers {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .big-num {
+      font-size: 120px;
+    }
+
+    .expertise {
+      grid-template-columns: 1fr;
+    }
+
+    .exp-col,
+    .exp-col:first-child,
+    .exp-col:last-child {
+      padding: 28px 0;
+      border-right: 0;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .q-block {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .cta-sec {
+      padding: 60px 24px 24px;
+    }
+
+    .cta {
+      grid-template-columns: 1fr;
+      padding: 60px 30px;
+    }
+
+    .cta h2 {
+      font-size: 56px;
+    }
+  }
+</style>

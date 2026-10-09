@@ -1,0 +1,565 @@
+/* ==========================================================================
+   Case patterns — reusable editorial classes for case study pages.
+   Imported by CaseLayout. Everything is scoped under `.case` so these
+   names never leak into the rest of the site.
+
+   Text      .eyebrow  .h2  .h3  .lead  .muted  .caption  .serif
+   Blocks    .card  .card--link  .band  .band--tint  .band--purple
+   Lists     .num-row  .bullets  .steps
+   Badges    .badge  .pill  .pill--ev  .pill--dec  .pill--op
+   Decision  .dcard  .dticket  .dlog
+   Grids     .cols-2  .cols-3  .shots
+   ========================================================================== */
+
+.case {
+  color: var(--warm);
+}
+
+/* ---------- Text ----------
+   Element defaults use :where() (zero specificity) so component styles and
+   the modifiers below always win without !important. */
+:where(.case) :where(h1, h2, h3, h4, h5, h6) {
+  color: var(--text-strong);
+}
+
+:where(.case) :where(p, li, td, blockquote, cite) {
+  color: var(--text-body);
+}
+
+:where(.case) :where(strong, b) {
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+:where(.case) :where(em),
+.case .serif {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--rose-light);
+}
+
+/* Inline links inside running text */
+.case :where(p, li, figcaption) a:not([class]) {
+  color: var(--rose-light);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(196, 168, 247, 0.4);
+  text-underline-offset: 3px;
+}
+
+.case :where(p, li, figcaption) a:not([class]):hover {
+  color: var(--rose-lighter);
+  text-decoration-color: var(--rose-lighter);
+}
+
+/* Small uppercase label with a leading rule */
+.case .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 18px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rose-light);
+}
+
+.case .eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+/* Mono label (newer cases): "Contexto", "Parte 1" */
+.case .tag-mono {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+.case .tag-mono--cyan {
+  color: var(--gold);
+}
+
+.case .h2 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text-strong);
+}
+
+.case .h3 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.case .lead {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--text-body);
+}
+
+.case .lead strong {
+  color: var(--text-strong);
+}
+
+.case .muted {
+  color: var(--text-muted);
+}
+
+.case .subtle {
+  color: var(--text-subtle);
+}
+
+.case figcaption,
+.case .caption {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-subtle);
+}
+
+.case blockquote {
+  font-size: 1.05em;
+  color: var(--text-strong);
+}
+
+/* ---------- Containers ---------- */
+.case .sec,
+.case .sec-narrow {
+  max-width: 1128px; /* 1080px of content + 2 × 24px gutter */
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.case .sec .sec-narrow {
+  /* Nested inside .sec: the parent already centers and pads. */
+  max-width: none;
+  padding: 0;
+}
+
+.case .sec-narrow > * {
+  max-width: 760px;
+}
+
+.case .band {
+  width: 100%;
+}
+
+.case .band--tint {
+  background: rgba(158, 108, 239, 0.08);
+}
+
+.case .band--purple {
+  background: linear-gradient(158deg, #1c155e 0%, #3e1c86 55%, #5a2690 100%);
+}
+
+/* ---------- Cards ---------- */
+.case .card,
+.case .dcard {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(10, 12, 74, 0.94);
+  color: var(--text-body);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+
+.case .card {
+  border-radius: var(--radius-xl);
+}
+
+.case .card :where(p, li, td, small, span, div) {
+  color: var(--text-body);
+}
+
+.case .card :where(h1, h2, h3, h4) {
+  color: var(--text-strong);
+  font-weight: 700;
+}
+
+.case .card .eyebrow {
+  color: var(--rose-light);
+}
+
+.case .card--link {
+  display: block;
+  color: inherit;
+  transition:
+    transform 0.45s var(--ease-out),
+    box-shadow 0.45s,
+    border-color 0.3s;
+}
+
+.case .card--link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.65);
+  border-color: rgba(196, 168, 247, 0.5);
+}
+
+/* Decision card */
+.case .dcard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  padding: 24px 26px;
+  border-radius: 20px;
+}
+
+.case .dcard h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.case .dcard .beat {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-body);
+}
+
+.case .dcard .int {
+  margin: 2px 0 0;
+  padding-top: 13px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.22);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Decision ticket */
+.case .dticket {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  padding: 22px 24px;
+  border: 1px solid var(--warm-14);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.3s,
+    background 0.3s;
+}
+
+.case .dticket:hover {
+  border-color: rgba(158, 108, 239, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.case .dticket .dt-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warm-40);
+}
+
+.case .dticket .dt-head .dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rose);
+  box-shadow: 0 0 8px rgba(158, 108, 239, 0.5);
+}
+
+.case .dticket .dt-head .line {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--warm-14) 0 5px, transparent 5px 9px);
+}
+
+.case .dticket h4 {
+  margin: 0;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--warm);
+}
+
+.case .dticket p {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--warm-70);
+}
+
+.case .dticket p .dec {
+  font-weight: 700;
+  color: var(--rose-light);
+}
+
+.case .dticket .dt-int {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--warm-14);
+  font-size: 12px;
+  font-style: italic;
+  color: #b9a6ec;
+}
+
+.case .dticket .dt-int b {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--warm-40);
+}
+
+/* Decision log (numbered rows with meta column) */
+.case .dlog {
+  border-top: 1px solid var(--warm-14);
+}
+
+.case .dlog-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1.45fr) minmax(0, 0.95fr);
+  gap: 30px;
+  padding: 30px 12px 30px 0;
+  border-bottom: 1px solid var(--warm-14);
+  transition: background 0.3s;
+}
+
+.case .dlog-row::before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 0;
+  bottom: -1px;
+  width: 2px;
+  background: var(--rose);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.case .dlog-row:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.case .dlog-row:hover::before {
+  opacity: 0.85;
+}
+
+.case .dlog-idx {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 5px;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--warm-40);
+}
+
+.case .dlog-idx .n {
+  font-family: var(--ff-display);
+  font-size: 30px;
+  line-height: 0.8;
+  letter-spacing: 0.02em;
+  color: var(--warm-40);
+  transition: color 0.3s;
+}
+
+.case .dlog-row:hover .dlog-idx .n {
+  color: var(--rose);
+}
+
+.case .dlog-main h4 {
+  margin: 0 0 10px;
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.02;
+  letter-spacing: 0.012em;
+  color: var(--warm);
+}
+
+.case .dlog-main p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.72;
+  color: var(--warm-70);
+}
+
+.case .dlog-main p b {
+  color: var(--rose-light);
+}
+
+.case .dlog-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 6px;
+}
+
+.case .dlog-meta .k {
+  display: block;
+  margin-bottom: 5px;
+  font-family: var(--ff-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--warm-40);
+}
+
+.case .dlog-meta .v {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--warm-70);
+}
+
+.case .dlog-meta .v.intent {
+  font-style: italic;
+  color: #b9a6ec;
+}
+
+/* ---------- Lists ---------- */
+.case .num-row {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  color: var(--text-body);
+}
+
+.case .num-row > :last-child {
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.case .num-row__n {
+  flex: none;
+  width: 44px;
+  font-family: var(--ff-display);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rose-light);
+}
+
+/* ---------- Badges ---------- */
+.case .badge {
+  padding: 6px 13px;
+  border-radius: var(--radius-pill);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-strong);
+}
+
+.case .pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-strong);
+}
+
+.case .pill::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.case .pill--ev {
+  background: rgba(158, 108, 239, 0.24);
+  color: var(--rose-lighter);
+}
+
+.case .pill--dec {
+  background: rgba(158, 108, 239, 0.24);
+  color: #dccffa;
+}
+
+.case .pill--op {
+  background: rgba(84, 206, 226, 0.24);
+  color: var(--gold-light);
+}
+
+/* ---------- Grids ---------- */
+.case .cols-2,
+.case .cols-3 {
+  display: grid;
+  gap: 18px;
+}
+
+.case .cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case .cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+  .case .cols-2,
+  .case .cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .case .dlog-row {
+    grid-template-columns: 44px minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .case .dlog-meta {
+    grid-column: 2;
+  }
+}
+
+/* ---------- Paragraph modifiers (override section defaults) ---------- */
+.case p.emph {
+  color: var(--warm);
+}
+
+.case p.note {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-subtle);
+}
+
+/* ---------- Vertical rhythm ----------
+   Large section spacings are written as calc(Npx * var(--sp)), so the whole
+   case tightens proportionally on small screens. */
+.case {
+  --sp: 1;
+}
+
+@media (max-width: 820px) {
+  .case {
+    --sp: 0.55;
+  }
+}

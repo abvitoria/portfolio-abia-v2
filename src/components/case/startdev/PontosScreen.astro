@@ -1,0 +1,184 @@
+---
+/** Prototype screen "Pontos" in the app's dark theme: balance, level, statement and how to earn. */
+import AppWindow from './AppWindow.astro';
+import Statement from './Statement.astro';
+
+const stats = [
+  { label: 'Ganhos no mês', value: '+320', color: 'var(--sd-gain)' },
+  { label: 'Resgatados', value: '−150', color: 'var(--sd-loss)' },
+  { label: 'Nível', value: 'Prata', color: 'var(--sd-link)' },
+];
+const statement = [
+  { title: 'Resposta marcada como útil', meta: 'Hoje · Fórum', value: '+5' },
+  { title: 'Algoritmo de média escolar entregue', meta: '12 jan · Atividade', value: '+10' },
+  { title: 'Resgate: curso de Git e GitHub', meta: '10 jan · Loja', value: '−150' },
+  { title: 'Módulo 01 concluído', meta: '08 jan · Curso', value: '+50' },
+];
+const earn = [
+  { label: 'Concluir uma aula', value: '+10' },
+  { label: 'Entregar atividade no prazo', value: '+25' },
+  { label: 'Resposta útil no fórum', value: '+5' },
+  { label: 'Avaliar uma aula', value: '+2' },
+];
+---
+
+<AppWindow url="app.startdev.com.br/pontos" nav="loja" layout="aside" dark>
+  <div class="sd-main">
+    <div class="sd-hd">
+      <h1 class="sd-h1">Meus pontos</h1>
+      <div class="sd-tabs">
+        <span class="sd-tab on">Extrato</span>
+        <span class="sd-tab">Recompensas</span>
+      </div>
+    </div>
+    <div>
+      <p class="sd-crumb">Saldo atualizado hoje</p>
+      <div class="balance">840 <span>pontos disponíveis</span></div>
+    </div>
+    <div class="sd-stats">
+      {
+        stats.map((s) => (
+          <div class="sd-card sd-stat" style={`--c:${s.color}`}>
+            <div class="sd-label">{s.label}</div>
+            <strong>{s.value}</strong>
+          </div>
+        ))
+      }
+    </div>
+    <div class="sd-card level">
+      <div class="level-head">
+        <span>Faltam 160 pontos para o nível Ouro</span>
+        <span class="ratio">840 / 1000</span>
+      </div>
+      <div class="sd-track" style="--p:84%"><span></span></div>
+      <p>No nível Ouro, o desconto na loja de cursos sobe de 10% para 25%.</p>
+    </div>
+    <div>
+      <div class="list-head">
+        <span>Extrato</span>
+        <span class="period">Últimos 30 dias</span>
+      </div>
+      <Statement items={statement} />
+    </div>
+  </div>
+  <aside class="sd-col sd-col--end" aria-label="Como ganhar pontos">
+    <div>
+      <div class="sd-label earn-title">Como ganhar pontos</div>
+      <div class="earn">
+        {
+          earn.map((e) => (
+            <div>
+              <span>{e.label}</span>
+              <b>{e.value}</b>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="sd-card shop">
+      <div class="shop-title">Loja de recompensas</div>
+      <p>7 cursos ao seu alcance com o saldo atual.</p>
+      <button type="button" class="sd-btn">Ver a loja</button>
+    </div>
+  </aside>
+</AppWindow>
+
+<style>
+  .balance {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--sd-heading);
+  }
+
+  .balance span {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--sd-muted);
+  }
+
+  .level {
+    padding: 20px 22px;
+  }
+
+  .level-head,
+  .list-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sd-heading);
+  }
+
+  .list-head {
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  .ratio {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--sd-link);
+  }
+
+  .period {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--sd-muted);
+  }
+
+  .level p {
+    margin-top: 11px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--sd-text);
+  }
+
+  .earn-title {
+    margin-bottom: 11px;
+  }
+
+  .earn {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .earn div {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 12.5px;
+    color: var(--sd-text);
+  }
+
+  .sd-card.shop {
+    padding: 16px;
+    border-color: var(--sd-line-3);
+    background: var(--sd-raised);
+  }
+
+  .shop-title {
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sd-heading);
+  }
+
+  .shop p {
+    margin-bottom: 12px;
+    font-size: 11.5px;
+    line-height: 1.55;
+    color: var(--sd-text);
+  }
+
+  .shop .sd-btn {
+    height: 40px;
+    font-size: 13px;
+  }
+</style>

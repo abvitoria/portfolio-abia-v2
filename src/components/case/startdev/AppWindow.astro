@@ -1,0 +1,115 @@
+---
+/**
+ * StartDev web app shell: browser chrome, greeting top bar, icon rail and
+ * footer around a screen (default slot). Used by every desktop mockup.
+ *
+ *   <AppWindow url="app.startdev.com.br/forum" nav="forum" layout="aside">
+ *     <div class="sd-main">…</div>
+ *     <aside class="sd-col sd-col--end">…</aside>
+ *   </AppWindow>
+ *
+ * `label` turns the whole window into a single image for assistive tech
+ * (role="img"); the rail then renders as plain text instead of links.
+ */
+import type { HTMLAttributes } from 'astro/types';
+import { Image } from 'astro:assets';
+import './startdev.css';
+import SdIcon, { type SdIconName } from './SdIcon.astro';
+import mark from '@/assets/case/startdev-mark.png';
+import avatar from '@/assets/case/marielly-avatar.png';
+
+type NavKey = 'inicio' | 'cursos' | 'atividades' | 'forum' | 'loja';
+
+type Props = Omit<HTMLAttributes<'div'>, 'class'> & {
+  url: string;
+  dark?: boolean;
+  /** Active rail item; `false` hides the top bar, rail and footer. */
+  nav?: NavKey | false;
+  /** Grid after the rail: main only, a column before it, or an aside after it. */
+  layout?: 'main' | 'col' | 'aside';
+  foot?: boolean;
+  /** Accessible name when the window is presented as one image. */
+  label?: string;
+  notifications?: string;
+  class?: string;
+};
+
+const {
+  url,
+  dark = false,
+  nav = 'inicio',
+  layout = 'main',
+  foot = true,
+  label,
+  notifications = 'Notificações: 3 não lidas',
+  class: className,
+  ...attrs
+} = Astro.props;
+
+const rail: { key: NavKey; label: string; icon: SdIconName }[] = [
+  { key: 'inicio', label: 'Início', icon: 'home' },
+  { key: 'cursos', label: 'Cursos', icon: 'courses' },
+  { key: 'atividades', label: 'Atividades', icon: 'activities' },
+  { key: 'forum', label: 'Fórum', icon: 'forum' },
+  { key: 'loja', label: 'Loja', icon: 'shop' },
+];
+const RailItem = label ? 'span' : 'a';
+---
+
+<div
+  class:list={['sd', { 'sd--dark': dark }, className]}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  {...attrs}
+>
+  <div class="sd-chrome"><i></i><i></i><i></i><span class="sd-url">{url}</span></div>
+  {
+    nav !== false && (
+      <div class="sd-top">
+        <div class="sd-brand">
+          <Image src={mark} alt="Logo StartDev" class="sd-mark" width={32} densities={[1, 2]} />
+          <span class="sd-greet">Bem-vinda, Marielly</span>
+        </div>
+        <slot name="top" />
+        <span class="sd-bell" role="img" aria-label={notifications}>
+          <SdIcon name="bell" size={17} stroke={1.8} />
+          <span class="bdg" />
+        </span>
+        <Image src={avatar} alt="" class="sd-avatar" width={38} densities={[1, 2]} />
+      </div>
+    )
+  }
+  {
+    nav === false ? (
+      <slot />
+    ) : (
+      <div class:list={['sd-body', { 'sd-body--col': layout === 'col', 'sd-body--aside': layout === 'aside' }]}>
+        <nav class="sd-rail" aria-label="Navegação principal da plataforma">
+          {rail.map((item) => (
+            <RailItem href={label ? undefined : '#ui-title'} class:list={{ on: item.key === nav }}>
+              <SdIcon name={item.icon} size={21} stroke={1.7} />
+              {item.label}
+            </RailItem>
+          ))}
+        </nav>
+        <slot />
+      </div>
+    )
+  }
+  {
+    nav !== false && foot && (
+      <div class="sd-foot">
+        <div class="brand">
+          <Image src={mark} alt="Logo StartDev" width={26} densities={[1, 2]} />
+          <span class="sd-wordmark">startdev</span>
+        </div>
+        <div class="links">
+          <a href="#ui-title">Sobre nós</a>
+          <a href="#ui-title">Contato</a>
+          <a href="#ui-title">Termos de uso</a>
+        </div>
+        <small>© 2020 Startdev</small>
+      </div>
+    )
+  }
+</div>

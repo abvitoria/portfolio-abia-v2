@@ -1,0 +1,50 @@
+---
+/** Ruled list of titled paragraphs ("what this project taught"). */
+interface Props {
+  /** Title + text (inline HTML allowed). */
+  items: { title: string; text: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="learnings">
+  {
+    items.map((item) => (
+      <div class="item">
+        <h3 set:html={item.title} />
+        <p set:html={item.text} />
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .learnings {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--warm-14);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  p {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+</style>

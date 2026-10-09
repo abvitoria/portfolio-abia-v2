@@ -1,0 +1,101 @@
+---
+/**
+ * Single full-screen image viewer for the page. Any element with
+ * `data-zoom="<image url>"` opens it on click (or Enter/Space).
+ * Rendered once by CaseLayout.
+ */
+---
+
+<dialog class="lightbox" aria-label="Tela ampliada" data-lightbox>
+  <button type="button" class="close">Fechar · Esc</button>
+  <img alt="" data-lightbox-img />
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+  const img = dialog?.querySelector<HTMLImageElement>('[data-lightbox-img]');
+
+  if (dialog && img) {
+    const open = (trigger: HTMLElement) => {
+      img.src = trigger.dataset.zoom!;
+      img.alt = trigger.querySelector('img')?.alt ?? '';
+      dialog.showModal();
+      dialog.scrollTop = 0;
+    };
+
+    // Delegated so triggers rendered later (tabs, galleries) work too.
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as Element | null)?.closest<HTMLElement>('[data-zoom]');
+      if (trigger && !dialog.open) open(trigger);
+    });
+    document.addEventListener('keydown', (e) => {
+      const trigger = (e.target as Element | null)?.closest<HTMLElement>('[data-zoom]');
+      if (trigger && (e.key === 'Enter' || e.key === ' ')) {
+        e.preventDefault();
+        open(trigger);
+      }
+    });
+    document.querySelectorAll<HTMLElement>('[data-zoom]').forEach((el) => {
+      el.setAttribute('role', 'button');
+      el.tabIndex = 0;
+      el.title ||= 'Clique para ampliar';
+    });
+
+    // Click anywhere (backdrop, image or button) closes; Esc is native.
+    dialog.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => img.removeAttribute('src'));
+  }
+</script>
+
+<style>
+  .lightbox {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 64px 24px 24px;
+    border: 0;
+    background: rgba(3, 4, 58, 0.92);
+    overflow-y: auto;
+    cursor: zoom-out;
+  }
+
+  .lightbox::backdrop {
+    background: transparent;
+  }
+
+  .lightbox[open] {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  img {
+    width: 100%;
+    max-width: 1400px;
+    height: auto;
+    border-radius: var(--radius-md);
+    background: #fff;
+  }
+
+  .close {
+    position: fixed;
+    top: 16px;
+    right: 24px;
+    padding: 10px 18px;
+    border: 1px solid rgba(243, 242, 255, 0.3);
+    border-radius: var(--radius-pill);
+    background: var(--void);
+    color: var(--warm);
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  :global([data-zoom]) {
+    cursor: zoom-in;
+  }
+</style>

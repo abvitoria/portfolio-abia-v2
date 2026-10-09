@@ -1,0 +1,40 @@
+---
+/** Giant outlined number in the background of a row/section. Decorative. */
+interface Props {
+  n: string;
+  class?: string;
+}
+
+const { n, class: className } = Astro.props;
+---
+
+<div class:list={['bg-num', className]} aria-hidden="true">{n}</div>
+
+<style>
+  .bg-num {
+    position: absolute;
+    top: 60px;
+    right: -20px;
+    z-index: 0;
+    pointer-events: none;
+    font-family: var(--ff-display);
+    font-size: clamp(160px, 26vw, 380px);
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--warm-14);
+    transition: -webkit-text-stroke 0.4s;
+  }
+
+  :global(:hover) > .bg-num {
+    -webkit-text-stroke: 1px rgba(158, 108, 239, 0.35);
+  }
+
+  @media (max-width: 820px) {
+    .bg-num {
+      top: 40px;
+      right: -10px;
+      font-size: 140px;
+    }
+  }
+</style>

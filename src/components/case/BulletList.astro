@@ -1,0 +1,47 @@
+---
+/** Dotted bullet list (status, outcomes). Items may contain inline HTML. */
+interface Props {
+  items: string[];
+  /** Dot color (any CSS color or token). */
+  color?: string;
+}
+
+const { items, color = 'var(--gold)' } = Astro.props;
+---
+
+<ul class="bullets" style={`--dot:${color}`}>
+  {
+    items.map((item) => (
+      <li>
+        <span class="dot" />
+        <span set:html={item} />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 16px minmax(0, 1fr);
+    gap: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    margin-top: 11px;
+    border-radius: 50%;
+    background: var(--dot);
+  }
+</style>

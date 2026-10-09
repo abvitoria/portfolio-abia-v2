@@ -1,0 +1,1367 @@
+---
+import { Image } from 'astro:assets';
+import CaseLayout from '@/layouts/CaseLayout.astro';
+import CaseIntro from '@/components/case/CaseIntro.astro';
+import BeforeAfter from '@/components/case/trade/BeforeAfter.astro';
+import CsdColumn from '@/components/case/trade/CsdColumn.astro';
+import LogHead from '@/components/case/trade/LogHead.astro';
+import PersonaCard from '@/components/case/trade/PersonaCard.astro';
+import ProcessShot from '@/components/case/trade/ProcessShot.astro';
+import StoreReview from '@/components/case/trade/StoreReview.astro';
+
+import cover from '@/assets/covers/capa-trade.png';
+import telaLogin from '@/assets/trade/tela-login.png';
+import telaCadastro from '@/assets/trade/tela-cadastro.png';
+import telaAjuste from '@/assets/trade/tela-ajuste.png';
+import workshop5 from '@/assets/trade/workshop-5.jpg';
+import workshop1 from '@/assets/trade/workshop-1-blurred.png';
+import matrizCsd from '@/assets/trade/matriz-csd.jpg';
+import wireframes from '@/assets/trade/wireframes.png';
+import fluxo from '@/assets/trade/fluxo.jpg';
+import circulo from '@/assets/icons/circulo.png';
+import raio from '@/assets/icons/raio.png';
+import estrela from '@/assets/icons/estrela.png';
+
+const summary = [
+  {
+    href: '#cap-descoberta',
+    mark: '+30',
+    title: 'Telas de cadastro',
+    text: 'Um fluxo exaustivo que afastava mais do que convertia.',
+    cta: 'Ver a descoberta →',
+  },
+  {
+    href: '#cap-descoberta',
+    mark: '☍',
+    title: 'Conhecimento fragmentado',
+    text: 'Informação dispersa entre as áreas — um “telefone sem fio”.',
+    cta: 'Entender o problema →',
+  },
+  {
+    href: '#cap-decisoes',
+    mark: '→',
+    title: 'A direção tomada',
+    text: 'Cadastro em duas etapas, fluxo documentado e um motivo pra voltar ao app.',
+    cta: 'Ver as decisões →',
+  },
+];
+
+const problemStats = [
+  { mark: '30+', text: 'telas num fluxo linear e exaustivo, com alta desistência.' },
+  {
+    mark: '✎',
+    text: 'telas ainda com <strong>Lorem Ipsum em produção</strong>, passando impressão de produto inacabado.',
+  },
+  {
+    mark: '↯',
+    text: 'nenhuma fonte única de verdade — a informação do produto vivia dispersa entre as áreas.',
+  },
+];
+
+const sources = [
+  {
+    title: 'Reunião com o P.O. — regras de negócio',
+    text: 'Pedi o propósito de cada dado do fluxo: por que ele é solicitado e qual regra o sustenta. Muitos campos existiam por inércia, sem ninguém ter revisitado o conjunto.',
+  },
+  {
+    title: 'Desenvolvimento — dados de comportamento',
+    text: 'Levantei com o time de dev o comportamento real: tela com mais erros, onde as pessoas clicavam, tempo gasto por tela e falhas recorrentes — a evidência de onde o fluxo travava.',
+  },
+  {
+    title: 'Marketing — quem é o usuário',
+    text: 'O time de Marketing detinha o conhecimento acumulado sobre o varejista atendido. Foi dessa base que construí a persona — uma representação inicial, não uma pesquisa direta com usuário final.',
+  },
+  {
+    title: 'Suporte — reclamações recorrentes',
+    text: 'Levantei a reclamação nº 1, o que o app não resolvia e o que o usuário esperava do cadastro — o termômetro qualitativo do problema, vindo de quem fala com o cliente todos os dias.',
+  },
+];
+
+const questions = [
+  'Quais dados são realmente essenciais no cadastro?',
+  'Quem é, de fato, o usuário do produto?',
+  'Qual é a reclamação nº 1 no suporte?',
+];
+
+const csd = [
+  {
+    label: 'Certezas',
+    bar: '#4A9434',
+    dot: '#4A9434',
+    tint: '#D6F4C9',
+    items: [
+      'O cadastro tem 30+ telas e gera alta desistência.',
+      'O design foi feito por devs, sem processo de UX/UI.',
+      'Há telas em produção com Lorem Ipsum.',
+    ],
+  },
+  {
+    label: 'Suposições',
+    bar: '#0B7C8F',
+    dot: '#5B9CC5',
+    tint: '#CFE4EE',
+    items: [
+      'A maioria quer explorar o app antes de pedir crédito.',
+      'Dividir o cadastro em etapas reduz o abandono.',
+      'Faltam funcionalidades que tragam o usuário de volta.',
+    ],
+  },
+  { label: 'Dúvidas', bar: 'var(--rose)', dot: 'var(--rose)', tint: 'var(--rose-lighter)', items: questions },
+];
+
+const findings = [
+  { title: 'Excesso de dados solicitados', text: 'Boa parte sem propósito claro para o usuário.' },
+  { title: 'Cadastro extenso — 30+ telas', text: 'Demorado e cansativo, empurrando para a desistência.' },
+  {
+    title: 'Interesse inicial diferente do esperado',
+    text: 'A maioria queria explorar o app e entender como funcionava antes de focar no pedido de crédito.',
+  },
+  { title: 'Poucas funcionalidades recorrentes', text: 'Faltava motivo para voltar ao app fora do pedido de crédito.' },
+  { title: 'Textos vazios (Lorem Ipsum)', text: 'Placeholder em produção minava a percepção de qualidade.' },
+];
+
+/** Decisions 02–05 (01 is the featured row with the screen). */
+const flowDecisions = [
+  {
+    n: '02',
+    title: 'Otimização de campos',
+    text: 'Só o <b>essencial</b> permaneceu — todo campo sem regra de negócio por trás foi cortado.',
+    evidence: 'campos sem propósito, confirmado com o P.O.',
+    intent: 'cada campo com um motivo real de existir',
+  },
+  {
+    n: '03',
+    title: 'Textos e ícones acessíveis',
+    text: '<b>Linguagem simples</b> e ícones reconhecíveis no lugar de rótulos ambíguos.',
+    evidence: 'Lorem Ipsum em produção, linguagem confusa',
+    intent: 'entender a tela sem esforço',
+  },
+  {
+    n: '04',
+    title: 'Validação antecipada',
+    text: '<b>Validação do contato</b> logo no começo do fluxo, e não na última tela.',
+    evidence: 'erros de contato só apareciam no fim',
+    intent: 'falhar cedo, não no fim',
+  },
+  {
+    n: '05',
+    title: 'Documentação do fluxo',
+    text: '<b>Documentação ponta a ponta</b> como fonte única de verdade para produto e desenvolvimento.',
+    evidence: 'fluxo feito por devs sem UX',
+    intent: 'acabar com o retrabalho e alinhar o time',
+  },
+];
+
+const featureDecisions = [
+  {
+    n: '06',
+    title: 'Acompanhamento de limite',
+    text: '<b>Limite utilizado e disponível</b> sempre visível na home, com ajuste de percentual.',
+    evidence: 'sem visão do crédito, nada motivava abrir o app entre compras',
+  },
+  {
+    n: '07',
+    title: 'Boletos direto no app',
+    text: '<b>Aba de boletos</b> dentro do próprio app, sem passar pelo desktop.',
+    evidence: 'boletos só existiam via desktop',
+  },
+  {
+    n: '08',
+    title: 'Configurações de dados básicos',
+    text: '<b>Área de configurações</b> pra conferir e ajustar os dados quando quiser.',
+    evidence: 'dados só editáveis no cadastro inicial',
+  },
+  {
+    n: '09',
+    title: 'FAQ para suporte rápido',
+    text: '<b>FAQ no app</b>, sem depender de atendimento humano.',
+    evidence: 'dúvidas recorrentes sobrecarregavam o Suporte',
+  },
+];
+
+const fronts = [
+  {
+    icon: circulo,
+    tint: 'rgba(158, 108, 239, 0.14)',
+    title: 'Otimizar o cadastro',
+    text: 'Reduzir fricção e abandono no fluxo.',
+  },
+  {
+    icon: raio,
+    tint: 'rgba(176, 213, 240, 0.16)',
+    title: 'Documentar telas e fluxo',
+    text: 'Acabar com o “telefone sem fio” no time.',
+  },
+  {
+    icon: estrela,
+    tint: 'rgba(84, 206, 226, 0.16)',
+    title: 'Trazer insights de novas funcionalidades',
+    text: 'Dar um motivo para voltar ao app.',
+  },
+];
+
+const screens = [
+  {
+    src: telaCadastro,
+    alt: 'Primeira etapa do cadastro, com o essencial para começar',
+    tint: 'rgba(176, 213, 240, 0.16)',
+    title: 'Cadastro em etapas',
+    text: 'Dados básicos primeiro, com acesso rápido ao app.',
+  },
+  {
+    src: telaAjuste,
+    alt: 'Nova funcionalidade de acompanhamento e ajuste do limite',
+    tint: '#E7F5EF',
+    title: 'Novas funcionalidades',
+    text: 'Limite, boletos, configurações e FAQ no app.',
+  },
+];
+
+const changes = [
+  {
+    before: 'Cadastro linear de 30+ telas, tudo de uma vez.',
+    after: 'Duas etapas, com acesso rápido ao app já no início.',
+  },
+  {
+    before: 'Dados pedidos sem propósito claro; erros só no fim.',
+    after: 'Só o essencial, cada campo justificado, com validação antecipada.',
+  },
+  {
+    before: 'Conhecimento disperso — “telefone sem fio”, Lorem Ipsum em produção.',
+    after: 'Fluxo documentado de ponta a ponta, com conteúdo real e acessível.',
+  },
+  {
+    before: 'App servia só ao fluxo de aprovação de crédito.',
+    after: 'Motivo de uso recorrente: limite, boletos, configurações e FAQ.',
+  },
+];
+
+const reviews = [
+  {
+    title: 'Súper fácil',
+    author: 'Ana_73',
+    text: 'Aplicativo muito intuitivo e fácil de usar, top! Parabéns Trademaster, ajudando o varejo a vender mais!',
+  },
+  { title: 'Showww', author: 'Malmelo', text: 'Super fácil e intuitivo.' },
+  { title: 'Muito prático', author: 'Leo_alpha', text: 'Excelente aplicativo. Cumpre tudo aquilo que promete.' },
+  {
+    title: 'Muito bom!',
+    author: 'Pedro Igoa',
+    text: 'Extremamente intuitivo, fácil de usar e muito bom serviço prestado!',
+  },
+];
+
+const evidenceBase = [
+  '<strong>Dado interno de comportamento</strong> — cliques, tempo por tela e erros recorrentes, levantados com Desenvolvimento antes de qualquer proposta.',
+  '<strong>Regras de negócio</strong> — cada campo cortado ou mantido foi decidido pelo motivo real de existir, direto com o P.O.',
+  '<strong>Validação cruzada na matriz CSD</strong> — Produto, Desenvolvimento, Marketing e Suporte revisaram as soluções, reduzindo o risco de decisão unilateral.',
+];
+
+const learnings = [
+  {
+    title: 'Entrar num produto sem UX',
+    items: [
+      'Antes de redesenhar qualquer tela, precisei reconstruir a visão do produto inteiro com quatro áreas que nunca tinham sentado juntas.',
+      'O time entendeu, na prática, como UX se conecta a negócio e a dado, não só a “telas bonitas”.',
+    ],
+  },
+  {
+    title: 'Rotinas de design na squad',
+    items: [
+      'Implantei rotinas de design junto ao squad — documentação e discovery passaram a fazer parte do jeito de trabalhar.',
+      'Soluções entregues em alta fidelidade e navegáveis, prontas para a próxima etapa de validação.',
+    ],
+  },
+];
+---
+
+<CaseLayout
+  title="Trade+ · Redesign do cadastro"
+  description="Um cadastro de 30+ telas escondia um produto que ninguém via por inteiro. Descoberta, redesign de fluxo e documentação do app Trade+."
+  image={cover.src}
+  chapters={[
+    { id: 'cap-contexto', label: 'Contexto' },
+    { id: 'cap-descoberta', label: 'Descoberta' },
+    { id: 'cap-decisoes', label: 'Decisões' },
+    { id: 'cap-solucao', label: 'Solução' },
+    { id: 'cap-impacto', label: 'Impacto' },
+  ]}
+  ambient
+  showLang
+  cta={{ title: 'Tem um fluxo assim no seu produto?' }}
+>
+  <CaseIntro
+    badges={[
+      { label: 'UX/UI CASE', color: '#0B7C8F' },
+      { label: 'FINTECH · VAREJO', color: '#561589' },
+      { label: 'APP MOBILE', color: '#6E3FC8' },
+    ]}
+    eyebrow="TRADE+ · PRODUCT DESIGN · UX/UI"
+    title='Um cadastro de 30+ telas escondia <span class="serif">um produto que ninguém via por inteiro</span>'
+    lead="Comecei com uma tarefa operacional: migrar as telas do Adobe XD para o Figma. No caminho, descobri que o entrave real não era o tamanho do fluxo — era o <strong>conhecimento fragmentado do produto</strong>, um “telefone sem fio” entre as pessoas que o construíram."
+    facts={[
+      { label: 'MEU PAPEL', value: 'Product Designer · Research' },
+      { label: 'SQUAD', value: 'Produto · Dev · Marketing · Suporte' },
+      { label: 'ATUAÇÃO', value: 'Descoberta, redesign de fluxo e documentação' },
+      { label: 'PLATAFORMA', value: 'App mobile (iOS + Android)' },
+    ]}
+    columns="minmax(0, 1.08fr) minmax(0, 0.92fr)"
+    glowSize={480}
+    visualMinHeight={600}
+  >
+    <Image
+      class="hero-shot"
+      src={telaLogin}
+      alt="Tela de boas-vindas do app Trade+ com opções de cadastrar-se e acessar a conta"
+      widths={[520, 1040]}
+      sizes="(max-width: 860px) 100vw, 520px"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </CaseIntro>
+
+  <!-- Resumo / índice -->
+  <section id="cap-contexto" aria-labelledby="resumo-title" class="sec rv summary">
+    <h2 id="resumo-title" class="sr-only">Resumo do case</h2>
+    <div class="cols-3">
+      {
+        summary.map((item) => (
+          <a href={item.href} class="card card--link summary-card">
+            <span class="mark">{item.mark}</span>
+            <div class="title">{item.title}</div>
+            <p>
+              {item.text} <span class="go">{item.cta}</span>
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Contexto -->
+  <section aria-labelledby="ctx-title" class="sec sec-narrow rv context">
+    <p class="eyebrow">Contexto</p>
+    <h2 id="ctx-title" class="h2">O produto e o que estava em jogo</h2>
+    <p class="lead">
+      A Trademaster é uma fintech de crédito B2B que conecta grandes indústrias e distribuidores a pequenos e médios
+      varejistas — do mercadinho de bairro a lojas de construção, alimentos e bebidas. O diferencial:
+      a Trademaster <strong>assume o risco de inadimplência</strong>, com um motor de crédito próprio baseado em dados da cadeia. O
+      varejista compra com mais limite e prazo; a indústria vende mais sem carregar o risco.
+    </p>
+    <p class="lead">
+      O <strong>Trade+</strong> é o app pelo qual o varejista acessa esse crédito: visualiza limites e extratos e faz o
+      cadastro que dá início à relação.
+    </p>
+    <p class="lead">
+      O cadastro é a porta de entrada, o primeiro passo para o varejista começar a comprar com crédito. E era
+      justamente nessa porta que o produto travava.
+    </p>
+  </section>
+
+  <!-- O problema real -->
+  <div id="cap-descoberta" class="band band--purple problem">
+    <section aria-labelledby="prob-title" class="sec sec-narrow rv">
+      <p class="eyebrow">Descoberta · O problema real</p>
+      <h2 id="prob-title" class="h2">
+        Não era só um cadastro longo. Era um produto que ninguém enxergava por inteiro.
+      </h2>
+      <p class="lead">
+        O pedido inicial era operacional: <strong>passar as telas do Adobe XD para o Figma</strong>. Migrando tela por
+        tela, o padrão apareceu — <strong>faltavam telas</strong>. Mexendo no próprio app, encontrei fluxos que existiam
+        em produção mas não estavam em lugar nenhum do arquivo de design.
+      </p>
+      <p class="lead">
+        Ao reunir e organizar essas telas, o quadro ficou claro: textos de preenchimento, dados repetidos, decisões
+        soltas feitas por devs sem processo de UX — cada pessoa somando uma camada por cima da anterior.
+        Um <strong>“telefone sem fio”</strong> de requisitos onde ninguém detinha a visão completa. Minha tarefa deixou de
+        ser migrar telas e passou a ser <strong>reconstruir a visão do produto inteiro</strong>.
+      </p>
+
+      <blockquote class="quote">
+        <p class="serif"><b>“Mais fácil conseguir um green card do que se cadastrar no app.”</b></p>
+        <cite>— relato real de um usuário</cite>
+      </blockquote>
+      <div class="cols-3 stats">
+        {
+          problemStats.map((stat) => (
+            <div class="stat">
+              <div class="mark">{stat.mark}</div>
+              <div class="text" set:html={stat.text} />
+            </div>
+          ))
+        }
+      </div>
+      <ProcessShot
+        src={workshop5}
+        alt="Todas as telas do cadastro reunidas pela primeira vez em uma única visão"
+        caption="Registro do processo original — as telas reunidas numa só visão pela primeira vez."
+        height={340}
+        lifted
+      />
+    </section>
+  </div>
+
+  <!-- Reconstruindo uma visão compartilhada -->
+  <section aria-labelledby="fontes-title" class="sec rv block">
+    <div class="sec-narrow head head--lg">
+      <p class="eyebrow">Descoberta · Fontes de conhecimento</p>
+      <h2 id="fontes-title" class="h2">Reconstruindo uma visão compartilhada</h2>
+      <p class="lead">
+        Se o problema era conhecimento espalhado, a primeira entrega foi juntá-lo. Fui atrás de quatro fontes reais —
+        cada uma respondendo a uma parte diferente da mesma
+        pergunta: <em>por que este cadastro ficou assim, e o que ele precisa ser?</em>
+      </p>
+    </div>
+    <div class="cols-2 sources">
+      {
+        sources.map((source, i) => (
+          <div class="card source">
+            <div class="source-head">
+              <span class="n">{String(i + 1).padStart(2, '0')}</span>
+              <div class="title">{source.title}</div>
+            </div>
+            <p>{source.text}</p>
+          </div>
+        ))
+      }
+    </div>
+    <ProcessShot
+      class="meeting"
+      src={workshop1}
+      alt="Reunião remota sobre dúvidas técnicas com o time de negócios (rostos borrados por privacidade)"
+      caption="Registro do processo original — alinhamento técnico com o time."
+      captionSize={11}
+    />
+  </section>
+
+  <!-- O que precisávamos descobrir — CSD -->
+  <section aria-labelledby="csd-title" class="sec rv block">
+    <div class="sec-narrow head head--md">
+      <p class="eyebrow">Descoberta · O que precisávamos descobrir</p>
+      <h2 id="csd-title" class="h2">Três perguntas que ainda não tinham resposta</h2>
+      <p class="lead">
+        Antes da matriz, as perguntas. Com tanto conhecimento disperso, precisei separar o que de fato sabíamos do que
+        só supúnhamos — e nomear o que faltava investigar:
+      </p>
+      <ul class="questions">
+        {questions.map((q) => <li>{q}</li>)}
+      </ul>
+      <p class="lead">
+        Para responder sem achismo, conduzi uma <strong>Matriz CSD</strong> numa dinâmica online com Produto,
+        Desenvolvimento, Marketing e Suporte — cada área contribuindo em tempo real.
+      </p>
+    </div>
+    <div class="cols-3 csd">
+      {csd.map((col) => <CsdColumn {...col} />)}
+    </div>
+    <ProcessShot
+      class="board"
+      src={matrizCsd}
+      alt="Matriz CSD construída no board durante a dinâmica com o time"
+      caption="Registro do processo original — a matriz sendo preenchida ao vivo, com Produto, Desenvolvimento, Marketing e Suporte de forma online."
+      height={340}
+      captionSize={11.5}
+      gap={18}
+    />
+  </section>
+
+  <!-- Entendendo o usuário — persona -->
+  <section aria-labelledby="persona-title" class="sec rv block">
+    <div class="sec-narrow head head--sm">
+      <p class="eyebrow">Descoberta · Entendendo o usuário</p>
+      <h2 id="persona-title" class="h2">Eduardo, o varejista por trás do cadastro</h2>
+      <p class="lead">
+        Uma das dúvidas da matriz era exatamente <em>quem é o usuário</em>. A persona foi construída a partir
+        do <strong>conhecimento acumulado pelo time de Marketing</strong> sobre o varejista atendido — uma representação
+        inicial que dá rosto às decisões, e que poderia (e deveria) ser aprofundada com pesquisa direta com usuários numa
+        fase seguinte.
+      </p>
+    </div>
+    <PersonaCard
+      name="EDUARDO"
+      role="Dono de comércio de bairro há 8+ anos"
+      origin="Origem: conhecimento do time de Marketing"
+      quote="Busco crédito flexível que se adeque à minha loja, com taxas competitivas para um crescimento seguro."
+      lists={[
+        {
+          title: 'Interesses',
+          items: ['Prazos e pagamento flexíveis', 'Tecnologia para a loja', 'Meios de pagamento modernos'],
+        },
+        {
+          title: 'Objetivos',
+          items: ['Abastecer melhor o estoque', 'Aumentar as vendas da loja', 'Pagamento integrado ao cliente'],
+        },
+      ]}
+      approach="Tem visão estratégica do varejo e busca constantemente formas de melhorar o negócio e a experiência de compra dos clientes."
+    />
+  </section>
+
+  <!-- O que a investigação revelou -->
+  <section aria-labelledby="dados-title" class="sec sec-narrow rv block findings">
+    <p class="eyebrow">Descoberta · Síntese</p>
+    <h2 id="dados-title" class="h2">O que a investigação revelou</h2>
+    <p class="lead">
+      Cruzando a Matriz CSD, os dados internos e as reclamações, cinco pontos ficaram claros — e passaram a guiar cada
+      decisão.
+    </p>
+    <div>
+      {
+        findings.map((f, i) => (
+          <div class="num-row">
+            <span class="num-row__n">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="finding-title">{f.title}</div>
+              <div class="finding-text">{f.text}</div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Decisões -->
+  <div id="cap-decisoes" class="band band--tint decisions">
+    <section aria-labelledby="dec-title" class="sec rv dec-intro">
+      <div class="sec-narrow">
+        <p class="eyebrow">Decisões · Frente 1</p>
+        <h2 id="dec-title" class="h2">Reconstruindo o cadastro, decisão por decisão</h2>
+        <p class="lead">
+          Cada mudança partiu de uma evidência concreta e virou uma decisão com intenção clara. O registro abaixo é o
+          log dessas decisões — o que existia antes, o que mudou e por quê.
+        </p>
+      </div>
+    </section>
+    <div class="sec dec-log">
+      <LogHead range="01 — 05 · cadastro" />
+      <div class="dlog">
+        <div class="dlog-row dlog-feature">
+          <div class="dlog-idx"><span class="n">01</span></div>
+          <div class="dlog-main">
+            <h4>Cadastro em duas etapas</h4>
+            <p>
+              Dados básicos primeiro; <b>ativação de crédito depois</b>, só para quem quiser. As 30+ telas lineares que
+              geravam abandono viraram um caminho curto com um segundo passo opcional.
+            </p>
+            <div class="dlog-meta dlog-meta--inline">
+              <div><span class="k">Evidência</span><span class="v">30+ telas lineares, abandono alto</span></div>
+              <div><span class="k">Intenção</span><span class="v intent">explorar sem se comprometer de cara</span></div>
+            </div>
+          </div>
+          <Image
+            class="feature-shot"
+            src={telaCadastro}
+            alt="Primeira etapa do cadastro redesenhado, com o essencial para começar"
+            widths={[280, 560]}
+            sizes="280px"
+          />
+        </div>
+        {
+          flowDecisions.map((d) => (
+            <div class="dlog-row">
+              <div class="dlog-idx">
+                <span class="n">{d.n}</span>
+              </div>
+              <div class="dlog-main">
+                <h4>{d.title}</h4>
+                <p set:html={d.text} />
+              </div>
+              <div class="dlog-meta">
+                <div>
+                  <span class="k">Evidência</span>
+                  <span class="v">{d.evidence}</span>
+                </div>
+                <div>
+                  <span class="k">Intenção</span>
+                  <span class="v intent">{d.intent}</span>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Frente 2: novas funcionalidades -->
+    <section aria-labelledby="feat-title" class="sec rv dec-features">
+      <div class="sec-narrow head">
+        <p class="eyebrow">Decisões · Frente 2</p>
+        <h2 id="feat-title" class="h2">Novas funcionalidades mapeadas pela pesquisa</h2>
+      </div>
+      <div class="opportunity">
+        <span class="pill pill--op">Oportunidade</span>
+        <p>
+          <strong>A maioria queria explorar o app antes de pedir crédito.</strong> Por isso cada funcionalidade abaixo dá
+          um motivo de uso recorrente — não só um fluxo de aprovação.
+        </p>
+      </div>
+      <LogHead range="06 — 09 · funcionalidades" />
+      <div class="dlog dlog--cyan">
+        {
+          featureDecisions.map((d) => (
+            <div class="dlog-row">
+              <div class="dlog-idx">
+                <span class="n">{d.n}</span>
+              </div>
+              <div class="dlog-main">
+                <h4>{d.title}</h4>
+                <p set:html={d.text} />
+              </div>
+              <div class="dlog-meta">
+                <div>
+                  <span class="k">Evidência</span>
+                  <span class="v">{d.evidence}</span>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Três frentes -->
+    <section aria-labelledby="obj-title" class="sec rv dec-fronts">
+      <div class="sec-narrow head">
+        <p class="eyebrow">Resumo das decisões</p>
+        <h2 id="obj-title" class="h2">Três frentes de trabalho</h2>
+      </div>
+      <div class="cols-3 fronts">
+        {
+          fronts.map((front) => (
+            <div class="card front">
+              <div class="icon" style={`--tint:${front.tint}`}>
+                <Image src={front.icon} alt="" aria-hidden="true" width={24} densities={[1, 2]} />
+              </div>
+              <div class="title">{front.title}</div>
+              <div class="text">{front.text}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <!-- Solução: wireflow -->
+  <section id="cap-solucao" aria-labelledby="wf-title" class="sec rv solution">
+    <div class="sec-narrow head head--sm">
+      <p class="eyebrow">Solução · A jornada</p>
+      <h2 id="wf-title" class="h2">Redesenhando a jornada, ponta a ponta</h2>
+      <p class="lead">
+        Percorri todo o cadastro como usuário, documentando cada etapa, os estados de erro e os pontos de acessibilidade
+        — e reconstruí o fluxo inteiro digitalmente. Cada decisão do usuário passou a ter um caminho claro, com estados
+        de erro e confirmação mapeados.
+      </p>
+    </div>
+    <ProcessShot
+      src={wireframes}
+      alt="Wireflow completo do cadastro do Trade+ reconstruído digitalmente, com todas as telas e conexões"
+      caption="O wireflow completo reconstruído digitalmente — a primeira documentação de ponta a ponta do fluxo, incluindo os pontos que antes viviam em Lorem Ipsum."
+      captionSize={12.5}
+    />
+    <ProcessShot
+      class="mapping"
+      src={fluxo}
+      alt="Registro do processo original do mapeamento do fluxo"
+      caption="Registro do processo original — o mapeamento inicial do fluxo, validado com o time e depois reconstruído na versão limpa acima."
+      height={440}
+      captionWidth={340}
+      captionSize={13.5}
+      gap={24}
+    />
+  </section>
+
+  <!-- Solução: a nova experiência -->
+  <section aria-labelledby="exp-title" class="sec rv block block--sm">
+    <div class="sec-narrow head head--md">
+      <p class="eyebrow">Solução · A nova experiência</p>
+      <h2 id="exp-title" class="h2">Telas de alta fidelidade, navegáveis</h2>
+      <p class="lead">
+        Entreguei o redesenho em alta fidelidade e navegável, para as partes interessadas visualizarem e interagirem com
+        as soluções antes da implementação — cobrindo tanto o cadastro redesenhado quanto as novas funcionalidades.
+      </p>
+    </div>
+    <div class="cols-2 screens">
+      {
+        screens.map((screen) => (
+          <div>
+            <div class="screen" style={`--tint:${screen.tint}`}>
+              <Image
+                src={screen.src}
+                alt={screen.alt}
+                widths={[480, 960]}
+                sizes="(max-width: 860px) 100vw, 480px"
+              />
+            </div>
+            <div class="title">{screen.title}</div>
+            <div class="text">{screen.text}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Impacto: o que mudou -->
+  <section id="cap-impacto" aria-labelledby="mudou-title" class="sec rv block">
+    <div class="sec-narrow head head--md">
+      <p class="eyebrow">Impacto · O que mudou</p>
+      <h2 id="mudou-title" class="h2">Antes e depois do cadastro</h2>
+      <p class="lead">
+        Mais do que uma lista de entregáveis, o projeto mudou a estrutura do produto e do trabalho em torno dele.
+      </p>
+    </div>
+    <div class="changes">
+      {changes.map((c) => <BeforeAfter {...c} />)}
+    </div>
+  </section>
+
+  <!-- Impacto: avaliações da loja -->
+  <div class="band reviews">
+    <section aria-labelledby="rev-title" class="sec rv">
+      <div class="reviews-head">
+        <p class="eyebrow">Impacto · Prova real</p>
+        <h2 id="rev-title" class="h2">O que os usuários disseram depois das mudanças</h2>
+        <p class="lead">
+          Avaliações orgânicas na loja de aplicativos após o redesenho entrar no ar. Não são teste de usabilidade formal
+          — mas são a voz de quem usa o app no dia a dia, e apontam na mesma direção das decisões: fluxo mais fácil e
+          intuitivo.
+        </p>
+      </div>
+      <div class="review-grid">
+        {reviews.map((r) => <StoreReview {...r} when="Há 2 anos" />)}
+      </div>
+    </section>
+  </div>
+
+  <!-- Impacto: o que ainda precisava ser validado -->
+  <section aria-labelledby="valid-title" class="sec sec-narrow rv block block--sm validation">
+    <p class="eyebrow">Impacto · Próximos passos</p>
+    <h2 id="valid-title" class="h2">O que ainda precisava ser validado</h2>
+    <p class="lead">
+      As avaliações da loja são um sinal real e animador, mas orgânico e espontâneo — não substituem teste de usabilidade
+      formal nem um acompanhamento estruturado com métricas pós-entrega, que não fizeram parte do escopo. Mesmo sem esses
+      testes, cada decisão teve uma base concreta:
+    </p>
+    <div>
+      {
+        evidenceBase.map((item) => (
+          <div class="num-row">
+            <span class="num-row__n">·</span>
+            <div class="lead" set:html={item} />
+          </div>
+        ))
+      }
+    </div>
+    <div class="indicators">
+      <div class="k">INDICADORES A ACOMPANHAR NA PRÓXIMA FASE</div>
+      <ul>
+        <li>Abandono no fluxo em duas etapas, comparado ao cadastro anterior</li>
+        <li>Volume de reclamações no suporte</li>
+        <li>Uso das novas funcionalidades (limite, boletos, FAQ)</li>
+        <li>Tempo de conclusão do cadastro</li>
+      </ul>
+      <p>
+        Medir esses indicadores seria o primeiro passo de uma fase seguinte, junto com pesquisa direta e testes com
+        usuário final.
+      </p>
+    </div>
+  </section>
+
+  <!-- Aprendizado -->
+  <section aria-labelledby="ref-title" class="sec rv block block--sm">
+    <div class="takeaways">
+      <p class="eyebrow">Aprendizado</p>
+      <h2 id="ref-title" class="h2">O que ficou desse projeto</h2>
+      <div class="cols-2 takeaway-cols">
+        {
+          learnings.map((l) => (
+            <div>
+              <div class="k">{l.title}</div>
+              <ul>{l.items.map((item) => <li>{item}</li>)}</ul>
+            </div>
+          ))
+        }
+      </div>
+      <div class="missed">
+        <div class="k">Oportunidades não aproveitadas</div>
+        <p>
+          Não consegui, no escopo, rodar entrevistas e testes de usabilidade após as decisões finais, nem acompanhar o
+          impacto com dados reais. Fica como o próximo passo mais claro — e como aprendizado sobre defender espaço para
+          validação desde o começo do projeto.
+        </p>
+      </div>
+    </div>
+  </section>
+</CaseLayout>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero-shot {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+    filter: drop-shadow(0 26px 46px rgba(40, 24, 110, 0.28));
+  }
+
+  /* ---------- Shared section rhythm ---------- */
+  .block {
+    margin-top: calc(110px * var(--sp, 1));
+  }
+
+  .block--sm {
+    margin-top: calc(100px * var(--sp, 1));
+  }
+
+  .sec .h2 {
+    margin-bottom: 18px;
+  }
+
+  .sec .lead {
+    margin: 0;
+  }
+
+  .head--lg {
+    margin-bottom: 38px;
+  }
+
+  .head--md {
+    margin-bottom: 36px;
+  }
+
+  .head--sm {
+    margin-bottom: 30px;
+  }
+
+  /* ---------- Resumo ---------- */
+  .summary {
+    margin-top: calc(104px * var(--sp, 1));
+  }
+
+  .card.summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 28px 26px;
+  }
+
+  .summary-card .mark {
+    font-family: var(--ff-display);
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 0.9;
+  }
+
+  .summary-card .title {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .summary-card p {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  .summary-card .go {
+    font-weight: 700;
+  }
+
+  /* ---------- Contexto ---------- */
+  .context {
+    margin-top: calc(96px * var(--sp, 1));
+  }
+
+  .context .h2 {
+    margin-bottom: 22px;
+  }
+
+  .context .lead + .lead {
+    margin-top: 18px;
+  }
+
+  /* ---------- O problema real ---------- */
+  .problem {
+    margin-top: calc(96px * var(--sp, 1));
+  }
+
+  .problem .sec {
+    padding: calc(96px * var(--sp, 1)) 24px;
+  }
+
+  .problem .h2 {
+    margin-bottom: 26px;
+  }
+
+  .problem .lead {
+    margin-bottom: 22px;
+  }
+
+  .problem .lead:last-of-type {
+    margin-bottom: 30px;
+  }
+
+  .quote {
+    margin: 0 0 40px;
+    padding-left: 24px;
+    border-left: 3px solid var(--rose-light);
+  }
+
+  .quote p {
+    margin: 0;
+    font-size: 27px;
+    line-height: 1.35;
+  }
+
+  .quote cite {
+    display: block;
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-style: normal;
+    font-weight: 600;
+    color: #d6cbf5;
+  }
+
+  .cols-3.stats {
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .stat {
+    padding: 22px 22px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .stat .mark {
+    margin-bottom: 12px;
+    font-family: var(--ff-display);
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 0.9;
+    color: var(--rose-light);
+  }
+
+  .stat .text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e4e2fa;
+  }
+
+  /* ---------- Fontes ---------- */
+  .cols-2.sources {
+    gap: 22px;
+  }
+
+  .source {
+    padding: 26px 28px;
+  }
+
+  .source-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .source-head .n {
+    font-family: var(--ff-display);
+    font-size: 26px;
+    font-weight: 800;
+  }
+
+  .source-head .title {
+    font-size: 16.5px;
+    font-weight: 800;
+  }
+
+  .source p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .meeting {
+    max-width: 300px;
+    margin-top: 26px;
+  }
+
+  /* ---------- CSD ---------- */
+  .questions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 22px 0 20px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .questions li {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-size: 15.5px;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .questions li::before {
+    content: '?';
+    flex: none;
+    font-family: var(--ff-display);
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--rose-light);
+  }
+
+  .cols-3.csd {
+    gap: 20px;
+  }
+
+  .board {
+    margin-top: 20px;
+  }
+
+  /* ---------- Síntese ---------- */
+  .findings .lead {
+    margin-bottom: 20px;
+  }
+
+  .finding-title {
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-body);
+  }
+
+  .finding-text {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* ---------- Decisões ---------- */
+  .decisions {
+    margin-top: calc(110px * var(--sp, 1));
+  }
+
+  .sec.dec-intro {
+    padding: calc(96px * var(--sp, 1)) 24px 40px;
+  }
+
+  .dec-intro .sec-narrow {
+    margin-bottom: 14px;
+  }
+
+  .dec-intro .h2,
+  .dec-features .h2 {
+    margin-bottom: 16px;
+  }
+
+  .dec-intro .lead {
+    margin-bottom: 8px;
+  }
+
+  .sec.dec-log {
+    padding-bottom: 40px;
+  }
+
+  /* On the dark surface every bold run reads white, including the cyan log. */
+  .dlog-main p :global(b) {
+    color: var(--text-strong);
+  }
+
+  .dlog-row.dlog-feature {
+    grid-template-columns: 64px minmax(0, 1.45fr) 280px;
+    align-items: center;
+  }
+
+  .dlog-meta.dlog-meta--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 26px;
+    margin-top: 16px;
+    padding-top: 0;
+  }
+
+  .feature-shot {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    filter: drop-shadow(0 18px 34px rgba(0, 0, 0, 0.4));
+  }
+
+  .sec.dec-features {
+    padding: 40px 24px;
+  }
+
+  .dec-features .head {
+    margin-bottom: 22px;
+  }
+
+  .dlog--cyan .dlog-idx .n {
+    color: var(--gold);
+  }
+
+  .opportunity {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    max-width: 876px;
+    margin-bottom: 24px;
+    padding: 24px 28px;
+    border: 1px solid #e6d3a0;
+    border-radius: 18px;
+    background: rgba(84, 206, 226, 0.16);
+  }
+
+  .opportunity .pill {
+    flex: none;
+    margin-top: 2px;
+  }
+
+  .opportunity p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gold);
+  }
+
+  .sec.dec-fronts {
+    padding: 24px 24px calc(96px * var(--sp, 1));
+  }
+
+  .dec-fronts .head {
+    margin-bottom: 30px;
+  }
+
+  .dec-fronts .h2 {
+    margin-bottom: 0;
+  }
+
+  .cols-3.fronts {
+    gap: 20px;
+  }
+
+  .front {
+    padding: 30px 22px;
+    text-align: center;
+  }
+
+  .front .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--tint);
+  }
+
+  .front .title {
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .front .text {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  /* ---------- Solução ---------- */
+  .solution {
+    margin-top: calc(104px * var(--sp, 1));
+  }
+
+  .mapping {
+    margin-top: 24px;
+  }
+
+  .cols-2.screens {
+    gap: 24px;
+  }
+
+  .screen {
+    padding: 18px;
+    border-radius: var(--radius-xl);
+    background: var(--tint);
+  }
+
+  .screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .screens .title {
+    margin-top: 14px;
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+
+  .screens .text {
+    margin-top: 2px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Impacto ---------- */
+  .changes {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .reviews {
+    margin-top: calc(100px * var(--sp, 1));
+    background: #0d0d0f;
+  }
+
+  .reviews .sec {
+    padding: calc(88px * var(--sp, 1)) 24px;
+  }
+
+  .reviews-head {
+    max-width: 640px;
+  }
+
+  .reviews-head .h2 {
+    margin-bottom: 14px;
+  }
+
+  .reviews-head .lead {
+    margin-bottom: 30px;
+  }
+
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .validation .lead {
+    margin-bottom: 24px;
+  }
+
+  .validation .num-row:first-of-type {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .validation .num-row .lead {
+    margin: 0;
+    color: var(--text-body);
+  }
+
+  /* Legacy box was 760px of content plus its padding. */
+  .validation .indicators {
+    max-width: 816px;
+    margin-top: 26px;
+    padding: 26px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    background: linear-gradient(160deg, rgba(158, 108, 239, 0.16), rgba(158, 108, 239, 0.14));
+  }
+
+  .indicators .k {
+    margin-bottom: 12px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--rose-light);
+  }
+
+  .indicators ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .indicators p {
+    margin: 16px 0 0;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  /* ---------- Aprendizado ---------- */
+  .takeaways {
+    padding: 58px 48px;
+    border-radius: 32px;
+    background: linear-gradient(140deg, var(--plum), #5a2690);
+  }
+
+  .takeaways .h2 {
+    margin-bottom: 30px;
+  }
+
+  .cols-2.takeaway-cols {
+    gap: 36px;
+  }
+
+  .takeaways .k {
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--rose-light);
+  }
+
+  .takeaways ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .takeaways li,
+  .takeaways p {
+    color: #e4e2fa;
+  }
+
+  .missed {
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .missed .k {
+    margin-bottom: 10px;
+  }
+
+  .missed p {
+    max-width: 720px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 860px) {
+    .opportunity {
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .dlog-row.dlog-feature {
+      grid-template-columns: 44px minmax(0, 1fr);
+    }
+
+    .feature-shot {
+      grid-column: 2;
+      max-width: 280px;
+    }
+
+    .review-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .takeaways {
+      padding: 40px 24px;
+    }
+  }
+</style>

@@ -1,0 +1,202 @@
+---
+/**
+ * Persona card: a portrait panel on the left (an empty gradient frame until
+ * there is a photo) and quote, lists and approach on the right.
+ */
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+  name: string;
+  role: string;
+  origin: string;
+  quote: string;
+  lists: { title: string; items: string[] }[];
+  approach: string;
+  photo?: ImageMetadata;
+  photoAlt?: string;
+}
+
+const { name, role, origin, quote, lists, approach, photo, photoAlt = '' } = Astro.props;
+---
+
+<div class="card persona">
+  <div class="portrait">
+    {photo && <Image src={photo} alt={photoAlt} widths={[320, 640]} sizes="320px" />}
+    <div class="id">
+      <div class="name">{name}</div>
+      <div class="role">{role}</div>
+      <div class="origin"><span class="dot" aria-hidden="true"></span>{origin}</div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="quote">
+      <span class="mark" aria-hidden="true">“</span>
+      <p class="serif">{quote}</p>
+    </div>
+    <div class="lists">
+      {
+        lists.map((list) => (
+          <div>
+            <div class="k">{list.title}</div>
+            <ul>{list.items.map((item) => <li>{item}</li>)}</ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="approach">
+      <div class="k">Abordagem</div>
+      <p>{approach}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .persona {
+    display: grid;
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  .portrait {
+    position: relative;
+    background: linear-gradient(160deg, var(--rose-deep), var(--plum));
+  }
+
+  .portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(5, 6, 48, 0.92) 0%, rgba(5, 6, 48, 0.35) 45%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .id {
+    position: absolute;
+    z-index: 1;
+    left: 28px;
+    right: 28px;
+    bottom: 26px;
+  }
+
+  .name {
+    font-family: var(--ff-display);
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.5px;
+  }
+
+  .role {
+    margin-top: 4px;
+    font-size: 12.5px;
+  }
+
+  .origin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    flex: none;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rose-light);
+  }
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: 38px 40px;
+  }
+
+  .quote {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .mark {
+    flex: none;
+    font-family: var(--ff-display);
+    font-size: 52px;
+    line-height: 0.7;
+  }
+
+  .quote p {
+    flex: 1;
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--text-body);
+  }
+
+  .lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .k {
+    margin-bottom: 10px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .approach {
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .approach p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 860px) {
+    .persona {
+      grid-template-columns: 1fr;
+    }
+
+    .portrait {
+      min-height: 320px;
+    }
+
+    .body {
+      padding: 30px 24px;
+    }
+
+    .lists {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

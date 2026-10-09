@@ -1,0 +1,330 @@
+---
+/**
+ * Before/after screen explorer: one tab per screen, an Antes/Depois toggle
+ * (shared by all tabs), a fixed-ratio stage and the four-row analysis.
+ * Every panel is rendered at build time; the script only flips state.
+ *
+ *   <ScreenCompare id="comparador" screens={telas} />
+ *
+ * Any element with `data-compare-go="<screen id>"` opens that screen in
+ * "Antes" mode and scrolls the explorer into view.
+ */
+import type { ImageMetadata } from 'astro';
+import CaseFigure from '@/components/case/CaseFigure.astro';
+
+export interface CompareScreen {
+  /** Slug used for the tab ids and `data-compare-go`. */
+  id: string;
+  /** Tab label. */
+  nome: string;
+  /** Heading above the analysis (also builds the alt texts). */
+  titulo: string;
+  antes: ImageMetadata;
+  depois: ImageMetadata;
+  /** Stage ratio, e.g. "1881/892". The "depois" shot scrolls inside it. */
+  aspect: string;
+  problema: string;
+  decisao: string;
+  solucao: string;
+  beneficio: string;
+}
+
+interface Props {
+  /** Prefix for tab/panel ids (the section itself carries the anchor). */
+  id: string;
+  screens: CompareScreen[];
+  /** Accessible name of the tab list. */
+  label?: string;
+}
+
+const { id, screens, label = 'Telas' } = Astro.props;
+
+const rows = [
+  { key: 'problema', label: 'Problema anterior', tone: 'subtle' },
+  { key: 'decisao', label: 'Decisão de design', tone: 'rose' },
+  { key: 'solucao', label: 'Solução proposta', tone: 'cyan' },
+  { key: 'beneficio', label: 'Benefício esperado', tone: 'subtle' },
+] as const;
+
+const sizes = '(max-width: 1088px) 100vw, 720px';
+---
+
+<div class="compare" data-compare data-mode="antes">
+  <div class="tabs" role="tablist" aria-label={label}>
+    {
+      screens.map((s, i) => (
+        <button
+          type="button"
+          class="tab"
+          role="tab"
+          id={`${id}-tab-${s.id}`}
+          aria-controls={`${id}-panel-${s.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+          data-screen={s.id}
+        >
+          {s.nome}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    screens.map((s, i) => (
+      <div
+        class="panel"
+        role="tabpanel"
+        id={`${id}-panel-${s.id}`}
+        aria-labelledby={`${id}-tab-${s.id}`}
+        hidden={i !== 0}
+      >
+        <div class="view">
+          <div class="toggle" role="group" aria-label="Versão">
+            <button type="button" data-mode-btn="antes" aria-pressed="true">
+              Antes
+            </button>
+            <button type="button" data-mode-btn="depois" aria-pressed="false">
+              Depois
+            </button>
+          </div>
+          <div class="stage">
+            <CaseFigure
+              class="shot shot--antes"
+              src={s.antes}
+              alt={`${s.titulo} na versão antiga`}
+              aspect={s.aspect}
+              zoom={false}
+              sizes={sizes}
+            />
+            <CaseFigure
+              class="shot shot--depois"
+              src={s.depois}
+              alt={`${s.titulo} na versão nova`}
+              aspect={s.aspect}
+              scroll
+              zoom={false}
+              sizes={sizes}
+            />
+          </div>
+        </div>
+        <div class="analysis">
+          <h3>{s.titulo}</h3>
+          <div class="rows">
+            {rows.map((r) => (
+              <div class:list={['row', `row--${r.key}`]}>
+                <span class:list={['k', `tone-${r.tone}`]}>{r.label}</span>
+                <span class="v">{s[r.key]}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-compare]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const modeBtns = [...root.querySelectorAll<HTMLButtonElement>('[data-mode-btn]')];
+
+    const setMode = (mode: string) => {
+      root.dataset.mode = mode;
+      modeBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.modeBtn === mode)));
+    };
+
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+      });
+      if (focus) tab.focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      // Arrow keys / Home / End move between tabs (automatic activation).
+      tab.addEventListener('keydown', (e) => {
+        const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        select(tabs[(next + tabs.length) % tabs.length], true);
+      });
+    });
+    modeBtns.forEach((b) => b.addEventListener('click', () => setMode(b.dataset.modeBtn!)));
+
+    // Shortcuts from the text ("Ver Dashboard antes e depois →").
+    document.querySelectorAll<HTMLElement>('[data-compare-go]').forEach((link) => {
+      const tab = tabs.find((t) => t.dataset.screen === link.dataset.compareGo);
+      if (!tab) return;
+      link.addEventListener('click', () => {
+        select(tab);
+        setMode('antes');
+        const section = root.closest('section') ?? root;
+        window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      });
+    });
+  });
+</script>
+
+<style>
+  .compare {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tab {
+    padding: 10px 18px;
+    border: 1px solid rgba(243, 242, 255, 0.25);
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .tab:hover {
+    border-color: var(--warm-40);
+    color: var(--warm);
+  }
+
+  .tab[aria-selected='true'] {
+    border-color: var(--warm);
+    background: var(--warm);
+    color: var(--void);
+  }
+
+  .panel {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 40px;
+  }
+
+  .panel[hidden] {
+    display: none;
+  }
+
+  .view {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 4px;
+    border-radius: var(--radius-pill);
+    background: rgba(243, 242, 255, 0.08);
+  }
+
+  .toggle button {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .toggle button[aria-pressed='true'] {
+    background: var(--rose);
+    color: var(--void);
+  }
+
+  /* Both shots share the stage ratio; the mode decides which one shows. */
+  .compare[data-mode='antes'] .stage :global(.shot--depois),
+  .compare[data-mode='depois'] .stage :global(.shot--antes) {
+    display: none;
+  }
+
+  .analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 56px;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .rows {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--warm-14);
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--warm-14);
+  }
+
+  .k {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .tone-subtle {
+    color: var(--text-subtle);
+  }
+
+  .tone-rose {
+    color: var(--rose-light);
+  }
+
+  .tone-cyan {
+    color: var(--gold);
+  }
+
+  .v {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text-muted);
+  }
+
+  .row--solucao .v {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--warm);
+  }
+
+  @media (max-width: 1088px) {
+    .panel {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .analysis {
+      padding-top: 0;
+    }
+  }
+</style>

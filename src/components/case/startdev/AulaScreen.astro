@@ -1,0 +1,328 @@
+---
+/** Prototype screen "Aula": course curriculum + lesson player and material. */
+import AppWindow from './AppWindow.astro';
+import SdIcon, { type SdIconName } from './SdIcon.astro';
+
+const module01 = [
+  { title: 'O que é um algoritmo', time: '18 min', state: 'done' },
+  { title: 'Pseudocódigo e fluxogramas', time: '24 min', state: 'done' },
+  { title: 'Variáveis e tipos de dados', time: '45 min', state: 'now' },
+  { title: 'Operadores e expressões', time: '32 min', state: 'todo' },
+  { title: 'Condicionais: if e else', time: '40 min', state: 'todo' },
+];
+const module02 = [
+  { title: 'Estruturas de repetição', time: '45 min' },
+  { title: 'Vetores e matrizes', time: '30 min' },
+];
+const material: { icon: SdIconName; name: string; desc: string; cta: string }[] = [
+  { icon: 'file', name: 'Slides da aula', desc: 'variaveis-tipos.pdf · 1,2 MB', cta: 'Baixar →' },
+  { icon: 'brackets', name: 'Código da aula', desc: 'Exemplos de troca de valores, no GitHub', cta: 'Abrir repositório →' },
+  { icon: 'activities', name: 'Exercício do módulo', desc: 'Prazo: 12 de janeiro · nível fácil', cta: 'Resolver →' },
+];
+---
+
+<AppWindow url="app.startdev.com.br/curso/logica-de-programacao/aula-03" nav="cursos" layout="col">
+  <aside class="sd-col" aria-label="Currículo do curso">
+    <div>
+      <div class="mod-head">
+        <span>Módulo 01</span>
+        <span class="count">2/5 aulas</span>
+      </div>
+      <div class="sd-track" style="--p:40%"><span></span></div>
+      <div class="hint">Faltam 3 aulas para liberar o Módulo 02.</div>
+    </div>
+    <div class="sd-search"><SdIcon name="search" size={15} stroke={2} />Buscar aula…</div>
+    <div>
+      <div class="sd-label group">Lógica de programação</div>
+      <div class="lessons">
+        {
+          module01.map((l) => (
+            <a class:list={['sd-lesson', { on: l.state === 'now' }]} href="#ui-title">
+              <span class:list={['sd-dot', { 'sd-dot--done': l.state === 'done', 'sd-dot--now': l.state === 'now' }]}>
+                {l.state === 'done' && <SdIcon name="check" size={10} stroke={3.4} />}
+                {l.state === 'now' && <SdIcon name="play" size={9} />}
+              </span>
+              <span class="tt">{l.title}</span>
+              <span class="mn">{l.time}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div>
+      <div class="mod-head locked">
+        <span>Módulo 02</span>
+        <span class="lock"><SdIcon name="lock" size={11} stroke={2} />Bloqueado</span>
+      </div>
+      <div class="lessons lessons--locked">
+        {
+          module02.map((l) => (
+            <span class="sd-lesson">
+              <span class="sd-dot" />
+              <span class="tt">{l.title}</span>
+              <span class="mn">{l.time}</span>
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </aside>
+
+  <div class="sd-main">
+    <div class="sd-hd">
+      <h1 class="sd-h1">Lógica de programação</h1>
+      <div class="sd-tabs">
+        <span class="sd-tab on">Aula</span>
+        <span class="sd-tab">Anotações · 3</span>
+        <span class="sd-tab">Atividade · 1</span>
+      </div>
+    </div>
+    <div>
+      <p class="sd-crumb">Módulo 01 · Aula 03 · 45 min</p>
+      <h2 class="lesson-title">Variáveis e tipos de dados</h2>
+    </div>
+    <p class="sd-lead">
+      Como a memória guarda um valor, por que <b>int</b> e <b>String</b> não se misturam, e o que acontece quando você
+      troca o conteúdo de duas variáveis. É a base do exercício de algoritmos do módulo.
+    </p>
+    <div class="player">
+      <span class="play"><SdIcon name="play" size={22} /></span>
+      <div class="controls">
+        <div class="scrub"><span></span></div>
+        <div class="times"><span>09:52</span><span>45:00</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="mat-head">
+        <span>Material da aula</span>
+        <span class="count-muted">3 itens</span>
+      </div>
+      <div class="mat">
+        {
+          material.map((m) => (
+            <a href="#ui-title">
+              <SdIcon name={m.icon} size={20} stroke={1.7} />
+              <span class="nm">{m.name}</span>
+              <span class="ds">{m.desc}</span>
+              <span class="go">{m.cta}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" class="sd-btn">
+        Marcar como concluída <SdIcon name="check" size={15} stroke={2.4} />
+      </button>
+      <button type="button" class="sd-btn sd-btn--ghost">Próxima: Operadores e expressões</button>
+    </div>
+  </div>
+</AppWindow>
+
+<style>
+  .mod-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .count {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sd-blue);
+  }
+
+  .sd-track {
+    height: 6px;
+    border-radius: 4px;
+  }
+
+  .sd-track span {
+    background: var(--sd-blue);
+  }
+
+  .hint {
+    margin-top: 7px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--sd-muted);
+  }
+
+  .group {
+    margin-bottom: 8px;
+    color: #8a93a3;
+  }
+
+  .lessons {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .lessons--locked {
+    opacity: 0.55;
+  }
+
+  .locked {
+    font-size: 13.5px;
+    color: #8a93a3;
+  }
+
+  .lock {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10.5px;
+    font-weight: 400;
+  }
+
+  .lesson-title {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    color: var(--sd-navy);
+  }
+
+  .player {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: #0f1b2e;
+  }
+
+  .play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+    color: var(--sd-blue);
+  }
+
+  .controls {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 12px 16px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.72));
+  }
+
+  .scrub {
+    overflow: hidden;
+    height: 4px;
+    margin-bottom: 9px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.32);
+  }
+
+  .scrub span {
+    display: block;
+    width: 22%;
+    height: 100%;
+    background: #4c86f5;
+  }
+
+  .times {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .mat-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 13px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .count-muted {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--sd-muted);
+  }
+
+  .mat {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .mat a {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 17px;
+    border: 1px solid var(--sd-card-line);
+    border-radius: 12px;
+    background: var(--sd-soft);
+    color: var(--sd-blue);
+    transition:
+      border-color 0.15s,
+      transform 0.15s;
+  }
+
+  .mat a:hover {
+    border-color: #c7d6f5;
+    transform: translateY(-1px);
+  }
+
+  .nm {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--sd-navy);
+  }
+
+  .ds {
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--sd-muted-2);
+  }
+
+  .go {
+    margin-top: 2px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--sd-blue);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding-top: 6px;
+  }
+
+  @media (max-width: 420px) {
+    .actions :global(.sd-btn) {
+      flex: 1 1 100%;
+      height: auto;
+      min-height: 44px;
+      padding: 10px 16px;
+      white-space: normal;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .mat {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

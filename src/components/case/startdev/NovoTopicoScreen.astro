@@ -1,0 +1,412 @@
+---
+/** Prototype screen "Novo tópico": the topic form (read-only demo) + profile and tips. */
+import { Image } from 'astro:assets';
+import AppWindow from './AppWindow.astro';
+import SdIcon, { type SdIconName } from './SdIcon.astro';
+import avatar from '@/assets/case/marielly-avatar.png';
+
+const tools: { icon: SdIconName; label: string }[] = [
+  { icon: 'link', label: 'Inserir link' },
+  { icon: 'code', label: 'Bloco de código' },
+  { icon: 'list', label: 'Lista com marcadores' },
+  { icon: 'listOl', label: 'Lista numerada' },
+];
+const categories = ['Lógica de programação', 'Ambiente de trabalho', 'Git e GitHub', 'Atividades e correções'];
+const tips = [
+  'Diga o que já tentou e qual erro apareceu.',
+  'Cole o código no bloco próprio, não como imagem.',
+  'Publicar vale <b>+2 pontos</b>; resposta útil, +5.',
+];
+---
+
+<AppWindow url="app.startdev.com.br/forum/novo-topico" nav="forum">
+  <div class="sd-main sd-main--forum">
+    <div class="sd-hd">
+      <h1 class="sd-h1">Novo tópico</h1>
+      <div class="sd-tabs">
+        <span class="sd-tab">Comunidade</span>
+        <span class="sd-tab on"><SdIcon name="house" size={15} />Meus tópicos</span>
+      </div>
+    </div>
+
+    <div class="sd-card sd-split">
+      <form class="form">
+        <div class="pills">
+          <button type="button" class="sd-pill on"><SdIcon name="plus" size={15} stroke={2.4} />Novo tópico</button>
+          <button type="button" class="sd-pill"><SdIcon name="send" size={15} />Publicados · 6</button>
+          <button type="button" class="sd-pill"><SdIcon name="chat" size={15} />Rascunhos · 2</button>
+        </div>
+
+        <div>
+          <label class="sd-lab" for="sd-t">Título <span class="sd-req">*</span></label>
+          <input id="sd-t" class="sd-in" type="text" value="Por que meu while nunca para de rodar?" readonly />
+          <p class="sd-help">Resuma a dúvida em uma frase. Perguntas com título específico recebem resposta 3× mais rápido.</p>
+        </div>
+
+        <div>
+          <label class="sd-lab" for="sd-c">Texto <span class="sd-req">*</span></label>
+          <div class="editor">
+            <div class="toolbar" role="toolbar" aria-label="Formatação do texto">
+              {
+                tools.map((t) => (
+                  <button type="button" aria-label={t.label}>
+                    <SdIcon name={t.icon} size={17} stroke={1.8} />
+                  </button>
+                ))
+              }
+              <span class="grow"></span>
+              <button type="button" class="preview">Pré-visualizar</button>
+            </div>
+            <textarea id="sd-c" rows="7" readonly>Estou no exercício da tabuada e o programa imprime a mesma linha para sempre. Coloquei o contador antes do laço, como no exemplo da aula 03, mas não achei o erro.</textarea>
+            <div class="attach">
+              <button type="button" class="add-img"><SdIcon name="image" size={15} stroke={1.8} />Adicionar imagem</button>
+              <span>PNG ou JPG, até 2 MB</span>
+              <span class="count">168 / 2000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pair">
+          <div>
+            <label class="sd-lab" for="sd-cat">Categoria <span class="sd-req">*</span></label>
+            <div class="select">
+              <select id="sd-cat" class="sd-in">
+                {categories.map((c) => <option>{c}</option>)}
+              </select>
+              <SdIcon name="down" size={15} stroke={2.2} />
+            </div>
+            <p class="sd-help">Define em qual mural o tópico aparece.</p>
+          </div>
+          <div>
+            <label class="sd-lab" for="sd-tags">Tags</label>
+            <div class="tag-field">
+              {
+                ['repetição', 'python'].map((t) => (
+                  <span class="sd-chip sd-chip--blue">
+                    {t}
+                    <SdIcon name="x" size={10} stroke={3} />
+                  </span>
+                ))
+              }
+              <input id="sd-tags" type="text" placeholder="Adicione até 5 tags…" readonly />
+            </div>
+            <p class="sd-help">Enter para confirmar cada tag. Elas alimentam o filtro rápido do fórum.</p>
+          </div>
+        </div>
+
+        <div class="submit">
+          <span class="saved"><SdIcon name="check" size={14} stroke={2.6} />Rascunho salvo há 1 min</span>
+          <div class="buttons">
+            <button type="button" class="sd-btn sd-btn--ghost">Salvar rascunho</button>
+            <button type="submit" class="sd-btn"><SdIcon name="send" size={15} />Publicar tópico</button>
+          </div>
+        </div>
+      </form>
+
+      <aside class="side" aria-label="Seu perfil e orientações">
+        <div class="profile">
+          <Image src={avatar} alt="Foto de Marielly" class="photo" width={84} densities={[1, 2]} />
+          <div class="name">Marielly Barbosa</div>
+          <div class="handle">@marielly · turma 2020.2</div>
+          <div class="stats">
+            <div><span class="n">125</span>pontos</div>
+            <div><span class="n n--ok">8</span>respostas úteis</div>
+          </div>
+        </div>
+        <div class="tips">
+          <div class="tips-head"><SdIcon name="star" size={15} stroke={1.8} />Antes de publicar</div>
+          {
+            tips.map((tip) => (
+              <div class="tip">
+                <SdIcon name="check" size={13} stroke={3} />
+                <span set:html={tip} />
+              </div>
+            ))
+          }
+        </div>
+      </aside>
+    </div>
+  </div>
+</AppWindow>
+
+<style>
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .editor {
+    overflow: hidden;
+    border: 1px solid var(--sd-line-3);
+    border-radius: 9px;
+    background: #fff;
+  }
+
+  .toolbar {
+    display: flex;
+    gap: 4px;
+    padding: 7px 9px;
+    border-bottom: 1px solid var(--sd-line);
+    background: #fafbfe;
+  }
+
+  .toolbar button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 7px;
+    background: none;
+    color: var(--sd-slate);
+    cursor: pointer;
+  }
+
+  .grow {
+    flex: 1;
+  }
+
+  .toolbar .preview {
+    width: auto;
+    padding: 0 11px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--sd-blue);
+  }
+
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    outline: none;
+    resize: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--sd-ink);
+  }
+
+  .attach {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--sd-line);
+    background: #fafbfe;
+    font-size: 11.5px;
+    color: var(--sd-muted);
+  }
+
+  .add-img {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 999px;
+    background: var(--sd-tint-2);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--sd-blue);
+    cursor: pointer;
+  }
+
+  .count {
+    margin-left: auto;
+    font-size: 11px;
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .select {
+    position: relative;
+  }
+
+  .select select {
+    appearance: none;
+    padding-right: 38px;
+  }
+
+  .select :global(svg) {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--sd-muted);
+  }
+
+  .tag-field {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 7px;
+    min-height: 46px;
+    padding: 6px 10px;
+    border: 1px solid var(--sd-line-3);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .tag-field input {
+    flex: 1;
+    min-width: 120px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13.5px;
+    color: var(--sd-ink);
+  }
+
+  .tag-field input::placeholder {
+    color: var(--sd-faint);
+  }
+
+  .submit {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding-top: 4px;
+    border-top: 1px solid var(--sd-line);
+  }
+
+  .saved {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 16px;
+    font-size: 12px;
+    color: var(--sd-muted);
+  }
+
+  .saved :global(svg) {
+    color: var(--sd-green);
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-left: auto;
+    padding-top: 16px;
+  }
+
+  .side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .profile {
+    padding: 20px;
+    border: 1px solid var(--sd-line);
+    border-radius: 12px;
+    background: #fff;
+    text-align: center;
+  }
+
+  .photo {
+    width: 84px;
+    height: 84px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .name {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .handle {
+    margin-top: 2px;
+    font-size: 11.5px;
+    color: var(--sd-muted);
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--sd-line);
+    font-size: 10.5px;
+    color: var(--sd-muted);
+  }
+
+  .stats .n {
+    display: block;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--sd-blue);
+  }
+
+  .stats .n--ok {
+    color: var(--sd-green-ink);
+  }
+
+  .tips {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 18px;
+    border: 1px solid var(--sd-line);
+    border-radius: 12px;
+    background: var(--sd-soft);
+  }
+
+  .tips-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sd-navy);
+  }
+
+  .tips-head :global(svg) {
+    color: var(--sd-blue);
+  }
+
+  .tip {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--sd-text);
+  }
+
+  .tip :global(svg) {
+    flex: none;
+    margin-top: 3px;
+    color: var(--sd-green);
+  }
+
+  @media (max-width: 1100px) {
+    .pair {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

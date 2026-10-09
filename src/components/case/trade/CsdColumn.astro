@@ -1,0 +1,89 @@
+---
+/** One column of the CSD matrix (Certezas / Suposições / Dúvidas). */
+interface Props {
+  label: string;
+  items: string[];
+  /** Top bar color. */
+  bar: string;
+  /** Dot color (glow uses the same hue). */
+  dot: string;
+  /** Label and bullet tint. */
+  tint: string;
+}
+
+const { label, items, bar, dot, tint } = Astro.props;
+---
+
+<div class="csd" style={`--bar:${bar};--dot:${dot};--tint:${tint}`}>
+  <p class="label"><span class="dot" aria-hidden="true"></span>{label}</p>
+  <ul>{items.map((item) => <li>{item}</li>)}</ul>
+</div>
+
+<style>
+  .csd {
+    position: relative;
+    overflow: hidden;
+    padding: 26px 26px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 20px;
+    background: rgba(10, 12, 74, 0.94);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+  }
+
+  .csd::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--bar);
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--tint);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dot);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--dot) 50%, transparent);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  li::before {
+    content: '';
+    flex: none;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--tint) 60%, transparent);
+    transform: translateY(-3px);
+  }
+</style>

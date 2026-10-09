@@ -1,0 +1,104 @@
+---
+/** Career timeline: year column + role / company / description. */
+interface Props {
+  items: { year: string; until?: string; role: string; current?: boolean; company: string; desc: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="tl">
+  {
+    items.map((item) => (
+      <>
+        <div class="yr">
+          {item.year}
+          {item.until && <span class="until">{item.until}</span>}
+        </div>
+        <div>
+          <div class="role">
+            {item.role} {item.current && <span class="now">Atual</span>}
+          </div>
+          <div class="co">{item.company}</div>
+          <p class="desc">{item.desc}</p>
+        </div>
+      </>
+    ))
+  }
+</div>
+
+<style>
+  .tl {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    column-gap: 36px;
+  }
+
+  .tl > div {
+    padding: 26px 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .tl > div:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .yr {
+    font-family: var(--ff-display);
+    font-size: 30px;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .until {
+    display: block;
+    font-family: var(--ff-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink-2);
+  }
+
+  .role {
+    margin: 0 0 4px;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .now {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 3px 8px;
+    vertical-align: middle;
+    background: var(--plum);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    color: var(--paper);
+  }
+
+  .co {
+    font-weight: 700;
+    color: var(--rose-deep);
+  }
+
+  .desc {
+    max-width: 640px;
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-2);
+  }
+
+  @media (max-width: 960px) {
+    .tl {
+      grid-template-columns: 80px 1fr;
+      column-gap: 20px;
+    }
+
+    .yr {
+      font-size: 22px;
+    }
+  }
+</style>

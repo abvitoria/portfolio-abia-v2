@@ -1,0 +1,118 @@
+---
+/**
+ * Hero for inner pages (Cases, Contato): mono top strip, giant display
+ * title, italic subtitle and lead. An optional greeting goes above the title.
+ */
+import type { ComponentProps } from 'astro/types';
+import HeroTop from './HeroTop.astro';
+import type { L } from '@/data/i18n';
+
+interface Props {
+  id: string;
+  top: Omit<ComponentProps<typeof HeroTop>, 'class'>;
+  open?: L;
+  title: L;
+  sub: L;
+  lead: L;
+}
+
+const { id, top, open, title, sub, lead } = Astro.props;
+---
+
+<section class="hero" aria-labelledby={id}>
+  <div class="wrap grid12">
+    <HeroTop class="top" {...top} />
+    {open && <p class="open rv" data-en={open.en} set:html={open.pt} />}
+    <h1 id={id} class="title rv" data-en={title.en} set:html={title.pt} />
+    <p class="sub rv" data-en={sub.en} set:html={sub.pt} />
+    <p class="lead rv" data-en={lead.en} set:html={lead.pt} />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 130px 0 90px;
+  }
+
+  .hero :global(.top) {
+    margin-bottom: 6vh;
+  }
+
+  .open {
+    grid-column: 1 / 13;
+    max-width: 520px;
+    margin-bottom: 22px;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(16px, 1.4vw, 20px);
+    letter-spacing: 0.02em;
+    color: var(--warm-70);
+  }
+
+  .open :global(.k) {
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  .title {
+    grid-column: 1 / 13;
+    font-family: var(--ff-display);
+    font-weight: 400;
+    font-size: clamp(96px, 17vw, 240px);
+    line-height: 0.82;
+    letter-spacing: -0.03em;
+    color: var(--warm);
+  }
+
+  /* Accent: "." in CASES. / "oi" in MANDA UM oi. */
+  .title :global(.n) {
+    color: var(--rose);
+    text-shadow: 0 0 60px rgba(158, 108, 239, 0.35);
+  }
+
+  .title :global(.n.script) {
+    display: inline-block;
+    font-family: var(--ff-sans);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.5em;
+    transform: translateY(-0.02em);
+  }
+
+  .sub {
+    grid-column: 1 / 9;
+    max-width: 720px;
+    margin-top: 36px;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.35;
+    color: var(--warm-70);
+  }
+
+  .sub :global(em) {
+    font-weight: 400;
+    color: var(--rose);
+  }
+
+  .lead {
+    grid-column: 1 / 9;
+    max-width: 640px;
+    margin-top: 34px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--warm-70);
+  }
+
+  .lead :global(b) {
+    font-weight: 500;
+    color: var(--warm);
+  }
+
+  @media (max-width: 820px) {
+    .hero {
+      padding: 110px 0 60px;
+    }
+  }
+</style>

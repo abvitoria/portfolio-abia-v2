@@ -1,0 +1,112 @@
+---
+/**
+ * Interactive desktop prototype: a tab per screen. Every panel is rendered
+ * and the inactive ones are `hidden`; the script below switches them
+ * (click, ← → Home End).
+ */
+import AulaScreen from './AulaScreen.astro';
+import AtividadesScreen from './AtividadesScreen.astro';
+import ForumScreen from './ForumScreen.astro';
+import NovoTopicoScreen from './NovoTopicoScreen.astro';
+import PontosScreen from './PontosScreen.astro';
+
+const screens = [
+  { id: 'aula', label: 'Aula', Screen: AulaScreen },
+  { id: 'atividades', label: 'Atividades', Screen: AtividadesScreen },
+  { id: 'forum', label: 'Fórum', Screen: ForumScreen },
+  { id: 'novo', label: 'Novo tópico', Screen: NovoTopicoScreen },
+  { id: 'pontos', label: 'Pontos · dark', Screen: PontosScreen },
+];
+---
+
+<div class="proto" data-proto>
+  <div class="tabs" role="tablist" aria-label="Telas do protótipo">
+    {
+      screens.map((s, i) => (
+        <button
+          type="button"
+          role="tab"
+          class="tab"
+          id={`sd-tab-${s.id}`}
+          aria-controls={`sd-panel-${s.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          {s.label}
+        </button>
+      ))
+    }
+  </div>
+  {
+    screens.map(({ id, Screen }, i) => (
+      <div role="tabpanel" id={`sd-panel-${id}`} aria-labelledby={`sd-tab-${id}`} hidden={i !== 0}>
+        <Screen />
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-proto]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+
+    const select = (tab: HTMLButtonElement, focus = false) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')!)!.hidden = !on;
+      });
+      if (focus) tab.focus();
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const next = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        select(tabs[(next + tabs.length) % tabs.length], true);
+      });
+    });
+
+    // The demo form never submits.
+    root.querySelectorAll('form').forEach((f) => f.addEventListener('submit', (e) => e.preventDefault()));
+  });
+</script>
+
+<style>
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 38px 0 16px;
+  }
+
+  .tab {
+    appearance: none;
+    padding: 11px 18px;
+    border: 1px solid var(--warm-14);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.04);
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--warm-70);
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .tab:hover {
+    border-color: rgba(158, 108, 239, 0.4);
+    color: var(--warm);
+  }
+
+  .tab[aria-selected='true'] {
+    border-color: var(--warm);
+    background: var(--warm);
+    font-weight: 500;
+    color: var(--void-2);
+  }
+</style>

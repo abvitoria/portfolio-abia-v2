@@ -1,0 +1,61 @@
+---
+/**
+ * Browser window mockup: dark title bar with three dots and an address bar,
+ * content (usually a screenshot) in the default slot.
+ *
+ *   <BrowserFrame url="vitalis-saude.gov.br/inicio"><Image … /></BrowserFrame>
+ */
+interface Props {
+  url: string;
+  /** Colors of the three window dots. */
+  dots?: [string, string, string];
+  class?: string;
+}
+
+const { url, dots = ['#E4572E', '#F2C14E', '#1CA9A0'], class: className } = Astro.props;
+---
+
+<div class:list={['browser', className]}>
+  <div class="bar">
+    {dots.map((c) => <span class="dot" style={`--c:${c}`} />)}
+    <span class="url">{url}</span>
+  </div>
+  <slot />
+</div>
+
+<style>
+  .browser {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: var(--radius-lg);
+    background: rgba(10, 12, 74, 0.94);
+    box-shadow: 0 22px 50px rgba(18, 50, 74, 0.22);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+    background: #12324a;
+  }
+
+  .dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--c);
+  }
+
+  .url {
+    flex: 1;
+    margin-left: 10px;
+    padding: 6px 12px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.14);
+    font-size: 12px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #cfe3ee;
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+/**
+ * Floating pill at the bottom of the viewport that tracks which section is
+ * on screen. Used by the /cases list and by every case page (chapters).
+ */
+import type { L } from '@/data/i18n';
+
+interface Props {
+  items: { id: string; label: L; n?: string }[];
+  label?: string;
+  /** Scroll distance (px) before the pill appears. */
+  showAfter?: number;
+}
+
+const { items, label = 'Seções desta página', showAfter = 200 } = Astro.props;
+---
+
+<nav class="secnav" aria-label={label} data-secnav data-show-after={showAfter}>
+  <div class="inner">
+    {
+      items.map((item) => (
+        <a href={`#${item.id}`} data-target={item.id}>
+          {item.n && <span class="n">{item.n}</span>}
+          <span data-en={item.label.en} set:html={item.label.pt} />
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-secnav]').forEach((nav) => {
+    const showAfter = Number(nav.dataset.showAfter ?? 200);
+    const links = [...nav.querySelectorAll<HTMLAnchorElement>('a[data-target]')];
+    const sections = links
+      .map((a) => document.getElementById(a.dataset.target!))
+      .filter((el): el is HTMLElement => !!el);
+    if (!sections.length) return;
+
+    const LINE = 200;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      nav.classList.toggle('show', window.scrollY > showAfter);
+      let current = sections[0].id;
+      for (const el of sections) if (el.getBoundingClientRect().top <= LINE) current = el.id;
+      links.forEach((a) => {
+        const on = a.dataset.target === current;
+        a.classList.toggle('on', on);
+        if (on) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    };
+    update();
+    window.addEventListener('scroll', () => (raf ||= requestAnimationFrame(update)), { passive: true });
+  });
+</script>
+
+<style>
+  .secnav {
+    position: fixed;
+    inset: auto 0 24px;
+    z-index: var(--z-secnav);
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  .secnav:global(.show) {
+    opacity: 1;
+    transform: none;
+  }
+
+  .secnav:global(.show) .inner {
+    pointer-events: auto;
+  }
+
+  .inner {
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-pill);
+    background: rgba(3, 4, 58, 0.8);
+    box-shadow: var(--shadow-float);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-body);
+    transition:
+      color 0.2s,
+      background 0.2s;
+  }
+
+  a:hover {
+    color: var(--text-strong);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  a:global(.on) {
+    background: var(--rose);
+    color: var(--void);
+    box-shadow: 0 6px 20px rgba(158, 108, 239, 0.4);
+  }
+
+  .n {
+    font-size: 10px;
+    opacity: 0.7;
+  }
+
+  a:global(.on) .n {
+    opacity: 1;
+  }
+
+  @media (max-width: 720px) {
+    .secnav {
+      display: none;
+    }
+  }
+
+  @media print {
+    .secnav {
+      display: none;
+    }
+  }
+</style>

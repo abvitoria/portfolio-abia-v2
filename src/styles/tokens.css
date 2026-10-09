@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Design tokens — single source of truth for color, type, space and motion.
+   Every component and page reads from these variables.
+   ========================================================================== */
+:root {
+  /* ---- Surfaces ---- */
+  --void: #03043a;          /* page background */
+  --void-2: #0a0c4a;        /* raised surface */
+  --plum: #1a1466;
+
+  /* ---- Text on dark ---- */
+  --warm: #f3f2ff;
+  --warm-70: rgba(243, 242, 255, 0.72);
+  --warm-40: rgba(243, 242, 255, 0.4);
+  --warm-14: rgba(243, 242, 255, 0.14);
+  --text-strong: #ffffff;
+  --text-body: #eeedfb;
+  --text-muted: #d8d7f2;
+  --text-subtle: #b8b7de;
+
+  /* ---- Brand ---- */
+  --rose: #9e6cef;          /* primary accent (lilac) */
+  --rose-light: #c4a8f7;
+  --rose-lighter: #e0d3fb;
+  --rose-deep: #561589;
+  --rose-glow: rgba(158, 108, 239, 0.35);
+  --gold: #54cee2;          /* secondary accent (cyan) */
+  --gold-light: #a8e9f3;
+  --warning: #f2b66d;
+
+  /* ---- Light "paper" theme (Sobre) ---- */
+  --paper: #f3f2ff;
+  --paper-2: #dcd8f7;
+  --ink: #03043a;
+  --ink-2: #3f3f6e;
+  --accent: #6e3fc8;
+
+  /* ---- Typography ---- */
+  --ff-sans: var(--font-sans), 'Poppins', sans-serif;
+  --ff-display: var(--font-display), 'Bebas Neue', sans-serif;
+  --ff-mono: var(--font-mono), 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-micro: 10.5px;
+  --fs-label: 11px;
+  --fs-small: 14px;
+  --fs-body: 16px;
+  --fs-lead: 17px;
+
+  /* ---- Layout ---- */
+  --wrap-max: 1400px;
+  --wrap-case: 1208px;     /* 1160px of content + 2 × 24px gutter */
+  --gutter: 40px;
+  --grid-gap: 24px;
+  --header-h: 66px;
+
+  /* ---- Radius ---- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation ---- */
+  --shadow-shot: 0 30px 80px rgba(0, 0, 0, 0.45);
+  --shadow-float: 0 12px 36px rgba(0, 0, 0, 0.55);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---- Layers ---- */
+  --z-ambient: -2;
+  --z-spot: -1;
+  --z-secnav: 70;
+  --z-header: 80;
+  --z-skip: 100;
+  --z-dialog: 200;
+}
+
+@media (max-width: 820px) {
+  :root {
+    --gutter: 20px;
+    --grid-gap: 16px;
+  }
+}

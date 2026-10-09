@@ -1,0 +1,595 @@
+---
+/**
+ * Vitalis style guide board: a light "Figma" sheet with the product's real
+ * color roles, type scale, component states and spacing. Uses the product
+ * palette on purpose, so it stays light on the dark case page.
+ */
+const swatches = [
+  { name: 'Navy · base', hex: '#0A192F', ratio: '17.6:1 AAA', status: 'pass' },
+  { name: 'Navy médio · nav ativa', hex: '#12324A', ratio: '13.3:1 AAA', status: 'pass' },
+  { name: 'Teal · ação', hex: '#009688', ratio: '3.7:1 AA large', status: 'warn' },
+  { name: 'Teal claro · status', hex: '#E0F2F1', ratio: '5.5:1 com texto', status: 'pass' },
+  { name: 'Fundo / superfície', hex: '#F4F7FE · #FFFFFF', ratio: 'Texto 16.3:1', status: 'pass', split: true },
+];
+
+const typeScale = [
+  { level: 'h1', sample: 'Receitas e Atestados', spec: 'H1 · 28 / 700 / 1.2' },
+  { level: 'h2', sample: 'Título de seção', spec: 'H2 · 20 / 600 / 1.3' },
+  { level: 'h3', sample: 'Nome do documento', spec: 'H3 · 16 / 600 / 1.4' },
+  {
+    level: 'body',
+    sample: 'Consulte e baixe seus documentos médicos oficiais emitidos durante as teleconsultas.',
+    spec: 'Corpo · 15 / 400 / 1.6',
+  },
+  { level: 'label', sample: 'Receita digital', spec: 'Label · 12 / 600 / +6%' },
+];
+
+const buttons = [
+  { state: 'Primário · default', label: 'Baixar', variant: 'primary' },
+  { state: 'Primário · hover', label: 'Baixar', variant: 'hover' },
+  { state: 'Primário · disabled', label: 'Baixar', variant: 'disabled' },
+  { state: 'Secundário', label: 'Visualizar', variant: 'secondary' },
+];
+
+const spacing = [
+  { size: 8, color: '#009688' },
+  { size: 16, color: '#009688' },
+  { size: 24, color: '#12324A' },
+  { size: 32, color: '#12324A' },
+  { size: 48, color: '#0A192F' },
+];
+
+const radii = [6, 12, 16];
+---
+
+<div class="sg">
+  <div class="sg-bar">
+    <span class="d"></span><span>Style guide · Vitalis Saúde</span><span class="rule"></span><span
+      >Figma · web + mobile</span
+    >
+  </div>
+  <div class="sg-body">
+    <div class="sg-blk">
+      <div class="sg-lbl"><b>Cor</b>Papel funcional</div>
+      <div>
+        <div class="swatches">
+          {
+            swatches.map((s) => (
+              <div class="sg-sw">
+                <div class:list={['chip', { 'chip--split': s.split }]} style={`--c:${s.hex}`} />
+                <div class="meta">
+                  <div class="nm">{s.name}</div>
+                  <div class="hx">{s.hex}</div>
+                  <div class:list={['cr', s.status]}>{s.ratio}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <p class="sg-note">
+          O teal é reservado a <b>ação e status</b> — nunca a texto corrido. Na auditoria de contraste ele passa em AA
+          para texto grande e componentes (3.7:1), então rótulos de botão vivem em 15px/600 sobre o preenchimento sólido,
+          nunca em teal sobre branco.
+        </p>
+      </div>
+    </div>
+
+    <div class="sg-blk">
+      <div class="sg-lbl"><b>Tipografia</b>Poppins · escala</div>
+      <div class="sg-type">
+        {
+          typeScale.map((t) => (
+            <div class="r">
+              <div class={`t-${t.level}`}>{t.sample}</div>
+              <div class="spec">{t.spec}</div>
+            </div>
+          ))
+        }
+        <p class="sg-note">
+          Nada abaixo de <b>15px</b> em texto de leitura — o público inclui idosos e telas de baixa qualidade. Uma família
+          só, cinco níveis: menos decisão na hora de desenhar, menos deriva entre os três perfis.
+        </p>
+      </div>
+    </div>
+
+    <div class="sg-blk">
+      <div class="sg-lbl"><b>Componentes</b>Variantes e estados</div>
+      <div class="components">
+        <div class="sg-cellrow">
+          {
+            buttons.map((b) => (
+              <div class="sg-cell">
+                <span class="st">{b.state}</span>
+                <span class={`sg-btn sg-btn--${b.variant}`}>{b.label}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="sg-cellrow sg-cellrow--stretch">
+          <div class="sg-cell search-cell">
+            <span class="st">Campo de busca · 44px</span>
+            <div class="search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5A6779" stroke-width="2" aria-hidden="true"
+                ><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg
+              >
+              Buscar documentos…
+            </div>
+          </div>
+          <div class="sg-cell">
+            <span class="st">Aba ativa / inativa</span>
+            <div class="tabs">
+              <span class="tab tab--active">Receitas</span>
+              <span class="tab">Atestados</span>
+            </div>
+          </div>
+          <div class="sg-cell">
+            <span class="st">Tag de status</span>
+            <div class="status"><span class="t-label status-tag">Receita digital</span></div>
+          </div>
+        </div>
+        <p class="sg-note sg-note--flush">
+          Todo alvo interativo tem <b>44px de altura mínima</b>. Estados nunca dependem só de cor: hover escurece, disabled
+          perde saturação <i>e</i> contraste de texto, foco herda o outline do navegador.
+        </p>
+      </div>
+    </div>
+
+    <div class="sg-blk">
+      <div class="sg-lbl"><b>Espaçamento</b>Base 8</div>
+      <div>
+        <div class="spacing">
+          {
+            spacing.map((s) => (
+              <div class="sg-cell">
+                <span class="st">{s.size}</span>
+                <div class="space-bar" style={`--w:${s.size}px;--c:${s.color}`} />
+              </div>
+            ))
+          }
+          <div class="sg-cell radius-cell">
+            <span class="st">Raio</span>
+            <div class="radii">{radii.map((r) => <div class="radius" style={`--r:${r}px`} />)}</div>
+          </div>
+          <div class="sg-cell">
+            <span class="st">Ícone</span>
+            <div class="icon-spec">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                ><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path></svg
+              >
+              <span>stroke 1.8 · 22px</span>
+            </div>
+          </div>
+        </div>
+        <p class="sg-note">
+          Grade de 8 em todo padding, gap e altura de componente. É o que mantém três perfis e duas plataformas parecendo o
+          mesmo produto sem precisar de um design system formal.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Product palette (Vitalis), not the portfolio tokens */
+  .sg {
+    --sg-ink: #16202e;
+    --sg-ink-2: #3c4a5e;
+    --sg-ink-3: #4a5a70;
+    --sg-mute: #5a6779;
+    --sg-line: #dde4f0;
+    --sg-teal: #009688;
+    --sg-teal-dark: #00786d;
+    --sg-teal-ink: #046b60;
+    --sg-teal-light: #e0f2f1;
+
+    overflow: hidden;
+    border-radius: var(--radius-xl);
+    background: #f4f7fe;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    font-family: var(--ff-sans);
+    color: var(--sg-ink);
+  }
+
+  .sg * {
+    box-sizing: border-box;
+  }
+
+  .sg-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 24px;
+    background: #0a192f;
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #a8bdd6;
+  }
+
+  .sg-bar .d {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sg-teal);
+  }
+
+  .sg-bar .rule {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.18) 0 5px, transparent 5px 9px);
+  }
+
+  .sg-body {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    padding: 30px 28px 34px;
+  }
+
+  .sg-blk {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 26px;
+    align-items: start;
+  }
+
+  .sg-blk + .sg-blk {
+    padding-top: 32px;
+    border-top: 1px solid var(--sg-line);
+  }
+
+  .sg-lbl {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sg-mute);
+  }
+
+  .sg-lbl b {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--ff-sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--sg-ink);
+  }
+
+  /* Color */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .sg-sw {
+    overflow: hidden;
+    border: 1px solid var(--sg-line);
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .sg-sw .chip {
+    height: 66px;
+    background: var(--c);
+  }
+
+  .sg-sw .chip--split {
+    position: relative;
+    border-bottom: 1px solid var(--sg-line);
+    background: linear-gradient(90deg, #f4f7fe 0 50%, #ffffff 50% 100%);
+  }
+
+  .sg-sw .chip--split::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--sg-line);
+  }
+
+  .sg-sw .meta {
+    padding: 10px 12px 12px;
+  }
+
+  .sg-sw .nm {
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--sg-ink);
+  }
+
+  .sg-sw .hx {
+    margin-top: 3px;
+    font-family: var(--ff-mono);
+    font-size: 10.5px;
+    color: var(--sg-mute);
+  }
+
+  .sg-sw .cr {
+    display: inline-block;
+    margin-top: 7px;
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: #e8edf6;
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--sg-ink-2);
+  }
+
+  .sg-sw .cr.pass {
+    background: var(--sg-teal-light);
+    color: var(--sg-teal-ink);
+  }
+
+  .sg-sw .cr.warn {
+    background: #fdecec;
+    color: #a3352f;
+  }
+
+  .sg-note {
+    margin: 12px 0 0;
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--sg-ink-2);
+  }
+
+  .sg-note b {
+    font-weight: 600;
+    color: var(--sg-ink);
+  }
+
+  .sg-note--flush {
+    margin: 0;
+  }
+
+  /* Type */
+  .sg-type {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sg-type .r {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 20px;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px dashed var(--sg-line);
+  }
+
+  .sg-type .spec {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-align: right;
+    color: var(--sg-mute);
+  }
+
+  .t-h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .t-h2 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .t-h3 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .t-body {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--sg-ink-3);
+  }
+
+  .t-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sg-teal-ink);
+  }
+
+  /* Components */
+  .components {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .sg-cellrow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: flex-end;
+  }
+
+  .sg-cellrow--stretch {
+    align-items: stretch;
+  }
+
+  .sg-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .sg-cell .st {
+    font-family: var(--ff-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sg-mute);
+  }
+
+  .sg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 24px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 14.5px;
+    font-weight: 600;
+  }
+
+  .sg-btn--primary {
+    background: var(--sg-teal);
+    color: #fff;
+  }
+
+  .sg-btn--hover {
+    background: var(--sg-teal-dark);
+    color: #fff;
+  }
+
+  .sg-btn--disabled {
+    background: #c7d3d2;
+    color: #8a9997;
+  }
+
+  .sg-btn--secondary {
+    border: 1.5px solid var(--sg-teal);
+    background: #fff;
+    color: var(--sg-teal-dark);
+  }
+
+  .search-cell {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--sg-line);
+    border-radius: var(--radius-md);
+    background: #fff;
+    font-size: 14px;
+    color: var(--sg-mute);
+  }
+
+  .tabs {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--sg-line);
+    border-radius: var(--radius-md);
+    background: #fff;
+  }
+
+  .tab {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sg-mute);
+  }
+
+  .tab--active {
+    padding-bottom: 3px;
+    box-shadow: inset 0 -2px 0 var(--sg-teal);
+    font-weight: 600;
+    color: var(--sg-teal);
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    height: 44px;
+  }
+
+  .status-tag {
+    padding: 6px 11px;
+    border-radius: 6px;
+    background: var(--sg-teal-light);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* Spacing */
+  .spacing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+  }
+
+  .space-bar {
+    width: var(--w);
+    height: 34px;
+    border-radius: var(--radius-xs);
+    background: var(--c);
+  }
+
+  .radius-cell {
+    margin-left: 14px;
+  }
+
+  .radii {
+    display: flex;
+    gap: 8px;
+  }
+
+  .radius {
+    width: 34px;
+    height: 34px;
+    border: 1.5px solid #9fb0c6;
+    border-radius: var(--r);
+  }
+
+  .icon-spec {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 34px;
+    color: var(--sg-ink-3);
+  }
+
+  .icon-spec span {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    color: var(--sg-mute);
+  }
+
+  @media (max-width: 860px) {
+    .sg-blk {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .swatches {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

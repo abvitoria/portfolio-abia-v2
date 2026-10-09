@@ -1,0 +1,68 @@
+---
+/**
+ * Pill button/link. `primary` = filled lilac, `ghost` = outline.
+ * For the animated outline CTA used in page heroes, see Chip.astro.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = {
+  href?: string;
+  variant?: 'primary' | 'ghost';
+  en?: string;
+  class?: string;
+} & Omit<HTMLAttributes<'a'>, 'class'> &
+  Omit<HTMLAttributes<'button'>, 'class'>;
+
+const { href, variant = 'primary', en, class: className, ...rest } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag href={href} class:list={['btn', `btn--${variant}`, className]} data-en={en} {...rest}>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 28px;
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-pill);
+    font-family: var(--ff-sans);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+      background 0.25s,
+      color 0.25s,
+      transform 0.25s,
+      box-shadow 0.25s;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn--primary {
+    background: var(--rose);
+    color: var(--void);
+    box-shadow: 0 8px 22px rgba(158, 108, 239, 0.4);
+  }
+
+  .btn--primary:hover {
+    background: var(--rose-light);
+    color: var(--void);
+  }
+
+  .btn--ghost {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: var(--text-strong);
+  }
+
+  .btn--ghost:hover {
+    background: var(--text-strong);
+    color: var(--void);
+  }
+</style>

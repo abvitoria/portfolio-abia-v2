@@ -1,0 +1,76 @@
+---
+/**
+ * Two-column mono strip at the top of a page hero:
+ *   PRODUCT DESIGNER · UX / UI          /index
+ *   BRASIL · GMT−3                      00:00:00 BRT
+ */
+import type { L } from '@/data/i18n';
+
+interface Props {
+  left: { strong: L; extra?: L; sub: L };
+  right: { strong: string; sub?: L; clock?: boolean };
+  class?: string;
+}
+
+const { left, right, class: className } = Astro.props;
+---
+
+<div class:list={['hero-top mono', className]}>
+  <div>
+    <b data-en={left.strong.en} set:html={left.strong.pt} />
+    {left.extra && <span data-en={left.extra.en} set:html={left.extra.pt} />}
+    <br />
+    <span class="dim" data-en={left.sub.en} set:html={left.sub.pt} />
+  </div>
+  <div class="right">
+    <b>{right.strong}</b><br />
+    {
+      right.clock ? (
+        <span class="dim" data-clock>
+          — : —
+        </span>
+      ) : (
+        right.sub && <span class="dim" data-en={right.sub.en} set:html={right.sub.pt} />
+      )
+    }
+  </div>
+</div>
+
+{
+  right.clock && (
+    <script>
+      const pad = (n: number) => String(n).padStart(2, '0');
+      document.querySelectorAll<HTMLElement>('[data-clock]').forEach((el) => {
+        const tick = () => {
+          const d = new Date();
+          el.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())} BRT`;
+        };
+        tick();
+        setInterval(tick, 1000);
+      });
+    </script>
+  )
+}
+
+<style>
+  .hero-top {
+    grid-column: 1 / 13;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--warm-70);
+  }
+
+  .hero-top b {
+    font-weight: 500;
+    color: var(--warm);
+  }
+
+  .dim {
+    color: var(--warm-40);
+  }
+
+  .right {
+    text-align: right;
+  }
+</style>
