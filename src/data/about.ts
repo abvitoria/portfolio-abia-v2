@@ -7,7 +7,7 @@ export const numbers: { value: string; label: L; accent?: boolean }[] = [
     value: '4',
     label: t(
       'Setores atendidos <br><span class="ink">fintech · saúde · edtech · softhouse</span>',
-      'Industries served <br><span class="ink">fintech · health · edtech · software house</span>',
+      'Industries served <br><span class="ink">fintech · health · edtech · softhouse</span>',
     ),
   },
   { value: '6', label: t('Mentorias &amp; hackathons como mentora', 'Mentoring programs &amp; hackathons as a mentor') },
@@ -93,7 +93,7 @@ export const expertise: { letter: string; title: L; items: L[] }[] = [
   },
 ];
 
-export const tools = ['Figma', 'FigJam', 'Notion', 'Miro', 'Adobe XD'];
+export const tools = ['Figma', 'FigJam', 'Notion', 'Miro', 'Claude'];
 
 export const companies: { name: string; period: L }[] = [
   { name: 'MEDME SAÚDE', period: t('2025 · atual', '2025 · present') },
