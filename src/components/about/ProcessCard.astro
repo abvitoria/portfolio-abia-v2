@@ -1,7 +1,9 @@
 ---
 /**
  * "Device" card for one design-thinking stage. Cards stack with sticky
- * offsets as the visitor scrolls (see .stack in ProcessStack).
+ * offsets as the visitor scrolls. The scroll runway between cards is the
+ * parent's `gap` (.philo-stack in sobre.astro), not a margin: a sticky box
+ * counts its margin, so a bottom margin releases the stack too early.
  */
 interface Props {
   step: number;
@@ -57,7 +59,6 @@ const stages = Array.from({ length: total }, (_, i) => (i + 1 < step ? 'done' : 
     position: sticky;
     top: calc(120px + var(--i) * 30px);
     z-index: calc(var(--i) + 1);
-    margin-bottom: 38vh;
     overflow: hidden;
     border: 1px solid rgba(11, 12, 61, 0.14);
     border-radius: 28px;
@@ -65,10 +66,6 @@ const stages = Array.from({ length: total }, (_, i) => (i + 1 < step ? 'done' : 
     box-shadow:
       0 30px 60px rgba(11, 12, 61, 0.16),
       0 4px 14px rgba(11, 12, 61, 0.05);
-  }
-
-  .card:last-child {
-    margin-bottom: 0;
   }
 
   .head {
@@ -306,7 +303,6 @@ const stages = Array.from({ length: total }, (_, i) => (i + 1 < step ? 'done' : 
   @media (max-width: 960px) {
     .card {
       top: 80px;
-      margin-bottom: 24vh;
     }
 
     .body {

@@ -472,7 +472,23 @@ import { url } from '@/lib/url';
 
   .philo-stack {
     position: relative;
-    padding-bottom: 40vh;
+    display: flex;
+    flex-direction: column;
+    gap: 38vh;
+  }
+
+  /* Runway after the last card. Padding doesn't count for sticky, so it has
+     to be a flex item: the last card then stops at its offset and holds,
+     like the others, before the whole stack scrolls away. */
+  .philo-stack::after {
+    content: '';
+    height: 2vh;
+  }
+
+  @media (max-width: 960px) {
+    .philo-stack {
+      gap: 24vh;
+    }
   }
 
   /* Principle */
