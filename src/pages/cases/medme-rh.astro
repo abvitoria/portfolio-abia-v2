@@ -5,7 +5,6 @@ import CaseFigure from '@/components/case/CaseFigure.astro';
 import CaseHero from '@/components/case/CaseHero.astro';
 import CaseSection from '@/components/case/CaseSection.astro';
 import LearningList from '@/components/case/LearningList.astro';
-import NumberedList from '@/components/case/NumberedList.astro';
 import PartHeading from '@/components/case/PartHeading.astro';
 import ScreenCompare from '@/components/case/medme-rh/ScreenCompare.astro';
 import TermList from '@/components/case/medme-rh/TermList.astro';
@@ -37,7 +36,7 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     ]}
   />
 
-  <PartHeading part="Parte 1" title="Contexto e problema" />
+  <PartHeading part="Parte 1" title="Contexto e desafio" />
 
   <CaseSection id="ctx" label="Contexto" title="Uma ferramenta administrativa para o benefício farmácia" space="md">
     <p>
@@ -71,20 +70,32 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     </p>
   </CaseSection>
 
-  <PartHeading part="Parte 2" title="Processo e decisões" />
+  <PartHeading part="Parte 2" title="Meu processo" />
 
-  <CaseSection id="proc" label="Processo" title="Das inconsistências aos padrões">
+  <CaseSection id="proc" label="Meu processo" title="Da investigação ao QA">
     <p>
       Não houve entrevistas nem testes formais com usuários. O entendimento veio de cinco fontes: demandas do produto,
       chamados e informações do suporte, análise da interface existente, benchmark de produtos administrativos e
       alinhamentos com o Product Owner e a equipe técnica.
     </p>
-    <NumberedList
+    <TermList
       items={[
-        '<strong>Mapear as diferenças.</strong> Comparar como cada área resolvia a mesma necessidade: listar, buscar, filtrar, editar, confirmar.',
-        '<strong>Definir os padrões.</strong> Escolher uma única forma para cada uma dessas necessidades, a partir do design system da MedMe.',
-        '<strong>Reorganizar as áreas.</strong> Aplicar os padrões tela a tela e repensar os fluxos em que só padronizar não resolvia, como relatórios.',
-        '<strong>Entregar em etapas.</strong> Documentar para o time e liberar a nova versão aos poucos, mantendo a antiga disponível.',
+        {
+          term: '01 — Investigação e mapeamento',
+          text: 'Comecei estudando a documentação e explorando o portal existente para compreender suas funcionalidades, regras de negócio e limitações. Mapeei telas e ações, identifiquei inconsistências e analisei como os componentes do design system poderiam ser aplicados à modernização.',
+        },
+        {
+          term: '02 — Exploração e validação',
+          text: 'Organizei os requisitos e desenvolvi as primeiras propostas em baixa fidelidade, utilizando o Claude como apoio à exploração das interfaces. Os direcionamentos foram discutidos com o Product Owner e o Tech Lead, permitindo revisar as soluções antes do refinamento visual.<br /><br />Além da padronização, algumas áreas exigiram mudanças estruturais. Foi o caso dos relatórios, cuja navegação precisava ser reorganizada, e do dashboard, que aproveitou investigações realizadas em paralelo para sua versão 2.0.',
+        },
+        {
+          term: '03 — Refinamento e handoff',
+          text: 'Com as propostas alinhadas, trabalhei no Figma para refinar componentes, hierarquia visual, cores, espaçamentos e estados de interação. Mantive contato com desenvolvimento durante os ajustes e documentei os fluxos e funcionalidades para implementação.',
+        },
+        {
+          term: '04 — Acompanhamento e QA',
+          text: 'Minha atuação continuou durante o desenvolvimento, com revisões das interfaces implementadas e participação nos testes de qualidade. Identifiquei divergências visuais, bugs e comportamentos que precisavam de correção, acompanhando os ajustes antes da liberação.',
+        },
       ]}
     />
   </CaseSection>
@@ -230,25 +241,21 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
     <button type="button" class="go" data-compare-go="dashboard">Ver Dashboard antes e depois →</button>
   </CaseSection>
 
-  <PartHeading part="Parte 3" title="Soluções e comparações" />
+  <PartHeading part="Parte 3" title="Entregas e resultados" />
 
-  <section id="comparador" class="explorer wrap--case" aria-labelledby="ad-title">
-    <div class="explorer-body">
-      <div class="explorer-head">
-        <span class="tag-mono">Antes e depois</span>
-        <h2 id="ad-title">Oito comparações, lidas pelo problema</h2>
-        <p>
-          Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o
-          benefício que se espera dela.
-        </p>
-      </div>
-      <ScreenCompare id="comparador" screens={telas} />
-    </div>
-  </section>
+  <CaseSection id="entregas" label="Entregas e resultados" title="O que mudou e como foi recebido" space="md">
+    <p>
+      O projeto contemplou a modernização de oito áreas do portal, com padrões de interface unificados, jornadas
+      reorganizadas e novas experiências de consulta a relatórios e informações gerenciais.
+    </p>
+    <p>
+      A implementação foi conduzida gradualmente, preservando o acesso à versão anterior. Após a entrega, o trabalho
+      recebeu feedbacks internos positivos, especialmente pela evolução visual e pelo alinhamento com a nova identidade
+      da MedMe.
+    </p>
+  </CaseSection>
 
-  <PartHeading part="Parte 4" title="Resultados e aprendizados" />
-
-  <CaseSection id="lanc" label="Lançamento" title="Uma transição em etapas" space="md">
+  <CaseSection id="lanc" label="Lançamento" title="Uma transição em etapas">
     <p>
       O portal faz parte da rotina do RH. Trocar tudo de uma vez obrigaria quem já conhecia a versão antiga a
       reaprender o sistema inteiro de um dia para o outro.
@@ -316,6 +323,21 @@ import novoRelatorios from '@/assets/medme/novo-relatorios.png';
       ]}
     />
   </CaseSection>
+  <PartHeading part="Parte 4" title="Antes e depois" />
+
+  <section id="comparador" class="explorer wrap--case" aria-labelledby="ad-title">
+    <div class="explorer-body">
+      <div class="explorer-head">
+        <span class="tag-mono">Antes e depois</span>
+        <h2 id="ad-title">Oito comparações, lidas pelo problema</h2>
+        <p>
+          Escolha uma área e alterne entre a versão antiga e a nova. Ao lado, o problema, a decisão, a solução e o
+          benefício que se espera dela.
+        </p>
+      </div>
+      <ScreenCompare id="comparador" screens={telas} />
+    </div>
+  </section>
 </CaseLayout>
 
 <style>
