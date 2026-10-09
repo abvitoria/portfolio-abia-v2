@@ -104,7 +104,7 @@ export const cases: CaseEntry[] = [
         'Descoberta com P.O., dev, marketing e suporte via matriz CSD. Redesenho em duas etapas, documentação completa do wireflow e novas funcionalidades pra dar motivo de uso recorrente.',
         'Discovery with P.O., dev, marketing and support via CSD matrix. Two-step registration redesign, complete wireflow documentation, and new features to give the app a reason to come back.',
       ),
-      tags: [t('Descoberta', 'Discovery'), t('Matriz CSD'), t('Wireflow'), t('Documentação', 'Documentation')],
+      tags: [t('Descoberta', 'Discovery'), t('Matriz CSD', 'CSD Matrix'), t('Wireflow'), t('Documentação', 'Documentation')],
       stat: { value: '30<span class="k">+</span>', caption: t('telas no cadastro original', 'screens in the original sign-up') },
       actors: [t('P.O.'), t('Desenvolvimento', 'Development'), t('Marketing'), t('Suporte', 'Support')],
       status: t('case · publicado', 'case · published'),
@@ -349,7 +349,7 @@ export const cases: CaseEntry[] = [
       role: 'Product Designer',
     },
     row: {
-      title: t('PULSE<br/>EDUCAÇÃO'),
+      title: t('PULSE<br/>EDUCAÇÃO', 'PULSE<br/>EDUCATION'),
       context: t(
         'Uma plataforma de ensino e gestão escolar que reunia funcionalidades acadêmicas e administrativas, mas apresentava inconsistências na navegação, na organização das informações e nos padrões de interface. O desafio era modernizar a experiência existente e incorporar uma nova funcionalidade de acompanhamento pedagógico, prevista para apoiar a identificação de estudantes em risco de evasão escolar.',
         'An education and school management platform that combined academic and administrative features but lacked consistency in navigation, information organization, and interface patterns. The challenge was to modernize the existing experience and incorporate a planned student monitoring feature designed to help identify students at risk of dropping out.',

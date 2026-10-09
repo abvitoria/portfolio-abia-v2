@@ -5,13 +5,15 @@
  * parent's `gap` (.philo-stack in sobre.astro), not a margin: a sticky box
  * counts its margin, so a bottom margin releases the stack too early.
  */
+import type { L } from '@/data/i18n';
+
 interface Props {
   step: number;
   total: number;
-  label: string;
-  sub: string;
+  label: L;
+  sub: L;
   /** Body text; <mark> highlights a key sentence. */
-  text: string;
+  text: L;
 }
 
 const { step, total, label, sub, text } = Astro.props;
@@ -32,24 +34,24 @@ const stages = Array.from({ length: total }, (_, i) => (i + 1 < step ? 'done' : 
         ))
       }
     </div>
-    <span class="etapa">ETAPA <span class="ring"></span></span>
+    <span class="etapa"><span data-en="STAGE">ETAPA</span> <span class="ring"></span></span>
   </div>
   <div class="body">
     <div class="left">
       <div class="num">{pad(step)}</div>
-      <div class="lbl">{label}</div>
-      <div class="sub"><span class="dash"></span>{sub}</div>
+      <div class="lbl" data-en={label.en} set:html={label.pt} />
+      <div class="sub"><span class="dash"></span><span data-en={sub.en} set:html={sub.pt} /></div>
       <div class="icon" aria-hidden="true"></div>
       <div class="dotgrid" aria-hidden="true"></div>
     </div>
     <div class="right">
-      <p set:html={text} />
+      <p data-en={text.en} set:html={text.pt} />
     </div>
   </div>
   <div class="foot" aria-hidden="true">
-    <span class="flbl"><i></i>Modo<br />exploração</span>
+    <span class="flbl"><i></i><span data-en="Exploration<br />mode">Modo<br />exploração</span></span>
     <span class="scan"></span>
-    <span class="flbl"><i></i>Status<br />ativo</span>
+    <span class="flbl"><i></i><span data-en="Status<br />active">Status<br />ativo</span></span>
     <span class="sq"><i></i><i></i><i></i></span>
   </div>
 </article>

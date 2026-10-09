@@ -1,7 +1,9 @@
 ---
 /** Career timeline: year column + role / company / description. */
+import type { L } from '@/data/i18n';
+
 interface Props {
-  items: { year: string; until?: string; role: string; current?: boolean; company: string; desc: string }[];
+  items: { year: string; until?: L; role: string; current?: boolean; company: string; desc: L }[];
 }
 
 const { items } = Astro.props;
@@ -13,14 +15,14 @@ const { items } = Astro.props;
       <>
         <div class="yr">
           {item.year}
-          {item.until && <span class="until">{item.until}</span>}
+          {item.until && <span class="until" data-en={item.until.en} set:html={item.until.pt} />}
         </div>
         <div>
           <div class="role">
-            {item.role} {item.current && <span class="now">Atual</span>}
+            {item.role} {item.current && <span class="now" data-en="Current">Atual</span>}
           </div>
           <div class="co">{item.company}</div>
-          <p class="desc">{item.desc}</p>
+          <p class="desc" data-en={item.desc.en} set:html={item.desc.pt} />
         </div>
       </>
     ))
